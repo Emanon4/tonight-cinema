@@ -44,6 +44,15 @@ const genres = {
 // Discover across languages plus broad popularity; exclude adult titles, future releases, and weak metadata.
 const seeds = new Map();
 const languages = ["", "zh", "ja", "ko", "fr", "it", "es", "de", "hi", "fa"];
+// Keep a small, explicitly identified editorial shelf independent of current popularity.
+const shelf=[['The Grand Budapest Hotel',2014],['Interstellar',2014],['La La Land',2016],['Her',2013],['Fantastic Mr. Fox',2009],['The Truman Show',1998],['The Secret Life of Walter Mitty',2013],['Soul',2020],['Before Sunrise',1995],['The Royal Tenenbaums',2001],['Arrival',2016],['Moonrise Kingdom',2012],['In the Mood for Love',2000],['Spirited Away',2001],['Chungking Express',1994],['Parasite',2019]];
+for(const [title,year] of shelf){
+ const file=path.join(cacheDir,`shelf-${title.replace(/[^a-z0-9]/gi,'_')}-${year}.json`);
+ let d;if(fs.existsSync(file))d=JSON.parse(fs.readFileSync(file));else{d=await api('search/movie',{query:title,year,language:'en-US',include_adult:'false'});fs.writeFileSync(file,JSON.stringify(d));}
+ const m=d.results?.find(x=>(x.title.toLowerCase()===title.toLowerCase()||x.original_title.toLowerCase()===title.toLowerCase())&&Number(x.release_date?.slice(0,4))===year);
+ if(m)seeds.set(m.id,m);
+}
+
 for (let page = 1; seeds.size < target && page <= 120; page++) {
   for (const language of languages) {
     if (seeds.size >= target) break;
@@ -124,16 +133,16 @@ async function worker() {
     }
   }
 }
-await Promise.all(Array.from({ length: 5 }, worker));
-result.sort((a, b) => b.popularity - a.popularity);
-if (result.length < Math.min(100, target * 0.7))
+await Promise.all(Array.from({ length: 12 }, worker));
+result.sort((a, b) => b.popularity - a.popularity || a.id.localeCompare(b.id));
+if (result.length < Math.min(seedList.length, target) * 0.7)
   throw Error("Too few valid records; refusing to replace catalog.");
 const dest = path.join(root, "public/data/movies.json");
 fs.writeFileSync(dest + ".next", JSON.stringify(result));
 fs.renameSync(dest + ".next", dest);
 const { createHash } = await import("node:crypto");
 const configPath = path.join(root, "wrangler.jsonc");
-const config = JSON.parse(fs.readFileSync(configPath));
+const config = JSON.parse(fs.readFileSync(configPath, "utf8").replace(/,\s*([}\]])/g, "$1"));
 config.vars.CATALOG_VERSION = createHash("sha256")
   .update(fs.readFileSync(dest))
   .digest("hex")

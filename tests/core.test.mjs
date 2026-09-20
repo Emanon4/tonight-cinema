@@ -77,3 +77,13 @@ test("all catalog records have unique IDs and source links", () => {
     ),
   );
 });
+
+test("null filters and invalid confidence are rejected", () => {
+  assert.equal(validInput({ query: "温暖", filters: null }), false);
+  assert.throws(() =>
+    readRanking(
+      { answers: { 1: { type: "score", score: 2, confidence: 9 } } },
+      films.slice(0, 1),
+    ),
+  );
+});

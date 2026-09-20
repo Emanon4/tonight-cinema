@@ -33,6 +33,8 @@ const featured = [
   "The Grand Budapest Hotel",
   "Interstellar",
   "La La Land",
+  "In the Mood for Love",
+  "Spirited Away",
   "Her",
   "Fantastic Mr. Fox",
   "The Truman Show",
@@ -370,7 +372,7 @@ function App() {
                     ))}
                   </div>
                   <span className="stage-caption">
-                    九个世界 · 随时入场 <ArrowUpRight size={14} />
+                    {Math.min(9, picks.length)} 个世界 · 随时入场 <ArrowUpRight size={14} />
                   </span>
                 </section>
               )}
@@ -571,7 +573,7 @@ function App() {
               ))}
             </div>
           )}
-          {!busy && !visible.length && !error && (
+          {!busy && movies.length > 0 && !visible.length && !error && (
             <div className="empty">
               <Film size={32} />
               <h3>

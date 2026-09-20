@@ -4,23 +4,25 @@
   "compatibility_date": "2026-09-20",
   "vars": {
     "ALLOWED_ORIGIN": "https://emanon4.github.io",
-    "CATALOG_VERSION": "a561dc7bbc99020b",
+    "CATALOG_VERSION": "e923ef7f481628b3"
   },
   "durable_objects": {
     "bindings": [
       {
         "name": "BUDGET",
-        "class_name": "Budget",
-      },
-    ],
+        "class_name": "Budget"
+      }
+    ]
   },
   "migrations": [
     {
       "tag": "v1",
-      "new_sqlite_classes": ["Budget"],
-    },
+      "new_sqlite_classes": [
+        "Budget"
+      ]
+    }
   ],
   "observability": {
-    "enabled": false,
-  },
+    "enabled": false
+  }
 }

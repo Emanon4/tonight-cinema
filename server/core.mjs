@@ -224,7 +224,9 @@ export function readRanking(data, movies) {
       !Number.isFinite(a.score) ||
       a.score < 0 ||
       a.score > 3 ||
-      !Number.isFinite(a.confidence)
+      !Number.isFinite(a.confidence) ||
+      a.confidence < 0 ||
+      a.confidence > 1
     )
       throw new Error("Jev 返回了不完整的评分，本次结果未采用。");
     return { id: m.id, score: a.score, confidence: a.confidence };
@@ -307,6 +309,9 @@ export function validInput(b) {
     typeof b.query === "string" &&
     b.query.trim().length >= 2 &&
     b.query.length <= 300 &&
-    (!b.filters || (typeof b.filters === "object" && !Array.isArray(b.filters)))
+    (b.filters === undefined ||
+      (b.filters !== null &&
+        typeof b.filters === "object" &&
+        !Array.isArray(b.filters)))
   );
 }
