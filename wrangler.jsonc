@@ -1,0 +1,1 @@
+{"name":"tonight-cinema-api","main":"server/worker.mjs","compatibility_date":"2026-09-20","vars":{"ALLOWED_ORIGIN":"https://emanon4.github.io"},"durable_objects":{"bindings":[{"name":"BUDGET","class_name":"Budget"}]},"migrations":[{"tag":"v1","new_sqlite_classes":["Budget"]}],"observability":{"enabled":false}}

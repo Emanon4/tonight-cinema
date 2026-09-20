@@ -1,0 +1,9 @@
+node_modules/
+dist/
+.dev.vars
+.env*
+!.env.example
+.wrangler/
+.cache/
+artifacts/
+public/data/wiki-source.json
