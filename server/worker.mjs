@@ -1,4 +1,5 @@
-import movies from "../public/data/movies.json";
+import { createCatalogLoader } from "./catalog.mjs";
+const loadCatalog = createCatalogLoader();
 import { recommend, validInput } from "./core.mjs";
 export class Budget {
   constructor(ctx) {
@@ -49,7 +50,7 @@ export default {
         ready: !!env.TYPESAFE_API_KEY && !!env.APP_ACCESS_TOKEN,
         accessRequired: true,
         engine: "jev",
-        catalogCount: movies.length,
+        catalogCount: Number(env.CATALOG_COUNT),
       });
     if (path !== "/api/recommend" || req.method !== "POST")
       return send(404, { error: "Not found" });
@@ -90,6 +91,7 @@ export default {
       const cache = caches.default;
       const hit = await cache.match(ck);
       if (hit) return send(200, { ...(await hit.json()), cached: true });
+      const movies = await loadCatalog(env);
       const budget = env.BUDGET.get(env.BUDGET.idFromName("global"));
       const limit = await (await budget.fetch("https://budget/")).json();
       if (!limit.allowed)

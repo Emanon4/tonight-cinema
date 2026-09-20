@@ -4,7 +4,8 @@
   "compatibility_date": "2026-09-20",
   "vars": {
     "ALLOWED_ORIGIN": "https://emanon4.github.io",
-    "CATALOG_VERSION": "e923ef7f481628b3"
+    "CATALOG_VERSION": "952ddc1252e10810",
+    "CATALOG_COUNT": 20000
   },
   "durable_objects": {
     "bindings": [
@@ -24,5 +25,10 @@
   ],
   "observability": {
     "enabled": false
+  },
+  "assets": {
+    "directory": ".cache/worker-assets",
+    "binding": "ASSETS",
+    "run_worker_first": true
   }
 }

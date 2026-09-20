@@ -8,3 +8,5 @@ dist/
 artifacts/
 public/data/wiki-source.json
 worker-configuration.d.ts
+
+public/data/catalog/

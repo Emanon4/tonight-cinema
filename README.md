@@ -10,19 +10,19 @@ Node 22+。先 `npm ci`，再分别运行 `npm run server` 和 `npm run dev`，�
 
 ## 电影库
 
-正式片库来自 TMDB，覆盖多个原始语言，按热度及语言分层获取，优先收录票数至少 50、有海报和简介的电影。当前 5,000 部，覆盖 21 种原始语言，4669 部有中文简介。这是精选覆盖，不是全球全量库。
+正式片库来自 TMDB，覆盖多个原始语言，按热度并结合多语言、不同年代获取，优先收录票数至少 10、有海报和简介的电影。当前 20,000 部，覆盖 46 种原始语言。这是精选覆盖，不是全球全量库。
 
-`npm run import:tmdb` 从 `~/.config/tmdb/api-key.txt`（Read Access Token 或 v3 API key）导入多语言电影资料，默认目标 5,000 部。可通过 `CATALOG_TARGET` 调整。支持磁盘缓存断点续跑；失败不覆盖现有片库。导入结束重启本地 API；线上需要重新部署 Worker 和前端。不要提交 `.cache` 或 API 密钥。
+`npm run import:tmdb` 从 `~/.config/tmdb/api-key.txt`（Read Access Token 或 v3 API key）导入多语言电影资料，默认目标 20,000 部。可通过 `CATALOG_TARGET` 调整。扩容保留已有条目和电影 ID，支持磁盘缓存断点续跑，发现页缓存一天；网络暂时失败时有限重试，未达到目标不覆盖现有片库。导入结束重启本地 API；线上需要重新部署 Worker 和前端。不要提交 `.cache` 或 API 密钥。
 
 推荐链路：Jev 判断需求类型 → 程序用关键词与主题召回 24 部 → 3 批 Jev 独立评分 → 只展示得分达到阈值的最多 12 部。阈值是产品起始值，不代表经校准的喜欢概率。没有足够证据时允许空结果。未知片长不会通过片长限制。
 
-已知边界：候选召回采用启发式词表，仍可能漏片；偏好判断取决于简介证据，不能保证情节细节；中文语义需持续人工评估。没有全文搜索引擎或向量数据库，未来扩到数万部应迁移检索到数据库索引。当前精选片库在浏览器中加载，海报按需加载；未宣称已实现百万片库。
+已知边界：候选召回采用启发式词表，仍可能漏片；偏好判断取决于简介证据，不能保证情节细节；中文语义需持续人工评估。当前仍采用内存检索，后续规模继续增加时可迁移到数据库索引。浏览器只加载电影卡片索引，简介与演员按点击加载；Worker 通过静态资源分片加载用于 Jev 选片的完整资料，避免把整库打进 JavaScript 包。
 
 ## 部署
 
 1. `npm test && npm run build`
 2. GitHub Pages 选择 GitHub Actions；`.github/workflows/pages.yml` 推送 main 后自动部署，支持项目子路径。
-3. Cloudflare：`npx wrangler login`，`npx wrangler deploy`。
+3. Cloudflare：`npx wrangler login`，`npm run deploy:api`（自动生成片库分片再部署）。
 4. 用 `npx wrangler secret put TYPESAFE_API_KEY` 配置 Jev 密钥；`npx wrangler secret put APP_ACCESS_TOKEN` 配置随机网站访问码。不得放入仓库。
 5. 将 `public/config.json` 的 `apiBase` 设为 Worker HTTPS 地址，然后重新发布前端。
 6. 页面右上角连接设置输入网站访问码（不是 Jev key）。访问码只保存在当前浏览器标签会话。

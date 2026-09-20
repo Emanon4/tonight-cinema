@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useMemo } from "react";
 import { createRoot } from "react-dom/client";
 import {
   ArrowUpRight,
@@ -19,7 +19,6 @@ import {
   genreLabels,
   filtered,
   parseFilters,
-  retrieve,
 } from "../server/core.mjs";
 import "./style.css";
 const BASE = import.meta.env.BASE_URL;
@@ -103,12 +102,13 @@ function App() {
     [meta, setMeta] = useState(null);
   const controller = useRef(null),
     requestId = useRef(0),
+    detailCache = useRef(new Map()),
     modal = useRef(null),
     settings = useRef(null),
     about = useRef(null),
     input = useRef(null);
   useEffect(() => {
-    fetch(BASE + "data/movies.json?v=" + __CATALOG_VERSION__)
+    fetch(BASE + "data/catalog/index-" + __CATALOG_VERSION__ + ".json")
       .then((r) => {
         if (!r.ok) throw Error();
         return r.json();
@@ -147,6 +147,28 @@ function App() {
     if (selected) modal.current?.showModal();
     else modal.current?.close();
   }, [selected]);
+  useEffect(() => {
+    if (!selected || selected.overview || !selected.detailChunk) return;
+    const id = selected.id;
+    let cancelled = false;
+    async function loadDetails() {
+      try {
+        if (!detailCache.current.has(id)) {
+          const response = await fetch(BASE + "data/catalog/" + selected.detailChunk);
+          if (!response.ok) throw Error("简介加载失败，请刷新页面后重试。");
+          const rows = await response.json();
+          for (const row of rows) detailCache.current.set(row.id, row);
+        }
+        const detail = detailCache.current.get(id);
+        if (!detail) throw Error("暂未找到这部电影的详细资料。");
+        if (!cancelled) setSelected(current => current?.id === id ? {...current, ...detail} : current);
+      } catch (error) {
+        if (!cancelled) setSelected(current => current?.id === id ? {...current, detailError: error.message} : current);
+      }
+    }
+    loadDetails();
+    return () => { cancelled = true; };
+  }, [selected?.id]);
   useEffect(() => {
     if (showSettings) settings.current?.showModal();
     else settings.current?.close();
@@ -223,11 +245,11 @@ function App() {
       if (rid === requestId.current) setBusy(false);
     }
   }
-  const picks = featured
+  const picks = useMemo(() => featured
     .map((t) => movies.find((m) => m.title === t))
-    .filter(Boolean);
-  const all = filtered(movies, parseFilters("", filters));
-  const byId = new Map(movies.map((m) => [m.id, m]));
+    .filter(Boolean), [movies]);
+  const all = useMemo(() => filtered(movies, parseFilters("", filters)), [movies, filters]);
+  const byId = useMemo(() => new Map(movies.map((m) => [m.id, m])), [movies]);
   let visible =
     view === "saved"
       ? movies.filter((m) => saved.includes(m.id))
@@ -652,7 +674,7 @@ function App() {
                     : ""}
                 </p>
                 <h3>故事从这里开始</h3>
-                <p className="overview">{selected.overview}</p>
+                <p className="overview">{selected.overview || selected.detailError || "正在加载简介…"}</p>
                 {selected.match && (
                   <p className="evidence">
                     Jev 根据以上简介判断与“{activeQuery}
