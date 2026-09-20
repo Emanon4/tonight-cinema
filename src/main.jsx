@@ -108,14 +108,14 @@ function App() {
     about = useRef(null),
     input = useRef(null);
   useEffect(() => {
-    fetch(BASE + "data/movies.json")
+    fetch(BASE + "data/movies.json?v=" + __CATALOG_VERSION__)
       .then((r) => {
         if (!r.ok) throw Error();
         return r.json();
       })
       .then(setMovies)
       .catch(() => setError("片库加载失败，请刷新页面重试。"));
-    fetch(BASE + "config.json")
+    fetch(BASE + "config.json", {cache:"no-store"})
       .then((r) => r.json())
       .then((c) => setApiBase(import.meta.env.DEV ? "" : c.apiBase || ""))
       .catch(() => {});
@@ -211,6 +211,7 @@ function App() {
       const data = await r.json();
       if (!r.ok) throw Error(data.error || "筛选暂时失败。");
       if (rid !== requestId.current) return;
+      if (data.results.some(r => !movies.some(m => m.id === r.id))) throw Error("电影库刚刚更新，请刷新页面后重新选片。");
       setResults(data.results);
       setMeta(data);
     } catch (e) {
