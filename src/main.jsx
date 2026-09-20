@@ -709,7 +709,9 @@ function App() {
         <label>
           网站访问码
           <input
-            type="password"
+            type="text"
+            autoCapitalize="none"
+            spellCheck={false}
             value={token}
             onChange={(e) => setToken(e.target.value)}
             placeholder="输入部署时生成的访问码"
