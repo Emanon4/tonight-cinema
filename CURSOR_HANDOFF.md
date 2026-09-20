@@ -17,6 +17,7 @@
 - 片库未改：22,296 部、58 种原始语言；catalog version 仍为 `cebabfc710102ef7`。
 - 召回策略版本 `RECALL_VERSION=v2`，已写入 Worker / 本地缓存键，避免命中旧算法的 24 小时缓存。
 - 16 项测试通过。离线相关命中 19 → 37 / 18 条需求。详细证据在 VERIFICATION.md 与 `data/eval/`。
+- 已发布：Pages 工作流 35539397171（提交 `c978aa5`）；Worker 版本 `b2bbd6de-63d8-406b-94d0-cce88e85f2ef`。线上 health catalogCount 22296。
 
 ## 必须理解的推荐链路
 
