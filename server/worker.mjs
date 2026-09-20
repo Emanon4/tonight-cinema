@@ -1,6 +1,6 @@
 import { createCatalogLoader } from "./catalog.mjs";
 const loadCatalog = createCatalogLoader();
-import { recommend, validInput } from "./core.mjs";
+import { recommend, validInput, RECALL_VERSION } from "./core.mjs";
 export class Budget {
   constructor(ctx) {
     this.ctx = ctx;
@@ -78,6 +78,7 @@ export default {
             new TextEncoder().encode(
               JSON.stringify([
                 env.CATALOG_VERSION || "initial",
+                RECALL_VERSION,
                 b.query.trim(),
                 b.filters,
               ]),

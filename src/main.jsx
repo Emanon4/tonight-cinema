@@ -14,6 +14,8 @@ import {
   LoaderCircle,
   Settings2,
   ExternalLink,
+  Eye,
+  Ban,
 } from "lucide-react";
 import {
   genreLabels,
@@ -85,6 +87,10 @@ function App() {
     [busy, setBusy] = useState(false),
     [view, setView] = useState("discover"),
     [saved, setSaved] = useState(() => storage("cinema-saved", [])),
+    [feedback, setFeedback] = useState(() =>
+      storage("cinema-feedback", { watched: [], skip: [] }),
+    ),
+    [shelf, setShelf] = useState("want"),
     [selected, setSelected] = useState(null),
     [showSettings, setShowSettings] = useState(false),
     [showAbout, setShowAbout] = useState(false),
@@ -144,6 +150,11 @@ function App() {
     } catch {}
   }, [saved]);
   useEffect(() => {
+    try {
+      localStorage.setItem("cinema-feedback", JSON.stringify(feedback));
+    } catch {}
+  }, [feedback]);
+  useEffect(() => {
     if (selected) modal.current?.showModal();
     else modal.current?.close();
   }, [selected]);
@@ -178,7 +189,27 @@ function App() {
     else about.current?.close();
   }, [showAbout]);
   function toggle(id) {
+    setFeedback((f) => ({
+      watched: f.watched.filter((x) => x !== id),
+      skip: f.skip.filter((x) => x !== id),
+    }));
     setSaved((s) => (s.includes(id) ? s.filter((x) => x !== id) : [...s, id]));
+  }
+  function markWatched(id) {
+    setSaved((s) => s.filter((x) => x !== id));
+    setFeedback((f) => ({
+      watched: f.watched.includes(id)
+        ? f.watched.filter((x) => x !== id)
+        : [...f.watched, id],
+      skip: f.skip.filter((x) => x !== id),
+    }));
+  }
+  function markSkip(id) {
+    setSaved((s) => s.filter((x) => x !== id));
+    setFeedback((f) => ({
+      watched: f.watched.filter((x) => x !== id),
+      skip: f.skip.includes(id) ? f.skip.filter((x) => x !== id) : [...f.skip, id],
+    }));
   }
   function reset() {
     requestId.current++;
@@ -250,13 +281,28 @@ function App() {
     .filter(Boolean), [movies]);
   const all = useMemo(() => filtered(movies, parseFilters("", filters)), [movies, filters]);
   const byId = useMemo(() => new Map(movies.map((m) => [m.id, m])), [movies]);
+  const hidden = useMemo(
+    () => new Set([...feedback.watched, ...feedback.skip]),
+    [feedback],
+  );
+  const hiddenCount =
+    results !== null
+      ? results.filter((r) => hidden.has(r.id)).length
+      : 0;
   let visible =
     view === "saved"
-      ? movies.filter((m) => saved.includes(m.id))
+      ? movies.filter((m) =>
+          (shelf === "want"
+            ? saved
+            : shelf === "watched"
+              ? feedback.watched
+              : feedback.skip
+          ).includes(m.id),
+        )
       : results !== null
         ? results
             .map((r) => ({ ...byId.get(r.id), match: r }))
-            .filter((m) => m.id)
+            .filter((m) => m.id && !hidden.has(m.id))
         : filters.genre || filters.decade !== "all" || filters.maxRuntime
           ? all.slice(0, more)
           : [
@@ -407,6 +453,26 @@ function App() {
               留给<em>下一晚。</em>
             </h1>
             <p>那些让你想按下播放的故事，先收在这里。</p>
+            <div className="shelf-tabs" role="tablist" aria-label="片单分类">
+              {[
+                ["want", `想看 ${saved.length}`],
+                ["watched", `看过 ${feedback.watched.length}`],
+                ["skip", `不合适 ${feedback.skip.length}`],
+              ].map(([id, label]) => (
+                <button
+                  key={id}
+                  role="tab"
+                  aria-selected={shelf === id}
+                  className={shelf === id ? "is-on" : ""}
+                  onClick={() => setShelf(id)}
+                >
+                  {label}
+                </button>
+              ))}
+            </div>
+            <p className="feedback-note">
+              想看仍是原来的收藏。看过与不合适只存在这台浏览器，不会上传，也不会让模型自动学习。
+            </p>
           </section>
         )}
         <section className="library">
@@ -417,7 +483,11 @@ function App() {
               </span>
               <h2>
                 {view === "saved"
-                  ? "我的待看片单"
+                  ? shelf === "want"
+                    ? "我的待看片单"
+                    : shelf === "watched"
+                      ? "已经看过"
+                      : "不太合适"
                   : activeQuery
                     ? "为这一刻选的电影"
                     : "慢慢挑，总会遇见"}
@@ -511,6 +581,9 @@ function App() {
                   {meta.cached
                     ? "来自本次条件的缓存"
                     : `Jev 从 ${meta.candidateCount} 部候选中筛选 · ${(meta.elapsedMs / 1000).toFixed(1)}s`}
+                  {hiddenCount
+                    ? ` · 已隐藏 ${hiddenCount} 部你标为看过或不合适的电影`
+                    : ""}
                 </small>
               </div>
             )}
@@ -604,7 +677,9 @@ function App() {
               </h3>
               <p>
                 {view === "saved"
-                  ? "点一下海报上的书签，把想看的留给下一晚。"
+                  ? shelf === "want"
+                    ? "点一下海报上的书签，把想看的留给下一晚。"
+                    : "在电影详情里可以改回想看，或取消这条记录。"
                   : filters.maxRuntime
                     ? "片长未知的电影不会被当作符合条件。试着放宽片长限制。"
                     : "试着少加一个限制，给故事一点相遇的余地。"}
@@ -707,6 +782,26 @@ function App() {
                     )}{" "}
                     {saved.includes(selected.id) ? "已放入片单" : "留给下一晚"}
                   </button>
+                  <button
+                    className={
+                      "ghost" +
+                      (feedback.watched.includes(selected.id) ? " is-on" : "")
+                    }
+                    onClick={() => markWatched(selected.id)}
+                  >
+                    <Eye size={16} />{" "}
+                    {feedback.watched.includes(selected.id) ? "已看过" : "看过"}
+                  </button>
+                  <button
+                    className={
+                      "ghost" +
+                      (feedback.skip.includes(selected.id) ? " is-on" : "")
+                    }
+                    onClick={() => markSkip(selected.id)}
+                  >
+                    <Ban size={16} />{" "}
+                    {feedback.skip.includes(selected.id) ? "已标为不合适" : "不合适"}
+                  </button>
                   <a href={selected.source} target="_blank" rel="noreferrer">
                     查看资料来源 <ExternalLink size={14} />
                   </a>
@@ -789,7 +884,9 @@ function App() {
           Jev
           阅读候选电影简介来判断匹配，不会直接观看电影。简介不完整时，情绪判断也可能有偏差；中文效果仍在持续验证。
         </p>
-        <p>收藏保存在当前浏览器，清除浏览器数据会移除片单。</p>
+        <p>
+          想看、看过与不合适都只保存在当前浏览器，清除浏览器数据会移除。这些记录不会上传给站长，也不表示模型已经学习。
+        </p>
         {!movies.some((m) => m.provider === "TMDB") && (
           <p>
             <a

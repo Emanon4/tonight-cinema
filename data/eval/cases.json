@@ -1,0 +1,212 @@
+{
+  "note": "人工选定的相关电影，依据片名、年份、语言、类型与简介核实，不是模型分数。用于离线召回评估。",
+  "candidateLimit": 24,
+  "cases": [
+    {
+      "id": "lonely-not-sad",
+      "query": "孤独但不悲伤",
+      "relevant": [
+        "tmdb-153",
+        "tmdb-370755",
+        "tmdb-152601",
+        "tmdb-76",
+        "tmdb-194",
+        "tmdb-121986",
+        "tmdb-59436",
+        "tmdb-414453"
+      ]
+    },
+    {
+      "id": "inception-like",
+      "query": "像《盗梦空间》一样，让我脑子转起来",
+      "relevant": [
+        "tmdb-4977",
+        "tmdb-77",
+        "tmdb-206487",
+        "tmdb-45612",
+        "tmdb-220289",
+        "tmdb-38",
+        "tmdb-603",
+        "tmdb-1018",
+        "tmdb-329865"
+      ],
+      "exclude": ["tmdb-27205"]
+    },
+    {
+      "id": "green-ray-title",
+      "query": "想看《绿光》，关于孤独、假期里寻找陪伴的影史佳作",
+      "relevant": [
+        "tmdb-54898",
+        "tmdb-37563",
+        "tmdb-2860",
+        "tmdb-76",
+        "tmdb-153",
+        "tmdb-965150"
+      ],
+      "require": ["tmdb-54898"]
+    },
+    {
+      "id": "zip-wire-title",
+      "query": "想看《滑索惊魂》，高空冒险与求生的惊悚电影",
+      "relevant": ["tmdb-1482547", "tmdb-44115", "tmdb-49047"],
+      "require": ["tmdb-1482547"]
+    },
+    {
+      "id": "classic-love",
+      "query": "想看一部被影史公认的经典爱情片",
+      "relevant": [
+        "tmdb-843",
+        "tmdb-289",
+        "tmdb-804",
+        "tmdb-76",
+        "tmdb-531428",
+        "tmdb-11216"
+      ]
+    },
+    {
+      "id": "90s-crime",
+      "query": "90 年代的犯罪片，氛围越浓越好",
+      "relevant": [
+        "tmdb-807",
+        "tmdb-680",
+        "tmdb-949",
+        "tmdb-769",
+        "tmdb-629"
+      ]
+    },
+    {
+      "id": "warm-animation-90",
+      "query": "想看一部温暖的动画电影，90分钟以内",
+      "relevant": [
+        "tmdb-10315",
+        "tmdb-11544",
+        "tmdb-10895",
+        "tmdb-9084"
+      ]
+    },
+    {
+      "id": "japanese-family",
+      "query": "想看一部日本电影，关于家庭和日常",
+      "relevant": [
+        "tmdb-18148",
+        "tmdb-25050",
+        "tmdb-2517",
+        "tmdb-505192",
+        "tmdb-3782",
+        "tmdb-50759",
+        "tmdb-47002"
+      ]
+    },
+    {
+      "id": "rohmer-holiday",
+      "query": "想看侯麦或法国新浪潮那种假期与情感的电影",
+      "relevant": [
+        "tmdb-54898",
+        "tmdb-37563",
+        "tmdb-2860",
+        "tmdb-147",
+        "tmdb-48831"
+      ]
+    },
+    {
+      "id": "2010s-scifi-120",
+      "query": "2010年代两小时以内的科幻片",
+      "relevant": [
+        "tmdb-329865",
+        "tmdb-206487",
+        "tmdb-45612",
+        "tmdb-152601",
+        "tmdb-220289",
+        "tmdb-137113"
+      ]
+    },
+    {
+      "id": "lonely-city",
+      "query": "关于孤独、城市和人与人相遇的故事",
+      "relevant": [
+        "tmdb-153",
+        "tmdb-152601",
+        "tmdb-76",
+        "tmdb-370755",
+        "tmdb-11104",
+        "tmdb-59436"
+      ]
+    },
+    {
+      "id": "nordic-quiet",
+      "query": "想看一部安静的北欧或东欧电影，关于普通人的生活",
+      "relevant": [
+        "tmdb-660120",
+        "tmdb-2009",
+        "tmdb-440298",
+        "tmdb-209274",
+        "tmdb-490"
+      ]
+    },
+    {
+      "id": "no-classic-crime",
+      "query": "不要经典，给我近年好看的犯罪片",
+      "relevant": ["tmdb-64690", "tmdb-146233", "tmdb-242582", "tmdb-23168", "tmdb-338766"]
+    },
+    {
+      "id": "time-travel-2000",
+      "query": "2000年以后的时空穿越电影",
+      "relevant": [
+        "tmdb-206487",
+        "tmdb-45612",
+        "tmdb-122906",
+        "tmdb-59967",
+        "tmdb-137113"
+      ]
+    },
+    {
+      "id": "music-stage",
+      "query": "关于音乐人和舞台的电影",
+      "relevant": [
+        "tmdb-313369",
+        "tmdb-508442",
+        "tmdb-332562",
+        "tmdb-86829",
+        "tmdb-244786",
+        "tmdb-5723",
+        "tmdb-10376"
+      ]
+    },
+    {
+      "id": "non-en-war",
+      "query": "想看一部非英语的战争或历史电影",
+      "relevant": [
+        "tmdb-25237",
+        "tmdb-12477",
+        "tmdb-336050",
+        "tmdb-637",
+        "tmdb-11658",
+        "tmdb-76758"
+      ]
+    },
+    {
+      "id": "warm-not-horror",
+      "query": "想看温暖的电影，不要恐怖或惊悚",
+      "relevant": [
+        "tmdb-194",
+        "tmdb-120467",
+        "tmdb-508442",
+        "tmdb-10315",
+        "tmdb-116149",
+        "tmdb-354912"
+      ]
+    },
+    {
+      "id": "like-her",
+      "query": "像《她》那样关于孤独、城市和人与人相遇",
+      "relevant": [
+        "tmdb-153",
+        "tmdb-370755",
+        "tmdb-76",
+        "tmdb-11104",
+        "tmdb-59436"
+      ],
+      "exclude": ["tmdb-152601"]
+    }
+  ]
+}

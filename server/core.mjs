@@ -18,6 +18,7 @@ export const genreLabels = {
   Historical: "历史",
   Superhero: "超级英雄",
 };
+export const RECALL_VERSION = "v2";
 const themes = {
   gentle: "gentle friendship family heartwarming kindness hope",
   lonely: "loneliness lonely isolated solitude city relationship",
@@ -29,6 +30,208 @@ const themes = {
   nostalgic: "childhood coming of age memories adolescence",
   creative: "music art musician writer artist filmmaking",
 };
+const lexicon = [
+  [/孤独|寂寞/, ["loneliness", "lonely", "isolation", "solitude", "isolated", "alienated"], ["孤独", "寂寞"], ["lost souls"]],
+  [/温暖|温馨|暖心/, ["heartwarming", "kindness", "tender", "gentle", "friendship"], ["温暖", "温馨"], []],
+  [/假期|度假/, ["holiday", "vacation", "summer"], ["假期", "度假", "夏天"], []],
+  [/夏天/, ["summer", "holiday"], ["夏天", "假期"], []],
+  [/陪伴|相遇|遇见/, ["encounter", "companionship", "meeting"], ["陪伴", "相遇", "遇见"], []],
+  [/城市/, ["city", "urban"], ["城市"], []],
+  [/烧脑|脑子转/, ["paradox", "subconscious", "mind-bending"], ["潜意识"], ["time loop"]],
+  [/梦境|潜意识/, ["subconscious", "dream"], ["潜意识", "梦境"], []],
+  [/犯罪/, ["crime", "heist", "mafia"], ["犯罪"], []],
+  [/时空穿越|时间旅行|穿越/, ["temporal", "paradox"], ["穿越", "时空"], ["time travel"]],
+  [/音乐人|舞台|乐队/, ["musician", "singer", "drummer", "concert", "jazz"], ["音乐", "舞台"], []],
+  [/家庭|日常/, ["domestic", "everyday"], ["家庭", "日常", "子女"], []],
+  [/普通人/, ["ordinary", "everyday", "domestic"], ["普通人", "日常"], []],
+  [/冒险|求生/, ["adventure", "survival"], ["冒险", "求生"], []],
+  [/高空/, ["altitude", "heights", "climbing"], ["高空"], []],
+  [/侯麦|新浪潮/, ["rohmer"], ["侯麦", "新浪潮", "假期"], ["new wave"]],
+  [/安静/, ["quiet", "contemplative"], ["安静"], []],
+  [/太空/, ["space", "astronaut", "interstellar"], ["太空"], []],
+];
+const genreRequest = new Set([
+  "犯罪", "科幻", "动画", "爱情", "战争", "历史", "恐怖", "惊悚", "喜剧", "动作",
+]);
+const refStop = new Set([
+  "that", "this", "with", "from", "they", "their", "have", "been", "were",
+  "when", "which", "into", "about", "after", "before", "other", "would",
+  "could", "there", "where", "while", "being", "itself", "movie", "film",
+  "story", "life", "also", "than", "then", "them", "some", "what", "will",
+  "your", "more", "only", "over", "such", "just", "very",
+]);
+export function quotedTitles(query = "") {
+  return [...query.matchAll(/《([^》]+)》/g)]
+    .map((x) => x[1].trim())
+    .filter(Boolean);
+}
+export function findReferences(movies, query, limit = 2) {
+  const quoted = quotedTitles(query);
+  const q = query.toLowerCase();
+  const hits = [];
+  for (const m of movies) {
+    let rank = 99;
+    if (quoted.some((n) => n === m.zh || n === m.title || n === m.originalTitle))
+      rank = 0;
+    else if (m.title.length > 3 && q.includes(m.title.toLowerCase())) rank = 1;
+    else if (
+      m.originalTitle &&
+      m.originalTitle.length > 3 &&
+      q.includes(m.originalTitle.toLowerCase())
+    )
+      rank = 2;
+    else if (m.zh && m.zh.length >= 3 && query.includes(m.zh)) rank = 3;
+    if (rank < 99) hits.push({ m, rank });
+  }
+  hits.sort((a, b) => a.rank - b.rank || (b.m.votes || 0) - (a.m.votes || 0));
+  const seen = new Set();
+  const out = [];
+  for (const h of hits) {
+    if (seen.has(h.m.id)) continue;
+    seen.add(h.m.id);
+    out.push(h.m);
+    if (out.length >= limit) break;
+  }
+  return out;
+}
+function titleMention(query, movie, quoted) {
+  if (
+    quoted.some(
+      (n) => n === movie.zh || n === movie.title || n === movie.originalTitle,
+    )
+  )
+    return "quoted";
+  const q = query.toLowerCase();
+  if (movie.title.length > 3 && q.includes(movie.title.toLowerCase())) return "en";
+  if (
+    movie.originalTitle &&
+    movie.originalTitle.length > 3 &&
+    q.includes(movie.originalTitle.toLowerCase())
+  )
+    return "en";
+  if (movie.zh && movie.zh.length >= 3 && query.includes(movie.zh)) return "zh";
+  return "";
+}
+function negatedAt(query, token) {
+  const i = query.indexOf(token);
+  if (i < 0) return false;
+  return /不|别|非|不要|不想/.test(query.slice(Math.max(0, i - 4), i));
+}
+function languageIntent(query) {
+  const groups = [
+    [/日本|日语|日片/, ["ja"]],
+    [/韩国|韩语|韩片/, ["ko"]],
+    [/法国|法语/, ["fr"]],
+    [/侯麦|新浪潮/, ["fr"]],
+    [/意大利/, ["it"]],
+    [/德国|德语/, ["de"]],
+    [/俄罗斯|苏联/, ["ru"]],
+    [/伊朗/, ["fa"]],
+    [/华语|中文电影|国语|粤语/, ["zh", "cn", "yue"]],
+    [/北欧|斯堪的纳维亚/, ["sv", "no", "da", "fi", "is"]],
+    [/东欧/, ["pl", "hu", "cs", "ro", "ru", "uk", "bg", "sr"]],
+  ];
+  const langs = [];
+  for (const [re, ls] of groups) if (re.test(query)) langs.push(...ls);
+  const not = [];
+  if (/非英语|非英文/.test(query)) not.push("en");
+  return { langs: [...new Set(langs)], not };
+}
+function queryNegatives(query) {
+  const genres = [];
+  const words = [];
+  if (/(?:不想|不要|不看|别|非).{0,6}(恐怖|horror)/i.test(query))
+    genres.push("Horror");
+  if (/(?:不想|不要|不看|别).{0,6}(惊悚|thriller)/i.test(query))
+    genres.push("Thriller");
+  if (/但不(悲伤|哀伤|沉重|催泪)|不要(悲伤|哀伤|沉重|催泪)|不悲伤/.test(query))
+    words.push(
+      "grief",
+      "tragedy",
+      "suicide",
+      "mourning",
+      "funeral",
+      "melancholy",
+      "depression",
+      "tragic",
+    );
+  const rejectClassic =
+    /(?:不想|不要|不看|排除|别|非).{0,4}(经典|影史|佳作)|\b(no|not|avoid).{0,12}(classic|masterpiece)/i.test(
+      query,
+    );
+  return { genres, words, rejectClassic };
+}
+function queryGenres(query, intent = {}) {
+  const out = [];
+  for (const [g, zh] of Object.entries(genreLabels)) {
+    if (negatedAt(query, zh)) continue;
+    if (
+      query.includes(zh + "片") ||
+      query.includes(zh + "电影") ||
+      query.includes(zh + "或") ||
+      (query.includes(zh) && genreRequest.has(zh))
+    )
+      out.push(g);
+  }
+  if (intent.genre && intent.genre !== "any") out.push(intent.genre);
+  return [...new Set(out)];
+}
+function themeTerms(query, intent = {}) {
+  const en = [];
+  const zh = [];
+  const phrases = [];
+  for (const [re, enWords, zhWords, extra] of lexicon) {
+    if (!re.test(query)) continue;
+    const first = re.source.split("|")[0].replace(/\\/g, "");
+    if (negatedAt(query, first)) continue;
+    en.push(...enWords);
+    zh.push(...zhWords);
+    phrases.push(...extra);
+  }
+  if (themes[intent.mood]) en.push(...themes[intent.mood].split(" "));
+  return {
+    en: [...new Set(en)],
+    zh: [...new Set(zh)],
+    phrases: [...new Set(phrases)],
+  };
+}
+function qualityBonus(m) {
+  if ((m.votes || 0) < 40) return 0;
+  return Math.min(
+    2.5,
+    Math.max(0, (m.rating || 0) - 6.2) * 0.45 + Math.log10(m.votes) * 0.28,
+  );
+}
+function pickCandidates(ranked, limit, langCap) {
+  const chosen = [];
+  const langs = {};
+  const seen = new Set();
+  const take = (list, useCap) => {
+    for (const row of list) {
+      if (chosen.length >= limit) return;
+      if (seen.has(row.m.id)) continue;
+      const lang = row.m.language || "und";
+      if (useCap && (langs[lang] || 0) >= langCap && row.score < 8) continue;
+      seen.add(row.m.id);
+      chosen.push(row);
+      langs[lang] = (langs[lang] || 0) + 1;
+    }
+  };
+  const strong = ranked.filter((r) => r.score >= 2);
+  const weak = ranked.filter((r) => r.score > 0 && r.score < 2);
+  take(strong, true);
+  take(strong, false);
+  take(weak, true);
+  take(weak, false);
+  if (chosen.length < limit) {
+    const fill = ranked
+      .filter((r) => !seen.has(r.m.id))
+      .sort((a, b) => b.soft - a.soft);
+    take(fill, true);
+    take(fill, false);
+  }
+  return chosen.slice(0, limit).map((r) => r.m);
+}
 export function parseFilters(query = "", filters = {}) {
   const f = {};
   if (filters.genre && genreLabels[filters.genre]) f.genre = filters.genre;
@@ -71,75 +274,95 @@ export function filtered(movies, f) {
 }
 export function retrieve(movies, query, filters = {}, intent = {}, limit = 32) {
   const f = parseFilters(query, filters);
-  const pool = filtered(movies, f);
-  const cues = [
-    ["梦", "dream subconscious"],
-    ["烧脑", "memory reality subconscious time loop"],
-    ["孤独", "lonely loneliness isolated solitude"],
-    ["城市", "city urban tokyo new york"],
-    ["温暖", "friendship kindness heartwarming family"],
-    ["雨天", "gentle friendship"],
-    ["音乐", "music musician jazz"],
-    ["犯罪", "crime criminal heist mafia"],
-    ["太空", "space astronaut interstellar"],
-  ];
-  const boosted = cues
-    .filter(([zh]) => query.includes(zh))
-    .flatMap(([, en]) => en.split(" "));
-  let terms = query.toLowerCase().match(/[a-z]{3,}/g) || [];
-  const stop = new Set([
-    "movie",
-    "movies",
-    "film",
-    "films",
-    "want",
-    "with",
-    "that",
-    "some",
-    "the",
-    "and",
-    "not",
-    "but",
-    "for",
-  ]);
-  terms = terms.filter((t) => !stop.has(t));
-  for (const [g, zh] of Object.entries(genreLabels))
-    if (query.includes(zh)) terms.push(...g.toLowerCase().split(" "));
-  if (intent.genre && intent.genre !== "any")
-    terms.push(...intent.genre.toLowerCase().split(" "));
-  if (themes[intent.mood]) terms.push(...themes[intent.mood].split(" "));
-  terms = [...new Set(terms)];
-  return pool
-    .map((m, i) => {
-      const title = (m.title + " " + m.zh).toLowerCase();
-      const body = (
-        m.overview +
-        " " +
-        (m.overviewEn || "") +
-        " " +
-        m.genres.join(" ") +
-        " " +
-        m.cast.join(" ")
-      ).toLowerCase();
-      let score = 0;
-      if (/经典|影史|佳作|classic|masterpiece/i.test(query)
-          && !/(不想|不要|不看|排除|别|非).{0,4}(经典|影史|佳作)|\b(no|not|avoid).{0,12}(classic|masterpiece)/i.test(query)
-          && m.recognition?.length) score += 3;
-      if (query.trim() && title.includes(query.trim().toLowerCase()))
-        score += 100;
-      for (const t of terms) {
-        if (title.includes(t)) score += 5;
-        if (m.genres.join(" ").toLowerCase().includes(t)) score += 3;
-        if (body.includes(t)) score += 1;
-      }
-      for (const t of boosted) if (body.includes(t)) score += 4;
-      if (m.zh && query.includes(m.zh)) score += 35;
-      if (m.zh) score += 0.15;
-      return { m, score, index: i };
-    })
-    .sort((a, b) => b.score - a.score || a.index - b.index)
-    .slice(0, limit)
-    .map((x) => x.m);
+  const refs = intent.references?.length
+    ? intent.references
+    : findReferences(movies, query, 2);
+  const likeQuery = /像|similar|\blike\b/i.test(query);
+  const pool0 = filtered(movies, f);
+  const pool = likeQuery
+    ? pool0.filter((m) => !refs.some((r) => r.id === m.id))
+    : pool0;
+  const quoted = quotedTitles(query);
+  const lang = languageIntent(query);
+  const neg = queryNegatives(query);
+  const wanted = queryGenres(query, intent);
+  if (/音乐人|乐队|舞台/.test(query)) wanted.push("Musical");
+  const themesQ = themeTerms(query, intent);
+  const wantsClassic =
+    /经典|影史|佳作|classic|masterpiece/i.test(query) && !neg.rejectClassic;
+  const recent = /近年|最近/.test(query);
+  const structured =
+    lang.langs.length ||
+    lang.not.length ||
+    wanted.length ||
+    f.minYear ||
+    f.maxYear ||
+    f.maxRuntime ||
+    quoted.length;
+  const langCap = lang.langs.length === 1 ? limit : lang.langs.length ? 16 : limit;
+  const refWords = likeQuery
+    ? [
+        ...new Set(
+          refs.flatMap(
+            (r) => `${r.overviewEn || ""}`.toLowerCase().match(/[a-z]{6,}/g) || [],
+          ),
+        ),
+      ]
+        .filter((w) => !refStop.has(w))
+        .slice(0, 16)
+    : [];
+  const ranked = pool.map((m) => {
+    const body = `${m.overviewEn || ""} ${m.overview || ""}`.toLowerCase();
+    const zhBody = m.overview || "";
+    let thematic = 0;
+    for (const t of themesQ.en) if (t.length >= 4 && body.includes(t)) thematic += 1.3;
+    for (const t of themesQ.zh) if (zhBody.includes(t)) thematic += 1.8;
+    for (const p of themesQ.phrases) if (body.includes(p)) thematic += 2.6;
+    let score = 0;
+    const mention = titleMention(query, m, quoted);
+    if (mention === "quoted" && !likeQuery) score += 40;
+    else if (mention && mention !== "quoted") score += 18;
+    if (wantsClassic && m.recognition?.length) score += 3.2;
+    if (neg.rejectClassic && m.recognition?.length) score -= 4;
+    if (lang.langs.length) {
+      if (lang.langs.includes(m.language)) score += 5;
+      else score -= 3.2;
+    }
+    if (lang.not.includes(m.language)) score -= 8;
+    for (const g of wanted) if (m.genres.includes(g)) score += 3.6;
+    score += thematic;
+    if (likeQuery && refs.length) {
+      const shared = m.genres.filter((g) =>
+        refs.some((r) => r.genres.includes(g)),
+      ).length;
+      score += Math.min(shared, 2) * 0.5;
+      let overlap = 0;
+      for (const w of refWords) if (body.includes(w)) overlap++;
+      score += Math.min(overlap, 6) * 0.85;
+    }
+    if (neg.genres.some((g) => m.genres.includes(g))) score -= 12;
+    if (/温暖|温馨|暖心/.test(query) && m.genres.includes("War")) score -= 3.5;
+    for (const w of neg.words) if (body.includes(w)) score -= 1.8;
+    if (recent && m.year >= 2010) score += 1.5;
+    else if (recent && m.year >= 2000) score += 0.5;
+    const q = qualityBonus(m);
+    if (score > 0) score += q * (structured ? 2.1 : 0.9);
+    const soft =
+      q +
+      (lang.langs.includes(m.language) ? 1.5 : 0) +
+      (wanted.some((g) => m.genres.includes(g)) ? 1.2 : 0) +
+      (wantsClassic && m.recognition?.length ? 1.2 : 0);
+    return { m, score, soft };
+  });
+  ranked.sort(
+    (a, b) =>
+      b.score - a.score ||
+      (wantsClassic
+        ? (b.m.recognition?.length || 0) - (a.m.recognition?.length || 0)
+        : 0) ||
+      (b.m.rating || 0) - (a.m.rating || 0),
+  );
+  return pickCandidates(ranked, limit, langCap);
 }
 export function intentPayload(query, references = []) {
   return {
@@ -244,14 +467,7 @@ export async function recommend({
   fetcher = fetch,
 }) {
   const start = Date.now();
-  const refs = movies
-    .filter(
-      (m) =>
-        (m.zh && query.includes(m.zh)) ||
-        (m.title.length > 3 &&
-          query.toLowerCase().includes(m.title.toLowerCase())),
-    )
-    .slice(0, 2);
+  const refs = findReferences(movies, query, 2);
   const references = refs.map((m) => ({
     title: m.title,
     overview: m.overview.slice(0, 1800),
@@ -264,10 +480,14 @@ export async function recommend({
     !(mood === "unspecified" || mood in themes)
   )
     throw new Error("Jev 需求识别格式异常。");
-  const pool = /像|similar|like/i.test(query)
+  const pool = /像|similar|\blike\b/i.test(query)
     ? movies.filter((m) => !refs.some((r) => r.id === m.id))
     : movies;
-  const candidates = retrieve(pool, query, filters, { genre: g, mood }, 24);
+  const candidates = retrieve(pool, query, filters, {
+    genre: g,
+    mood,
+    references: refs,
+  }, 24);
   if (!candidates.length)
     return {
       results: [],

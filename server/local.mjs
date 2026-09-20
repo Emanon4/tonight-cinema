@@ -1,7 +1,7 @@
 import http from "node:http";
 import fs from "node:fs";
 import os from "node:os";
-import { recommend, validInput } from "./core.mjs";
+import { recommend, validInput, RECALL_VERSION } from "./core.mjs";
 const movies = JSON.parse(
   fs.readFileSync(new URL("../public/data/movies.json", import.meta.url)),
 );
@@ -49,7 +49,7 @@ http
       }
       if (!validInput(b))
         return send(400, { error: "请输入 2—300 字的观影需求。" });
-      const id = JSON.stringify([b.query.trim(), b.filters]);
+      const id = JSON.stringify([RECALL_VERSION, b.query.trim(), b.filters]);
       if (cache.has(id)) return send(200, { ...cache.get(id), cached: true });
       if (busy >= 2) return send(429, { error: "正在挑选电影，请稍后重试。" });
       busy++;

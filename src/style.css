@@ -667,6 +667,29 @@ h1 em:after {
   font-size: 13px;
   color: #8e8271;
 }
+.shelf-tabs {
+  display: flex;
+  justify-content: center;
+  gap: 18px;
+  margin: 22px 0 8px;
+}
+.shelf-tabs button {
+  font-size: 12px;
+  color: #8a8478;
+  padding: 6px 2px;
+  border-bottom: 2px solid transparent;
+}
+.shelf-tabs button.is-on {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+}
+.feedback-note {
+  font-size: 11px;
+  color: #a4947f;
+  max-width: 420px;
+  margin: 8px auto 0;
+  line-height: 1.7;
+}
 footer {
   max-width: 1280px;
   border-top: 1px solid var(--line);
@@ -793,8 +816,23 @@ dialog::backdrop {
 .detail-actions {
   display: flex;
   align-items: center;
-  gap: 20px;
+  flex-wrap: wrap;
+  gap: 12px 16px;
   margin: 24px 0 16px;
+}
+.ghost {
+  border: 1px solid var(--line);
+  border-radius: 5px;
+  padding: 10px 14px;
+  font-size: 12px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: #6d675c;
+}
+.ghost.is-on {
+  background: #ece6d8;
+  color: var(--accent);
 }
 .primary {
   background: var(--accent);
@@ -1109,6 +1147,19 @@ dialog::backdrop {
   }
   .saved-hero h1 {
     font-size: 37px;
+  }
+  .shelf-tabs {
+    gap: 12px;
+  }
+  .shelf-tabs button {
+    font-size: 11px;
+  }
+  .detail-actions {
+    gap: 10px;
+  }
+  .ghost {
+    padding: 9px 12px;
+    font-size: 11px;
   }
   footer {
     margin: 0 20px;

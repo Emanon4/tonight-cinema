@@ -8,6 +8,7 @@ import {
   readRanking,
   validInput,
   recommend,
+  findReferences,
 } from "../server/core.mjs";
 const films = [
   {
@@ -93,4 +94,48 @@ test('classic requests favor documented recognition without changing ordinary ma
  assert.equal(retrieve(sample,'想看经典科幻',{}, {},1)[0].id,'classic');
  assert.equal(retrieve(sample,'太空探索',{}, {},1)[0].id,'popular');
  assert.equal(retrieve(sample,'不要经典科幻',{}, {},1)[0].id,'popular');
+});
+test("short Chinese titles do not hijack unrelated queries", () => {
+  const sample = [
+    { ...films[0], id: "no", title: "No", zh: "不", overview: "A crime story." },
+    {
+      ...films[0],
+      id: "lonely",
+      title: "Alone",
+      zh: "独行",
+      overview: "A lonely writer finds solitude in the city.",
+    },
+  ];
+  assert.deepEqual(
+    findReferences(sample, "孤独但不悲伤").map((m) => m.id),
+    [],
+  );
+  assert.equal(retrieve(sample, "孤独但不悲伤", {}, {}, 1)[0].id, "lonely");
+});
+test("quoted similar-to requests exclude the reference film", () => {
+  const sample = [
+    {
+      ...films[0],
+      id: "inception",
+      title: "Inception",
+      zh: "盗梦空间",
+      overview: "A dream thief explores subconscious reality.",
+      overviewEn: "A dream thief explores the subconscious.",
+    },
+    {
+      ...films[0],
+      id: "paprika",
+      title: "Paprika",
+      zh: "红辣椒",
+      overview: "A therapist enters the subconscious dream world.",
+      overviewEn: "A therapist enters the subconscious dream world.",
+    },
+  ];
+  assert.equal(findReferences(sample, "像《盗梦空间》一样")[0].id, "inception");
+  assert.deepEqual(
+    retrieve(sample, "像《盗梦空间》一样，让我脑子转起来", {}, {}, 2).map(
+      (m) => m.id,
+    ),
+    ["paprika"],
+  );
 });
