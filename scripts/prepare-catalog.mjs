@@ -26,7 +26,7 @@ fs.writeFileSync(path.join(browserDir,`index-${version}.json`),JSON.stringify(in
 const parts=[];
 for (let start=0; start<movies.length; start+=1000) {
   const name=`movies-${start/1000}.json`;
-  const records = movies.slice(start,start+1000).map(({id,title,zh,year,runtime,genres,cast,overview,overviewEn}) => ({id,title,zh,year,runtime,genres,cast,overview,overviewEn}));
+  const records = movies.slice(start,start+1000).map(({id,title,zh,year,runtime,genres,cast,overview,overviewEn,recognition}) => ({id,title,zh,year,runtime,genres,cast,overview,overviewEn,recognition}));
   fs.writeFileSync(path.join(workerDir,name),JSON.stringify(records));
   parts.push(name);
 }

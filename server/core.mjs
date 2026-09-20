@@ -122,6 +122,9 @@ export function retrieve(movies, query, filters = {}, intent = {}, limit = 32) {
         m.cast.join(" ")
       ).toLowerCase();
       let score = 0;
+      if (/经典|影史|佳作|classic|masterpiece/i.test(query)
+          && !/(不想|不要|不看|排除|别|非).{0,4}(经典|影史|佳作)|\b(no|not|avoid).{0,12}(classic|masterpiece)/i.test(query)
+          && m.recognition?.length) score += 3;
       if (query.trim() && title.includes(query.trim().toLowerCase()))
         score += 100;
       for (const t of terms) {
@@ -176,6 +179,7 @@ export function rankingPayload(query, movies, references = []) {
         genres: m.genres,
         year: m.year,
         overview: m.overview.slice(0, 2200),
+        recognition: (m.recognition || []).map(r => r.list),
       })),
     },
     questions: Object.fromEntries(

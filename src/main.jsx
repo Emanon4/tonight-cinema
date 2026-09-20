@@ -681,6 +681,15 @@ function App() {
                     ”的匹配程度。未验证的情节不作为保证。
                   </p>
                 )}
+                {selected.recognition?.length > 0 && (
+                  <p className="source-note">
+                    影史榜单收录：{selected.recognition.map((r, i) => (
+                      <React.Fragment key={r.list}>
+                        {i > 0 ? " · " : ""}<a href={r.url} target="_blank" rel="noreferrer">{r.list}</a>
+                      </React.Fragment>
+                    ))}
+                  </p>
+                )}
                 <p className="cast">
                   {selected.cast?.length
                     ? "出演 · " + selected.cast.join(" / ")

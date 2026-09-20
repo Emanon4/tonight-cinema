@@ -87,3 +87,10 @@ test("null filters and invalid confidence are rejected", () => {
     ),
   );
 });
+
+test('classic requests favor documented recognition without changing ordinary matching',()=>{
+ const sample=[{...films[0],id:'popular',title:'Space',zh:'太空',overview:'Astronaut explores space.'},{...films[0],id:'classic',title:'Classic',zh:'梦中科学家',overview:'A scientist explores dreams.',recognition:[{list:'BFI Sight and Sound 2022',url:'https://www.bfi.org.uk/'}]}];
+ assert.equal(retrieve(sample,'想看经典科幻',{}, {},1)[0].id,'classic');
+ assert.equal(retrieve(sample,'太空探索',{}, {},1)[0].id,'popular');
+ assert.equal(retrieve(sample,'不要经典科幻',{}, {},1)[0].id,'popular');
+});
