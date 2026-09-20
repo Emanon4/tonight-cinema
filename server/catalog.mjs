@@ -13,9 +13,10 @@ export function createCatalogLoader() {
         throw Error('电影库版本不一致，请稍后重试。');
       }
       const movies=[];
-      for (const file of manifest.parts) {
-        const part = await read(file);
-        movies.push(...part);
+      // Keep below the Workers limit of six simultaneous outgoing connections.
+      for (let start = 0; start < manifest.parts.length; start += 4) {
+        const parts = await Promise.all(manifest.parts.slice(start, start + 4).map(read));
+        for (const part of parts) movies.push(...part);
       }
       if (movies.length !== manifest.count || new Set(movies.map(m=>m.id)).size !== manifest.count) {
         throw Error('电影库不完整，请稍后重试。');
