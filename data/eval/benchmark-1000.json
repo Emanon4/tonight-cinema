@@ -1,0 +1,2217 @@
+{
+  "generatedAt": "2026-09-21T08:33:09.035Z",
+  "catalogCount": 9574,
+  "catalogVersion": "3fdc62f30bca0a51",
+  "recallVersion": "v5-1000",
+  "limits": [
+    500,
+    1000
+  ],
+  "method": "Same full catalog and corrected metadata; three fixed queries, one uncached run per configuration, alternating order. Includes network + intent + retrieval + ranking, excludes catalog loading and browser. Small sample, not an SLA or proof of preference quality.",
+  "runs": [
+    {
+      "query": "想看一部日本电影，关于家庭和日常",
+      "candidateLimit": 500,
+      "batchSize": 20,
+      "concurrency": 5,
+      "wallMs": 6015,
+      "elapsedMs": 6015,
+      "candidateCount": 500,
+      "calls": 26,
+      "usage": {
+        "input_tokens": 272009,
+        "output_tokens": 10550
+      },
+      "model": "jev-1.13.0",
+      "requestTimings": [
+        {
+          "kind": "intent",
+          "candidates": 0,
+          "ms": 1281,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 1651,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 1669,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 1672,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 1680,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 1824,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 605,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 764,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 1146,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 1180,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 1034,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 627,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 597,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 549,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 564,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 648,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 620,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 588,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 591,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 569,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 574,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 731,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 553,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 547,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 585,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 562,
+          "status": 200
+        }
+      ],
+      "results": [
+        {
+          "id": "tmdb-25050",
+          "score": 2.99,
+          "confidence": 0.99,
+          "title": "步履不停",
+          "runtime": 115,
+          "language": "ja"
+        },
+        {
+          "id": "tmdb-28276",
+          "score": 2.98,
+          "confidence": 0.98,
+          "title": "早安",
+          "runtime": 94,
+          "language": "ja"
+        },
+        {
+          "id": "tmdb-15318",
+          "score": 2.96,
+          "confidence": 0.96,
+          "title": "茶之味",
+          "runtime": 143,
+          "language": "ja"
+        },
+        {
+          "id": "tmdb-8937",
+          "score": 2.92,
+          "confidence": 0.92,
+          "title": "东京奏鸣曲",
+          "runtime": 120,
+          "language": "ja"
+        },
+        {
+          "id": "tmdb-50247",
+          "score": 2.91,
+          "confidence": 0.91,
+          "title": "麦秋",
+          "runtime": 124,
+          "language": "ja"
+        },
+        {
+          "id": "tmdb-52047",
+          "score": 2.9,
+          "confidence": 0.9,
+          "title": "独生子",
+          "runtime": 87,
+          "language": "ja"
+        },
+        {
+          "id": "tmdb-177945",
+          "score": 2.88,
+          "confidence": 0.88,
+          "title": "如父如子",
+          "runtime": 120,
+          "language": "ja"
+        },
+        {
+          "id": "tmdb-20530",
+          "score": 2.88,
+          "confidence": 0.88,
+          "title": "晚春",
+          "runtime": 108,
+          "language": "ja"
+        },
+        {
+          "id": "tmdb-16198",
+          "score": 2.87,
+          "confidence": 0.87,
+          "title": "我的邻居山田君",
+          "runtime": 104,
+          "language": "ja"
+        },
+        {
+          "id": "tmdb-13889",
+          "score": 2.84,
+          "confidence": 0.84,
+          "title": "袅袅夕阳情",
+          "runtime": 134,
+          "language": "ja"
+        },
+        {
+          "id": "tmdb-50759",
+          "score": 2.84,
+          "confidence": 0.84,
+          "title": "秋刀鱼之味",
+          "runtime": 112,
+          "language": "ja"
+        },
+        {
+          "id": "tmdb-374671",
+          "score": 2.81,
+          "confidence": 0.81,
+          "title": "比海更深",
+          "runtime": 117,
+          "language": "ja"
+        }
+      ]
+    },
+    {
+      "query": "想看一部日本电影，关于家庭和日常",
+      "candidateLimit": 1000,
+      "batchSize": 20,
+      "concurrency": 5,
+      "wallMs": 6839,
+      "elapsedMs": 6839,
+      "candidateCount": 1000,
+      "calls": 51,
+      "usage": {
+        "input_tokens": 519911,
+        "output_tokens": 20905
+      },
+      "model": "jev-1.13.0",
+      "requestTimings": [
+        {
+          "kind": "intent",
+          "candidates": 0,
+          "ms": 417,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 583,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 596,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 602,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 642,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 652,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 603,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 650,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 681,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 643,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 714,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 552,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 582,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 591,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 537,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 620,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 553,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 520,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 593,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 559,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 592,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 594,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 651,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 620,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 699,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 904,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 585,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 610,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 572,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 574,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 609,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 562,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 608,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 542,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 567,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 529,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 577,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 582,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 610,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 777,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 897,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 542,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 552,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 573,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 550,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 514,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 522,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 575,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 552,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 567,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 718,
+          "status": 200
+        }
+      ],
+      "results": [
+        {
+          "id": "tmdb-25050",
+          "score": 2.99,
+          "confidence": 0.99,
+          "title": "步履不停",
+          "runtime": 115,
+          "language": "ja"
+        },
+        {
+          "id": "tmdb-28276",
+          "score": 2.98,
+          "confidence": 0.98,
+          "title": "早安",
+          "runtime": 94,
+          "language": "ja"
+        },
+        {
+          "id": "tmdb-15318",
+          "score": 2.95,
+          "confidence": 0.95,
+          "title": "茶之味",
+          "runtime": 143,
+          "language": "ja"
+        },
+        {
+          "id": "tmdb-8937",
+          "score": 2.91,
+          "confidence": 0.91,
+          "title": "东京奏鸣曲",
+          "runtime": 120,
+          "language": "ja"
+        },
+        {
+          "id": "tmdb-52047",
+          "score": 2.9,
+          "confidence": 0.9,
+          "title": "独生子",
+          "runtime": 87,
+          "language": "ja"
+        },
+        {
+          "id": "tmdb-177945",
+          "score": 2.88,
+          "confidence": 0.88,
+          "title": "如父如子",
+          "runtime": 120,
+          "language": "ja"
+        },
+        {
+          "id": "tmdb-50247",
+          "score": 2.88,
+          "confidence": 0.88,
+          "title": "麦秋",
+          "runtime": 124,
+          "language": "ja"
+        },
+        {
+          "id": "tmdb-20530",
+          "score": 2.88,
+          "confidence": 0.88,
+          "title": "晚春",
+          "runtime": 108,
+          "language": "ja"
+        },
+        {
+          "id": "tmdb-374671",
+          "score": 2.84,
+          "confidence": 0.84,
+          "title": "比海更深",
+          "runtime": 117,
+          "language": "ja"
+        },
+        {
+          "id": "tmdb-16198",
+          "score": 2.83,
+          "confidence": 0.83,
+          "title": "我的邻居山田君",
+          "runtime": 104,
+          "language": "ja"
+        },
+        {
+          "id": "tmdb-18148",
+          "score": 2.82,
+          "confidence": 0.82,
+          "title": "东京物语",
+          "runtime": 136,
+          "language": "ja"
+        },
+        {
+          "id": "tmdb-50759",
+          "score": 2.82,
+          "confidence": 0.82,
+          "title": "秋刀鱼之味",
+          "runtime": 112,
+          "language": "ja"
+        }
+      ]
+    },
+    {
+      "query": "孤独但不悲伤，想看人与人相遇的故事",
+      "candidateLimit": 1000,
+      "batchSize": 20,
+      "concurrency": 5,
+      "wallMs": 6851,
+      "elapsedMs": 6850,
+      "candidateCount": 1000,
+      "calls": 51,
+      "usage": {
+        "input_tokens": 516722,
+        "output_tokens": 20662
+      },
+      "model": "jev-1.13.0",
+      "requestTimings": [
+        {
+          "kind": "intent",
+          "candidates": 0,
+          "ms": 394,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 563,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 583,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 585,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 590,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 607,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 517,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 524,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 574,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 599,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 608,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 566,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 566,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 574,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 539,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 655,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 555,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 565,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 555,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 791,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 692,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 571,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 535,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 533,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 562,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 670,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 539,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 570,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 601,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 540,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 560,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 532,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 533,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 529,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 569,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 519,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 869,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 554,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 530,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 556,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 548,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 511,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 529,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 526,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 527,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 545,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 542,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 545,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 567,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 564,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 917,
+          "status": 200
+        }
+      ],
+      "results": [
+        {
+          "id": "tmdb-594",
+          "score": 2.85,
+          "confidence": 0.85,
+          "title": "幸福终点站",
+          "runtime": 128,
+          "language": "en"
+        },
+        {
+          "id": "tmdb-337",
+          "score": 2.81,
+          "confidence": 0.81,
+          "title": "易布拉辛先生和古兰经的花",
+          "runtime": 91,
+          "language": "fr"
+        },
+        {
+          "id": "tmdb-508965",
+          "score": 2.78,
+          "confidence": 0.78,
+          "title": "克劳斯：圣诞节的秘密",
+          "runtime": 97,
+          "language": "en"
+        },
+        {
+          "id": "tmdb-225044",
+          "score": 2.77,
+          "confidence": 0.77,
+          "title": "如晴天，似雨天",
+          "runtime": 104,
+          "language": "en"
+        },
+        {
+          "id": "tmdb-995133",
+          "score": 2.76,
+          "confidence": 0.76,
+          "title": "男孩、鼹鼠、狐狸和马",
+          "runtime": 35,
+          "language": "en"
+        },
+        {
+          "id": "tmdb-76",
+          "score": 2.71,
+          "confidence": 0.71,
+          "title": "爱在黎明破晓前",
+          "runtime": 105,
+          "language": "en"
+        },
+        {
+          "id": "tmdb-1245347",
+          "score": 2.68,
+          "confidence": 0.68,
+          "title": "无双",
+          "runtime": 100,
+          "language": "en"
+        },
+        {
+          "id": "tmdb-928720",
+          "score": 2.67,
+          "confidence": 0.67,
+          "title": "隐入尘烟",
+          "runtime": 133,
+          "language": "zh"
+        },
+        {
+          "id": "tmdb-108954",
+          "score": 2.65,
+          "confidence": 0.65,
+          "title": "那山那人那狗",
+          "runtime": 93,
+          "language": "zh"
+        },
+        {
+          "id": "tmdb-153",
+          "score": 2.64,
+          "confidence": 0.64,
+          "title": "迷失东京",
+          "runtime": 102,
+          "language": "en"
+        },
+        {
+          "id": "tmdb-7350",
+          "score": 2.63,
+          "confidence": 0.63,
+          "title": "遗愿清单",
+          "runtime": 97,
+          "language": "en"
+        },
+        {
+          "id": "tmdb-24238",
+          "score": 2.62,
+          "confidence": 0.62,
+          "title": "玛丽和麦克斯",
+          "runtime": 90,
+          "language": "en"
+        }
+      ]
+    },
+    {
+      "query": "孤独但不悲伤，想看人与人相遇的故事",
+      "candidateLimit": 500,
+      "batchSize": 20,
+      "concurrency": 5,
+      "wallMs": 3628,
+      "elapsedMs": 3628,
+      "candidateCount": 500,
+      "calls": 26,
+      "usage": {
+        "input_tokens": 260851,
+        "output_tokens": 10369
+      },
+      "model": "jev-1.13.0",
+      "requestTimings": [
+        {
+          "kind": "intent",
+          "candidates": 0,
+          "ms": 394,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 517,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 541,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 578,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 584,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 749,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 545,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 538,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 616,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 763,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 686,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 567,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 610,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 595,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 551,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 570,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 562,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 555,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 792,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 821,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 535,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 531,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 567,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 565,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 608,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 581,
+          "status": 200
+        }
+      ],
+      "results": [
+        {
+          "id": "tmdb-337",
+          "score": 2.83,
+          "confidence": 0.83,
+          "title": "易布拉辛先生和古兰经的花",
+          "runtime": 91,
+          "language": "fr"
+        },
+        {
+          "id": "tmdb-594",
+          "score": 2.83,
+          "confidence": 0.83,
+          "title": "幸福终点站",
+          "runtime": 128,
+          "language": "en"
+        },
+        {
+          "id": "tmdb-225044",
+          "score": 2.77,
+          "confidence": 0.77,
+          "title": "如晴天，似雨天",
+          "runtime": 104,
+          "language": "en"
+        },
+        {
+          "id": "tmdb-928720",
+          "score": 2.76,
+          "confidence": 0.76,
+          "title": "隐入尘烟",
+          "runtime": 133,
+          "language": "zh"
+        },
+        {
+          "id": "tmdb-76",
+          "score": 2.74,
+          "confidence": 0.74,
+          "title": "爱在黎明破晓前",
+          "runtime": 105,
+          "language": "en"
+        },
+        {
+          "id": "tmdb-995133",
+          "score": 2.73,
+          "confidence": 0.73,
+          "title": "男孩、鼹鼠、狐狸和马",
+          "runtime": 35,
+          "language": "en"
+        },
+        {
+          "id": "tmdb-1245347",
+          "score": 2.72,
+          "confidence": 0.72,
+          "title": "无双",
+          "runtime": 100,
+          "language": "en"
+        },
+        {
+          "id": "tmdb-24238",
+          "score": 2.67,
+          "confidence": 0.67,
+          "title": "玛丽和麦克斯",
+          "runtime": 90,
+          "language": "en"
+        },
+        {
+          "id": "tmdb-153",
+          "score": 2.67,
+          "confidence": 0.67,
+          "title": "迷失东京",
+          "runtime": 102,
+          "language": "en"
+        },
+        {
+          "id": "tmdb-315465",
+          "score": 2.64,
+          "confidence": 0.64,
+          "title": "怪物之子",
+          "runtime": 119,
+          "language": "ja"
+        },
+        {
+          "id": "tmdb-7350",
+          "score": 2.59,
+          "confidence": 0.59,
+          "title": "遗愿清单",
+          "runtime": 97,
+          "language": "en"
+        },
+        {
+          "id": "tmdb-2056",
+          "score": 2.59,
+          "confidence": 0.59,
+          "title": "心灵驿站",
+          "runtime": 90,
+          "language": "en"
+        }
+      ]
+    },
+    {
+      "query": "像《盗梦空间》一样，让我脑子转起来，两小时以内",
+      "candidateLimit": 500,
+      "batchSize": 20,
+      "concurrency": 5,
+      "wallMs": 3685,
+      "elapsedMs": 3685,
+      "candidateCount": 500,
+      "calls": 26,
+      "usage": {
+        "input_tokens": 264837,
+        "output_tokens": 10683
+      },
+      "model": "jev-1.13.0",
+      "requestTimings": [
+        {
+          "kind": "intent",
+          "candidates": 0,
+          "ms": 405,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 528,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 546,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 551,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 575,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 775,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 549,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 567,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 586,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 564,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 569,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 546,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 522,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 569,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 581,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 598,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 583,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 540,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 565,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 746,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 610,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 569,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 536,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 568,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 525,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 624,
+          "status": 200
+        }
+      ],
+      "results": [
+        {
+          "id": "tmdb-4977",
+          "score": 2.6,
+          "confidence": 0.6,
+          "title": "红辣椒",
+          "runtime": 90,
+          "language": "ja"
+        },
+        {
+          "id": "tmdb-45612",
+          "score": 2.49,
+          "confidence": 0.49,
+          "title": "源代码",
+          "runtime": 93,
+          "language": "en"
+        },
+        {
+          "id": "tmdb-1902",
+          "score": 2.41,
+          "confidence": 0.41,
+          "title": "睁开你的双眼",
+          "runtime": 117,
+          "language": "es"
+        },
+        {
+          "id": "tmdb-206487",
+          "score": 2.28,
+          "confidence": 0.28,
+          "title": "前目的地",
+          "runtime": 98,
+          "language": "en"
+        },
+        {
+          "id": "tmdb-220289",
+          "score": 2.26,
+          "confidence": 0.26,
+          "title": "彗星来的那一夜",
+          "runtime": 89,
+          "language": "en"
+        },
+        {
+          "id": "tmdb-tv-76122",
+          "score": 2.15,
+          "confidence": 0.15,
+          "title": "爆肝工程师的异世界狂想曲",
+          "runtime": 25,
+          "language": "ja"
+        },
+        {
+          "id": "tmdb-14139",
+          "score": 2.06,
+          "confidence": 0.48,
+          "title": "时空罪恶",
+          "runtime": 90,
+          "language": "es"
+        },
+        {
+          "id": "tmdb-1954",
+          "score": 2.04,
+          "confidence": 0.37,
+          "title": "蝴蝶效应",
+          "runtime": 119,
+          "language": "en"
+        },
+        {
+          "id": "tmdb-tv-209077",
+          "score": 2.03,
+          "confidence": 0.03,
+          "title": "不死不幸",
+          "runtime": 24,
+          "language": "ja"
+        },
+        {
+          "id": "tmdb-13363",
+          "score": 2.02,
+          "confidence": 0.02,
+          "title": "这个男人来自地球",
+          "runtime": 87,
+          "language": "en"
+        },
+        {
+          "id": "tmdb-10494",
+          "score": 2.01,
+          "confidence": 0.45,
+          "title": "未麻的部屋",
+          "runtime": 81,
+          "language": "ja"
+        },
+        {
+          "id": "tmdb-77",
+          "score": 1.95,
+          "confidence": 0.36,
+          "title": "记忆碎片",
+          "runtime": 113,
+          "language": "en"
+        }
+      ]
+    },
+    {
+      "query": "像《盗梦空间》一样，让我脑子转起来，两小时以内",
+      "candidateLimit": 1000,
+      "batchSize": 20,
+      "concurrency": 5,
+      "wallMs": 6490,
+      "elapsedMs": 6490,
+      "candidateCount": 1000,
+      "calls": 51,
+      "usage": {
+        "input_tokens": 520481,
+        "output_tokens": 21094
+      },
+      "model": "jev-1.13.0",
+      "requestTimings": [
+        {
+          "kind": "intent",
+          "candidates": 0,
+          "ms": 483,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 505,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 531,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 532,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 570,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 573,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 556,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 521,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 571,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 637,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 727,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 560,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 602,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 758,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 729,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 579,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 582,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 559,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 570,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 619,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 632,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 591,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 611,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 552,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 557,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 599,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 581,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 574,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 546,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 565,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 545,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 575,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 550,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 581,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 533,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 604,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 603,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 593,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 528,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 545,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 557,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 514,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 516,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 617,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 573,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 548,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 543,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 541,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 522,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 601,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 562,
+          "status": 200
+        }
+      ],
+      "results": [
+        {
+          "id": "tmdb-4977",
+          "score": 2.58,
+          "confidence": 0.58,
+          "title": "红辣椒",
+          "runtime": 90,
+          "language": "ja"
+        },
+        {
+          "id": "tmdb-45612",
+          "score": 2.45,
+          "confidence": 0.45,
+          "title": "源代码",
+          "runtime": 93,
+          "language": "en"
+        },
+        {
+          "id": "tmdb-1902",
+          "score": 2.4,
+          "confidence": 0.4,
+          "title": "睁开你的双眼",
+          "runtime": 117,
+          "language": "es"
+        },
+        {
+          "id": "tmdb-206487",
+          "score": 2.34,
+          "confidence": 0.34,
+          "title": "前目的地",
+          "runtime": 98,
+          "language": "en"
+        },
+        {
+          "id": "tmdb-tv-76122",
+          "score": 2.19,
+          "confidence": 0.19,
+          "title": "爆肝工程师的异世界狂想曲",
+          "runtime": 25,
+          "language": "ja"
+        },
+        {
+          "id": "tmdb-220289",
+          "score": 2.16,
+          "confidence": 0.16,
+          "title": "彗星来的那一夜",
+          "runtime": 89,
+          "language": "en"
+        },
+        {
+          "id": "tmdb-tv-209077",
+          "score": 2.14,
+          "confidence": 0.14,
+          "title": "不死不幸",
+          "runtime": 24,
+          "language": "ja"
+        },
+        {
+          "id": "tmdb-77",
+          "score": 2.09,
+          "confidence": 0.37,
+          "title": "记忆碎片",
+          "runtime": 113,
+          "language": "en"
+        },
+        {
+          "id": "tmdb-14139",
+          "score": 2.09,
+          "confidence": 0.48,
+          "title": "时空罪恶",
+          "runtime": 90,
+          "language": "es"
+        },
+        {
+          "id": "tmdb-1090",
+          "score": 2.06,
+          "confidence": 0.06,
+          "title": "异次元骇客",
+          "runtime": 100,
+          "language": "en"
+        },
+        {
+          "id": "tmdb-1954",
+          "score": 2.01,
+          "confidence": 0.39,
+          "title": "蝴蝶效应",
+          "runtime": 119,
+          "language": "en"
+        },
+        {
+          "id": "tmdb-10494",
+          "score": 2.01,
+          "confidence": 0.44,
+          "title": "未麻的部屋",
+          "runtime": 81,
+          "language": "ja"
+        }
+      ]
+    }
+  ],
+  "offline": [
+    {
+      "id": "lonely-not-sad",
+      "query": "孤独但不悲伤",
+      "relevant": 8,
+      "hits500": 4,
+      "hits1000": 6
+    },
+    {
+      "id": "inception-like",
+      "query": "像《盗梦空间》一样，让我脑子转起来",
+      "relevant": 9,
+      "hits500": 5,
+      "hits1000": 6
+    },
+    {
+      "id": "green-ray-title",
+      "query": "想看《绿光》，关于孤独、假期里寻找陪伴的影史佳作",
+      "relevant": 6,
+      "hits500": 5,
+      "hits1000": 6
+    },
+    {
+      "id": "zip-wire-title",
+      "query": "想看《127小时》，高空冒险与求生的惊悚电影",
+      "relevant": 2,
+      "hits500": 2,
+      "hits1000": 2
+    },
+    {
+      "id": "classic-love",
+      "query": "想看一部被影史公认的经典爱情片",
+      "relevant": 6,
+      "hits500": 6,
+      "hits1000": 6
+    },
+    {
+      "id": "90s-crime",
+      "query": "90 年代的犯罪片，氛围越浓越好",
+      "relevant": 5,
+      "hits500": 5,
+      "hits1000": 5
+    },
+    {
+      "id": "warm-animation-90",
+      "query": "想看一部温暖的动画电影，90分钟以内",
+      "relevant": 4,
+      "hits500": 3,
+      "hits1000": 3
+    },
+    {
+      "id": "japanese-family",
+      "query": "想看一部日本电影，关于家庭和日常",
+      "relevant": 7,
+      "hits500": 7,
+      "hits1000": 7
+    },
+    {
+      "id": "rohmer-holiday",
+      "query": "想看侯麦或法国新浪潮那种假期与情感的电影",
+      "relevant": 5,
+      "hits500": 5,
+      "hits1000": 5
+    },
+    {
+      "id": "2010s-scifi-120",
+      "query": "2010年代两小时以内的科幻片",
+      "relevant": 6,
+      "hits500": 5,
+      "hits1000": 5
+    },
+    {
+      "id": "lonely-city",
+      "query": "关于孤独、城市和人与人相遇的故事",
+      "relevant": 6,
+      "hits500": 5,
+      "hits1000": 5
+    },
+    {
+      "id": "nordic-quiet",
+      "query": "想看一部安静的北欧或东欧电影，关于普通人的生活",
+      "relevant": 5,
+      "hits500": 5,
+      "hits1000": 5
+    },
+    {
+      "id": "no-classic-crime",
+      "query": "不要经典，给我近年好看的犯罪片",
+      "relevant": 5,
+      "hits500": 3,
+      "hits1000": 5
+    },
+    {
+      "id": "time-travel-2000",
+      "query": "2000年以后的时空穿越电影",
+      "relevant": 5,
+      "hits500": 4,
+      "hits1000": 4
+    },
+    {
+      "id": "music-stage",
+      "query": "关于音乐人和舞台的电影",
+      "relevant": 7,
+      "hits500": 7,
+      "hits1000": 7
+    },
+    {
+      "id": "non-en-war",
+      "query": "想看一部非英语的战争或历史电影",
+      "relevant": 6,
+      "hits500": 4,
+      "hits1000": 4
+    },
+    {
+      "id": "warm-not-horror",
+      "query": "想看温暖的电影，不要恐怖或惊悚",
+      "relevant": 6,
+      "hits500": 4,
+      "hits1000": 5
+    },
+    {
+      "id": "like-her",
+      "query": "像《她》那样关于孤独、城市和人与人相遇",
+      "relevant": 5,
+      "hits500": 4,
+      "hits1000": 5
+    }
+  ]
+}

@@ -35,6 +35,6 @@ test('production shards preserve the same recall as the complete local catalog',
  const series = movies.find(movie => movie.mediaType === 'series');
  assert.equal(toWorkerMovie(series).mediaType, 'series');
  for (const query of ['想看一部日本电影，关于家庭和日常', '想看影史经典科幻片', '像《盗梦空间》一样，让我脑子转起来']) {
-  assert.deepEqual(retrieve(projected,query,{}, {},500).map(m=>m.id),retrieve(movies,query,{}, {},500).map(m=>m.id));
+  assert.deepEqual(retrieve(projected,query,{}, {},1000).map(m=>m.id),retrieve(movies,query,{}, {},1000).map(m=>m.id));
  }
 });

@@ -11,7 +11,7 @@ const key = fs.readFileSync(os.homedir()+'/.config/typesafe/api-key.txt','utf8')
 const queries = ['想看一部日本电影，关于家庭和日常', '孤独但不悲伤，想看人与人相遇的故事', '像《盗梦空间》一样，让我脑子转起来，两小时以内'];
 const runs = [];
 const limits = (process.env.BENCHMARK_LIMITS || '24,100').split(',').map(Number);
-if (!limits.length || limits.some(limit => !Number.isInteger(limit) || limit < 1 || limit > 500)) throw Error('Invalid BENCHMARK_LIMITS');
+if (!limits.length || limits.some(limit => !Number.isInteger(limit) || limit < 1 || limit > 1000)) throw Error('Invalid BENCHMARK_LIMITS');
 const file = process.env.BENCHMARK_OUTPUT || `data/eval/benchmark-${limits.at(-1)}.json`;
 const report = {generatedAt:new Date().toISOString(),catalogCount:movies.length,catalogVersion:createHash('sha256').update(raw).digest('hex').slice(0,16),recallVersion:RECALL_VERSION,limits,method:'Same full catalog and corrected metadata; three fixed queries, one uncached run per configuration, alternating order. Includes network + intent + retrieval + ranking, excludes catalog loading and browser. Small sample, not an SLA or proof of preference quality.',runs};
 for (const [i,query] of queries.entries()) {

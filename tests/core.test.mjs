@@ -162,8 +162,8 @@ test("quoted similar-to requests exclude the reference film", () => {
   );
 });
 
-test('500 candidates are all scored exactly once, including the last batch', async () => {
-  const movies = Array.from({length: 600}, (_, i) => ({...films[0], id: `m${i}`, title: `Movie ${i}`, zh: `影片${i}`, language: 'en'}));
+test('1000 candidates are all scored exactly once, including the last batch', async () => {
+  const movies = Array.from({length: 1100}, (_, i) => ({...films[0], id: `m${i}`, title: `Movie ${i}`, zh: `影片${i}`, language: 'en'}));
   const seen = [], sizes = [];
   let active = 0, peak = 0;
   const result = await recommend({query: '梦境电影', movies, key: 'test', fetcher: async (url, options) => {
@@ -179,15 +179,15 @@ test('500 candidates are all scored exactly once, including the last batch', asy
     active--;
     return Response.json({answers});
   }});
-  assert.equal(CANDIDATE_LIMIT, 500);
-  assert.equal(result.candidateCount, 500);
-  assert.equal(new Set(seen).size, 500);
-  assert.equal(seen.length, 500);
-  assert.deepEqual(sizes, Array(25).fill(20));
+  assert.equal(CANDIDATE_LIMIT, 1000);
+  assert.equal(result.candidateCount, 1000);
+  assert.equal(new Set(seen).size, 1000);
+  assert.equal(seen.length, 1000);
+  assert.deepEqual(sizes, Array(50).fill(20));
   assert.ok(peak <= 5);
   assert.equal(result.results.length, 12);
   assert.equal(result.results[0].id, 'm99');
-  assert.equal(result.modelRequestCount, 26);
+  assert.equal(result.modelRequestCount, 51);
 });
 
 test('ranking error stops queued batches without retries or partial recommendations', async () => {
