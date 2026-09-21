@@ -13,7 +13,8 @@
     "catalog:prepare": "node scripts/prepare-catalog.mjs",
     "predev": "npm run catalog:prepare",
     "prebuild": "npm run catalog:prepare",
-    "import:quality": "node scripts/import-quality.mjs"
+    "import:quality": "node scripts/import-quality.mjs",
+    "import:expansion": "node scripts/import-expansion.mjs"
   },
   "dependencies": {
     "react": "^19.1.0",

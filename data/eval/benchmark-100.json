@@ -1,0 +1,919 @@
+{
+  "generatedAt": "2026-09-21T03:05:06.197Z",
+  "catalogCount": 26252,
+  "catalogVersion": "41b8d7d85559ce46",
+  "recallVersion": "v3-100",
+  "method": "Same full catalog and corrected metadata; three fixed queries, one uncached run per configuration, alternating order. Includes network + intent + retrieval + ranking, excludes catalog loading and browser. Small sample, not an SLA or proof of preference quality.",
+  "runs": [
+    {
+      "query": "想看一部日本电影，关于家庭和日常",
+      "candidateLimit": 24,
+      "batchSize": 8,
+      "concurrency": 3,
+      "wallMs": 3234,
+      "elapsedMs": 3233,
+      "candidateCount": 24,
+      "calls": 4,
+      "usage": {
+        "input_tokens": 13574,
+        "output_tokens": 764
+      },
+      "model": "jev-1.13.0",
+      "requestTimings": [
+        {
+          "kind": "intent",
+          "candidates": 0,
+          "ms": 1366,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 8,
+          "ms": 1243,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 8,
+          "ms": 1414,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 8,
+          "ms": 1751,
+          "status": 200
+        }
+      ],
+      "results": [
+        {
+          "id": "tmdb-25050",
+          "score": 2.99,
+          "confidence": 0.99,
+          "title": "步履不停",
+          "runtime": 115,
+          "language": "ja"
+        },
+        {
+          "id": "tmdb-50247",
+          "score": 2.97,
+          "confidence": 0.97,
+          "title": "麦秋",
+          "runtime": 124,
+          "language": "ja"
+        },
+        {
+          "id": "tmdb-18148",
+          "score": 2.95,
+          "confidence": 0.95,
+          "title": "东京物语",
+          "runtime": 136,
+          "language": "ja"
+        },
+        {
+          "id": "tmdb-389972",
+          "score": 2.95,
+          "confidence": 0.95,
+          "title": "家族之苦",
+          "runtime": 108,
+          "language": "ja"
+        },
+        {
+          "id": "tmdb-28276",
+          "score": 2.92,
+          "confidence": 0.92,
+          "title": "早安",
+          "runtime": 94,
+          "language": "ja"
+        },
+        {
+          "id": "tmdb-16198",
+          "score": 2.89,
+          "confidence": 0.89,
+          "title": "我的邻居山田君",
+          "runtime": 104,
+          "language": "ja"
+        },
+        {
+          "id": "tmdb-25746",
+          "score": 2.35,
+          "confidence": 0.35,
+          "title": "母亲",
+          "runtime": 133,
+          "language": "ja"
+        },
+        {
+          "id": "tmdb-110420",
+          "score": 2.26,
+          "confidence": 0.26,
+          "title": "狼的孩子雨和雪",
+          "runtime": 117,
+          "language": "ja"
+        },
+        {
+          "id": "tmdb-781816",
+          "score": 2.22,
+          "confidence": 0.22,
+          "title": "渔港的肉子酱",
+          "runtime": 97,
+          "language": "ja"
+        },
+        {
+          "id": "tmdb-17234",
+          "score": 2.21,
+          "confidence": 0.21,
+          "title": "河童之夏",
+          "runtime": 142,
+          "language": "ja"
+        },
+        {
+          "id": "tmdb-8392",
+          "score": 2.15,
+          "confidence": 0.44,
+          "title": "龙猫",
+          "runtime": 86,
+          "language": "ja"
+        },
+        {
+          "id": "tmdb-475215",
+          "score": 2.11,
+          "confidence": 0.45,
+          "title": "未来的未来",
+          "runtime": 98,
+          "language": "ja"
+        }
+      ]
+    },
+    {
+      "query": "想看一部日本电影，关于家庭和日常",
+      "candidateLimit": 100,
+      "batchSize": 20,
+      "concurrency": 5,
+      "wallMs": 2650,
+      "elapsedMs": 2650,
+      "candidateCount": 100,
+      "calls": 6,
+      "usage": {
+        "input_tokens": 51367,
+        "output_tokens": 2342
+      },
+      "model": "jev-1.13.0",
+      "requestTimings": [
+        {
+          "kind": "intent",
+          "candidates": 0,
+          "ms": 424,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 675,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 701,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 707,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 1910,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 2120,
+          "status": 200
+        }
+      ],
+      "results": [
+        {
+          "id": "tmdb-25050",
+          "score": 2.99,
+          "confidence": 0.99,
+          "title": "步履不停",
+          "runtime": 115,
+          "language": "ja"
+        },
+        {
+          "id": "tmdb-389972",
+          "score": 2.95,
+          "confidence": 0.95,
+          "title": "家族之苦",
+          "runtime": 108,
+          "language": "ja"
+        },
+        {
+          "id": "tmdb-28276",
+          "score": 2.93,
+          "confidence": 0.93,
+          "title": "早安",
+          "runtime": 94,
+          "language": "ja"
+        },
+        {
+          "id": "tmdb-15318",
+          "score": 2.89,
+          "confidence": 0.89,
+          "title": "茶之味",
+          "runtime": 143,
+          "language": "ja"
+        },
+        {
+          "id": "tmdb-16198",
+          "score": 2.88,
+          "confidence": 0.88,
+          "title": "我的邻居山田君",
+          "runtime": 104,
+          "language": "ja"
+        },
+        {
+          "id": "tmdb-8937",
+          "score": 2.87,
+          "confidence": 0.87,
+          "title": "东京奏鸣曲",
+          "runtime": 120,
+          "language": "ja"
+        },
+        {
+          "id": "tmdb-50247",
+          "score": 2.86,
+          "confidence": 0.86,
+          "title": "麦秋",
+          "runtime": 124,
+          "language": "ja"
+        },
+        {
+          "id": "tmdb-12429",
+          "score": 2.77,
+          "confidence": 0.77,
+          "title": "崖上的波妞",
+          "runtime": 101,
+          "language": "ja"
+        },
+        {
+          "id": "tmdb-18148",
+          "score": 2.75,
+          "confidence": 0.75,
+          "title": "东京物语",
+          "runtime": 136,
+          "language": "ja"
+        },
+        {
+          "id": "tmdb-83389",
+          "score": 2.74,
+          "confidence": 0.74,
+          "title": "虞美人盛开的山坡",
+          "runtime": 91,
+          "language": "ja"
+        },
+        {
+          "id": "tmdb-47184",
+          "score": 2.67,
+          "confidence": 0.67,
+          "title": "饭",
+          "runtime": 97,
+          "language": "ja"
+        },
+        {
+          "id": "tmdb-1106904",
+          "score": 2.53,
+          "confidence": 0.53,
+          "title": "窗边的小豆豆",
+          "runtime": 114,
+          "language": "ja"
+        }
+      ]
+    },
+    {
+      "query": "孤独但不悲伤，想看人与人相遇的故事",
+      "candidateLimit": 100,
+      "batchSize": 20,
+      "concurrency": 5,
+      "wallMs": 1254,
+      "elapsedMs": 1254,
+      "candidateCount": 100,
+      "calls": 6,
+      "usage": {
+        "input_tokens": 49464,
+        "output_tokens": 2300
+      },
+      "model": "jev-1.13.0",
+      "requestTimings": [
+        {
+          "kind": "intent",
+          "candidates": 0,
+          "ms": 449,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 520,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 558,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 570,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 571,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 586,
+          "status": 200
+        }
+      ],
+      "results": [
+        {
+          "id": "tmdb-337",
+          "score": 2.86,
+          "confidence": 0.86,
+          "title": "易布拉辛先生和古兰经的花",
+          "runtime": 91,
+          "language": "fr"
+        },
+        {
+          "id": "tmdb-153",
+          "score": 2.79,
+          "confidence": 0.79,
+          "title": "迷失东京",
+          "runtime": 102,
+          "language": "en"
+        },
+        {
+          "id": "tmdb-995133",
+          "score": 2.66,
+          "confidence": 0.66,
+          "title": "男孩、鼹鼠、狐狸和马",
+          "runtime": 35,
+          "language": "en"
+        },
+        {
+          "id": "tmdb-393559",
+          "score": 2.62,
+          "confidence": 0.62,
+          "title": "西葫芦的生活",
+          "runtime": 66,
+          "language": "fr"
+        },
+        {
+          "id": "tmdb-387252",
+          "score": 2.62,
+          "confidence": 0.62,
+          "title": "காதலும் கடந்து போகும்",
+          "runtime": 136,
+          "language": "ta"
+        },
+        {
+          "id": "tmdb-24238",
+          "score": 2.61,
+          "confidence": 0.61,
+          "title": "玛丽和麦克斯",
+          "runtime": 90,
+          "language": "en"
+        },
+        {
+          "id": "tmdb-116303",
+          "score": 2.6,
+          "confidence": 0.6,
+          "title": "租赁猫",
+          "runtime": 110,
+          "language": "ja"
+        },
+        {
+          "id": "tmdb-9821",
+          "score": 2.54,
+          "confidence": 0.54,
+          "title": "陪着你走",
+          "runtime": 100,
+          "language": "en"
+        },
+        {
+          "id": "tmdb-1245347",
+          "score": 2.49,
+          "confidence": 0.49,
+          "title": "无双",
+          "runtime": 100,
+          "language": "en"
+        },
+        {
+          "id": "tmdb-11083",
+          "score": 2.48,
+          "confidence": 0.48,
+          "title": "厨房故事",
+          "runtime": 95,
+          "language": "no"
+        },
+        {
+          "id": "tmdb-372058",
+          "score": 2.44,
+          "confidence": 0.44,
+          "title": "你的名字。",
+          "runtime": 106,
+          "language": "ja"
+        },
+        {
+          "id": "tmdb-838240",
+          "score": 2.4,
+          "confidence": 0.4,
+          "title": "机器人之梦",
+          "runtime": 102,
+          "language": "es"
+        }
+      ]
+    },
+    {
+      "query": "孤独但不悲伤，想看人与人相遇的故事",
+      "candidateLimit": 24,
+      "batchSize": 8,
+      "concurrency": 3,
+      "wallMs": 1487,
+      "elapsedMs": 1486,
+      "candidateCount": 24,
+      "calls": 4,
+      "usage": {
+        "input_tokens": 13715,
+        "output_tokens": 765
+      },
+      "model": "jev-1.13.0",
+      "requestTimings": [
+        {
+          "kind": "intent",
+          "candidates": 0,
+          "ms": 447,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 8,
+          "ms": 488,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 8,
+          "ms": 500,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 8,
+          "ms": 825,
+          "status": 200
+        }
+      ],
+      "results": [
+        {
+          "id": "tmdb-153",
+          "score": 2.83,
+          "confidence": 0.83,
+          "title": "迷失东京",
+          "runtime": 102,
+          "language": "en"
+        },
+        {
+          "id": "tmdb-986280",
+          "score": 2.66,
+          "confidence": 0.66,
+          "title": "枯叶",
+          "runtime": 81,
+          "language": "fi"
+        },
+        {
+          "id": "tmdb-24238",
+          "score": 2.64,
+          "confidence": 0.64,
+          "title": "玛丽和麦克斯",
+          "runtime": 90,
+          "language": "en"
+        },
+        {
+          "id": "tmdb-579741",
+          "score": 2.64,
+          "confidence": 0.64,
+          "title": "言语如苏打般涌现",
+          "runtime": 87,
+          "language": "ja"
+        },
+        {
+          "id": "tmdb-11216",
+          "score": 2.47,
+          "confidence": 0.47,
+          "title": "天堂电影院",
+          "runtime": 124,
+          "language": "it"
+        },
+        {
+          "id": "tmdb-838240",
+          "score": 2.35,
+          "confidence": 0.35,
+          "title": "机器人之梦",
+          "runtime": 102,
+          "language": "es"
+        },
+        {
+          "id": "tmdb-18320",
+          "score": 2.23,
+          "confidence": 0.23,
+          "title": "年轻的维多利亚",
+          "runtime": 105,
+          "language": "en"
+        },
+        {
+          "id": "tmdb-1049082",
+          "score": 2.2,
+          "confidence": 0.2,
+          "title": "珍宝",
+          "runtime": 102,
+          "language": "id"
+        },
+        {
+          "id": "tmdb-83481",
+          "score": 2.13,
+          "confidence": 0.43,
+          "title": "青春永驻",
+          "runtime": 104,
+          "language": "ca"
+        },
+        {
+          "id": "tmdb-149870",
+          "score": 2.03,
+          "confidence": 0.43,
+          "title": "起风了",
+          "runtime": 126,
+          "language": "ja"
+        },
+        {
+          "id": "tmdb-122906",
+          "score": 2.02,
+          "confidence": 0.36,
+          "title": "时空恋旅人",
+          "runtime": 123,
+          "language": "en"
+        },
+        {
+          "id": "tmdb-58451",
+          "score": 1.99,
+          "confidence": 0.34,
+          "title": "木偶奇遇记",
+          "runtime": 135,
+          "language": "it"
+        }
+      ]
+    },
+    {
+      "query": "像《盗梦空间》一样，让我脑子转起来，两小时以内",
+      "candidateLimit": 24,
+      "batchSize": 8,
+      "concurrency": 3,
+      "wallMs": 1431,
+      "elapsedMs": 1430,
+      "candidateCount": 24,
+      "calls": 4,
+      "usage": {
+        "input_tokens": 14749,
+        "output_tokens": 763
+      },
+      "model": "jev-1.13.0",
+      "requestTimings": [
+        {
+          "kind": "intent",
+          "candidates": 0,
+          "ms": 445,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 8,
+          "ms": 526,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 8,
+          "ms": 595,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 8,
+          "ms": 793,
+          "status": 200
+        }
+      ],
+      "results": [
+        {
+          "id": "tmdb-1359005",
+          "score": 2.69,
+          "confidence": 0.69,
+          "title": "星河入梦",
+          "runtime": 111,
+          "language": "zh"
+        },
+        {
+          "id": "tmdb-861",
+          "score": 1.94,
+          "confidence": 0.52,
+          "title": "全面回忆",
+          "runtime": 113,
+          "language": "en"
+        },
+        {
+          "id": "tmdb-225745",
+          "score": 1.88,
+          "confidence": 0.47,
+          "title": "剧场版 命运石之门：负荷领域的既视感",
+          "runtime": 90,
+          "language": "ja"
+        },
+        {
+          "id": "tmdb-38",
+          "score": 1.86,
+          "confidence": 0.49,
+          "title": "暖暖内含光",
+          "runtime": 108,
+          "language": "en"
+        }
+      ]
+    },
+    {
+      "query": "像《盗梦空间》一样，让我脑子转起来，两小时以内",
+      "candidateLimit": 100,
+      "batchSize": 20,
+      "concurrency": 5,
+      "wallMs": 1194,
+      "elapsedMs": 1194,
+      "candidateCount": 100,
+      "calls": 6,
+      "usage": {
+        "input_tokens": 51503,
+        "output_tokens": 2308
+      },
+      "model": "jev-1.13.0",
+      "requestTimings": [
+        {
+          "kind": "intent",
+          "candidates": 0,
+          "ms": 430,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 515,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 549,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 553,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 559,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 559,
+          "status": 200
+        }
+      ],
+      "results": [
+        {
+          "id": "tmdb-1359005",
+          "score": 2.67,
+          "confidence": 0.67,
+          "title": "星河入梦",
+          "runtime": 111,
+          "language": "zh"
+        },
+        {
+          "id": "tmdb-1902",
+          "score": 2.4,
+          "confidence": 0.4,
+          "title": "睁开你的双眼",
+          "runtime": 117,
+          "language": "es"
+        },
+        {
+          "id": "tmdb-4977",
+          "score": 2.16,
+          "confidence": 0.16,
+          "title": "红辣椒",
+          "runtime": 90,
+          "language": "ja"
+        },
+        {
+          "id": "tmdb-1946",
+          "score": 2.16,
+          "confidence": 0.42,
+          "title": "感官游戏",
+          "runtime": 97,
+          "language": "en"
+        },
+        {
+          "id": "tmdb-436994",
+          "score": 2.16,
+          "confidence": 0.42,
+          "title": "清醒梦",
+          "runtime": 101,
+          "language": "ko"
+        },
+        {
+          "id": "tmdb-206487",
+          "score": 2.08,
+          "confidence": 0.48,
+          "title": "前目的地",
+          "runtime": 98,
+          "language": "en"
+        },
+        {
+          "id": "tmdb-902",
+          "score": 2.01,
+          "confidence": 0.49,
+          "title": "童梦失魂夜",
+          "runtime": 112,
+          "language": "fr"
+        },
+        {
+          "id": "tmdb-38",
+          "score": 1.93,
+          "confidence": 0.46,
+          "title": "暖暖内含光",
+          "runtime": 108,
+          "language": "en"
+        },
+        {
+          "id": "tmdb-861",
+          "score": 1.87,
+          "confidence": 0.5,
+          "title": "全面回忆",
+          "runtime": 113,
+          "language": "en"
+        }
+      ]
+    }
+  ],
+  "offline": [
+    {
+      "id": "lonely-not-sad",
+      "query": "孤独但不悲伤",
+      "relevant": 8,
+      "hits24": 0,
+      "hits100": 2
+    },
+    {
+      "id": "inception-like",
+      "query": "像《盗梦空间》一样，让我脑子转起来",
+      "relevant": 9,
+      "hits24": 1,
+      "hits100": 1
+    },
+    {
+      "id": "green-ray-title",
+      "query": "想看《绿光》，关于孤独、假期里寻找陪伴的影史佳作",
+      "relevant": 6,
+      "hits24": 1,
+      "hits100": 2
+    },
+    {
+      "id": "zip-wire-title",
+      "query": "想看《滑索惊魂》，高空冒险与求生的惊悚电影",
+      "relevant": 3,
+      "hits24": 1,
+      "hits100": 2
+    },
+    {
+      "id": "classic-love",
+      "query": "想看一部被影史公认的经典爱情片",
+      "relevant": 6,
+      "hits24": 3,
+      "hits100": 4
+    },
+    {
+      "id": "90s-crime",
+      "query": "90 年代的犯罪片，氛围越浓越好",
+      "relevant": 5,
+      "hits24": 5,
+      "hits100": 5
+    },
+    {
+      "id": "warm-animation-90",
+      "query": "想看一部温暖的动画电影，90分钟以内",
+      "relevant": 4,
+      "hits24": 2,
+      "hits100": 3
+    },
+    {
+      "id": "japanese-family",
+      "query": "想看一部日本电影，关于家庭和日常",
+      "relevant": 7,
+      "hits24": 3,
+      "hits100": 4
+    },
+    {
+      "id": "rohmer-holiday",
+      "query": "想看侯麦或法国新浪潮那种假期与情感的电影",
+      "relevant": 5,
+      "hits24": 3,
+      "hits100": 5
+    },
+    {
+      "id": "2010s-scifi-120",
+      "query": "2010年代两小时以内的科幻片",
+      "relevant": 6,
+      "hits24": 4,
+      "hits100": 5
+    },
+    {
+      "id": "lonely-city",
+      "query": "关于孤独、城市和人与人相遇的故事",
+      "relevant": 6,
+      "hits24": 1,
+      "hits100": 3
+    },
+    {
+      "id": "nordic-quiet",
+      "query": "想看一部安静的北欧或东欧电影，关于普通人的生活",
+      "relevant": 5,
+      "hits24": 1,
+      "hits100": 3
+    },
+    {
+      "id": "no-classic-crime",
+      "query": "不要经典，给我近年好看的犯罪片",
+      "relevant": 5,
+      "hits24": 1,
+      "hits100": 2
+    },
+    {
+      "id": "time-travel-2000",
+      "query": "2000年以后的时空穿越电影",
+      "relevant": 5,
+      "hits24": 2,
+      "hits100": 4
+    },
+    {
+      "id": "music-stage",
+      "query": "关于音乐人和舞台的电影",
+      "relevant": 7,
+      "hits24": 3,
+      "hits100": 4
+    },
+    {
+      "id": "non-en-war",
+      "query": "想看一部非英语的战争或历史电影",
+      "relevant": 6,
+      "hits24": 2,
+      "hits100": 3
+    },
+    {
+      "id": "warm-not-horror",
+      "query": "想看温暖的电影，不要恐怖或惊悚",
+      "relevant": 6,
+      "hits24": 1,
+      "hits100": 1
+    },
+    {
+      "id": "like-her",
+      "query": "像《她》那样关于孤独、城市和人与人相遇",
+      "relevant": 5,
+      "hits24": 2,
+      "hits100": 2
+    }
+  ]
+}

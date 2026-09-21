@@ -55,7 +55,7 @@ http
       busy++;
       try {
         const result = await recommend({
-          ...b,
+          filters: b.filters,
           query: b.query.trim(),
           movies,
           key,

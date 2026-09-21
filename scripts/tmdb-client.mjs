@@ -2,6 +2,7 @@ import fs from "node:fs";
 import os from "node:os";
 import path from "node:path";
 export const cacheDir=path.resolve(import.meta.dirname,"../.cache/tmdb");
+fs.mkdirSync(cacheDir, {recursive: true});
 const key=fs.readFileSync(os.homedir()+"/.config/tmdb/api-key.txt","utf8").trim();
 export async function api(route, params = {}) {
   const u = new URL("https://api.themoviedb.org/3/" + route);

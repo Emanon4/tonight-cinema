@@ -100,7 +100,7 @@ export default {
           error: "今天的 100 次智能筛选额度已用完，明天再来。",
         });
       const result = await recommend({
-        ...b,
+        filters: b.filters,
         query: b.query.trim(),
         movies,
         key: env.TYPESAFE_API_KEY,

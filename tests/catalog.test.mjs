@@ -1,6 +1,8 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {createCatalogLoader} from '../server/catalog.mjs';
+import {createCatalogLoader, toWorkerMovie} from '../server/catalog.mjs';
+import {retrieve} from '../server/core.mjs';
+import fs from 'node:fs';
 function environment({version='v1',badPart=false}={}) {
   const calls=[];
   const data={
@@ -23,4 +25,12 @@ test('failed catalog loads can recover, and mixed versions are rejected',async()
 });
 test('duplicate movie IDs in shards cannot masquerade as a complete catalog',async()=>{
  await assert.rejects(createCatalogLoader()(environment({badPart:true}).env),/不完整/);
+});
+
+test('production shards preserve the same recall as the complete local catalog', () => {
+ const movies = JSON.parse(fs.readFileSync('public/data/movies.json'));
+ const projected = JSON.parse(JSON.stringify(movies.map(toWorkerMovie)));
+ for (const query of ['想看一部日本电影，关于家庭和日常', '想看影史经典科幻片', '像《盗梦空间》一样，让我脑子转起来']) {
+  assert.deepEqual(retrieve(projected,query,{}, {},100).map(m=>m.id),retrieve(movies,query,{}, {},100).map(m=>m.id));
+ }
 });

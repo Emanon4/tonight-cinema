@@ -1,6 +1,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import {createHash} from 'node:crypto';
+import {toWorkerMovie} from '../server/catalog.mjs';
 const root = path.resolve(import.meta.dirname, '..');
 const raw = fs.readFileSync(path.join(root, 'public/data/movies.json'));
 const movies = JSON.parse(raw);
@@ -26,7 +27,7 @@ fs.writeFileSync(path.join(browserDir,`index-${version}.json`),JSON.stringify(in
 const parts=[];
 for (let start=0; start<movies.length; start+=1000) {
   const name=`movies-${start/1000}.json`;
-  const records = movies.slice(start,start+1000).map(({id,title,zh,year,runtime,genres,cast,overview,overviewEn,recognition}) => ({id,title,zh,year,runtime,genres,cast,overview,overviewEn,recognition}));
+  const records = movies.slice(start,start+1000).map(toWorkerMovie);
   fs.writeFileSync(path.join(workerDir,name),JSON.stringify(records));
   parts.push(name);
 }

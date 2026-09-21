@@ -6,7 +6,7 @@
 
 这是用 Jev 根据自然语言需求选电影的网站。用户希望全球电影库持续扩充，优先经典佳作，不要擅自限定成华语片库。保持现有中文界面与访问码体验。
 
-本轮已做完：固定评估基线、混合召回改进（仍是 24 部）、最简单的看过/不合适反馈。不要重建项目、缩减片库或改成华语限定。不要顺带开发正片播放或更换 Jev。下一阶段若继续，优先“再轻松一点”的交互，或针对开放心情句的漏召回，而不是再扩库。
+当前继续执行用户指定的扩库及 100 部候选方案。此前已完成固定评估基线、混合召回和最简单的看过/不合适反馈。不要重建项目、缩减片库或改成华语限定。不要顺带开发正片播放或更换 Jev。后续可改善多轮交互或开放心情句的漏召回，以用户最新指令为准。
 
 ## 现状与交付
 
@@ -14,10 +14,10 @@
 - 仓库：https://github.com/Emanon4/tonight-cinema ，分支 `main`
 - 网站：https://emanon4.github.io/tonight-cinema/
 - API：https://tonight-cinema-api.moji-pet.workers.dev
-- 片库未改：22,296 部、58 种原始语言；catalog version 仍为 `cebabfc710102ef7`。
-- 召回策略版本 `RECALL_VERSION=v2`，已写入 Worker / 本地缓存键，避免命中旧算法的 24 小时缓存。
-- 16 项测试通过。离线相关命中 19 → 37 / 18 条需求。详细证据在 VERIFICATION.md 与 `data/eval/`。
-- 已发布：Pages 工作流 35539397171（提交 `c978aa5`）；Worker 版本 `b2bbd6de-63d8-406b-94d0-cce88e85f2ef`。线上 health catalogCount 22296。
+- 片库扩至 26,252 部（+3,956），73 种原始语言代码；catalog version `41b8d7d85559ce46`。原有电影逐条保持不变。
+- 召回策略版本 `RECALL_VERSION=v3-100`，已写入 Worker / 本地缓存键，避免命中旧算法的 24 小时缓存。
+- 19 项测试通过。本轮同片库离线相关命中为 24 候选 36 → 100 候选 55 / 18 条需求。详细证据在 VERIFICATION.md 与 `data/eval/`。
+- 本轮发布记录和正式网站验证见 VERIFICATION.md；此前 c978aa5 的 24 部方案已被本轮取代。
 
 ## 必须理解的推荐链路
 
@@ -25,11 +25,11 @@
 
 1. `findReferences()` 用书名号和足够长的片名识别最多两部参考电影，不再用单字中文片名做子串匹配。
 2. Jev 先判断 genre/mood。
-3. `retrieve()` 从全库召回 **24 部**：硬过滤 + 语言/类型/片名结构信号 + 简介主题词 + 有结构约束时的评分人数加权。默认 limit=32，生产仍显式传 24。
-4. 每批 8 部，3 批并行交给 Jev 评分；得分 >=1.8，最多展示 12 部。每次最多 4 次 Jev API 调用。
+3. `retrieve()` 从全库召回最多 **100 部**：硬过滤 + 语言/类型/片名结构信号 + 简介主题词 + 有结构约束时的评分人数加权。生产通过 CANDIDATE_LIMIT=100 指定上限。
+4. 每批 20 部，最多 5 批并行交给 Jev 评分；得分 >=1.8，最多展示 12 部。每次最多 6 次 Jev API 调用。
 5. 经典偏好只在明确提出且未否定时加权核实榜单作品。
 
-瓶颈仍在：未进入 24 部的电影不会被 Jev 评估。不要把 24 改成更大数字就宣布质量改善。开放心情句若简介没有对应词，合适片仍会漏掉。阈值不是校准后的喜欢概率。API 异常明确报错，不允许用规则结果冒充 Jev。
+瓶颈仍在：未进入 100 部候选的电影不会被 Jev 评估。扩大候选数不等于已证明推荐质量提升，需要看固定评估与用户反馈。开放心情句若简介没有对应词，合适片仍会漏掉。阈值不是校准后的喜欢概率。API 异常明确报错，不允许用规则结果冒充 Jev。
 
 ## 评估集与反馈
 
@@ -42,7 +42,7 @@
 
 - `server/core.mjs`：过滤、召回、Jev payload、响应校验和推荐编排。
 - `server/worker.mjs`：Cloudflare API、访问码、CORS、缓存与每日预算。缓存键含 catalog version 与 `RECALL_VERSION`。
-- `server/catalog.mjs`：Worker 静态资源片库加载。
+- `server/catalog.mjs`：Worker 静态资源片库加载与共享 toWorkerMovie 投影。必须保留 originalTitle、language、rating、votes；此前生产分片遗漏这些字段使线上排序与本地不同，现已修复并加入一致性测试。
 - `server/local.mjs`：本地 API，127.0.0.1:8793。
 - `src/main.jsx`：界面、收藏、看过/不合适、设置、推荐卡片和详情。
 - `public/data/movies.json`：完整片库。ID 不得随意改变。
@@ -71,6 +71,10 @@ npm run build
 - TMDB：`~/.config/tmdb/api-key.txt`。
 - 网站访问码：`~/.config/tonight-cinema/access-code.txt`，不要擅自重置。
 - Cloudflare 已配置 secrets `TYPESAFE_API_KEY`、`APP_ACCESS_TOKEN`。
-- 所有访客共享每天 100 次新筛选（UTC），缓存命中不扣额度；一次筛选最多 4 次模型请求。24 小时缓存。
+- 所有访客共享每天 100 次新筛选（UTC），缓存命中不扣额度；一次筛选最多 6 次模型请求。24 小时缓存。
 
 网站独立运行于 GitHub Pages + Cloudflare。片库目前手动更新。保留 TMDB 署名和既有来源链接。
+
+## 本轮测速方式
+
+`node scripts/benchmark-recommend.mjs --live` 会产生六次无缓存的付费推荐（3 条需求 × 24/100 两档），不自动重试。数据在 `data/eval/benchmark-100.json`。比较使用相同片库与修复后的字段，以区分候选数量变化与旧生产分片缺字段问题。HTTP 请求不能覆盖 candidateLimit、batchSize 或 concurrency；这些参数仅供本地测速显式使用。

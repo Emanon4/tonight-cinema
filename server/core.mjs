@@ -18,7 +18,10 @@ export const genreLabels = {
   Historical: "历史",
   Superhero: "超级英雄",
 };
-export const RECALL_VERSION = "v2";
+export const RECALL_VERSION = "v3-100";
+export const CANDIDATE_LIMIT = 100;
+export const RANKING_BATCH_SIZE = 20;
+export const RANKING_CONCURRENCY = 5;
 const themes = {
   gentle: "gentle friendship family heartwarming kindness hope",
   lonely: "loneliness lonely isolated solitude city relationship",
@@ -401,6 +404,8 @@ export function rankingPayload(query, movies, references = []) {
         title: m.title,
         genres: m.genres,
         year: m.year,
+        language: m.language,
+        runtime: m.runtime,
         overview: m.overview.slice(0, 2200),
         recognition: (m.recognition || []).map(r => r.list),
       })),
@@ -465,7 +470,15 @@ export async function recommend({
   movies,
   key,
   fetcher = fetch,
+  candidateLimit = CANDIDATE_LIMIT,
+  batchSize = RANKING_BATCH_SIZE,
+  concurrency = RANKING_CONCURRENCY,
 }) {
+  // Overrides are for local, explicit benchmarks, never accepted from HTTP input.
+  if (!Number.isInteger(candidateLimit) || candidateLimit < 1 || candidateLimit > CANDIDATE_LIMIT ||
+      !Number.isInteger(batchSize) || batchSize < 1 || batchSize > RANKING_BATCH_SIZE ||
+      !Number.isInteger(concurrency) || concurrency < 1 || concurrency > RANKING_CONCURRENCY)
+    throw Error('Invalid recommendation limits');
   const start = Date.now();
   const refs = findReferences(movies, query, 2);
   const references = refs.map((m) => ({
@@ -487,25 +500,33 @@ export async function recommend({
     genre: g,
     mood,
     references: refs,
-  }, 24);
+  }, candidateLimit);
   if (!candidates.length)
     return {
       results: [],
       candidateCount: 0,
+      rankingBatchCount: 0,
+      modelRequestCount: 1,
       elapsedMs: Date.now() - start,
       engine: "jev",
       model: intent.model,
       usage: intent.usage,
     };
   const batches = [];
-  for (let i = 0; i < candidates.length; i += 8)
-    batches.push(candidates.slice(i, i + 8));
-  const responses = await Promise.all(
-    batches.map(async (b) => {
-      const r = await jev(rankingPayload(query, b, references), key, fetcher);
-      return { r, items: readRanking(r, b) };
-    }),
-  );
+  for (let i = 0; i < candidates.length; i += batchSize)
+    batches.push(candidates.slice(i, i + batchSize));
+  const responses = new Array(batches.length);
+  let cursor = 0, failure;
+  await Promise.all(Array.from({length: Math.min(concurrency, batches.length)}, async () => {
+    while (!failure && cursor < batches.length) {
+      const index = cursor++, b = batches[index];
+      try {
+        const r = await jev(rankingPayload(query, b, references), key, fetcher);
+        responses[index] = {r, items: readRanking(r, b)};
+      } catch (e) { failure ||= e; }
+    }
+  }));
+  if (failure) throw failure;
   const ranked = responses
     .flatMap((r) => r.items)
     .filter((x) => x.score >= 1.8)
@@ -521,6 +542,8 @@ export async function recommend({
   return {
     results: ranked,
     candidateCount: candidates.length,
+    rankingBatchCount: batches.length,
+    modelRequestCount: batches.length + 1,
     elapsedMs: Date.now() - start,
     engine: "jev",
     model: intent.model,

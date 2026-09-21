@@ -9,6 +9,7 @@ import {
   validInput,
   recommend,
   findReferences,
+  CANDIDATE_LIMIT,
 } from "../server/core.mjs";
 const films = [
   {
@@ -138,4 +139,46 @@ test("quoted similar-to requests exclude the reference film", () => {
     ),
     ["paprika"],
   );
+});
+
+test('100 candidates are all scored exactly once, including the last batch', async () => {
+  const movies = Array.from({length: 130}, (_, i) => ({...films[0], id: `m${i}`, title: `Movie ${i}`, zh: `影片${i}`, language: 'en'}));
+  const seen = [], sizes = [];
+  let active = 0, peak = 0;
+  const result = await recommend({query: '梦境电影', movies, key: 'test', fetcher: async (url, options) => {
+    const payload = JSON.parse(options.body);
+    if (!payload.state.movies) return Response.json({answers: {genre: {choice: 'Science Fiction'}, mood: {choice: 'mindbending'}}});
+    active++; peak = Math.max(peak, active);
+    sizes.push(payload.state.movies.length);
+    await new Promise(resolve => setTimeout(resolve, 5));
+    const answers = Object.fromEntries(payload.state.movies.map(m => {
+      seen.push(m.id);
+      return [m.id, {type: 'score', score: m.id === 'm99' ? 3 : 2, confidence: 0.9}];
+    }));
+    active--;
+    return Response.json({answers});
+  }});
+  assert.equal(CANDIDATE_LIMIT, 100);
+  assert.equal(result.candidateCount, 100);
+  assert.equal(new Set(seen).size, 100);
+  assert.equal(seen.length, 100);
+  assert.deepEqual(sizes, [20, 20, 20, 20, 20]);
+  assert.ok(peak <= 5);
+  assert.equal(result.results.length, 12);
+  assert.equal(result.results[0].id, 'm99');
+  assert.equal(result.modelRequestCount, 6);
+});
+
+test('ranking error stops queued batches without retries or partial recommendations', async () => {
+  let rankingCalls = 0;
+  const movies = Array.from({length: 100}, (_, i) => ({...films[0], id: `m${i}`}));
+  await assert.rejects(recommend({query: '梦境电影', movies, key: 'test', batchSize: 8, concurrency: 2, fetcher: async (url, options) => {
+    const payload = JSON.parse(options.body);
+    if (!payload.state.movies) return Response.json({answers: {genre: {choice: 'Science Fiction'}, mood: {choice: 'mindbending'}}});
+    rankingCalls++;
+    if (rankingCalls === 1) return new Response('{}', {status: 429});
+    await new Promise(resolve => setTimeout(resolve, 10));
+    return Response.json({answers: Object.fromEntries(payload.state.movies.map(m => [m.id, {type:'score', score:2, confidence:0.8}]))});
+  }}), /请求较多/);
+  assert.equal(rankingCalls, 2);
 });
