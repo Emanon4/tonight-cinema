@@ -8,7 +8,7 @@ const key = (
 ).trim();
 const cacheDir = path.join(root, ".cache/tmdb");
 fs.mkdirSync(cacheDir, { recursive: true });
-const target = Number(process.env.CATALOG_TARGET || 20000);
+const target = Number(process.env.CATALOG_TARGET || 50000);
 if (!Number.isSafeInteger(target) || target < 1) throw Error("Invalid CATALOG_TARGET");
 const dest = path.join(root, "public/data/movies.json");
 const existing = fs.existsSync(dest) ? JSON.parse(fs.readFileSync(dest)) : [];

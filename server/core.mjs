@@ -18,8 +18,8 @@ export const genreLabels = {
   Historical: "历史",
   Superhero: "超级英雄",
 };
-export const RECALL_VERSION = "v3-100";
-export const CANDIDATE_LIMIT = 100;
+export const RECALL_VERSION = "v4-500";
+export const CANDIDATE_LIMIT = 500;
 export const RANKING_BATCH_SIZE = 20;
 export const RANKING_CONCURRENCY = 5;
 const themes = {

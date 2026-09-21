@@ -1,0 +1,343 @@
+{
+  "generatedAt": "2026-09-21T04:26:52.476Z",
+  "catalogCount": 50000,
+  "catalogVersion": "919fad1905c4324e",
+  "recallVersion": "v4-500",
+  "method": "One fixed query, uncached live Jev comparison after 50,000-film expansion. Includes network + intent + retrieval + ranking; excludes catalog loading and browser. Small sample, not an SLA or preference-quality proof.",
+  "runs": [
+    {
+      "query": "像《盗梦空间》一样，让我脑子转起来，两小时以内",
+      "candidateLimit": 100,
+      "batchSize": 20,
+      "concurrency": 5,
+      "wallMs": 3432,
+      "elapsedMs": 3432,
+      "candidateCount": 100,
+      "rankingBatchCount": 5,
+      "modelRequestCount": 6,
+      "calls": 6,
+      "usage": {
+        "input_tokens": 51542,
+        "output_tokens": 2316
+      },
+      "model": "jev-1.13.0",
+      "requestTimings": [
+        {
+          "kind": "intent",
+          "candidates": 0,
+          "ms": 1344,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 1572,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 1586,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 1604,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 1624,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 1689,
+          "status": 200
+        }
+      ],
+      "results": [
+        {
+          "id": "tmdb-1359005",
+          "score": 2.61,
+          "confidence": 0.61
+        },
+        {
+          "id": "tmdb-4977",
+          "score": 2.16,
+          "confidence": 0.16
+        },
+        {
+          "id": "tmdb-206487",
+          "score": 2.15,
+          "confidence": 0.42
+        },
+        {
+          "id": "tmdb-428288",
+          "score": 1.95,
+          "confidence": 0.52
+        },
+        {
+          "id": "tmdb-861",
+          "score": 1.92,
+          "confidence": 0.54
+        },
+        {
+          "id": "tmdb-59967",
+          "score": 1.91,
+          "confidence": 0.28
+        },
+        {
+          "id": "tmdb-569547",
+          "score": 1.88,
+          "confidence": 0.48
+        },
+        {
+          "id": "tmdb-163551",
+          "score": 1.8,
+          "confidence": 0.34
+        }
+      ]
+    },
+    {
+      "query": "像《盗梦空间》一样，让我脑子转起来，两小时以内",
+      "candidateLimit": 500,
+      "batchSize": 20,
+      "concurrency": 5,
+      "wallMs": 3996,
+      "elapsedMs": 3996,
+      "candidateCount": 500,
+      "rankingBatchCount": 25,
+      "modelRequestCount": 26,
+      "calls": 26,
+      "usage": {
+        "input_tokens": 244304,
+        "output_tokens": 10518
+      },
+      "model": "jev-1.13.0",
+      "requestTimings": [
+        {
+          "kind": "intent",
+          "candidates": 0,
+          "ms": 394,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 627,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 645,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 660,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 663,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 731,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 546,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 584,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 587,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 549,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 718,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 558,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 576,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 625,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 569,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 619,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 555,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 544,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 553,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 824,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 811,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 521,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 556,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 525,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 570,
+          "status": 200
+        },
+        {
+          "kind": "ranking",
+          "candidates": 20,
+          "ms": 553,
+          "status": 200
+        }
+      ],
+      "results": [
+        {
+          "id": "tmdb-1359005",
+          "score": 2.64,
+          "confidence": 0.64
+        },
+        {
+          "id": "tmdb-430155",
+          "score": 2.41,
+          "confidence": 0.41
+        },
+        {
+          "id": "tmdb-1902",
+          "score": 2.4,
+          "confidence": 0.4
+        },
+        {
+          "id": "tmdb-449306",
+          "score": 2.26,
+          "confidence": 0.46
+        },
+        {
+          "id": "tmdb-45612",
+          "score": 2.25,
+          "confidence": 0.44
+        },
+        {
+          "id": "tmdb-206487",
+          "score": 2.16,
+          "confidence": 0.41
+        },
+        {
+          "id": "tmdb-436994",
+          "score": 2.1,
+          "confidence": 0.35
+        },
+        {
+          "id": "tmdb-4977",
+          "score": 2.05,
+          "confidence": 0.05
+        },
+        {
+          "id": "tmdb-2666",
+          "score": 1.98,
+          "confidence": 0.49
+        },
+        {
+          "id": "tmdb-428288",
+          "score": 1.97,
+          "confidence": 0.54
+        },
+        {
+          "id": "tmdb-220289",
+          "score": 1.97,
+          "confidence": 0.47
+        },
+        {
+          "id": "tmdb-861",
+          "score": 1.92,
+          "confidence": 0.53
+        }
+      ]
+    }
+  ]
+}

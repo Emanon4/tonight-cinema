@@ -3,17 +3,19 @@ import os from 'node:os';
 import {createHash} from 'node:crypto';
 import {recommend, RECALL_VERSION, retrieve} from '../server/core.mjs';
 
-// Explicit opt-in: this benchmark makes six uncached, paid recommendations.
-if (!process.argv.includes('--live')) throw Error('Use --live to run six real Jev recommendations; no automatic retry.');
+// Explicit opt-in: this benchmark makes uncached, paid recommendations.
+if (!process.argv.includes('--live')) throw Error('Use --live to run real Jev recommendations; no automatic retry.');
 const raw = fs.readFileSync('public/data/movies.json');
 const movies = JSON.parse(raw), byId = new Map(movies.map(m=>[m.id,m]));
 const key = fs.readFileSync(os.homedir()+'/.config/typesafe/api-key.txt','utf8').trim();
 const queries = ['想看一部日本电影，关于家庭和日常', '孤独但不悲伤，想看人与人相遇的故事', '像《盗梦空间》一样，让我脑子转起来，两小时以内'];
 const runs = [];
-const file = 'data/eval/benchmark-100.json';
-const report = {generatedAt:new Date().toISOString(),catalogCount:movies.length,catalogVersion:createHash('sha256').update(raw).digest('hex').slice(0,16),recallVersion:RECALL_VERSION,method:'Same full catalog and corrected metadata; three fixed queries, one uncached run per configuration, alternating order. Includes network + intent + retrieval + ranking, excludes catalog loading and browser. Small sample, not an SLA or proof of preference quality.',runs};
+const limits = (process.env.BENCHMARK_LIMITS || '24,100').split(',').map(Number);
+if (!limits.length || limits.some(limit => !Number.isInteger(limit) || limit < 1 || limit > 500)) throw Error('Invalid BENCHMARK_LIMITS');
+const file = process.env.BENCHMARK_OUTPUT || `data/eval/benchmark-${limits.at(-1)}.json`;
+const report = {generatedAt:new Date().toISOString(),catalogCount:movies.length,catalogVersion:createHash('sha256').update(raw).digest('hex').slice(0,16),recallVersion:RECALL_VERSION,limits,method:'Same full catalog and corrected metadata; three fixed queries, one uncached run per configuration, alternating order. Includes network + intent + retrieval + ranking, excludes catalog loading and browser. Small sample, not an SLA or proof of preference quality.',runs};
 for (const [i,query] of queries.entries()) {
-  const variants = [{candidateLimit:24,batchSize:8,concurrency:3},{candidateLimit:100,batchSize:20,concurrency:5}];
+  const variants = limits.map(candidateLimit => ({candidateLimit,batchSize:candidateLimit <= 24 ? 8 : 20,concurrency:5}));
   if(i%2) variants.reverse();
   for (const variant of variants) {
     let calls=0; const requestTimings=[];
@@ -37,7 +39,7 @@ for (const [i,query] of queries.entries()) {
 }
 // Separate offline evidence from model rankings: labeled recall is not liking probability.
 const spec=JSON.parse(fs.readFileSync('data/eval/cases.json'));
-report.offline=spec.cases.map(c=>({id:c.id,query:c.query,relevant:c.relevant.length,...Object.fromEntries([24,100].map(limit=>{
+report.offline=spec.cases.map(c=>({id:c.id,query:c.query,relevant:c.relevant.length,...Object.fromEntries(limits.map(limit=>{
   const ids=new Set(retrieve(movies,c.query,{}, {},limit).map(m=>m.id));
   return [`hits${limit}`,c.relevant.filter(id=>ids.has(id)).length];
 }))}));
