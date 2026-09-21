@@ -15,7 +15,7 @@
 - 网站：https://emanon4.github.io/tonight-cinema/
 - API：https://tonight-cinema-api.moji-pet.workers.dev
 - 片库扩至 50,000 部（+23,748），77 种原始语言代码；catalog version `919fad1905c4324e`。原有电影逐条保持不变。
-- 随后执行豆瓣高分与质量筛选：最终 `public/data/movies.json` 为 7,197 部；1,497 部带去重后的豆瓣评分 >7.5 标记，239 部带 BFI/AFI 认领记录，其余通过 TMDB ≥7.0 且评分数 ≥100。公开豆瓣范围收集 1,807 部，匹配或补入 1,513 部，294 部未能确认 TMDB 电影实体，报告见 `data/curation/douban-quality-report.json`。
+- 电影阶段执行豆瓣高分与质量筛选：电影基线为 7,197 部；当前合并剧集后目录含 1,569 部去重后的豆瓣评分 >7.5 内容，239 部带 BFI/AFI 认领记录，其余通过 TMDB ≥7.0 且评分数 ≥100。最新公开豆瓣范围收集 1,807 部，匹配或补入 1,565 部，242 部未能确认 TMDB 内容实体，报告见 `data/curation/douban-quality-report.json`。
 - 新增剧集池：2,374 部 `mediaType=series`，其中 839 部含 Animation 题材；电影为 `mediaType=movie`。内容类型会进入召回硬筛选，前端提供电影/剧集下拉区分；剧集记录保存单集时长、季数和集数。
 - 召回策略版本 `RECALL_VERSION=v4-500`，已写入 Worker / 本地缓存键，避免命中旧算法的 24 小时缓存。
 - 19 项测试通过。本轮同片库单条真实需求完成 100/500 候选对照；详细证据在 VERIFICATION.md 与 `data/eval/benchmark-500.json`。

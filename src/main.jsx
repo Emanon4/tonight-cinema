@@ -383,7 +383,7 @@ function App() {
                   aria-label="描述观影需求"
                   value={query}
                   onChange={(e) => setQuery(e.target.value)}
-                  placeholder="比如：有点孤独，但看完会想拥抱生活的电影"
+                  placeholder="比如：有点孤独，但看完会想拥抱生活的电影或剧集"
                   maxLength={300}
                 />
                 <button
@@ -421,7 +421,7 @@ function App() {
               !filters.genre &&
               filters.decade === "all" &&
               !filters.maxRuntime && (
-                <section className="poster-stage" aria-label="今日电影灵感">
+                <section className="poster-stage" aria-label="今日内容灵感">
                   <div className="stage-line" />
                   <span className="stage-label">
                     YOUR NEXT FAVORITE
@@ -939,7 +939,7 @@ function App() {
             >
               文字 CC BY-SA
             </a>
-            。每部电影详情均附原文链接。海报权利归各自权利人。
+            。每条内容均附原文链接。海报权利归各自权利人。
           </p>
         )}
         {movies.some((m) => m.provider === "TMDB") && (
