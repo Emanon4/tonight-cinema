@@ -48,12 +48,12 @@ test("named titles, language, years and rejected genres still hold on the catalo
   assert.equal(green[0].id, "tmdb-54898");
   const zip = retrieve(
     movies,
-    "想看《滑索惊魂》，高空冒险与求生的惊悚电影",
+    "想看《127小时》，高空冒险与求生的惊悚电影",
     {},
     {},
     3,
   );
-  assert.equal(zip[0].id, "tmdb-1482547");
+  assert.equal(zip[0].id, "tmdb-44115");
   const japan = retrieve(movies, "想看一部日本电影，关于家庭和日常", {}, {}, 12);
   assert.ok(japan.filter((m) => m.language === "ja").length >= 8);
   const nineties = retrieve(movies, "90 年代的犯罪片，氛围越浓越好", {}, {}, 24);

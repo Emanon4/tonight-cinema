@@ -1,6 +1,6 @@
 // Load data separately from the Worker bundle and reuse it within this isolate.
-export function toWorkerMovie({id,title,originalTitle,zh,year,runtime,genres,overview,overviewEn,recognition,language,rating,votes}) {
-  return {id,title,originalTitle,zh,year,runtime,genres,overview,overviewEn,recognition,language,rating,votes};
+export function toWorkerMovie({id,title,originalTitle,zh,year,runtime,genres,overview,overviewEn,recognition,language,rating,votes,doubanRating,doubanVotes,doubanSource}) {
+  return {id,title,originalTitle,zh,year,runtime,genres,overview,overviewEn,recognition,language,rating,votes,doubanRating,doubanVotes,doubanSource};
 }
 
 export function createCatalogLoader() {

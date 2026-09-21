@@ -80,6 +80,16 @@ test("all catalog records have unique IDs and source links", () => {
   );
 });
 
+test("quality catalog excludes low-signal records", () => {
+  const movies = JSON.parse(fs.readFileSync("public/data/movies.json"));
+  assert.ok(movies.length > 0);
+  assert.ok(movies.every((m) =>
+    Number(m.doubanRating) > 7.5 ||
+    m.recognition?.length ||
+    (Number(m.rating) >= 7 && Number(m.votes) >= 100),
+  ));
+});
+
 test("null filters and invalid confidence are rejected", () => {
   assert.equal(validInput({ query: "温暖", filters: null }), false);
   assert.throws(() =>

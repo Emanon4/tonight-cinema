@@ -200,10 +200,14 @@ function themeTerms(query, intent = {}) {
 }
 function qualityBonus(m) {
   if ((m.votes || 0) < 40) return 0;
-  return Math.min(
+  const tmdb = Math.min(
     2.5,
     Math.max(0, (m.rating || 0) - 6.2) * 0.45 + Math.log10(m.votes) * 0.28,
   );
+  const douban = Number(m.doubanRating) > 7.5
+    ? Math.min(1.5, (Number(m.doubanRating) - 7.5) * 1.2)
+    : 0;
+  return tmdb + douban;
 }
 function pickCandidates(ranked, limit, langCap) {
   const chosen = [];

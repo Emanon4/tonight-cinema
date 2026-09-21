@@ -664,6 +664,9 @@ function App() {
                     {m.rating > 0 && (
                       <span className="rating">★ {m.rating.toFixed(1)}</span>
                     )}
+                    {m.doubanRating > 7.5 && (
+                      <span className="rating douban-rating">豆瓣 {m.doubanRating.toFixed(1)}</span>
+                    )}
                   </div>
                 </article>
               ))}
@@ -746,6 +749,9 @@ function App() {
                     : "片长资料待补充"}
                   {selected.rating
                     ? ` · TMDB ${selected.rating.toFixed(1)}`
+                    : ""}
+                  {selected.doubanRating > 7.5
+                    ? ` · 豆瓣 ${selected.doubanRating.toFixed(1)}`
                     : ""}
                 </p>
                 <h3>故事从这里开始</h3>

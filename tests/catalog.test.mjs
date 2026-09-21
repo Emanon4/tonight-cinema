@@ -30,6 +30,8 @@ test('duplicate movie IDs in shards cannot masquerade as a complete catalog',asy
 test('production shards preserve the same recall as the complete local catalog', () => {
  const movies = JSON.parse(fs.readFileSync('public/data/movies.json'));
  const projected = JSON.parse(JSON.stringify(movies.map(toWorkerMovie)));
+ const douban = movies.find(movie => Number(movie.doubanRating) > 7.5);
+ assert.equal(toWorkerMovie(douban).doubanRating, douban.doubanRating);
  for (const query of ['想看一部日本电影，关于家庭和日常', '想看影史经典科幻片', '像《盗梦空间》一样，让我脑子转起来']) {
   assert.deepEqual(retrieve(projected,query,{}, {},500).map(m=>m.id),retrieve(movies,query,{}, {},500).map(m=>m.id));
  }

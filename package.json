@@ -14,7 +14,8 @@
     "predev": "npm run catalog:prepare",
     "prebuild": "npm run catalog:prepare",
     "import:quality": "node scripts/import-quality.mjs",
-    "import:expansion": "node scripts/import-expansion.mjs"
+    "import:expansion": "node scripts/import-expansion.mjs",
+    "import:douban-quality": "node scripts/import-douban-quality.mjs"
   },
   "dependencies": {
     "react": "^19.1.0",

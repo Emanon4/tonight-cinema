@@ -47,9 +47,9 @@
     },
     {
       "id": "zip-wire-title",
-      "query": "想看《滑索惊魂》，高空冒险与求生的惊悚电影",
-      "relevant": ["tmdb-1482547", "tmdb-44115", "tmdb-49047"],
-      "require": ["tmdb-1482547"]
+      "query": "想看《127小时》，高空冒险与求生的惊悚电影",
+      "relevant": ["tmdb-44115", "tmdb-49047"],
+      "require": ["tmdb-44115"]
     },
     {
       "id": "classic-love",

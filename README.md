@@ -10,7 +10,7 @@ Node 22+。先 `npm ci`，再分别运行 `npm run server` 和 `npm run dev`，�
 
 ## 电影库
 
-正式片库来自 TMDB，覆盖多个原始语言，按热度并结合多语言、不同年代获取，优先收录票数至少 10、有海报和简介的电影。当前 50,000 部。这是精选覆盖，不是全球全量库。
+正式片库来自 TMDB，覆盖多个原始语言，按热度并结合多语言、不同年代获取，再经过口碑门槛和资料完整度筛选。当前 7,197 部；筛选前的 TMDB 候选池为 50,000 部。这是精选覆盖，不是全球全量库。
 
 `npm run import:tmdb` 从 `~/.config/tmdb/api-key.txt`（Read Access Token 或 v3 API key）导入多语言电影资料，默认目标 50,000 部。可通过 `CATALOG_TARGET` 调整。扩容保留已有条目和电影 ID，支持磁盘缓存断点续跑，发现页缓存一天；网络暂时失败时有限重试，未达到目标不覆盖现有片库。导入结束重启本地 API；线上需要重新部署 Worker 和前端。不要提交 `.cache` 或 API 密钥。
 
@@ -28,6 +28,12 @@ Node 22+。先 `npm ci`，再分别运行 `npm run server` 和 `npm run dev`，�
 本轮新增 2,296 部，其中 54 部带有上述榜单收录依据。已有 20,000 个 ID 全部保留。详情页展示榜单来源链接；明确提出经典偏好时，召回阶段适当提升已核实榜单作品，Jev 仍根据需求和简介判断匹配。来源制作年份与 TMDB 公映年份可能不同。
 
 榜单来源：[BFI](https://www.bfi.org.uk/sight-and-sound/greatest-films-all-time)、[AFI](https://www.afi.com/afis-100-years-100-movies-10th-anniversary-edition/)。本地核对清单及导入报告在 `data/curation/`，不复制榜单的影评文字。
+
+## 豆瓣高分与质量门槛
+
+`npm run import:douban-quality` 从豆瓣公开电影分类页收集评分超过 7.5 的条目，并用豆瓣公开 subject 接口和 TMDB 片名、原名、年份做实体匹配；能确认是 TMDB 电影的条目全部保留并写入 `doubanRating`、豆瓣来源和分类标签。公开分类范围本轮得到 1,807 个高分条目，匹配或补入 1,513 个，最终目录含 1,497 个去重后的豆瓣高分电影；报告在 `data/curation/douban-quality-report.json`。
+
+其余 TMDB 电影必须达到评分至少 7.0 且有至少 100 个评分，已有 BFI/AFI 认领记录继续保留。没有可靠 TMDB 电影实体的公开豆瓣条目不会用空资料硬加入，因此这份结果不能宣称覆盖豆瓣全站所有评分超过 7.5 的条目；公开检索范围、未匹配数和失败数均写入报告。页面会在卡片和详情中显示豆瓣评分。
 
 ## 部署
 
@@ -56,4 +62,4 @@ Worker 必须验证访问码；CORS 不代替认证。Durable Object 保证共�
 
 `npm run import:expansion` 补充 TMDB 至少 7 分、至少 30 票、截至上一个完整自然年发行的全球电影。必须有海报和非空简介，保留全部已有 ID 与榜单标记；不为凑数降低门槛。导入报告在 `data/curation/expansion-report.json`。评价人数较少的作品口碑证据较弱，不等于公认经典。
 
-本轮补充 23,748 部，总计 50,000 部，覆盖 77 种原始语言（含未知语言代码）。原有 26,252 部及其资料全部保留，详情失败 0。实际速度与证据边界见 [SPEED_REPORT.md](SPEED_REPORT.md)。
+本轮先补充 23,748 部，总计 50,000 部，覆盖 77 种原始语言（含未知语言代码），再按上面的质量规则保留 7,197 部；详情失败 0。实际速度与证据边界见 [SPEED_REPORT.md](SPEED_REPORT.md)。
