@@ -15,7 +15,8 @@
     "prebuild": "npm run catalog:prepare",
     "import:quality": "node scripts/import-quality.mjs",
     "import:expansion": "node scripts/import-expansion.mjs",
-    "import:douban-quality": "node scripts/import-douban-quality.mjs"
+    "import:douban-quality": "node scripts/import-douban-quality.mjs",
+    "import:series": "node scripts/import-tmdb-series.mjs"
   },
   "dependencies": {
     "react": "^19.1.0",

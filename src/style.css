@@ -532,6 +532,13 @@ h1 em:after {
   line-height: 1.5;
   flex-wrap: wrap;
 }
+.media-type {
+  color: var(--accent);
+  font-weight: 600;
+}
+.series-count {
+  color: #8f877b;
+}
 .rating {
   margin-left: auto;
   color: #967446;

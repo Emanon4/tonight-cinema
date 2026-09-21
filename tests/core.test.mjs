@@ -10,6 +10,7 @@ import {
   recommend,
   findReferences,
   CANDIDATE_LIMIT,
+  mediaTypeIntent,
 } from "../server/core.mjs";
 const films = [
   {
@@ -42,6 +43,16 @@ test("Chinese decade and duration parsing", () => {
   assert.equal(parseFilters("90 年代的犯罪片").minYear, 1990);
   assert.equal(parseFilters("2020 年代").minYear, 2020);
   assert.equal(parseFilters("两小时以内").maxRuntime, 120);
+});
+test("movie and series intent stays separated", () => {
+  assert.equal(mediaTypeIntent("想看一部电影"), "movie");
+  assert.equal(mediaTypeIntent("想看高质量动画剧集"), "series");
+  const mixed = [
+    {...films[0], mediaType: "movie"},
+    {...films[0], id: "series", mediaType: "series", title: "Series", zh: "高质量剧集", genres: ["Animation"], overview: "An animated series about friendship."},
+  ];
+  assert.deepEqual(filtered(mixed, {mediaType: "series"}).map(m => m.id), ["series"]);
+  assert.equal(retrieve(mixed, "想看高质量动画剧集", {}, {}, 1)[0].id, "series");
 });
 test("recall finds Chinese dream intent across English metadata", () =>
   assert.equal(retrieve(films, "梦境与现实", {}, {}, 1)[0].id, "1"));

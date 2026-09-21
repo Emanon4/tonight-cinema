@@ -7,7 +7,10 @@ const root = path.resolve(import.meta.dirname, "..");
 const dest = path.join(root, "public/data/movies.json");
 const cacheDir = path.join(root, ".cache/douban");
 fs.mkdirSync(cacheDir, { recursive: true });
-const movies = JSON.parse(fs.readFileSync(dest, "utf8"));
+const movies = JSON.parse(fs.readFileSync(dest, "utf8")).map(movie => ({
+  ...movie,
+  mediaType: movie.mediaType || "movie",
+}));
 
 // These are public Douban classifications. The endpoint returns at most 300
 // subjects per tag; the report records the collected scope instead of claiming
@@ -241,6 +244,10 @@ const report = {
       !(Number(movie.doubanRating) > minimumDoubanRating) && !movie.recognition?.length &&
       Number(movie.rating) >= minimumTmdbRating && Number(movie.votes) >= minimumTmdbVotes,
     ).length,
+  },
+  catalogByType: {
+    movie: result.filter(movie => movie.mediaType === "movie").length,
+    series: result.filter(movie => movie.mediaType === "series").length,
   },
   removedSamples: removed.slice(0, 100).map(movie => ({ id: movie.id, title: movie.zh, rating: movie.rating, votes: movie.votes })),
   unmatchedSamples: unmatched.slice(0, 200).map(item => ({ title: item.row.title, rating: item.row.doubanRating, suggestion: item.suggestion?.sub_title || item.suggestion?.title, error: item.error || item.tmdbError })),

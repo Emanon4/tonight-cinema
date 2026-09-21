@@ -37,4 +37,4 @@ const config=JSON.parse(fs.readFileSync(configPath));
 config.vars.CATALOG_VERSION=version;
 config.vars.CATALOG_COUNT=movies.length;
 fs.writeFileSync(configPath,JSON.stringify(config,null,2)+'\n');
-console.log(`Prepared ${movies.length} films; browser index ${(Buffer.byteLength(JSON.stringify(index))/1024/1024).toFixed(2)} MiB; ${parts.length} worker shards`);
+console.log(`Prepared ${movies.length} titles; browser index ${(Buffer.byteLength(JSON.stringify(index))/1024/1024).toFixed(2)} MiB; ${parts.length} worker shards`);

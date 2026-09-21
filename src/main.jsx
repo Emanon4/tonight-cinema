@@ -28,8 +28,10 @@ const examples = [
   "想看一部温暖的电影，给今天收个好尾",
   "像《盗梦空间》一样，让我脑子转起来",
   "90 年代的犯罪片，氛围越浓越好",
-  "关于孤独、城市和人与人相遇的故事",
+  "想看一部高质量动画剧集，慢慢追完",
 ];
+const mediaTypeLabels = { movie: "电影", series: "剧集" };
+const mediaLabel = (movie) => mediaTypeLabels[movie.mediaType || "movie"] || "内容";
 const featured = [
   "The Grand Budapest Hotel",
   "Interstellar",
@@ -100,6 +102,7 @@ function App() {
     ),
     [health, setHealth] = useState(null),
     [filters, setFilters] = useState({
+      mediaType: "",
       genre: "",
       decade: "all",
       maxRuntime: "",
@@ -120,7 +123,7 @@ function App() {
         return r.json();
       })
       .then(setMovies)
-      .catch(() => setError("片库加载失败，请刷新页面重试。"));
+      .catch(() => setError("内容库加载失败，请刷新页面重试。"));
     fetch(BASE + "config.json", {cache:"no-store"})
       .then((r) => r.json())
       .then((c) => setApiBase(import.meta.env.DEV ? "" : c.apiBase || ""))
@@ -171,7 +174,7 @@ function App() {
           for (const row of rows) detailCache.current.set(row.id, row);
         }
         const detail = detailCache.current.get(id);
-        if (!detail) throw Error("暂未找到这部电影的详细资料。");
+        if (!detail) throw Error("暂未找到这部内容的详细资料。");
         if (!cancelled) setSelected(current => current?.id === id ? {...current, ...detail} : current);
       } catch (error) {
         if (!cancelled) setSelected(current => current?.id === id ? {...current, detailError: error.message} : current);
@@ -221,7 +224,7 @@ function App() {
     setError("");
     setMeta(null);
     setView("discover");
-    setFilters({ genre: "", decade: "all", maxRuntime: "" });
+    setFilters({ mediaType: "", genre: "", decade: "all", maxRuntime: "" });
     setMore(24);
   }
   async function search(text = query, override = filters) {
@@ -264,7 +267,7 @@ function App() {
       const data = await r.json();
       if (!r.ok) throw Error(data.error || "筛选暂时失败。");
       if (rid !== requestId.current) return;
-      if (data.results.some(r => !movies.some(m => m.id === r.id))) throw Error("电影库刚刚更新，请刷新页面后重新选片。");
+      if (data.results.some(r => !movies.some(m => m.id === r.id))) throw Error("内容库刚刚更新，请刷新页面后重新选片。");
       setResults(data.results);
       setMeta(data);
     } catch (e) {
@@ -303,7 +306,7 @@ function App() {
         ? results
             .map((r) => ({ ...byId.get(r.id), match: r }))
             .filter((m) => m.id && !hidden.has(m.id))
-        : filters.genre || filters.decade !== "all" || filters.maxRuntime
+        : filters.mediaType || filters.genre || filters.decade !== "all" || filters.maxRuntime
           ? all.slice(0, more)
           : [
               ...picks,
@@ -331,7 +334,7 @@ function App() {
             className={view === "discover" ? "active" : ""}
             onClick={() => setView("discover")}
           >
-            发现电影
+            发现内容
           </button>
           <button
             className={view === "saved" ? "active" : ""}
@@ -365,7 +368,7 @@ function App() {
                 <span className="asterisk">✳</span>
               </h1>
               <p className="intro">
-                把心情交给一句话。让下一部电影，刚好懂你。
+                把心情交给一句话，让电影或剧集刚好懂你。
               </p>
               <form
                 className="searchbox"
@@ -409,11 +412,12 @@ function App() {
               <div className="hero-note">
                 <Sparkles size={12} />
                 {movies.length
-                  ? `${movies.length.toLocaleString()} 部电影，等一句你的心情`
-                  : "正在打开电影库…"}
+                  ? `${movies.length.toLocaleString()} 部电影与剧集，等一句你的心情`
+                  : "正在打开内容库…"}
               </div>
             </section>
             {!activeQuery &&
+              !filters.mediaType &&
               !filters.genre &&
               filters.decade === "all" &&
               !filters.maxRuntime && (
@@ -489,7 +493,7 @@ function App() {
                       ? "已经看过"
                       : "不太合适"
                   : activeQuery
-                    ? "为这一刻选的电影"
+                    ? "为这一刻选的内容"
                     : "慢慢挑，总会遇见"}
               </h2>
             </div>
@@ -511,13 +515,25 @@ function App() {
             <div className="filters">
               <SlidersHorizontal size={15} />
               <label>
-                <span className="sr-only">电影类型</span>
+                <span className="sr-only">内容类型</span>
                 <select
-                  aria-label="电影类型"
+                  aria-label="内容类型"
+                  value={filters.mediaType}
+                  onChange={(e) => changeFilter("mediaType", e.target.value)}
+                >
+                  <option value="">电影与剧集</option>
+                  <option value="movie">电影</option>
+                  <option value="series">剧集</option>
+                </select>
+              </label>
+              <label>
+                <span className="sr-only">内容题材</span>
+                <select
+                  aria-label="内容题材"
                   value={filters.genre}
                   onChange={(e) => changeFilter("genre", e.target.value)}
                 >
-                  <option value="">所有类型</option>
+                  <option value="">所有题材</option>
                   {Object.entries(genreLabels).map(([k, v]) => (
                     <option key={k} value={k}>
                       {v}
@@ -582,7 +598,7 @@ function App() {
                     ? "来自本次条件的缓存"
                     : `Jev 从 ${meta.candidateCount} 部候选中筛选 · ${(meta.elapsedMs / 1000).toFixed(1)}s`}
                   {hiddenCount
-                    ? ` · 已隐藏 ${hiddenCount} 部你标为看过或不合适的电影`
+                    ? ` · 已隐藏 ${hiddenCount} 部你标为看过或不合适的内容`
                     : ""}
                 </small>
               </div>
@@ -591,7 +607,7 @@ function App() {
               <div className="loading-state">
                 <LoaderCircle className="spin" />
                 <h3>正在替今晚选一个世界</h3>
-                <p>先找相关电影，再让 Jev 阅读简介、判断匹配。</p>
+                <p>先找相关内容，再让 Jev 阅读简介、判断匹配。</p>
                 <button
                   onClick={() => {
                     controller.current?.abort();
@@ -653,14 +669,21 @@ function App() {
                   </button>
                   {m.zh && <div className="original-title">{m.title}</div>}
                   <div className="movie-meta">
+                    <span className="media-type">{mediaLabel(m)}</span>
+                    <span>·</span>
                     <span>{m.year}</span>
                     <span>·</span>
                     <span>
                       {m.genres
                         .slice(0, 2)
                         .map((g) => genreLabels[g] || g)
-                        .join(" / ") || "电影"}
+                        .join(" / ") || mediaLabel(m)}
                     </span>
+                    {m.mediaType === "series" && (m.seasons || m.episodes) && (
+                      <span className="series-count">
+                        {m.seasons ? `${m.seasons} 季` : ""}{m.seasons && m.episodes ? " · " : ""}{m.episodes ? `${m.episodes} 集` : ""}
+                      </span>
+                    )}
                     {m.rating > 0 && (
                       <span className="rating">★ {m.rating.toFixed(1)}</span>
                     )}
@@ -676,19 +699,19 @@ function App() {
             <div className="empty">
               <Film size={32} />
               <h3>
-                {view === "saved" ? "片单还是空的" : "这次还没有合适的电影"}
+                {view === "saved" ? "片单还是空的" : "这次还没有合适的内容"}
               </h3>
               <p>
                 {view === "saved"
                   ? shelf === "want"
                     ? "点一下海报上的书签，把想看的留给下一晚。"
-                    : "在电影详情里可以改回想看，或取消这条记录。"
+                    : "在详情里可以改回想看，或取消这条记录。"
                   : filters.maxRuntime
-                    ? "片长未知的电影不会被当作符合条件。试着放宽片长限制。"
+                    ? "片长未知的内容不会被当作符合条件。试着放宽片长限制。"
                     : "试着少加一个限制，给故事一点相遇的余地。"}
               </p>
               <button onClick={reset}>
-                回到电影库 <ArrowRight size={15} />
+                回到内容库 <ArrowRight size={15} />
               </button>
             </div>
           )}
@@ -699,7 +722,7 @@ function App() {
                 className="load-more"
                 onClick={() => setMore((m) => m + 24)}
               >
-                再遇见一些电影 <ArrowRight size={15} />
+                再遇见一些内容 <ArrowRight size={15} />
               </button>
             )}
         </section>
@@ -719,13 +742,13 @@ function App() {
           if (e.target === modal.current) setSelected(null);
         }}
         className="movie-dialog"
-        aria-label="电影详情"
+        aria-label="内容详情"
       >
         {selected && (
           <>
             <button
               className="close"
-              aria-label="关闭电影详情"
+              aria-label="关闭内容详情"
               onClick={() => setSelected(null)}
             >
               <X />
@@ -736,7 +759,7 @@ function App() {
                 <div className="eyebrow">TONIGHT'S POSSIBLE WORLD</div>
                 <h2>{selected.zh || selected.title}</h2>
                 <p className="detail-original">
-                  {selected.title} · {selected.year}
+                  {mediaLabel(selected)} · {selected.title} · {selected.year}
                 </p>
                 <div className="tags">
                   {selected.genres.map((g) => (
@@ -745,8 +768,15 @@ function App() {
                 </div>
                 <p className="detail-stats">
                   {selected.runtime
-                    ? `${selected.runtime} 分钟`
-                    : "片长资料待补充"}
+                    ? selected.mediaType === "series"
+                      ? `单集约 ${selected.runtime} 分钟`
+                      : `${selected.runtime} 分钟`
+                    : selected.mediaType === "series"
+                      ? "单集时长待补充"
+                      : "片长资料待补充"}
+                  {selected.mediaType === "series" && (selected.seasons || selected.episodes)
+                    ? ` · ${selected.seasons ? `${selected.seasons} 季` : ""}${selected.seasons && selected.episodes ? " · " : ""}${selected.episodes ? `${selected.episodes} 集` : ""}`
+                    : ""}
                   {selected.rating
                     ? ` · TMDB ${selected.rating.toFixed(1)}`
                     : ""}
@@ -881,14 +911,13 @@ function App() {
         <Film />
         <h2>每一个故事，都有出处。</h2>
         <p>
-          当前收录 {movies.length.toLocaleString()} 部电影。
+          当前收录 {movies.length.toLocaleString()} 部电影与剧集。
           {movies.some((m) => m.provider === "TMDB")
-            ? "电影资料与海报来自 TMDB。"
+            ? "电影与剧集资料、海报来自 TMDB。"
             : "启动片库来自 Wikipedia 的美国电影资料，范围以 1950—2022 年为主，不代表全球片库；少量中文片名为人工补充。"}
         </p>
         <p>
-          Jev
-          阅读候选电影简介来判断匹配，不会直接观看电影。简介不完整时，情绪判断也可能有偏差；中文效果仍在持续验证。
+          Jev 阅读候选电影或剧集简介来判断匹配，不会直接观看正片。简介不完整时，情绪判断也可能有偏差；中文效果仍在持续验证。
         </p>
         <p>
           想看、看过与不合适都只保存在当前浏览器，清除浏览器数据会移除。这些记录不会上传给站长，也不表示模型已经学习。

@@ -4,8 +4,8 @@
   "compatibility_date": "2026-09-20",
   "vars": {
     "ALLOWED_ORIGIN": "https://emanon4.github.io",
-    "CATALOG_VERSION": "e500c626fd975652",
-    "CATALOG_COUNT": 7197
+    "CATALOG_VERSION": "3fdc62f30bca0a51",
+    "CATALOG_COUNT": 9574
   },
   "durable_objects": {
     "bindings": [
