@@ -5,6 +5,8 @@ import { mediaLabel, genreName, seriesCount, matchLabel } from "./format.js";
 
 export default function MovieCard({ movie: m, index, saved, onOpen, onToggleSave }) {
   const count = seriesCount(m);
+  // The meta row already shows the Douban rating.
+  const chips = (m.match?.reasons || []).filter((r) => !r.startsWith("豆瓣")).slice(0, 3);
   return (
     <article className="movie-card" style={{ "--delay": `${Math.min(index, 11) * 35}ms` }}>
       <div className="poster-wrap">
@@ -45,9 +47,9 @@ export default function MovieCard({ movie: m, index, saved, onOpen, onToggleSave
           <span className="rating douban-rating">豆瓣 {m.doubanRating.toFixed(1)}</span>
         )}
       </div>
-      {m.match?.reasons?.length > 0 && (
+      {chips.length > 0 && (
         <ul className="reason-chips" aria-label="推荐依据">
-          {m.match.reasons.slice(0, 3).map((r) => (
+          {chips.map((r) => (
             <li key={r}>{r}</li>
           ))}
         </ul>
