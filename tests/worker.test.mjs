@@ -21,9 +21,14 @@ globalThis.fetch = async (url, options) => {
   if (jevMode === "fail") return new Response("{}", { status: 500 });
   if (!payload.state.movies)
     return Response.json({ answers: { genre: { type: "choice", choice: "any" }, mood: { type: "choice", choice: "unspecified" } } });
-  return Response.json({
-    answers: Object.fromEntries(payload.state.movies.map((m) => [m.id, { type: "score", score: 2.4, confidence: 0.8 }])),
-  });
+  const answers = {};
+  for (const key of Object.keys(payload.questions)) {
+    if (key === "best") answers.best = { type: "choice", choice: payload.state.movies[0].id, confidence: 0.8, probabilities: Object.fromEntries(payload.state.movies.map((m, i) => [m.id, i ? 0.01 : 0.7])) };
+    else if (key.endsWith("::aspect")) answers[key] = { type: "choice", choice: "theme", confidence: 0.7 };
+    else if (key.includes("::avoid::")) answers[key] = { type: "noul", noul: 0.1 };
+    else answers[key] = { type: "score", score: 2.4, confidence: 0.8 };
+  }
+  return Response.json({ answers });
 };
 
 // Paraphrases (same characters once punctuation and spaces are removed) share a

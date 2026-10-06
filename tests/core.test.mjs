@@ -10,6 +10,7 @@ import {
   recommend,
   findReferences,
   CANDIDATE_LIMIT,
+  RANKING_CONCURRENCY,
   mediaTypeIntent,
   jev,
   readIntent,
@@ -172,7 +173,23 @@ test("quoted similar-to requests exclude the reference film", () => {
 });
 
 const intentAnswers = {genre: {type: 'choice', choice: 'Science Fiction'}, mood: {type: 'choice', choice: 'mindbending'}};
-const isRerank = (payload) => Object.keys(payload.questions).some(k => k.endsWith('::aspect'));
+const isRerank = (payload) => 'best' in payload.questions;
+// Answers every question a payload asks: overall and facet scores, veto nouls,
+// the listwise pick and aspects.
+function answerAll(payload, scoreOf, { best, veto = () => false } = {}) {
+  const answers = {};
+  for (const key of Object.keys(payload.questions)) {
+    const id = key.split('::')[0];
+    if (key === 'best') {
+      const ids = Object.keys(payload.questions.best.criteria);
+      answers.best = {type: 'choice', choice: best || ids[0], confidence: 0.8,
+        probabilities: Object.fromEntries(ids.map(x => [x, x === (best || ids[0]) ? 0.9 : 0.1 / ids.length]))};
+    } else if (key.endsWith('::aspect')) answers[key] = {type: 'choice', choice: 'theme', confidence: 0.7};
+    else if (key.includes('::avoid::')) answers[key] = {type: 'noul', noul: veto(id, key.split('::')[2]) ? 0.9 : 0.1};
+    else answers[key] = {type: 'score', score: scoreOf(id, key), confidence: 0.8};
+  }
+  return answers;
+}
 
 test('1000 candidates are all scored exactly once, then the shortlist is reranked together', async () => {
   const movies = Array.from({length: 1100}, (_, i) => ({...films[0], id: `m${i}`, title: `Movie ${i}`, zh: `影片${i}`, language: 'en'}));
@@ -183,18 +200,13 @@ test('1000 candidates are all scored exactly once, then the shortlist is reranke
     if (!payload.state.movies) return Response.json({answers: intentAnswers});
     if (isRerank(payload)) {
       reranks++;
-      return Response.json({answers: Object.fromEntries(payload.state.movies.flatMap(m => [
-        [m.id, {type: 'score', score: m.id === 'm99' ? 3 : 2.2, confidence: 0.9}],
-        [`${m.id}::aspect`, {type: 'choice', choice: 'theme'}],
-      ]))});
+      return Response.json({answers: answerAll(payload, () => 0, {best: 'm99'})});
     }
     active++; peak = Math.max(peak, active);
     sizes.push(payload.state.movies.length);
     await new Promise(resolve => setTimeout(resolve, 5));
-    const answers = Object.fromEntries(payload.state.movies.map(m => {
-      seen.push(m.id);
-      return [m.id, {type: 'score', score: m.id === 'm99' ? 3 : 2, confidence: 0.9}];
-    }));
+    seen.push(...payload.state.movies.map(m => m.id));
+    const answers = answerAll(payload, id => id === 'm99' ? 3 : 2);
     active--;
     return Response.json({answers});
   }});
@@ -203,7 +215,7 @@ test('1000 candidates are all scored exactly once, then the shortlist is reranke
   assert.equal(new Set(seen).size, 1000);
   assert.equal(seen.length, 1000);
   assert.deepEqual(sizes, Array(50).fill(20));
-  assert.ok(peak <= 5);
+  assert.ok(peak <= RANKING_CONCURRENCY);
   assert.equal(reranks, 1);
   assert.equal(result.reranked, true);
   assert.equal(result.results.length, 12);
@@ -234,7 +246,7 @@ test('a single failed batch out of many returns a labeled partial result', async
     const payload = JSON.parse(options.body);
     if (!payload.state.movies) return Response.json({answers: intentAnswers});
     if (!isRerank(payload) && ++batch === 3) return new Response('{}', {status: 500});
-    return Response.json({answers: Object.fromEntries(payload.state.movies.map(m => [m.id, {type: 'score', score: 2.5, confidence: 0.8}]))});
+    return Response.json({answers: answerAll(payload, () => 2.5)});
   }});
   assert.deepEqual(result.partial, {failedBatches: 1, totalBatches: 50});
   assert.equal(result.results.length, 12);
@@ -256,7 +268,7 @@ test('a failed rerank keeps the first-pass Jev ranking', async () => {
     const payload = JSON.parse(options.body);
     if (!payload.state.movies) return Response.json({answers: intentAnswers});
     if (isRerank(payload)) return new Response('{}', {status: 500});
-    return Response.json({answers: Object.fromEntries(payload.state.movies.map(m => [m.id, {type: 'score', score: m.id === 'm7' ? 2.9 : 2, confidence: 0.8}]))});
+    return Response.json({answers: answerAll(payload, id => id === 'm7' ? 2.9 : 2)});
   }});
   assert.equal(result.reranked, false);
   assert.equal(result.results[0].id, 'm7');
@@ -272,7 +284,7 @@ test('Jev-detected avoidance removes rejected genres from recall', async () => {
     const payload = JSON.parse(options.body);
     if (!payload.state.movies) return Response.json({answers: {...intentAnswers, genre: {type: 'choice', choice: 'any'}, avoidGenre: {type: 'choice', choice: 'Horror'}, avoidScary: {type: 'noul', noul: 0.9}}});
     ids.push(...payload.state.movies.map(m => m.id));
-    return Response.json({answers: Object.fromEntries(payload.state.movies.map(m => [m.id, {type: 'score', score: 2, confidence: 0.8}]))});
+    return Response.json({answers: answerAll(payload, () => 2)});
   }});
   assert.equal(ids[0], 'calm');
   const intent = readIntent({answers: {...intentAnswers, avoidGenre: {choice: 'Horror'}, avoidSad: {type: 'noul', noul: 0.2}}});
@@ -321,7 +333,7 @@ test('personal exclusions, taste profile and spare results', async () => {
       const payload = JSON.parse(options.body);
       if (!payload.state.movies) return Response.json({answers: intentAnswers});
       if (!isRerank(payload)) seen.push(...payload.state.movies.map(m => m.id));
-      return Response.json({answers: Object.fromEntries(payload.state.movies.map(m => [m.id, {type: 'score', score: 2.2, confidence: 0.8}]))});
+      return Response.json({answers: answerAll(payload, () => 2.2)});
     }});
   assert.ok(!seen.includes('m0') && !seen.includes('m1'));
   assert.equal(seen[0], 'm59');
@@ -344,4 +356,22 @@ test('query signatures separate constraint changes but not punctuation', () => {
   assert.notEqual(querySignature('想看一部日本电影，关于家庭和日常'), querySignature('想看一部韩国电影，关于家庭和日常'));
   assert.notEqual(querySignature('孤独但不悲伤'), querySignature('孤独又悲伤'));
   assert.notEqual(querySignature('像《盗梦空间》一样'), querySignature('像《星际穿越》一样'));
+});
+
+test('facets are scored separately and vetoes remove what the visitor asked to avoid', async () => {
+  const movies = [
+    {...films[0], id: 'gentle', overview: 'A quiet friendship in a seaside town.', rating: 8, votes: 900},
+    {...films[0], id: 'tragic', overview: 'A quiet friendship ends in grief and mourning.', rating: 8, votes: 900},
+  ];
+  let questions;
+  const result = await recommend({query: '孤独但不悲伤', movies, key: 'test', fetcher: async (url, options) => {
+    const payload = JSON.parse(options.body);
+    if (!payload.state.movies) return Response.json({answers: {...intentAnswers, mood: {type: 'choice', choice: 'lonely'}}});
+    if (!isRerank(payload)) questions = Object.keys(payload.questions);
+    return Response.json({answers: answerAll(payload, (id, key) => key.endsWith('::mood') ? 3 : 2.4, {veto: (id, name) => id === 'tragic' && name === 'sad'})});
+  }});
+  assert.ok(questions.includes('gentle::theme') && questions.includes('gentle::mood') && questions.includes('gentle::avoid::sad'));
+  assert.deepEqual(result.results.map(r => r.id), ['gentle']);
+  assert.equal(result.vetoed, 1);
+  assert.ok(result.results[0].score > result.results[0].overall);
 });
