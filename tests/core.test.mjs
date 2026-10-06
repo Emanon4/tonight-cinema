@@ -210,7 +210,7 @@ test('1000 candidates are all scored exactly once, then the shortlist is reranke
     active--;
     return Response.json({answers});
   }});
-  assert.equal(CANDIDATE_LIMIT, 1000);
+  assert.equal(CANDIDATE_LIMIT, 1000); // keyword-only fallback
   assert.equal(result.candidateCount, 1000);
   assert.equal(new Set(seen).size, 1000);
   assert.equal(seen.length, 1000);
@@ -358,7 +358,7 @@ test('query signatures separate constraint changes but not punctuation', () => {
   assert.notEqual(querySignature('像《盗梦空间》一样'), querySignature('像《星际穿越》一样'));
 });
 
-test('facets are scored separately and vetoes remove what the visitor asked to avoid', async () => {
+test('near-certain vetoes remove what the visitor asked to avoid', async () => {
   const movies = [
     {...films[0], id: 'gentle', overview: 'A quiet friendship in a seaside town.', rating: 8, votes: 900},
     {...films[0], id: 'tragic', overview: 'A quiet friendship ends in grief and mourning.', rating: 8, votes: 900},
@@ -370,8 +370,7 @@ test('facets are scored separately and vetoes remove what the visitor asked to a
     if (!isRerank(payload)) questions = Object.keys(payload.questions);
     return Response.json({answers: answerAll(payload, (id, key) => key.endsWith('::mood') ? 3 : 2.4, {veto: (id, name) => id === 'tragic' && name === 'sad'})});
   }});
-  assert.ok(questions.includes('gentle::theme') && questions.includes('gentle::mood') && questions.includes('gentle::avoid::sad'));
+  assert.ok(questions.includes('gentle::avoid::sad') && !questions.includes('gentle::theme'));
   assert.deepEqual(result.results.map(r => r.id), ['gentle']);
   assert.equal(result.vetoed, 1);
-  assert.ok(result.results[0].score > result.results[0].overall);
 });

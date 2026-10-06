@@ -36,17 +36,20 @@ export const decadeOptions = [
   ["2010", "2010 年代"],
   ["2020", "2020 年代"],
 ];
-export const RECALL_VERSION = "v8-composite";
+export const RECALL_VERSION = "v8-tuned";
 // Without semantic vectors the heuristic recall needs a wide net; with them a
 // hybrid shortlist of 500 recalls nearly as well with half the Jev calls (data/eval/hybrid-recall.json).
 export const CANDIDATE_LIMIT = 1000;
-export const SEMANTIC_CANDIDATE_LIMIT = 1000;
+export const SEMANTIC_CANDIDATE_LIMIT = 500;
 export const RANKING_BATCH_SIZE = 20;
 export const RANKING_CONCURRENCY = 10;
 export const RERANK_SIZE = 30;
 // Final listwise choice: its probability lifts the clearest fits.
 export const LISTWISE_WEIGHT = 0.6;
-export const VETO_THRESHOLD = 0.6;
+// Only near-certain vetoes remove a title; a hint of melancholy is not "sad".
+export const VETO_THRESHOLD = 0.85;
+// Audience/critic standing keeps weak-signal titles from winning on fit alone.
+export const QUALITY_WEIGHT = 0.15;
 export const SCORE_THRESHOLD = 1.8;
 export const RESULT_LIMIT = 12;
 export const MORE_LIMIT = 36;
@@ -591,13 +594,9 @@ function rankingState(query, movies, references) {
 // yes/no vetoes for what the visitor asked to avoid.
 export function rankingFacets(query, intent = {}, references = []) {
   const a = analyzeQuery([], query, {}, { ...intent, references });
-  const facets = {
-    theme: "How well does its subject matter and story situation match what the request describes? Ignore mood and format here.",
-  };
-  if (intent.mood && intent.mood !== "unspecified" && themes[intent.mood])
-    facets.mood = `How well do its tone and atmosphere match the mood the request asks for (roughly: ${themes[intent.mood]})?`;
-  if (references.length)
-    facets.ref = "How close is it in spirit, themes and viewing experience to referenceMovies (not merely the same genre)?";
+  // Separate facet scores did not beat the single overall score in the A/B
+  // (data/eval/ranking-ab.json), so the tuned version asks for none.
+  const facets = {};
   const vetoes = {};
   if (a.neg.words.some((w) => sadWords.includes(w)) || intent.avoid?.sad)
     vetoes.sad = "According to its description, is this story predominantly sad, tragic, grief-stricken or tear-jerking?";
@@ -866,7 +865,7 @@ export async function recommend({
         .map((x) => {
           const p = Number(probs[x.id]) || 0;
           const aspect = rerankResponse.answers[`${x.id}::aspect`]?.choice;
-          return { ...x, listwise: p, score: x.score + LISTWISE_WEIGHT * (p / top), ...(aspect in aspectLabels ? { aspect } : {}) };
+          return { ...x, listwise: p, score: x.score + LISTWISE_WEIGHT * (p / top) + QUALITY_WEIGHT * qualityBonus(byId.get(x.id)), ...(aspect in aspectLabels ? { aspect } : {}) };
         })
         .sort((a, b) => b.score - a.score || b.confidence - a.confidence ||
           qualityBonus(byId.get(b.id)) - qualityBonus(byId.get(a.id)));
