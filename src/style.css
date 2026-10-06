@@ -135,22 +135,24 @@ footer {
 .brand {
   display: flex;
   align-items: center;
-  gap: 10px;
-  font-weight: 800;
+  gap: 12px;
   font-size: 17px;
-  letter-spacing: 0.5px;
   min-height: 44px;
 }
 .brand-mark {
-  width: 30px;
-  height: 30px;
-  border-radius: 9px;
-  background: var(--ink);
-  color: var(--night);
-  display: grid;
-  place-items: center;
-  font-size: 15px;
-  font-weight: 900;
+  display: block;
+  width: 42px;
+  height: 26px;
+}
+.brand-mark svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.brand-name {
+  font-family: "Noto Sans SC", "Inter", sans-serif;
+  font-weight: 700;
+  letter-spacing: 3px;
 }
 .connection {
   display: flex;

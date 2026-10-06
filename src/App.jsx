@@ -22,6 +22,10 @@ import { readJson, writeJson, readToken, saveToken, tokenRemembered } from "./li
 import { emptyFilters, readUrlState, urlFor, hasFilters, sameFilters } from "./lib/urlState.js";
 import { narrowResults, genreOptions, missingIds } from "./lib/results.js";
 import { requestRecommendation, progressText } from "./lib/api.js";
+import { stripSvg } from "./brand.js";
+
+// Static, generated from our own geometry — safe to inline.
+const brandMark = stripSvg();
 
 const BASE = import.meta.env?.BASE_URL || "./";
 const examples = [
@@ -353,8 +357,8 @@ export default function App({ initialMovies = [], initialUrl = "" }) {
       </div>
       <header className="topbar">
         <button className="brand" onClick={reset} aria-label="今夜放映首页">
-          <span className="brand-mark">夜</span>
-          今夜放映
+          <span className="brand-mark" dangerouslySetInnerHTML={{ __html: brandMark }} />
+          <span className="brand-name">今夜放映</span>
         </button>
         <button
           className="connection"
