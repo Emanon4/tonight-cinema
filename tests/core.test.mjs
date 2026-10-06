@@ -11,6 +11,12 @@ import {
   findReferences,
   CANDIDATE_LIMIT,
   mediaTypeIntent,
+  jev,
+  readIntent,
+  negatedAt,
+  normalizeFilters,
+  normalizeQuery,
+  explain,
 } from "../server/core.mjs";
 const films = [
   {
@@ -76,6 +82,7 @@ test("upstream failure never turns into fake recommendations", async () => {
       query: "温暖",
       movies: films,
       key: "test",
+      retryDelayMs: 1,
       fetcher: async () => new Response("{}", { status: 429 }),
     }),
     /请求较多/,
@@ -162,13 +169,23 @@ test("quoted similar-to requests exclude the reference film", () => {
   );
 });
 
-test('1000 candidates are all scored exactly once, including the last batch', async () => {
+const intentAnswers = {genre: {type: 'choice', choice: 'Science Fiction'}, mood: {type: 'choice', choice: 'mindbending'}};
+const isRerank = (payload) => Object.keys(payload.questions).some(k => k.endsWith('::aspect'));
+
+test('1000 candidates are all scored exactly once, then the shortlist is reranked together', async () => {
   const movies = Array.from({length: 1100}, (_, i) => ({...films[0], id: `m${i}`, title: `Movie ${i}`, zh: `影片${i}`, language: 'en'}));
   const seen = [], sizes = [];
-  let active = 0, peak = 0;
+  let active = 0, peak = 0, reranks = 0;
   const result = await recommend({query: '梦境电影', movies, key: 'test', fetcher: async (url, options) => {
     const payload = JSON.parse(options.body);
-    if (!payload.state.movies) return Response.json({answers: {genre: {choice: 'Science Fiction'}, mood: {choice: 'mindbending'}}});
+    if (!payload.state.movies) return Response.json({answers: intentAnswers});
+    if (isRerank(payload)) {
+      reranks++;
+      return Response.json({answers: Object.fromEntries(payload.state.movies.flatMap(m => [
+        [m.id, {type: 'score', score: m.id === 'm99' ? 3 : 2.2, confidence: 0.9}],
+        [`${m.id}::aspect`, {type: 'choice', choice: 'theme'}],
+      ]))});
+    }
     active++; peak = Math.max(peak, active);
     sizes.push(payload.state.movies.length);
     await new Promise(resolve => setTimeout(resolve, 5));
@@ -185,21 +202,110 @@ test('1000 candidates are all scored exactly once, including the last batch', as
   assert.equal(seen.length, 1000);
   assert.deepEqual(sizes, Array(50).fill(20));
   assert.ok(peak <= 5);
+  assert.equal(reranks, 1);
+  assert.equal(result.reranked, true);
   assert.equal(result.results.length, 12);
   assert.equal(result.results[0].id, 'm99');
-  assert.equal(result.modelRequestCount, 51);
+  assert.equal(result.results[0].aspect, 'theme');
+  assert.ok(Array.isArray(result.results[0].reasons));
+  assert.equal(result.modelRequestCount, 52);
+  assert.equal(result.partial, undefined);
 });
 
-test('ranking error stops queued batches without retries or partial recommendations', async () => {
+test('ranking failures beyond the tolerance stop queued batches and fail closed', async () => {
   let rankingCalls = 0;
   const movies = Array.from({length: 100}, (_, i) => ({...films[0], id: `m${i}`}));
-  await assert.rejects(recommend({query: '梦境电影', movies, key: 'test', batchSize: 8, concurrency: 2, fetcher: async (url, options) => {
+  await assert.rejects(recommend({query: '梦境电影', movies, key: 'test', batchSize: 8, concurrency: 2, retryDelayMs: 1, fetcher: async (url, options) => {
     const payload = JSON.parse(options.body);
-    if (!payload.state.movies) return Response.json({answers: {genre: {choice: 'Science Fiction'}, mood: {choice: 'mindbending'}}});
+    if (!payload.state.movies) return Response.json({answers: intentAnswers});
     rankingCalls++;
-    if (rankingCalls === 1) return new Response('{}', {status: 429});
-    await new Promise(resolve => setTimeout(resolve, 10));
-    return Response.json({answers: Object.fromEntries(payload.state.movies.map(m => [m.id, {type:'score', score:2, confidence:0.8}]))});
-  }}), /请求较多/);
-  assert.equal(rankingCalls, 2);
+    return new Response('{}', {status: 503});
+  }}), /暂不可用/);
+  // 13 batches tolerate one failure; the second failure stops the queue.
+  assert.ok(rankingCalls <= 4, `stopped after ${rankingCalls} calls`);
+});
+
+test('a single failed batch out of many returns a labeled partial result', async () => {
+  const movies = Array.from({length: 1000}, (_, i) => ({...films[0], id: `m${i}`}));
+  let batch = 0;
+  const result = await recommend({query: '梦境电影', movies, key: 'test', retryDelayMs: 1, fetcher: async (url, options) => {
+    const payload = JSON.parse(options.body);
+    if (!payload.state.movies) return Response.json({answers: intentAnswers});
+    if (!isRerank(payload) && ++batch === 3) return new Response('{}', {status: 500});
+    return Response.json({answers: Object.fromEntries(payload.state.movies.map(m => [m.id, {type: 'score', score: 2.5, confidence: 0.8}]))});
+  }});
+  assert.deepEqual(result.partial, {failedBatches: 1, totalBatches: 50});
+  assert.equal(result.results.length, 12);
+});
+
+test('429 and 529 are retried once before failing', async () => {
+  let calls = 0;
+  const data = await jev({}, 'k', async () => (++calls === 1 ? new Response('{}', {status: 529}) : Response.json({answers: {}})), {retryDelayMs: 1});
+  assert.deepEqual(data.answers, {});
+  assert.equal(calls, 2);
+  calls = 0;
+  await assert.rejects(jev({}, 'k', async () => { calls++; return new Response('{}', {status: 429}); }, {retryDelayMs: 1}), /请求较多/);
+  assert.equal(calls, 2);
+});
+
+test('a failed rerank keeps the first-pass Jev ranking', async () => {
+  const movies = Array.from({length: 30}, (_, i) => ({...films[0], id: `m${i}`}));
+  const result = await recommend({query: '梦境电影', movies, key: 'test', retryDelayMs: 1, fetcher: async (url, options) => {
+    const payload = JSON.parse(options.body);
+    if (!payload.state.movies) return Response.json({answers: intentAnswers});
+    if (isRerank(payload)) return new Response('{}', {status: 500});
+    return Response.json({answers: Object.fromEntries(payload.state.movies.map(m => [m.id, {type: 'score', score: m.id === 'm7' ? 2.9 : 2, confidence: 0.8}]))});
+  }});
+  assert.equal(result.reranked, false);
+  assert.equal(result.results[0].id, 'm7');
+});
+
+test('Jev-detected avoidance removes rejected genres from recall', async () => {
+  const movies = [
+    {...films[0], id: 'scary', genres: ['Horror'], overview: 'A dream turns into a haunting nightmare.'},
+    {...films[0], id: 'calm', genres: ['Drama'], overview: 'A dream of a quiet seaside summer.'},
+  ];
+  const ids = [];
+  await recommend({query: '想看关于梦的片子，别太吓人', movies, key: 'test', fetcher: async (url, options) => {
+    const payload = JSON.parse(options.body);
+    if (!payload.state.movies) return Response.json({answers: {...intentAnswers, genre: {type: 'choice', choice: 'any'}, avoidGenre: {type: 'choice', choice: 'Horror'}, avoidScary: {type: 'noul', noul: 0.9}}});
+    ids.push(...payload.state.movies.map(m => m.id));
+    return Response.json({answers: Object.fromEntries(payload.state.movies.map(m => [m.id, {type: 'score', score: 2, confidence: 0.8}]))});
+  }});
+  assert.equal(ids[0], 'calm');
+  const intent = readIntent({answers: {...intentAnswers, avoidGenre: {choice: 'Horror'}, avoidSad: {type: 'noul', noul: 0.2}}});
+  assert.deepEqual(intent.avoid.genres, ['Horror']);
+  assert.equal(intent.avoid.sad, false);
+});
+
+test('semantic similarity brings in titles that keyword recall misses', () => {
+  const sample = [
+    {...films[0], id: 'keyword', overview: 'A lonely writer in the city.', genres: ['Drama'], language: 'en'},
+    {...films[0], id: 'semantic', overview: 'Two strangers share a night train and talk until dawn.', genres: ['Romance'], language: 'fr'},
+    ...Array.from({length: 20}, (_, i) => ({...films[0], id: `filler${i}`, overview: 'An unrelated heist.', genres: ['Crime'], language: 'en', rating: 8, votes: 5000})),
+  ];
+  const plain = retrieve(sample, '孤独但不悲伤', {}, {}, 2).map(m => m.id);
+  assert.ok(!plain.includes('semantic'));
+  const semantic = new Map(sample.map(m => [m.id, m.id === 'semantic' ? 0.8 : 0.1]));
+  const fused = retrieve(sample, '孤独但不悲伤', {}, {}, 2, semantic).map(m => m.id);
+  assert.deepEqual(fused.sort(), ['keyword', 'semantic']);
+});
+
+test('negation, decades and pre-1950 filters', () => {
+  assert.equal(negatedAt('不要恐怖片，想看恐怖喜剧', '恐怖'), false);
+  assert.equal(negatedAt('不要恐怖，也别恐怖', '恐怖'), true);
+  assert.deepEqual(parseFilters('', {decade: 'pre1950'}), {maxYear: 1949});
+  assert.deepEqual(parseFilters('', {decade: '1970'}), {minYear: 1970, maxYear: 1979});
+  assert.equal(parseFilters('1980年以前的科幻').maxYear, 1979);
+  assert.equal(parseFilters('1990 年前后').maxYear, undefined);
+  assert.deepEqual(normalizeFilters({genre: 'Nope', decade: '1960', extra: 1}), {mediaType: '', genre: '', decade: '1960', maxRuntime: ''});
+  assert.equal(normalizeQuery('  想看　电影  '), '想看 电影');
+});
+
+test('reasons cite only verifiable signals', () => {
+  const m = {...films[0], language: 'ja', genres: ['Drama', 'Family'], overview: '一个关于家庭与日常的故事。', runtime: 100, doubanRating: 8.8, recognition: [{list: 'BFI Sight and Sound 2022', url: 'https://www.bfi.org.uk/'}]};
+  const reasons = explain(m, '想看日本电影，关于家庭和日常，两小时以内');
+  assert.ok(reasons.includes('日语'));
+  assert.ok(reasons.some(r => r.startsWith('简介提到')));
+  assert.ok(reasons.length <= 4);
 });

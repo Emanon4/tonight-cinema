@@ -16,15 +16,20 @@
     "import:quality": "node scripts/import-quality.mjs",
     "import:expansion": "node scripts/import-expansion.mjs",
     "import:douban-quality": "node scripts/import-douban-quality.mjs",
-    "import:series": "node scripts/import-tmdb-series.mjs"
+    "import:series": "node scripts/import-tmdb-series.mjs",
+    "embeddings": "node scripts/build-embeddings.mjs",
+    "import:recent": "node scripts/import-recent.mjs",
+    "backfill:details": "node scripts/backfill-details.mjs",
+    "catalog:curate": "node scripts/curate-catalog.mjs",
+    "eval": "node scripts/eval-retrieve.mjs"
   },
   "dependencies": {
+    "lucide-react": "^1.52.0",
     "react": "^19.1.0",
-    "react-dom": "^19.1.0",
-    "lucide-react": "^0.468.0"
+    "react-dom": "^19.1.0"
   },
   "devDependencies": {
-    "vite": "^7.1.0",
-    "wrangler": "^4.135.0"
+    "vite": "^8.3.3",
+    "wrangler": "^4.147.0"
   }
 }

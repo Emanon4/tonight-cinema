@@ -1,0 +1,1285 @@
+{
+  "generatedAt": "2026-10-06T17:34:51.489Z",
+  "policy": "Remove series tagged Talk/News/Reality/Soap unless doubanRating > 7.5 or recognition exists.",
+  "previousCount": 9574,
+  "total": 9453,
+  "removed": [
+    {
+      "id": "tmdb-tv-33238",
+      "title": "Running Man",
+      "zh": "Running Man",
+      "genres": [
+        "Comedy",
+        "Reality"
+      ],
+      "rating": 8.237
+    },
+    {
+      "id": "tmdb-tv-60694",
+      "title": "Last Week Tonight with John Oliver",
+      "zh": "约翰·奥利弗上周今夜秀",
+      "genres": [
+        "Talk",
+        "Comedy",
+        "News"
+      ],
+      "rating": 7.771
+    },
+    {
+      "id": "tmdb-tv-45",
+      "title": "Top Gear",
+      "zh": "巅峰拍档",
+      "genres": [
+        "Reality",
+        "Talk"
+      ],
+      "rating": 7.594
+    },
+    {
+      "id": "tmdb-tv-5522",
+      "title": "Doña Bárbara",
+      "zh": "Doña Bárbara",
+      "genres": [
+        "Drama",
+        "Comedy",
+        "Soap"
+      ],
+      "rating": 7.814
+    },
+    {
+      "id": "tmdb-tv-44953",
+      "title": "El Señor de los Cielos",
+      "zh": "天空之主",
+      "genres": [
+        "Crime",
+        "Drama",
+        "Soap"
+      ],
+      "rating": 8.022
+    },
+    {
+      "id": "tmdb-tv-212907",
+      "title": "La promesa",
+      "zh": "复仇之约",
+      "genres": [
+        "Drama",
+        "Mystery",
+        "Soap"
+      ],
+      "rating": 8.538
+    },
+    {
+      "id": "tmdb-tv-9027",
+      "title": "Rebelde Way",
+      "zh": "Rebelde Way",
+      "genres": [
+        "Soap",
+        "Drama"
+      ],
+      "rating": 8.026
+    },
+    {
+      "id": "tmdb-tv-64978",
+      "title": "Whose Line Is It Anyway?",
+      "zh": "Whose Line Is It Anyway?",
+      "genres": [
+        "Reality",
+        "Comedy"
+      ],
+      "rating": 7.691
+    },
+    {
+      "id": "tmdb-tv-1446",
+      "title": "Flinderella",
+      "zh": "Floricienta",
+      "genres": [
+        "Comedy",
+        "Drama",
+        "Family",
+        "Soap"
+      ],
+      "rating": 8.177
+    },
+    {
+      "id": "tmdb-tv-45815",
+      "title": "Brazil Avenue",
+      "zh": "巴西大道",
+      "genres": [
+        "Soap",
+        "Drama",
+        "Mystery",
+        "Crime"
+      ],
+      "rating": 8.13
+    },
+    {
+      "id": "tmdb-tv-1554",
+      "title": "QI",
+      "zh": "奇",
+      "genres": [
+        "Comedy",
+        "Talk"
+      ],
+      "rating": 7.927
+    },
+    {
+      "id": "tmdb-tv-2798",
+      "title": "Space Ghost Coast to Coast",
+      "zh": "太空大侠之天上地下唯我是听",
+      "genres": [
+        "Animation",
+        "Comedy",
+        "Talk"
+      ],
+      "rating": 7.813
+    },
+    {
+      "id": "tmdb-tv-84910",
+      "title": "The Masked Singer",
+      "zh": "蒙面歌王(美版)",
+      "genres": [
+        "Reality"
+      ],
+      "rating": 7.544
+    },
+    {
+      "id": "tmdb-tv-1948",
+      "title": "Degrassi",
+      "zh": "迪格拉丝中学：下一代",
+      "genres": [
+        "Drama",
+        "Soap"
+      ],
+      "rating": 7.565
+    },
+    {
+      "id": "tmdb-tv-72002",
+      "title": "Dynasty",
+      "zh": "豪门恩怨",
+      "genres": [
+        "Drama",
+        "Soap"
+      ],
+      "rating": 8.057
+    },
+    {
+      "id": "tmdb-tv-63764",
+      "title": "Senora Acero",
+      "zh": "毒枭女王",
+      "genres": [
+        "Drama",
+        "Crime",
+        "Soap"
+      ],
+      "rating": 7.891
+    },
+    {
+      "id": "tmdb-tv-154521",
+      "title": "The Kardashians",
+      "zh": "The Kardashians",
+      "genres": [
+        "Reality"
+      ],
+      "rating": 8.5
+    },
+    {
+      "id": "tmdb-tv-17937",
+      "title": "Ghost Adventures",
+      "zh": "幽魂历险记",
+      "genres": [
+        "Reality"
+      ],
+      "rating": 7.6
+    },
+    {
+      "id": "tmdb-tv-14853",
+      "title": "The Clone",
+      "zh": "O Clone",
+      "genres": [
+        "Soap",
+        "Drama",
+        "Science Fiction",
+        "Fantasy"
+      ],
+      "rating": 8.092
+    },
+    {
+      "id": "tmdb-tv-12614",
+      "title": "Clase 406",
+      "zh": "406班",
+      "genres": [
+        "Soap",
+        "Drama"
+      ],
+      "rating": 7.927
+    },
+    {
+      "id": "tmdb-tv-66203",
+      "title": "Soy Luna",
+      "zh": "我是露娜",
+      "genres": [
+        "Soap",
+        "Family",
+        "Mystery",
+        "Comedy"
+      ],
+      "rating": 8
+    },
+    {
+      "id": "tmdb-tv-3475",
+      "title": "The L Word",
+      "zh": "拉字至上",
+      "genres": [
+        "Drama",
+        "Soap"
+      ],
+      "rating": 7.661
+    },
+    {
+      "id": "tmdb-tv-115645",
+      "title": "Genesis",
+      "zh": "Gênesis",
+      "genres": [
+        "Soap",
+        "Drama"
+      ],
+      "rating": 7.971
+    },
+    {
+      "id": "tmdb-tv-19505",
+      "title": "Los Reyes",
+      "zh": "Los Reyes",
+      "genres": [
+        "Family",
+        "Soap"
+      ],
+      "rating": 8.474
+    },
+    {
+      "id": "tmdb-tv-77696",
+      "title": "Run BTS!",
+      "zh": "奔跑吧，防弹！",
+      "genres": [
+        "Reality"
+      ],
+      "rating": 8.625
+    },
+    {
+      "id": "tmdb-tv-11721",
+      "title": "La fea más bella",
+      "zh": "La fea más bella",
+      "genres": [
+        "Soap",
+        "Comedy",
+        "Drama"
+      ],
+      "rating": 8.048
+    },
+    {
+      "id": "tmdb-tv-46883",
+      "title": "Porque el Amor Manda",
+      "zh": "Porque el Amor Manda",
+      "genres": [
+        "Drama",
+        "Comedy",
+        "Soap"
+      ],
+      "rating": 8.105
+    },
+    {
+      "id": "tmdb-tv-61018",
+      "title": "Whose Line Is It Anyway?",
+      "zh": "对台词",
+      "genres": [
+        "Reality",
+        "Comedy"
+      ],
+      "rating": 7.861
+    },
+    {
+      "id": "tmdb-tv-322430",
+      "title": "The Polygamist",
+      "zh": "众妻之夫",
+      "genres": [
+        "Drama",
+        "Soap"
+      ],
+      "rating": 8.881
+    },
+    {
+      "id": "tmdb-tv-126929",
+      "title": "Welcome to Wrexham",
+      "zh": "小球会大明星",
+      "genres": [
+        "Documentary",
+        "Reality"
+      ],
+      "rating": 7.82
+    },
+    {
+      "id": "tmdb-tv-4336",
+      "title": "Drawn Together",
+      "zh": "卡通明星大乱斗",
+      "genres": [
+        "Animation",
+        "Comedy",
+        "Reality"
+      ],
+      "rating": 8.194
+    },
+    {
+      "id": "tmdb-tv-62884",
+      "title": "Forged in Fire",
+      "zh": "锻刀大赛",
+      "genres": [
+        "Reality"
+      ],
+      "rating": 7.898
+    },
+    {
+      "id": "tmdb-tv-33987",
+      "title": "Corazon Valiente",
+      "zh": "勇敢的心",
+      "genres": [
+        "Soap",
+        "Drama",
+        "Action",
+        "Adventure"
+      ],
+      "rating": 7.734
+    },
+    {
+      "id": "tmdb-tv-245328",
+      "title": "Margarita: Make Your Story Count",
+      "zh": "Margarita: Que tu cuento valga la pena",
+      "genres": [
+        "Comedy",
+        "Drama",
+        "Family",
+        "Soap"
+      ],
+      "rating": 9.1
+    },
+    {
+      "id": "tmdb-tv-67557",
+      "title": "The Grand Tour",
+      "zh": "大世界之旅",
+      "genres": [
+        "Reality",
+        "Comedy",
+        "Talk"
+      ],
+      "rating": 8.019
+    },
+    {
+      "id": "tmdb-tv-16286",
+      "title": "Yo soy Betty, la fea",
+      "zh": "丑女贝蒂",
+      "genres": [
+        "Soap",
+        "Comedy",
+        "Drama"
+      ],
+      "rating": 8.368
+    },
+    {
+      "id": "tmdb-tv-12961",
+      "title": "Rubí",
+      "zh": "Rubí",
+      "genres": [
+        "Soap",
+        "Drama",
+        "Mystery"
+      ],
+      "rating": 7.7
+    },
+    {
+      "id": "tmdb-tv-18685",
+      "title": "Hasta que el dinero nos separe",
+      "zh": "Hasta que el dinero nos separe",
+      "genres": [
+        "Soap",
+        "Drama",
+        "Comedy"
+      ],
+      "rating": 7.9
+    },
+    {
+      "id": "tmdb-tv-80411",
+      "title": "Erkenci Kuş",
+      "zh": "早起的鸟儿",
+      "genres": [
+        "Drama",
+        "Comedy",
+        "Soap"
+      ],
+      "rating": 8.1
+    },
+    {
+      "id": "tmdb-tv-61720",
+      "title": "Violetta",
+      "zh": "音乐情人梦",
+      "genres": [
+        "Family",
+        "Drama",
+        "Comedy",
+        "Soap"
+      ],
+      "rating": 8.1
+    },
+    {
+      "id": "tmdb-tv-72637",
+      "title": "Once",
+      "zh": "逐梦绿茵场",
+      "genres": [
+        "Comedy",
+        "Family",
+        "Soap"
+      ],
+      "rating": 8.627
+    },
+    {
+      "id": "tmdb-tv-230424",
+      "title": "Betty La Fea: The Story Continues",
+      "zh": "丑女贝蒂：故事继续",
+      "genres": [
+        "Soap",
+        "Comedy",
+        "Drama"
+      ],
+      "rating": 7.7
+    },
+    {
+      "id": "tmdb-tv-19588",
+      "title": "¡Vivan los niños!",
+      "zh": "¡Vivan los niños!",
+      "genres": [
+        "Soap",
+        "Kids"
+      ],
+      "rating": 7.8
+    },
+    {
+      "id": "tmdb-tv-82282",
+      "title": "Like, la Leyenda",
+      "zh": "Like, la Leyenda",
+      "genres": [
+        "Drama",
+        "Soap"
+      ],
+      "rating": 7.8
+    },
+    {
+      "id": "tmdb-tv-5459",
+      "title": "Don't Mess with the Angel",
+      "zh": "Cuidado con el Ángel",
+      "genres": [
+        "Drama",
+        "Soap"
+      ],
+      "rating": 7.506
+    },
+    {
+      "id": "tmdb-tv-12926",
+      "title": "Teresa",
+      "zh": "特蕾莎",
+      "genres": [
+        "Soap",
+        "Drama"
+      ],
+      "rating": 7.717
+    },
+    {
+      "id": "tmdb-tv-58450",
+      "title": "What Life Took From Me",
+      "zh": "Lo Que La Vida Me Robó",
+      "genres": [
+        "Drama",
+        "Soap"
+      ],
+      "rating": 7.76
+    },
+    {
+      "id": "tmdb-tv-58710",
+      "title": "Little Angel Face",
+      "zh": "Carita de Ángel",
+      "genres": [
+        "Soap",
+        "Drama",
+        "Kids",
+        "Comedy"
+      ],
+      "rating": 7.804
+    },
+    {
+      "id": "tmdb-tv-62917",
+      "title": "Hidden Truths",
+      "zh": "Verdades Secretas",
+      "genres": [
+        "Soap",
+        "Drama"
+      ],
+      "rating": 7.8
+    },
+    {
+      "id": "tmdb-tv-113531",
+      "title": "Deadly Sins",
+      "zh": "Pecados Capitales",
+      "genres": [
+        "Soap"
+      ],
+      "rating": 7.673
+    },
+    {
+      "id": "tmdb-tv-46901",
+      "title": "Amores verdaderos",
+      "zh": "Amores verdaderos",
+      "genres": [
+        "Drama",
+        "Soap"
+      ],
+      "rating": 7.725
+    },
+    {
+      "id": "tmdb-tv-12568",
+      "title": "Distilling Love",
+      "zh": "Destilando amor",
+      "genres": [
+        "Drama",
+        "Soap"
+      ],
+      "rating": 7.691
+    },
+    {
+      "id": "tmdb-tv-77567",
+      "title": "Mi marido tiene familia",
+      "zh": "Mi marido tiene familia",
+      "genres": [
+        "Soap",
+        "Comedy",
+        "Drama"
+      ],
+      "rating": 7.746
+    },
+    {
+      "id": "tmdb-tv-58539",
+      "title": "Wild at Heart",
+      "zh": "Corazón Indomable",
+      "genres": [
+        "Drama",
+        "Soap"
+      ],
+      "rating": 7.785
+    },
+    {
+      "id": "tmdb-tv-34549",
+      "title": "The Great British Bake Off",
+      "zh": "英国家庭烘焙大赛",
+      "genres": [
+        "Reality"
+      ],
+      "rating": 7.563
+    },
+    {
+      "id": "tmdb-tv-106600",
+      "title": "BTS In the SOOP",
+      "zh": "In the SOOP BTS ver.",
+      "genres": [
+        "Reality"
+      ],
+      "rating": 8.488
+    },
+    {
+      "id": "tmdb-tv-47699",
+      "title": "Queen of Hearts",
+      "zh": "Reina de Corazones",
+      "genres": [
+        "Soap"
+      ],
+      "rating": 7.9
+    },
+    {
+      "id": "tmdb-tv-75209",
+      "title": "Apocalipse",
+      "zh": "Apocalipse",
+      "genres": [
+        "Drama",
+        "Soap",
+        "Action",
+        "Adventure",
+        "Mystery"
+      ],
+      "rating": 7.748
+    },
+    {
+      "id": "tmdb-tv-17638",
+      "title": "Falling Angel",
+      "zh": "Más Sabe el Diablo",
+      "genres": [
+        "Drama",
+        "Soap"
+      ],
+      "rating": 8.222
+    },
+    {
+      "id": "tmdb-tv-13179",
+      "title": "The Slave Isaura",
+      "zh": "A Escrava Isaura",
+      "genres": [
+        "Drama",
+        "Soap"
+      ],
+      "rating": 7.521
+    },
+    {
+      "id": "tmdb-tv-12727",
+      "title": "Cómplices Al Rescate",
+      "zh": "Cómplices Al Rescate",
+      "genres": [
+        "Drama",
+        "Soap",
+        "Family"
+      ],
+      "rating": 7.6
+    },
+    {
+      "id": "tmdb-tv-77607",
+      "title": "Laws of love",
+      "zh": "Por amar sin ley",
+      "genres": [
+        "Soap",
+        "Drama"
+      ],
+      "rating": 8.1
+    },
+    {
+      "id": "tmdb-tv-1341",
+      "title": "Lola… Once Upon a Time",
+      "zh": "Lola... Érase Una Vez",
+      "genres": [
+        "Soap",
+        "Drama"
+      ],
+      "rating": 7.954
+    },
+    {
+      "id": "tmdb-tv-307423",
+      "title": "Doménica Montero",
+      "zh": "Doménica Montero",
+      "genres": [
+        "Drama",
+        "Soap"
+      ],
+      "rating": 8.234
+    },
+    {
+      "id": "tmdb-tv-47990",
+      "title": "Grand Hotel",
+      "zh": "大饭店",
+      "genres": [
+        "Drama",
+        "Mystery",
+        "Crime",
+        "Soap"
+      ],
+      "rating": 7.8
+    },
+    {
+      "id": "tmdb-tv-12777",
+      "title": "Corazón salvaje",
+      "zh": "Corazón salvaje",
+      "genres": [
+        "Drama",
+        "Soap"
+      ],
+      "rating": 7.961
+    },
+    {
+      "id": "tmdb-tv-42029",
+      "title": "Valiant Love",
+      "zh": "Amor Bravío",
+      "genres": [
+        "Soap",
+        "Drama"
+      ],
+      "rating": 7.508
+    },
+    {
+      "id": "tmdb-tv-214582",
+      "title": "The Devil's Plan",
+      "zh": "魔鬼的计谋",
+      "genres": [
+        "Reality"
+      ],
+      "rating": 7.629
+    },
+    {
+      "id": "tmdb-tv-80398",
+      "title": "Kally's Mashup",
+      "zh": "Kally's Mashup",
+      "genres": [
+        "Comedy",
+        "Drama",
+        "Soap",
+        "Family"
+      ],
+      "rating": 8.4
+    },
+    {
+      "id": "tmdb-tv-210905",
+      "title": "Physical: 100",
+      "zh": "体能之巅：百人大挑战",
+      "genres": [
+        "Reality"
+      ],
+      "rating": 7.608
+    },
+    {
+      "id": "tmdb-tv-11823",
+      "title": "Alegrijes y Rebujos",
+      "zh": "Alegrijes y Rebujos",
+      "genres": [
+        "Family",
+        "Soap",
+        "Kids"
+      ],
+      "rating": 7.7
+    },
+    {
+      "id": "tmdb-tv-33761",
+      "title": "Triumph of Love",
+      "zh": "Triunfo del amor",
+      "genres": [
+        "Soap"
+      ],
+      "rating": 7.7
+    },
+    {
+      "id": "tmdb-tv-73964",
+      "title": "My Sweet Fat Valentina",
+      "zh": "Mi gorda bella",
+      "genres": [
+        "Soap",
+        "Comedy",
+        "Drama"
+      ],
+      "rating": 7.6
+    },
+    {
+      "id": "tmdb-tv-196614",
+      "title": "Hasta que la plata nos separe",
+      "zh": "Hasta que la plata nos separe",
+      "genres": [
+        "Soap",
+        "Drama"
+      ],
+      "rating": 8.183
+    },
+    {
+      "id": "tmdb-tv-39754",
+      "title": "Between Two Ferns with Zach Galifianakis",
+      "zh": "Between Two Ferns with Zach Galifianakis",
+      "genres": [
+        "Comedy",
+        "Talk"
+      ],
+      "rating": 7.519
+    },
+    {
+      "id": "tmdb-tv-63407",
+      "title": "Mi corazón es tuyo",
+      "zh": "Mi corazón es tuyo",
+      "genres": [
+        "Soap",
+        "Comedy",
+        "Drama",
+        "Family"
+      ],
+      "rating": 8.001
+    },
+    {
+      "id": "tmdb-tv-32604",
+      "title": "Dangerous Affairs",
+      "zh": "Relaciones Peligrosas",
+      "genres": [
+        "Drama",
+        "Soap"
+      ],
+      "rating": 7.597
+    },
+    {
+      "id": "tmdb-tv-16961",
+      "title": "Café con Aroma de Mujer",
+      "zh": "Café con Aroma de Mujer",
+      "genres": [
+        "Drama",
+        "Family",
+        "Reality"
+      ],
+      "rating": 7.629
+    },
+    {
+      "id": "tmdb-tv-302463",
+      "title": "Dinastía Casillas",
+      "zh": "卡西利亚斯王朝",
+      "genres": [
+        "Drama",
+        "Action",
+        "Adventure",
+        "Mystery",
+        "Soap"
+      ],
+      "rating": 8.4
+    },
+    {
+      "id": "tmdb-tv-66084",
+      "title": "Acapulco Shore",
+      "zh": "阿卡普尔科海岸",
+      "genres": [
+        "Reality"
+      ],
+      "rating": 7.8
+    },
+    {
+      "id": "tmdb-tv-73265",
+      "title": "Yo Soy Franky",
+      "zh": "Yo Soy Franky",
+      "genres": [
+        "Drama",
+        "Family",
+        "Comedy",
+        "Soap"
+      ],
+      "rating": 8.336
+    },
+    {
+      "id": "tmdb-tv-4184",
+      "title": "Deceptions",
+      "zh": "La usurpadora",
+      "genres": [
+        "Drama",
+        "Soap"
+      ],
+      "rating": 7.651
+    },
+    {
+      "id": "tmdb-tv-79699",
+      "title": "La hija del Mariachi",
+      "zh": "La hija del Mariachi",
+      "genres": [
+        "Soap",
+        "Drama"
+      ],
+      "rating": 8.071
+    },
+    {
+      "id": "tmdb-tv-98754",
+      "title": "Club 57",
+      "zh": "57号俱乐部",
+      "genres": [
+        "Comedy",
+        "Science Fiction",
+        "Fantasy",
+        "Soap",
+        "Family"
+      ],
+      "rating": 8.251
+    },
+    {
+      "id": "tmdb-tv-83596",
+      "title": "Amar a Muerte",
+      "zh": "阿马尔·穆尔特",
+      "genres": [
+        "Drama",
+        "Soap"
+      ],
+      "rating": 7.8
+    },
+    {
+      "id": "tmdb-tv-67230",
+      "title": "Silvana Sin Lana",
+      "zh": "Silvana Sin Lana",
+      "genres": [
+        "Drama",
+        "Soap",
+        "Comedy"
+      ],
+      "rating": 7.753
+    },
+    {
+      "id": "tmdb-tv-82515",
+      "title": "Fall Into Temptation",
+      "zh": "Caer en tentación",
+      "genres": [
+        "Drama",
+        "Soap"
+      ],
+      "rating": 7.798
+    },
+    {
+      "id": "tmdb-tv-40403",
+      "title": "Miss XV",
+      "zh": "Miss XV",
+      "genres": [
+        "Soap",
+        "Drama"
+      ],
+      "rating": 8
+    },
+    {
+      "id": "tmdb-tv-63119",
+      "title": "Oh My Ghost",
+      "zh": "哦我的鬼神大人",
+      "genres": [
+        "Comedy",
+        "Science Fiction",
+        "Fantasy",
+        "Soap"
+      ],
+      "rating": 8.1
+    },
+    {
+      "id": "tmdb-tv-60632",
+      "title": "The Color of Passion",
+      "zh": "El color de la pasión",
+      "genres": [
+        "Drama",
+        "Soap"
+      ],
+      "rating": 7.639
+    },
+    {
+      "id": "tmdb-tv-18341",
+      "title": "Sortilegio",
+      "zh": "Sortilegio",
+      "genres": [
+        "Drama",
+        "Family",
+        "Soap"
+      ],
+      "rating": 7.666
+    },
+    {
+      "id": "tmdb-tv-60642",
+      "title": "The Poor, Rich Family",
+      "zh": "Qué pobres tan ricos",
+      "genres": [
+        "Soap",
+        "Comedy",
+        "Drama"
+      ],
+      "rating": 7.682
+    },
+    {
+      "id": "tmdb-tv-115304",
+      "title": "Disney Intertwined",
+      "zh": "交错人生",
+      "genres": [
+        "Science Fiction",
+        "Fantasy",
+        "Comedy",
+        "Family",
+        "Drama",
+        "Soap"
+      ],
+      "rating": 7.7
+    },
+    {
+      "id": "tmdb-tv-37652",
+      "title": "Una familia con suerte",
+      "zh": "Una familia con suerte",
+      "genres": [
+        "Comedy",
+        "Drama",
+        "Family",
+        "Soap"
+      ],
+      "rating": 7.735
+    },
+    {
+      "id": "tmdb-tv-158916",
+      "title": "The Marked Heart",
+      "zh": "心之烙印",
+      "genres": [
+        "Soap",
+        "Mystery"
+      ],
+      "rating": 7.698
+    },
+    {
+      "id": "tmdb-tv-101129",
+      "title": "To Catch a Smuggler",
+      "zh": "Alerta Aeropuerto",
+      "genres": [
+        "Documentary",
+        "Reality",
+        "Crime",
+        "Drama"
+      ],
+      "rating": 7.676
+    },
+    {
+      "id": "tmdb-tv-13987",
+      "title": "Victoria",
+      "zh": "Victoria",
+      "genres": [
+        "Soap",
+        "Drama"
+      ],
+      "rating": 8.207
+    },
+    {
+      "id": "tmdb-tv-90823",
+      "title": "BIA",
+      "zh": "BIA",
+      "genres": [
+        "Drama",
+        "Comedy",
+        "Soap",
+        "Family"
+      ],
+      "rating": 7.8
+    },
+    {
+      "id": "tmdb-tv-79251",
+      "title": "Hijas de la luna",
+      "zh": "Hijas de la luna",
+      "genres": [
+        "Soap",
+        "Comedy",
+        "Drama"
+      ],
+      "rating": 7.809
+    },
+    {
+      "id": "tmdb-tv-13093",
+      "title": "La Madrastra",
+      "zh": "La Madrastra",
+      "genres": [
+        "Soap"
+      ],
+      "rating": 8.117
+    },
+    {
+      "id": "tmdb-tv-119615",
+      "title": "Demente",
+      "zh": "Demente",
+      "genres": [
+        "Soap",
+        "Mystery",
+        "Crime",
+        "Drama"
+      ],
+      "rating": 7.7
+    },
+    {
+      "id": "tmdb-tv-221573",
+      "title": "Ana de nadie",
+      "zh": "Ana de nadie",
+      "genres": [
+        "Soap",
+        "Drama"
+      ],
+      "rating": 8
+    },
+    {
+      "id": "tmdb-tv-13027",
+      "title": "Amor Real",
+      "zh": "Amor Real",
+      "genres": [
+        "Soap",
+        "Drama"
+      ],
+      "rating": 7.772
+    },
+    {
+      "id": "tmdb-tv-18689",
+      "title": "Camaleones",
+      "zh": "Camaleones",
+      "genres": [
+        "Comedy",
+        "Soap",
+        "Drama"
+      ],
+      "rating": 8.011
+    },
+    {
+      "id": "tmdb-tv-107775",
+      "title": "I love you, Güero",
+      "zh": "La Mexicana y El Güero",
+      "genres": [
+        "Family",
+        "Comedy",
+        "Soap",
+        "Drama"
+      ],
+      "rating": 7.737
+    },
+    {
+      "id": "tmdb-tv-110637",
+      "title": "Overcoming heartbreak",
+      "zh": "Vencer el Desamor",
+      "genres": [
+        "Soap",
+        "Drama"
+      ],
+      "rating": 7.6
+    },
+    {
+      "id": "tmdb-tv-61861",
+      "title": "Hasta el fin del mundo",
+      "zh": "Hasta el fin del mundo",
+      "genres": [
+        "Drama",
+        "Soap"
+      ],
+      "rating": 7.8
+    },
+    {
+      "id": "tmdb-tv-44914",
+      "title": "The Return",
+      "zh": "La Patrona",
+      "genres": [
+        "Drama",
+        "Soap"
+      ],
+      "rating": 7.808
+    },
+    {
+      "id": "tmdb-tv-2899",
+      "title": "Long Way Round",
+      "zh": "漫漫长路",
+      "genres": [
+        "Documentary",
+        "Reality"
+      ],
+      "rating": 8.219
+    },
+    {
+      "id": "tmdb-tv-78292",
+      "title": "Who Is Who?",
+      "zh": "¿Quién es Quién?",
+      "genres": [
+        "Soap",
+        "Comedy",
+        "Drama"
+      ],
+      "rating": 8.073
+    },
+    {
+      "id": "tmdb-tv-64757",
+      "title": "Vecinos",
+      "zh": "Vecinos",
+      "genres": [
+        "Comedy",
+        "Soap",
+        "Drama"
+      ],
+      "rating": 8.102
+    },
+    {
+      "id": "tmdb-tv-44949",
+      "title": "Husband for Rent aka Husband for Hire",
+      "zh": "Marido en Alquiler",
+      "genres": [
+        "Soap",
+        "Drama",
+        "Comedy"
+      ],
+      "rating": 7.899
+    },
+    {
+      "id": "tmdb-tv-320315",
+      "title": "Guardián de mi vida",
+      "zh": "Guardián de mi vida",
+      "genres": [
+        "Soap",
+        "Drama"
+      ],
+      "rating": 9.507
+    },
+    {
+      "id": "tmdb-tv-12859",
+      "title": "Den of Wolves",
+      "zh": "Cuna de Lobos",
+      "genres": [
+        "Drama",
+        "Soap"
+      ],
+      "rating": 7.523
+    },
+    {
+      "id": "tmdb-tv-213049",
+      "title": "Cabo",
+      "zh": "Cabo",
+      "genres": [
+        "Soap",
+        "Drama"
+      ],
+      "rating": 7.8
+    },
+    {
+      "id": "tmdb-tv-228459",
+      "title": "Land of Hope",
+      "zh": "Tierra de Esperanza",
+      "genres": [
+        "Soap",
+        "Drama"
+      ],
+      "rating": 7.762
+    },
+    {
+      "id": "tmdb-tv-99310",
+      "title": "Operación Pacífico",
+      "zh": "Operación Pacífico",
+      "genres": [
+        "Drama",
+        "Crime",
+        "Soap"
+      ],
+      "rating": 7.667
+    },
+    {
+      "id": "tmdb-tv-63109",
+      "title": "Moses and the Ten Commandments",
+      "zh": "Os Dez Mandamentos",
+      "genres": [
+        "Drama",
+        "Romance",
+        "Historical",
+        "Soap",
+        "Mystery"
+      ],
+      "rating": 7.915
+    },
+    {
+      "id": "tmdb-tv-77568",
+      "title": "La doble vida de Estela Carrillo",
+      "zh": "La doble vida de Estela Carrillo",
+      "genres": [
+        "Soap",
+        "Drama"
+      ],
+      "rating": 7.5
+    },
+    {
+      "id": "tmdb-tv-290321",
+      "title": "Mentiras, The Series",
+      "zh": "Mentiras, la serie",
+      "genres": [
+        "Comedy",
+        "Soap"
+      ],
+      "rating": 8.282
+    },
+    {
+      "id": "tmdb-tv-90630",
+      "title": "The Heart Is Never Wrong",
+      "zh": "在一起的心永远不会错",
+      "genres": [
+        "Soap"
+      ],
+      "rating": 8.208
+    }
+  ]
+}

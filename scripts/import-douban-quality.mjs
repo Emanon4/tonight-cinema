@@ -1,3 +1,10 @@
+// movie.douban.com/robots.txt disallows /j/, which this importer uses. Douban
+// ratings already in the catalog are kept; new runs require an explicit,
+// informed opt-in and stay out of CI.
+if (!process.argv.includes("--accept-douban-terms")) {
+  console.error("已停用：此脚本请求的 /j/ 接口被豆瓣 robots.txt 禁止。确认已获得授权或评估过条款后，使用 --accept-douban-terms 运行。");
+  process.exit(1);
+}
 import fs from "node:fs";
 import os from "node:os";
 import path from "node:path";
@@ -25,6 +32,7 @@ const minimumTmdbRating = 7;
 const minimumTmdbVotes = 100;
 const userAgent = "TonightCinema/quality-import (+https://emanon4.github.io/tonight-cinema/)";
 
+const politeDelayMs = 5000; // robots.txt suggests Crawl-delay: 5
 const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
 const keyOf = value => (value || "")
   .normalize("NFKD")
@@ -35,6 +43,7 @@ const keyOf = value => (value || "")
 async function json(url, file) {
   if (fs.existsSync(file)) return JSON.parse(fs.readFileSync(file, "utf8"));
   let last;
+  await sleep(politeDelayMs);
   for (let attempt = 0; attempt < 4; attempt++) {
     try {
       const response = await fetch(url, {

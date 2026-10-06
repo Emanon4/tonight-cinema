@@ -1,0 +1,54 @@
+name: Refresh catalog
+# Monthly: add recent quality titles, backfill missing details, refresh vectors,
+# and open a PR. Nothing deploys until the PR is reviewed and merged.
+on:
+  schedule:
+    - cron: "0 3 1 * *"
+  workflow_dispatch:
+permissions:
+  contents: write
+  pull-requests: write
+concurrency:
+  group: catalog-refresh
+  cancel-in-progress: false
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    env:
+      TMDB_API_KEY: ${{ secrets.TMDB_API_KEY }}
+      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+      CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+    steps:
+      - name: Require TMDB secret
+        if: env.TMDB_API_KEY == ''
+        run: |
+          echo "Add the TMDB_API_KEY repository secret to enable catalog refresh." >> "$GITHUB_STEP_SUMMARY"
+          exit 1
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm run import:recent
+      - run: npm run backfill:details
+      - name: Refresh semantic vectors
+        if: env.CLOUDFLARE_API_TOKEN != '' && env.CLOUDFLARE_ACCOUNT_ID != ''
+        run: npm run embeddings
+      - run: npm test
+      - run: npm run build
+      - name: Open pull request
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          git diff --quiet -- public/data data && { echo "No catalog changes."; exit 0; }
+          branch="catalog/refresh-$(date -u +%Y%m%d)"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git checkout -b "$branch"
+          git add public/data/movies.json data/curation data/embeddings wrangler.jsonc
+          git commit -m "Refresh catalog with recent titles and backfilled details"
+          git push -u origin "$branch"
+          summary=$(node -e 'const r=require("./data/curation/recent-import-report.json"),b=require("./data/curation/backfill-report.json");console.log(`新增 ${r.added.length} 部（${r.since} 起），补全片长 ${b.runtimes} 部、中文简介 ${b.overviews} 部；总数 ${r.total}。`)')
+          gh pr create --base main --head "$branch" --title "Catalog refresh $(date -u +%Y-%m)" \
+            --body "$summary 合并后需运行 npm run deploy:api 发布 Worker。"

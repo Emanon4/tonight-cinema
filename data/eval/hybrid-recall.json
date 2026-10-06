@@ -1,0 +1,194 @@
+{
+  "generatedAt": "2026-10-06T17:55:30.778Z",
+  "model": "@cf/baai/bge-m3",
+  "summary": {
+    "relevant": 101,
+    "keyword500": 84,
+    "keyword1000": 91,
+    "hybrid200": 76,
+    "hybrid500": 87,
+    "hybrid1000": 92
+  },
+  "rows": [
+    {
+      "id": "lonely-not-sad",
+      "query": "孤独但不悲伤",
+      "relevant": 8,
+      "keyword500": 4,
+      "keyword1000": 6,
+      "hybrid200": 2,
+      "hybrid500": 4,
+      "hybrid1000": 5
+    },
+    {
+      "id": "inception-like",
+      "query": "像《盗梦空间》一样，让我脑子转起来",
+      "relevant": 9,
+      "keyword500": 5,
+      "keyword1000": 6,
+      "hybrid200": 5,
+      "hybrid500": 6,
+      "hybrid1000": 8
+    },
+    {
+      "id": "green-ray-title",
+      "query": "想看《绿光》，关于孤独、假期里寻找陪伴的影史佳作",
+      "relevant": 6,
+      "keyword500": 5,
+      "keyword1000": 6,
+      "hybrid200": 5,
+      "hybrid500": 6,
+      "hybrid1000": 6
+    },
+    {
+      "id": "zip-wire-title",
+      "query": "想看《127小时》，高空冒险与求生的惊悚电影",
+      "relevant": 2,
+      "keyword500": 2,
+      "keyword1000": 2,
+      "hybrid200": 2,
+      "hybrid500": 2,
+      "hybrid1000": 2
+    },
+    {
+      "id": "classic-love",
+      "query": "想看一部被影史公认的经典爱情片",
+      "relevant": 6,
+      "keyword500": 6,
+      "keyword1000": 6,
+      "hybrid200": 6,
+      "hybrid500": 6,
+      "hybrid1000": 6
+    },
+    {
+      "id": "90s-crime",
+      "query": "90 年代的犯罪片，氛围越浓越好",
+      "relevant": 5,
+      "keyword500": 5,
+      "keyword1000": 5,
+      "hybrid200": 5,
+      "hybrid500": 5,
+      "hybrid1000": 5
+    },
+    {
+      "id": "warm-animation-90",
+      "query": "想看一部温暖的动画电影，90分钟以内",
+      "relevant": 3,
+      "keyword500": 3,
+      "keyword1000": 3,
+      "hybrid200": 3,
+      "hybrid500": 3,
+      "hybrid1000": 3
+    },
+    {
+      "id": "japanese-family",
+      "query": "想看一部日本电影，关于家庭和日常",
+      "relevant": 7,
+      "keyword500": 7,
+      "keyword1000": 7,
+      "hybrid200": 7,
+      "hybrid500": 7,
+      "hybrid1000": 7
+    },
+    {
+      "id": "rohmer-holiday",
+      "query": "想看侯麦或法国新浪潮那种假期与情感的电影",
+      "relevant": 5,
+      "keyword500": 5,
+      "keyword1000": 5,
+      "hybrid200": 4,
+      "hybrid500": 5,
+      "hybrid1000": 5
+    },
+    {
+      "id": "2010s-scifi-120",
+      "query": "2010年代两小时以内的科幻片",
+      "relevant": 6,
+      "keyword500": 5,
+      "keyword1000": 5,
+      "hybrid200": 5,
+      "hybrid500": 5,
+      "hybrid1000": 5
+    },
+    {
+      "id": "lonely-city",
+      "query": "关于孤独、城市和人与人相遇的故事",
+      "relevant": 6,
+      "keyword500": 5,
+      "keyword1000": 5,
+      "hybrid200": 5,
+      "hybrid500": 5,
+      "hybrid1000": 5
+    },
+    {
+      "id": "nordic-quiet",
+      "query": "想看一部安静的北欧或东欧电影，关于普通人的生活",
+      "relevant": 5,
+      "keyword500": 5,
+      "keyword1000": 5,
+      "hybrid200": 5,
+      "hybrid500": 5,
+      "hybrid1000": 5
+    },
+    {
+      "id": "no-classic-crime",
+      "query": "不要经典，给我近年好看的犯罪片",
+      "relevant": 5,
+      "keyword500": 3,
+      "keyword1000": 5,
+      "hybrid200": 3,
+      "hybrid500": 5,
+      "hybrid1000": 5
+    },
+    {
+      "id": "time-travel-2000",
+      "query": "2000年以后的时空穿越电影",
+      "relevant": 4,
+      "keyword500": 4,
+      "keyword1000": 4,
+      "hybrid200": 3,
+      "hybrid500": 3,
+      "hybrid1000": 3
+    },
+    {
+      "id": "music-stage",
+      "query": "关于音乐人和舞台的电影",
+      "relevant": 7,
+      "keyword500": 7,
+      "keyword1000": 7,
+      "hybrid200": 7,
+      "hybrid500": 7,
+      "hybrid1000": 7
+    },
+    {
+      "id": "non-en-war",
+      "query": "想看一部非英语的战争或历史电影",
+      "relevant": 6,
+      "keyword500": 4,
+      "keyword1000": 4,
+      "hybrid200": 3,
+      "hybrid500": 5,
+      "hybrid1000": 6
+    },
+    {
+      "id": "warm-not-horror",
+      "query": "想看温暖的电影，不要恐怖或惊悚",
+      "relevant": 6,
+      "keyword500": 5,
+      "keyword1000": 5,
+      "hybrid200": 2,
+      "hybrid500": 3,
+      "hybrid1000": 4
+    },
+    {
+      "id": "like-her",
+      "query": "像《她》那样关于孤独、城市和人与人相遇",
+      "relevant": 5,
+      "keyword500": 4,
+      "keyword1000": 5,
+      "hybrid200": 4,
+      "hybrid500": 5,
+      "hybrid1000": 5
+    }
+  ]
+}

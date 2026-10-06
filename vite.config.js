@@ -6,5 +6,14 @@ export default defineConfig({
   base: "./",
   define: {__CATALOG_VERSION__: JSON.stringify(catalogVersion)},
   server: { proxy: { "/api": "http://127.0.0.1:8793" } },
-  build: { target: "es2022" },
+  build: {
+    target: "es2022",
+    rollupOptions: {
+      // lucide-react ships "use client" directives that are meaningless in this SPA.
+      onwarn(warning, warn) {
+        if (warning.code === "MODULE_LEVEL_DIRECTIVE") return;
+        warn(warning);
+      },
+    },
+  },
 });
