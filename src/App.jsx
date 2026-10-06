@@ -1,7 +1,5 @@
 import React, { useState, useEffect, useRef, useMemo } from "react";
 import {
-  ArrowUpRight,
-  ArrowRight,
   Search,
   Bookmark,
   Shuffle,
@@ -10,6 +8,9 @@ import {
   LoaderCircle,
   Settings2,
   RefreshCw,
+  House,
+  Clapperboard,
+  Tv,
 } from "lucide-react";
 import { filtered, parseFilters } from "../server/core.mjs";
 import MovieCard from "./components/MovieCard.jsx";
@@ -17,7 +18,6 @@ import FilterBar from "./components/FilterBar.jsx";
 import MovieDialog from "./components/MovieDialog.jsx";
 import SettingsDialog from "./components/SettingsDialog.jsx";
 import AboutDialog from "./components/AboutDialog.jsx";
-import Poster from "./components/Poster.jsx";
 import { readJson, writeJson, readToken, saveToken, tokenRemembered } from "./lib/storage.js";
 import { emptyFilters, readUrlState, urlFor, hasFilters, sameFilters } from "./lib/urlState.js";
 import { narrowResults, genreOptions, missingIds } from "./lib/results.js";
@@ -326,25 +326,36 @@ export default function App({ initialMovies = [], initialUrl = "" }) {
     writeUrl(activeQuery, f, "replace");
   }
   const browsing = !activeQuery && !hasFilters(filters);
+  // The ambient light behind the page follows whatever poster leads the view.
+  const ambient = visible.find((m) => m.poster)?.poster || picks[0]?.poster;
+  const dockItems = [
+    ["home", "首页", House, view === "discover" && !filters.mediaType, reset],
+    ["movie", "电影", Clapperboard, view === "discover" && filters.mediaType === "movie", () => browseType("movie")],
+    ["series", "剧集", Tv, view === "discover" && filters.mediaType === "series", () => browseType("series")],
+    ["saved", "我的片单", Bookmark, view === "saved", () => setView("saved")],
+    ["settings", "连接设置", Settings2, false, () => { setSettingsMessage(""); setShowSettings(true); }],
+  ];
+  function browseType(type) {
+    setView("discover");
+    if (activeQuery) changeFilter("mediaType", type);
+    else {
+      const f = { ...emptyFilters, mediaType: type };
+      setFilters(f);
+      setMore(24);
+      writeUrl("", f, "push");
+    }
+    scrollTo?.({ top: 0, behavior: "smooth" });
+  }
   return (
     <>
-      <header>
+      <div className="ambient" aria-hidden="true">
+        {ambient && <img key={ambient} src={ambient} alt="" />}
+      </div>
+      <header className="topbar">
         <button className="brand" onClick={reset} aria-label="今夜放映首页">
-          <span className="brand-mark">
-            <Film size={21} />
-          </span>
-          <span>
-            今夜放映<small>TONIGHT CINEMA</small>
-          </span>
+          <span className="brand-mark">夜</span>
+          今夜放映
         </button>
-        <nav aria-label="主导航">
-          <button className={view === "discover" ? "active" : ""} onClick={() => setView("discover")}>
-            发现内容
-          </button>
-          <button className={view === "saved" ? "active" : ""} onClick={() => setView("saved")}>
-            <Bookmark size={15} /> 我的片单 <span className="count">{saved.length}</span>
-          </button>
-        </nav>
         <button
           className="connection"
           onClick={() => {
@@ -354,97 +365,63 @@ export default function App({ initialMovies = [], initialUrl = "" }) {
           aria-label="连接设置"
         >
           <i className={health?.ready ? "online" : ""} />
-          <span>{health?.ready ? "Jev 已就绪" : "连接 Jev"}</span>
-          <Settings2 size={14} />
+          {health?.ready ? "Jev 已就绪" : "连接 Jev"}
         </button>
       </header>
       <main>
         {view === "discover" ? (
-          <>
-            <section className="hero">
-              <div className="eyebrow">
-                <span /> A LITTLE ESCAPE, A GREAT STORY <span />
-              </div>
-              <h1>
-                今晚，想走进
-                <br />
-                <em>怎样的故事？</em>
-                <span className="asterisk">✳</span>
-              </h1>
-              <p className="intro">把心情交给一句话，让电影或剧集刚好懂你。</p>
-              <form
-                className="searchbox"
-                onSubmit={(e) => {
-                  e.preventDefault();
-                  search();
-                }}
-              >
-                <Search size={22} strokeWidth={1.5} />
-                <input
-                  ref={input}
-                  aria-label="描述观影需求"
-                  value={query}
-                  onChange={(e) => setQuery(e.target.value)}
-                  placeholder="比如：有点孤独，但看完会想拥抱生活的电影或剧集"
-                  maxLength={300}
-                />
-                <button className="submit" aria-label="为我选片" disabled={busy || !movies.length}>
-                  {busy ? <LoaderCircle className="spin" size={21} /> : <ArrowRight size={23} />}
-                </button>
-              </form>
+          <section className={"hero" + (activeQuery ? " compact" : "")}>
+            {!activeQuery && (
+              <>
+                <h1>今晚，想走进怎样的故事？</h1>
+                <p className="intro">
+                  {movies.length
+                    ? `说一句此刻的心情，从 ${movies.length.toLocaleString()} 部电影与剧集里挑出刚好合拍的几部`
+                    : "正在打开内容库…"}
+                </p>
+              </>
+            )}
+            <form
+              className="searchbox"
+              onSubmit={(e) => {
+                e.preventDefault();
+                search();
+              }}
+            >
+              <Search size={19} />
+              <input
+                ref={input}
+                aria-label="描述观影需求"
+                value={query}
+                onChange={(e) => setQuery(e.target.value)}
+                placeholder="比如：有点孤独，但看完会想拥抱生活"
+                maxLength={300}
+              />
+              <button className="submit" disabled={busy || !movies.length}>
+                {busy ? <LoaderCircle className="spin" size={18} /> : activeQuery ? "重新选片" : "为我选片"}
+              </button>
+            </form>
+            {!activeQuery && (
               <div className="suggestions">
-                <span>没有灵感？试试</span>
                 {["温暖一下", "脑洞大开", "复古犯罪", "城市漫游"].map((t, i) => (
-                  <button key={t} onClick={() => search(examples[i], emptyFilters)}>
+                  <button key={t} className="chip" onClick={() => search(examples[i], emptyFilters)}>
                     {t}
-                    <ArrowUpRight size={12} />
                   </button>
                 ))}
               </div>
-              <div className="hero-note">
-                <Sparkles size={12} />
-                {movies.length
-                  ? `${movies.length.toLocaleString()} 部电影与剧集，等一句你的心情`
-                  : "正在打开内容库…"}
-              </div>
-            </section>
-            {browsing && (
-              <section className="poster-stage" aria-label="今日内容灵感">
-                <div className="stage-line" />
-                <span className="stage-label">
-                  YOUR NEXT FAVORITE
-                  <br />
-                  IS SOMEWHERE HERE.
-                </span>
-                <div className="poster-fan">
-                  {picks.slice(0, 9).map((m, i) => (
-                    <button
-                      key={m.id}
-                      style={{
-                        "--angle": `${(i - 4) * 5}deg`,
-                        "--rise": `${Math.abs(i - 4) * 9}px`,
-                        "--i": i,
-                      }}
-                      onClick={() => setSelected(m)}
-                      aria-label={"查看 " + (m.zh || m.title)}
-                    >
-                      <Poster movie={m} lazy={false} />
-                    </button>
-                  ))}
-                </div>
-                <span className="stage-caption">
-                  {Math.min(9, picks.length)} 个世界 · 随时入场 <ArrowUpRight size={14} />
-                </span>
-              </section>
             )}
-          </>
+            <FilterBar
+              filters={filters}
+              genres={genres}
+              onChange={changeFilter}
+              onClear={reset}
+              showClear={!!activeQuery || hasFilters(filters)}
+            />
+          </section>
         ) : (
           <section className="saved-hero">
-            <div className="eyebrow">YOUR PRIVATE SCREENING ROOM</div>
-            <h1>
-              留给<em>下一晚。</em>
-            </h1>
-            <p>那些让你想按下播放的故事，先收在这里。</p>
+            <h1>我的片单</h1>
+            <p>那些想留给下一晚的故事，先收在这里。</p>
             <div className="shelf-tabs" role="tablist" aria-label="片单分类">
               {[
                 ["want", `想看 ${saved.length}`],
@@ -455,7 +432,7 @@ export default function App({ initialMovies = [], initialUrl = "" }) {
                   key={id}
                   role="tab"
                   aria-selected={shelf === id}
-                  className={shelf === id ? "is-on" : ""}
+                  className={"chip" + (shelf === id ? " is-on" : "")}
                   onClick={() => setShelf(id)}
                 >
                   {label}
@@ -463,55 +440,13 @@ export default function App({ initialMovies = [], initialUrl = "" }) {
               ))}
             </div>
             <p className="feedback-note">
-              想看仍是原来的收藏。看过与不合适只存在这台浏览器，不会上传，也不会让模型自动学习。
+              {personalOn
+                ? "已开启“让片单参与选片”：选片时会附带这些作品编号，服务端不保存。"
+                : "这些记录只存在这台浏览器，不会上传，也不会让模型自动学习。"}
             </p>
           </section>
         )}
         <section className="library">
-          <div className="section-title">
-            <div>
-              <span className="section-index">{view === "saved" ? "02" : "01"} /</span>
-              <h2>
-                {view === "saved"
-                  ? shelf === "want"
-                    ? "我的待看片单"
-                    : shelf === "watched"
-                      ? "已经看过"
-                      : "不太合适"
-                  : activeQuery
-                    ? "为这一刻选的内容"
-                    : "慢慢挑，总会遇见"}
-              </h2>
-            </div>
-            {view === "discover" && (
-              <button
-                className="shuffle"
-                onClick={() => {
-                  const pool = all.filter((m) => m.poster);
-                  if (pool.length) setSelected(pool[Math.floor(Math.random() * pool.length)]);
-                }}
-              >
-                <Shuffle size={15} />
-                随机邂逅
-              </button>
-            )}
-          </div>
-          {view === "discover" && (
-            <FilterBar
-              filters={filters}
-              genres={genres}
-              onChange={changeFilter}
-              onClear={reset}
-              showClear={!!activeQuery || hasFilters(filters)}
-              meta={
-                activeQuery
-                  ? busy
-                    ? "正在读你的观影心情…"
-                    : `${visible.length} 部入选`
-                  : `${all.length.toLocaleString()} 部可探索`
-              }
-            />
-          )}
           <div aria-live="polite">
             {error && (
               <div className="notice error">
@@ -520,7 +455,7 @@ export default function App({ initialMovies = [], initialUrl = "" }) {
               </div>
             )}
             {filtersChanged && !busy && results !== null && (
-              <div className="notice refine">
+              <div className="notice">
                 已在本次结果里按新条件筛选，没有重新调用 Jev。
                 <button onClick={() => search(activeQuery, filters)}>
                   <RefreshCw size={12} /> 按新条件重新选片
@@ -535,15 +470,15 @@ export default function App({ initialMovies = [], initialUrl = "" }) {
             {meta && (
               <div className="query-summary">
                 <Sparkles size={15} />
-                <span>“{activeQuery}”</span>
+                <q>{activeQuery}</q>
                 <small>
                   {meta.nearDuplicate
                     ? "复用了一次几乎相同需求的结果，没有重新调用 Jev"
                     : meta.cached
                       ? "来自本次条件的缓存"
-                      : `Jev 从 ${meta.candidateCount} 部候选中筛选${meta.semantic ? "（含语义召回）" : ""} · ${(meta.elapsedMs / 1000).toFixed(1)}s`}
+                      : `Jev 从 ${meta.candidateCount} 部候选中筛选${meta.semantic ? " · 含语义召回" : ""} · ${(meta.elapsedMs / 1000).toFixed(1)} 秒`}
                   {meta.personalized ? " · 已参考你的片单" : ""}
-                  {hiddenCount ? ` · 已隐藏 ${hiddenCount} 部你标为看过或不合适的内容` : ""}
+                  {hiddenCount ? ` · 已隐藏 ${hiddenCount} 部看过或不合适的内容` : ""}
                 </small>
               </div>
             )}
@@ -556,9 +491,9 @@ export default function App({ initialMovies = [], initialUrl = "" }) {
                   setRefine("");
                 }}
               >
-                <span>再调一下：</span>
+                <span>再调一下</span>
                 {refinements.map((r) => (
-                  <button type="button" key={r} onClick={() => search(`${activeQuery}，${r}`.slice(0, 300), activeFilters)}>
+                  <button type="button" className="chip" key={r} onClick={() => search(`${activeQuery}，${r}`.slice(0, 300), activeFilters)}>
                     {r}
                   </button>
                 ))}
@@ -567,14 +502,14 @@ export default function App({ initialMovies = [], initialUrl = "" }) {
                   id="refine-input"
                   value={refine}
                   onChange={(e) => setRefine(e.target.value)}
-                  placeholder="或者写下补充，比如：别太长"
+                  placeholder="或者写一句补充，比如：别太长"
                   maxLength={60}
                 />
               </form>
             )}
             {busy && (
               <div className="loading-state">
-                <LoaderCircle className="spin" />
+                <LoaderCircle className="spin" size={26} />
                 <h3>正在替今晚选一个世界</h3>
                 <p>{progressText(progress)}</p>
                 {progress?.stage === "ranking" && (
@@ -589,6 +524,7 @@ export default function App({ initialMovies = [], initialUrl = "" }) {
                   </div>
                 )}
                 <button
+                  className="chip"
                   onClick={() => {
                     controller.current?.abort();
                     requestId.current++;
@@ -603,6 +539,35 @@ export default function App({ initialMovies = [], initialUrl = "" }) {
               </div>
             )}
           </div>
+          {!busy && (
+            <div className="section-title">
+              <h2>
+                {view === "saved"
+                  ? shelf === "want"
+                    ? "想看"
+                    : shelf === "watched"
+                      ? "已经看过"
+                      : "不太合适"
+                  : activeQuery
+                    ? `为这一刻选的 ${visible.length} 部`
+                    : browsing
+                      ? "今晚可以从这里开始"
+                      : `${all.length.toLocaleString()} 部符合条件`}
+              </h2>
+              {view === "discover" && (
+                <button
+                  className="shuffle"
+                  onClick={() => {
+                    const pool = all.filter((m) => m.poster);
+                    if (pool.length) setSelected(pool[Math.floor(Math.random() * pool.length)]);
+                  }}
+                >
+                  <Shuffle size={14} />
+                  随机邂逅
+                </button>
+              )}
+            </div>
+          )}
           {!busy && (
             <div className="movie-grid">
               {visible.map((m, i) => (
@@ -619,19 +584,19 @@ export default function App({ initialMovies = [], initialUrl = "" }) {
           )}
           {!busy && movies.length > 0 && !visible.length && !error && (
             <div className="empty">
-              <Film size={32} />
-              <h3>{view === "saved" ? "片单还是空的" : "这次还没有合适的内容"}</h3>
+              <Film size={30} />
+              <h3>{view === "saved" ? "这里还是空的" : "这次还没有合适的内容"}</h3>
               <p>
                 {view === "saved"
                   ? shelf === "want"
-                    ? "点一下海报上的书签，把想看的留给下一晚。"
+                    ? "点片名旁边的书签，把想看的留给下一晚。"
                     : "在详情里可以改回想看，或取消这条记录。"
                   : filters.maxRuntime
                     ? "片长未知的内容不会被当作符合条件。试着放宽片长限制。"
                     : "试着少加一个限制，给故事一点相遇的余地。"}
               </p>
-              <button onClick={reset}>
-                回到内容库 <ArrowRight size={15} />
+              <button className="chip" onClick={reset}>
+                回到首页
               </button>
             </div>
           )}
@@ -639,31 +604,39 @@ export default function App({ initialMovies = [], initialUrl = "" }) {
             <div className="page-more">
               {remaining > 0 ? (
                 <button className="load-more" onClick={() => { setPage((p) => p + 1); scrollTo?.({ top: 0, behavior: "smooth" }); }}>
-                  换一批 · 还有 {remaining} 部备选 <ArrowRight size={15} />
+                  换一批
+                  <small>还有 {remaining} 部备选 · 不再调用 Jev</small>
                 </button>
               ) : (
                 <button className="load-more" onClick={() => setPage(0)}>
-                  合适的都看完了，回到第一批 <ArrowRight size={15} />
+                  回到第一批
+                  <small>合适的都看完了</small>
                 </button>
               )}
-              <small>备选来自同一次评分，不会再次调用 Jev。</small>
             </div>
           )}
           {view === "discover" && !activeQuery && visible.length < all.length && (
-            <button className="load-more" onClick={() => setMore((m) => m + 24)}>
-              再遇见一些内容 <ArrowRight size={15} />
-            </button>
+            <div className="page-more">
+              <button className="load-more" onClick={() => setMore((m) => m + 24)}>
+                再看一些
+                <small>{all.length.toLocaleString()} 部可探索</small>
+              </button>
+            </div>
           )}
         </section>
       </main>
       <footer>
-        <span>
-          今夜放映 <i>·</i> GOOD FILMS, RIGHT FEELINGS.
-        </span>
-        <button onClick={() => setShowAbout(true)}>
-          关于片库与推荐 <ArrowUpRight size={13} />
-        </button>
+        <span>今夜放映 · GOOD FILMS, RIGHT FEELINGS.</span>
+        <button onClick={() => setShowAbout(true)}>关于片库与推荐</button>
       </footer>
+      <nav className="dock" aria-label="主导航">
+        {dockItems.map(([id, label, Icon, on, act]) => (
+          <button key={id} className={on ? "on" : ""} aria-label={label} title={label} aria-current={on ? "page" : undefined} onClick={act}>
+            <Icon size={19} strokeWidth={1.8} />
+            {id === "saved" && saved.length > 0 && <span className="count">{saved.length}</span>}
+          </button>
+        ))}
+      </nav>
       <MovieDialog
         movie={selected}
         query={activeQuery}
