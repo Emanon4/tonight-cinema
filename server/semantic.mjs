@@ -25,8 +25,24 @@ export function quantize(vec) {
 // vectors: Int8Array of ids.length * dims, each row a unit vector scaled by 127.
 export function createSemanticIndex({ ids, dims, vectors }) {
   if (vectors.length !== ids.length * dims) throw Error("向量索引不完整。");
+  const rowOf = new Map(ids.map((id, i) => [id, i]));
   return {
     size: ids.length,
+    has: (id) => rowOf.has(id),
+    // Taste direction: mean of liked titles minus half the mean of disliked ones.
+    profile(like = [], dislike = []) {
+      const out = new Float32Array(dims);
+      const add = (list, weight) => {
+        const rows = list.map((id) => rowOf.get(id)).filter((r) => r !== undefined);
+        for (const r of rows)
+          for (let i = 0; i < dims; i++) out[i] += (weight / rows.length) * vectors[r * dims + i];
+        return rows.length;
+      };
+      const liked = add(like, 1);
+      if (!liked) return null;
+      add(dislike, -0.5);
+      return out;
+    },
     scores(queryVec) {
       const q = unit(queryVec);
       if (q.length !== dims) throw Error("查询向量维度不一致。");

@@ -1,0 +1,425 @@
+{
+  "note": "银标准：三种召回方式各取前 30 合并成候选池（最多 80 部），由 Jev 逐部评分，得分 ≥ 2.3 记为相关。是模型判断，不是人工标注；用于补充覆盖面，待人工复核。",
+  "generatedAt": "2026-10-06T18:21:56.293Z",
+  "threshold": 2.3,
+  "jevCalls": 79,
+  "cases": [
+    {
+      "id": "silver-01",
+      "query": "想看一部让人笑出声的喜剧，轻松不费脑",
+      "pooled": 69,
+      "relevant": [
+        "tmdb-8290",
+        "tmdb-2062",
+        "tmdb-27866",
+        "tmdb-508965",
+        "tmdb-tv-80539",
+        "tmdb-432068",
+        "tmdb-525",
+        "tmdb-364089",
+        "tmdb-269149",
+        "tmdb-862",
+        "tmdb-26670",
+        "tmdb-872",
+        "tmdb-tv-46879",
+        "tmdb-585",
+        "tmdb-105",
+        "tmdb-268523"
+      ]
+    },
+    {
+      "id": "silver-02",
+      "query": "适合和爸妈一起看的温情电影",
+      "pooled": 76,
+      "relevant": [
+        "tmdb-1003504",
+        "tmdb-33251",
+        "tmdb-8392",
+        "tmdb-12",
+        "tmdb-537223",
+        "tmdb-15789",
+        "tmdb-413770",
+        "tmdb-12276",
+        "tmdb-100271",
+        "tmdb-28276",
+        "tmdb-77338",
+        "tmdb-14160",
+        "tmdb-365045",
+        "tmdb-51739",
+        "tmdb-58187",
+        "tmdb-25050",
+        "tmdb-110420",
+        "tmdb-607259",
+        "tmdb-1101734",
+        "tmdb-589982",
+        "tmdb-438634",
+        "tmdb-749004",
+        "tmdb-48617",
+        "tmdb-11050",
+        "tmdb-499028",
+        "tmdb-784",
+        "tmdb-360814"
+      ]
+    },
+    {
+      "id": "silver-03",
+      "query": "关于成长和青春期的电影，有点怀旧",
+      "pooled": 71,
+      "relevant": [
+        "tmdb-7857",
+        "tmdb-11545",
+        "tmdb-664996",
+        "tmdb-777270",
+        "tmdb-161285",
+        "tmdb-2280",
+        "tmdb-45999",
+        "tmdb-84111",
+        "tmdb-85350",
+        "tmdb-1786",
+        "tmdb-482121",
+        "tmdb-31304",
+        "tmdb-9571",
+        "tmdb-33095",
+        "tmdb-369557",
+        "tmdb-84892",
+        "tmdb-15080",
+        "tmdb-901563",
+        "tmdb-376660",
+        "tmdb-575813",
+        "tmdb-539617",
+        "tmdb-308369",
+        "tmdb-24684",
+        "tmdb-617882",
+        "tmdb-1267574"
+      ]
+    },
+    {
+      "id": "silver-04",
+      "query": "下雨天在家看的安静文艺片",
+      "pooled": 68,
+      "relevant": [
+        "tmdb-198375",
+        "tmdb-294682",
+        "tmdb-49956",
+        "tmdb-1433339",
+        "tmdb-916405",
+        "tmdb-200481",
+        "tmdb-568160",
+        "tmdb-25050",
+        "tmdb-499028"
+      ]
+    },
+    {
+      "id": "silver-05",
+      "query": "节奏紧张的悬疑推理，结局有反转",
+      "pooled": 70,
+      "relevant": [
+        "tmdb-11324"
+      ]
+    },
+    {
+      "id": "silver-06",
+      "query": "关于友情的公路旅行电影",
+      "pooled": 66,
+      "relevant": [
+        "tmdb-1462322",
+        "tmdb-384664",
+        "tmdb-61202",
+        "tmdb-1101799",
+        "tmdb-490132",
+        "tmdb-10834",
+        "tmdb-9675",
+        "tmdb-1541",
+        "tmdb-1214506"
+      ]
+    },
+    {
+      "id": "silver-07",
+      "query": "法国爱情片，浪漫但不俗套",
+      "pooled": 56,
+      "relevant": [
+        "tmdb-531428",
+        "tmdb-5967",
+        "tmdb-964960",
+        "tmdb-194",
+        "tmdb-10239",
+        "tmdb-621744",
+        "tmdb-377263",
+        "tmdb-2457",
+        "tmdb-8424",
+        "tmdb-10241",
+        "tmdb-42726",
+        "tmdb-152584",
+        "tmdb-37563",
+        "tmdb-50030",
+        "tmdb-259",
+        "tmdb-2817",
+        "tmdb-51241"
+      ]
+    },
+    {
+      "id": "silver-08",
+      "query": "像宫崎骏那样温柔的动画",
+      "pooled": 72,
+      "relevant": [
+        "tmdb-12429",
+        "tmdb-8392",
+        "tmdb-129",
+        "tmdb-16859",
+        "tmdb-92321",
+        "tmdb-17234",
+        "tmdb-100271",
+        "tmdb-110420"
+      ]
+    },
+    {
+      "id": "silver-09",
+      "query": "二战题材的战争片，但不要太血腥",
+      "pooled": 65,
+      "relevant": [
+        "tmdb-515001",
+        "tmdb-38251",
+        "tmdb-14574",
+        "tmdb-914"
+      ]
+    },
+    {
+      "id": "silver-10",
+      "query": "关于美食和烹饪的电影",
+      "pooled": 63,
+      "relevant": [
+        "tmdb-228194",
+        "tmdb-11830",
+        "tmdb-2062",
+        "tmdb-438857",
+        "tmdb-8280",
+        "tmdb-10451",
+        "tmdb-69335",
+        "tmdb-964960",
+        "tmdb-tv-62391",
+        "tmdb-11832",
+        "tmdb-41343",
+        "tmdb-593643",
+        "tmdb-1071806",
+        "tmdb-761",
+        "tmdb-7452",
+        "tmdb-319373",
+        "tmdb-807196",
+        "tmdb-18183",
+        "tmdb-1077050",
+        "tmdb-1277988",
+        "tmdb-293299"
+      ]
+    },
+    {
+      "id": "silver-11",
+      "query": "太空探索题材的科幻片",
+      "pooled": 62,
+      "relevant": [
+        "tmdb-157336",
+        "tmdb-286217",
+        "tmdb-535167",
+        "tmdb-49047",
+        "tmdb-13475",
+        "tmdb-62",
+        "tmdb-830",
+        "tmdb-438740",
+        "tmdb-581389",
+        "tmdb-926",
+        "tmdb-168",
+        "tmdb-9016",
+        "tmdb-945961",
+        "tmdb-348",
+        "tmdb-70981",
+        "tmdb-775",
+        "tmdb-10514",
+        "tmdb-118340",
+        "tmdb-tv-71738"
+      ]
+    },
+    {
+      "id": "silver-12",
+      "query": "讲母亲与女儿关系的电影",
+      "pooled": 67,
+      "relevant": [
+        "tmdb-11050",
+        "tmdb-391713",
+        "tmdb-749004",
+        "tmdb-19316",
+        "tmdb-12761",
+        "tmdb-24167",
+        "tmdb-34148",
+        "tmdb-118668",
+        "tmdb-487491",
+        "tmdb-9587",
+        "tmdb-438446",
+        "tmdb-54186",
+        "tmdb-43436",
+        "tmdb-9820"
+      ]
+    },
+    {
+      "id": "silver-13",
+      "query": "黑色幽默的犯罪片",
+      "pooled": 61,
+      "relevant": [
+        "tmdb-10180",
+        "tmdb-359940",
+        "tmdb-38438",
+        "tmdb-tv-51488",
+        "tmdb-627",
+        "tmdb-680",
+        "tmdb-5506",
+        "tmdb-37628",
+        "tmdb-239877",
+        "tmdb-1554"
+      ]
+    },
+    {
+      "id": "silver-14",
+      "query": "适合周末追的高分英剧",
+      "pooled": 66,
+      "relevant": [
+        "tmdb-tv-65494",
+        "tmdb-tv-19885",
+        "tmdb-tv-192",
+        "tmdb-tv-61746",
+        "tmdb-tv-2343"
+      ]
+    },
+    {
+      "id": "silver-15",
+      "query": "关于失去与疗愈，看完想哭但很温暖",
+      "pooled": 66,
+      "relevant": [
+        "tmdb-499028",
+        "tmdb-533514",
+        "tmdb-48617",
+        "tmdb-1433339",
+        "tmdb-1124566",
+        "tmdb-937278",
+        "tmdb-10860",
+        "tmdb-630566",
+        "tmdb-713776",
+        "tmdb-393559",
+        "tmdb-11447",
+        "tmdb-255709",
+        "tmdb-1081676",
+        "tmdb-99",
+        "tmdb-423333",
+        "tmdb-290542",
+        "tmdb-24858",
+        "tmdb-1293357",
+        "tmdb-1254",
+        "tmdb-146724",
+        "tmdb-497"
+      ]
+    },
+    {
+      "id": "silver-16",
+      "query": "西班牙语的好电影",
+      "pooled": 65,
+      "relevant": [
+        "tmdb-1913",
+        "tmdb-535356",
+        "tmdb-1391",
+        "tmdb-31023",
+        "tmdb-1417",
+        "tmdb-1024541",
+        "tmdb-256057",
+        "tmdb-4786",
+        "tmdb-553796",
+        "tmdb-168379",
+        "tmdb-325385",
+        "tmdb-477666",
+        "tmdb-75877",
+        "tmdb-21191",
+        "tmdb-997294",
+        "tmdb-38140"
+      ]
+    },
+    {
+      "id": "silver-17",
+      "query": "关于人工智能和人性的科幻",
+      "pooled": 65,
+      "relevant": [
+        "tmdb-644",
+        "tmdb-264660",
+        "tmdb-152601",
+        "tmdb-1307118",
+        "tmdb-1236153",
+        "tmdb-500664",
+        "tmdb-635996",
+        "tmdb-575265",
+        "tmdb-tv-72548",
+        "tmdb-tv-62450",
+        "tmdb-670292",
+        "tmdb-501929",
+        "tmdb-196761",
+        "tmdb-10681",
+        "tmdb-10386"
+      ]
+    },
+    {
+      "id": "silver-18",
+      "query": "小人物逆袭的体育电影",
+      "pooled": 68,
+      "relevant": [
+        "tmdb-28000",
+        "tmdb-245913",
+        "tmdb-11770",
+        "tmdb-228203",
+        "tmdb-4464",
+        "tmdb-527776",
+        "tmdb-14534",
+        "tmdb-864",
+        "tmdb-56601",
+        "tmdb-319888",
+        "tmdb-14163"
+      ]
+    },
+    {
+      "id": "silver-19",
+      "query": "看完让人想去旅行的电影",
+      "pooled": 70,
+      "relevant": [
+        "tmdb-1391",
+        "tmdb-5767",
+        "tmdb-788669",
+        "tmdb-533237",
+        "tmdb-14160",
+        "tmdb-247645",
+        "tmdb-449749",
+        "tmdb-464593",
+        "tmdb-1541",
+        "tmdb-157841",
+        "tmdb-449406",
+        "tmdb-120811"
+      ]
+    },
+    {
+      "id": "silver-20",
+      "query": "关于老年人生活的电影，平静动人",
+      "pooled": 72,
+      "relevant": [
+        "tmdb-91186",
+        "tmdb-1234564",
+        "tmdb-306598",
+        "tmdb-85444",
+        "tmdb-833",
+        "tmdb-537223",
+        "tmdb-336199",
+        "tmdb-86837",
+        "tmdb-18148",
+        "tmdb-413770",
+        "tmdb-653574",
+        "tmdb-24858",
+        "tmdb-20722",
+        "tmdb-13929",
+        "tmdb-457328",
+        "tmdb-807070",
+        "tmdb-7350"
+      ]
+    }
+  ]
+}

@@ -14,10 +14,10 @@
 
 - 本机项目在 `~/Downloads/tonight-cinema`，仓库是 https://github.com/Emanon4/tonight-cinema（`main` 分支）。
 - 片库 9,453 部：电影 7,200 部、剧集 2,253 部。
-- 召回版本 `RECALL_VERSION=v6-hybrid`。
+- 召回版本 `RECALL_VERSION=v7-personal`。
 - 向量文件在 `data/embeddings/`（bge-m3，int8，9.2 MiB），由 `npm run embeddings` 增量生成。
 - 生产链路：有向量时召回 500 部，否则 1000 部 → 每批 20 部评分 → 前 20 名统一重排 → 最多展示 12 部。详见 README。
-- 测试 39 项：`tests/core`、`catalog`、`retrieve-eval`、`worker`、`frontend`。
+- 测试 45 项：`tests/core`、`catalog`、`retrieve-eval`、`worker`、`frontend`。
 
 ## 代码导航
 
@@ -25,7 +25,7 @@
 - `server/semantic.mjs`：生成向量用的文本、int8 索引、Workers AI 绑定和 REST 两种向量调用方式。
 - `server/worker.mjs`：
   - 访问码、CORS、缓存。
-  - Budget Durable Object：每日共享 100 次、每访客每小时 10 次、失败退还。
+  - Budget Durable Object：每日共享 100 次、每访客每小时 10 次、失败退还；也负责相似需求复用（最近 300 条向量）和按日运行指标。
   - NDJSON 流式返回。
 - `server/catalog.mjs`：加载 Worker 静态资源里的片库分片和向量。
 - `server/local.mjs`：本地 API，地址 127.0.0.1:8793。

@@ -6,6 +6,7 @@ import {
   validInput,
   normalizeFilters,
   normalizeQuery,
+  normalizePersonal,
   RECALL_VERSION,
 } from "./core.mjs";
 import { createSemanticIndex, embedWithRest, semanticSearcher } from "./semantic.mjs";
@@ -20,11 +21,12 @@ const key =
     .trim();
 // Semantic recall locally needs both the vector file and Workers AI credentials.
 let semantic = null;
+let index = null;
 const metaUrl = new URL("../data/embeddings/meta.json", import.meta.url);
 if (fs.existsSync(metaUrl)) {
   const meta = JSON.parse(fs.readFileSync(metaUrl));
   const bin = fs.readFileSync(new URL("../data/embeddings/vectors.i8", import.meta.url));
-  const index = createSemanticIndex({ ids: meta.ids, dims: meta.dims, vectors: new Int8Array(bin.buffer, bin.byteOffset, bin.length) });
+  index = createSemanticIndex({ ids: meta.ids, dims: meta.dims, vectors: new Int8Array(bin.buffer, bin.byteOffset, bin.length) });
   const credentials = await cloudflareCredentials().catch(() => null);
   if (credentials) semantic = semanticSearcher(async () => index, (texts) => embedWithRest(credentials, texts));
 }
@@ -57,7 +59,7 @@ http
     let body = "";
     for await (const part of req) {
       body += part;
-      if (body.length > 4096) return send(413, { error: "请求过长。" });
+      if (body.length > 16384) return send(413, { error: "请求过长。" });
     }
     let b;
     try {
@@ -69,13 +71,14 @@ http
       return send(400, { error: "请输入 2—300 字的观影需求。" });
     const query = normalizeQuery(b.query);
     const filters = normalizeFilters(b.filters);
+    const personal = normalizePersonal(b.personal);
     const stream = (req.headers.accept || "").includes("application/x-ndjson");
     if (stream) res.writeHead(200, { "Content-Type": "application/x-ndjson", "Cache-Control": "no-store" });
     const finish = (code, data) => {
       if (!stream) return send(code, data);
       res.end(JSON.stringify(code === 200 ? { type: "result", ...data } : { type: "error", status: code, ...data }) + "\n");
     };
-    const id = JSON.stringify([RECALL_VERSION, query, filters]);
+    const id = JSON.stringify([RECALL_VERSION, query, filters, personal]);
     if (cache.has(id)) return finish(200, { ...cache.get(id), cached: true });
     if (busy >= 2) return finish(429, { error: "正在挑选电影，请稍后重试。" });
     busy++;
@@ -86,6 +89,10 @@ http
         movies,
         key,
         semantic,
+        exclude: personal?.exclude || [],
+        profile: index && personal?.like.length
+          ? (() => { const v = index.profile(personal.like, personal.dislike); return v ? index.scores(v) : null; })()
+          : null,
         onProgress: (p) => stream && res.write(JSON.stringify({ type: "progress", ...p }) + "\n"),
       });
       if (!result.partial) cache.set(id, result);

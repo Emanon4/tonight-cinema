@@ -7,7 +7,7 @@ export class ApiError extends Error {
 }
 
 // Reads the Worker's NDJSON stream: progress lines, then one result or error.
-export async function requestRecommendation({ apiBase, token, query, filters, signal, onProgress = () => {} }) {
+export async function requestRecommendation({ apiBase, token, query, filters, personal, signal, onProgress = () => {} }) {
   const response = await fetch(apiBase + "/api/recommend", {
     method: "POST",
     headers: {
@@ -15,7 +15,7 @@ export async function requestRecommendation({ apiBase, token, query, filters, si
       Accept: "application/x-ndjson",
       ...(token ? { Authorization: "Bearer " + token } : {}),
     },
-    body: JSON.stringify({ query, filters }),
+    body: JSON.stringify({ query, filters, ...(personal ? { personal } : {}) }),
     signal,
   });
   const type = response.headers.get("Content-Type") || "";

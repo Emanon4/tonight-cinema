@@ -46,7 +46,9 @@ const featured = [
   "Arrival",
   "Moonrise Kingdom",
 ];
-const cacheKey = (q, f) => JSON.stringify([q, f]);
+const cacheKey = (q, f, p) => JSON.stringify([q, f, p]);
+const PAGE_SIZE = 12;
+const refinements = ["更轻松一点", "更烧脑一点", "近几年的", "两小时以内", "换成剧集"];
 
 export default function App({ initialMovies = [], initialUrl = "" }) {
   const initial = useMemo(
@@ -75,6 +77,9 @@ export default function App({ initialMovies = [], initialUrl = "" }) {
     [health, setHealth] = useState(null),
     [filters, setFilters] = useState(initial.filters),
     [more, setMore] = useState(24),
+    [page, setPage] = useState(0),
+    [personalOn, setPersonalOn] = useState(() => readJson("cinema-personal", false)),
+    [refine, setRefine] = useState(""),
     [meta, setMeta] = useState(null);
   const controller = useRef(null),
     requestId = useRef(0),
@@ -119,6 +124,7 @@ export default function App({ initialMovies = [], initialUrl = "" }) {
   }, [apiBase]);
   useEffect(() => writeJson("cinema-saved", saved), [saved]);
   useEffect(() => writeJson("cinema-feedback", feedback), [feedback]);
+  useEffect(() => writeJson("cinema-personal", personalOn), [personalOn]);
   useEffect(() => {
     if (!selected || selected.overview || !selected.detailChunk) return;
     const id = selected.id;
@@ -221,14 +227,23 @@ export default function App({ initialMovies = [], initialUrl = "" }) {
     setError("");
     setMeta(null);
     setMore(24);
+    setPage(0);
     writeUrl(text, override, mode);
     controller.current?.abort();
     const rid = ++requestId.current;
-    const key = cacheKey(text, override);
+    // Opt-in only: the shelves leave the browser solely with this request.
+    const personal = personalOn
+      ? {
+          exclude: [...feedback.watched, ...feedback.skip].slice(-300),
+          like: [...saved, ...feedback.watched].slice(-60),
+          dislike: feedback.skip.slice(-60),
+        }
+      : undefined;
+    const key = cacheKey(text, override, personal);
     if (resultCache.current.has(key)) {
       const data = resultCache.current.get(key);
       setBusy(false);
-      setResults(data.results);
+      setResults([...data.results, ...(data.more || [])]);
       setMeta({ ...data, cached: true });
       return;
     }
@@ -251,13 +266,15 @@ export default function App({ initialMovies = [], initialUrl = "" }) {
         token: accessToken,
         query: text,
         filters: override,
+        personal,
         signal: ac.signal,
         onProgress: (p) => rid === requestId.current && setProgress(p),
       });
       if (rid !== requestId.current) return;
-      if (missingIds(data.results, byId).length) throw Error("内容库刚刚更新，请刷新页面后重新选片。");
+      const pool = [...data.results, ...(data.more || [])];
+      if (missingIds(pool, byId).length) throw Error("内容库刚刚更新，请刷新页面后重新选片。");
       if (!data.partial) resultCache.current.set(key, data);
-      setResults(data.results);
+      setResults(pool);
       setMeta(data);
     } catch (e) {
       if (e.name === "AbortError" || rid !== requestId.current) return;
@@ -287,13 +304,15 @@ export default function App({ initialMovies = [], initialUrl = "" }) {
     () => (results === null ? null : filtersChanged ? narrowResults(results, byId, filters) : results),
     [results, byId, filters, filtersChanged],
   );
-  const hiddenCount = narrowed ? narrowed.filter((r) => hidden.has(r.id)).length : 0;
+  const hiddenCount = narrowed ? narrowed.slice(0, (page + 1) * PAGE_SIZE).filter((r) => hidden.has(r.id)).length : 0;
+  const unseen = narrowed ? narrowed.filter((r) => !hidden.has(r.id)) : [];
+  const remaining = Math.max(0, unseen.length - (page + 1) * PAGE_SIZE);
   const shelfIds = shelf === "want" ? saved : shelf === "watched" ? feedback.watched : feedback.skip;
   const visible =
     view === "saved"
       ? shelfIds.map((id) => byId.get(id)).filter(Boolean)
       : narrowed !== null
-        ? narrowed.map((r) => ({ ...byId.get(r.id), match: r })).filter((m) => m.id && !hidden.has(m.id))
+        ? unseen.slice(page * PAGE_SIZE, (page + 1) * PAGE_SIZE).map((r) => ({ ...byId.get(r.id), match: r })).filter((m) => m.id)
         : hasFilters(filters)
           ? all.slice(0, more)
           : [...picks, ...movies.filter((m) => !picks.some((p) => p.id === m.id))].slice(0, more);
@@ -303,6 +322,7 @@ export default function App({ initialMovies = [], initialUrl = "" }) {
     const f = { ...filters, [k]: v };
     setFilters(f);
     setMore(24);
+    setPage(0);
     writeUrl(activeQuery, f, "replace");
   }
   const browsing = !activeQuery && !hasFilters(filters);
@@ -517,12 +537,40 @@ export default function App({ initialMovies = [], initialUrl = "" }) {
                 <Sparkles size={15} />
                 <span>“{activeQuery}”</span>
                 <small>
-                  {meta.cached
-                    ? "来自本次条件的缓存"
-                    : `Jev 从 ${meta.candidateCount} 部候选中筛选${meta.semantic ? "（含语义召回）" : ""} · ${(meta.elapsedMs / 1000).toFixed(1)}s`}
+                  {meta.nearDuplicate
+                    ? "复用了一次几乎相同需求的结果，没有重新调用 Jev"
+                    : meta.cached
+                      ? "来自本次条件的缓存"
+                      : `Jev 从 ${meta.candidateCount} 部候选中筛选${meta.semantic ? "（含语义召回）" : ""} · ${(meta.elapsedMs / 1000).toFixed(1)}s`}
+                  {meta.personalized ? " · 已参考你的片单" : ""}
                   {hiddenCount ? ` · 已隐藏 ${hiddenCount} 部你标为看过或不合适的内容` : ""}
                 </small>
               </div>
+            )}
+            {meta && !busy && (
+              <form
+                className="refine"
+                onSubmit={(e) => {
+                  e.preventDefault();
+                  if (refine.trim()) search(`${activeQuery}，${refine.trim()}`.slice(0, 300), activeFilters);
+                  setRefine("");
+                }}
+              >
+                <span>再调一下：</span>
+                {refinements.map((r) => (
+                  <button type="button" key={r} onClick={() => search(`${activeQuery}，${r}`.slice(0, 300), activeFilters)}>
+                    {r}
+                  </button>
+                ))}
+                <label className="sr-only" htmlFor="refine-input">补充要求</label>
+                <input
+                  id="refine-input"
+                  value={refine}
+                  onChange={(e) => setRefine(e.target.value)}
+                  placeholder="或者写下补充，比如：别太长"
+                  maxLength={60}
+                />
+              </form>
             )}
             {busy && (
               <div className="loading-state">
@@ -587,6 +635,20 @@ export default function App({ initialMovies = [], initialUrl = "" }) {
               </button>
             </div>
           )}
+          {view === "discover" && activeQuery && !busy && narrowed !== null && (remaining > 0 || page > 0) && (
+            <div className="page-more">
+              {remaining > 0 ? (
+                <button className="load-more" onClick={() => { setPage((p) => p + 1); scrollTo?.({ top: 0, behavior: "smooth" }); }}>
+                  换一批 · 还有 {remaining} 部备选 <ArrowRight size={15} />
+                </button>
+              ) : (
+                <button className="load-more" onClick={() => setPage(0)}>
+                  合适的都看完了，回到第一批 <ArrowRight size={15} />
+                </button>
+              )}
+              <small>备选来自同一次评分，不会再次调用 Jev。</small>
+            </div>
+          )}
           {view === "discover" && !activeQuery && visible.length < all.length && (
             <button className="load-more" onClick={() => setMore((m) => m + 24)}>
               再遇见一些内容 <ArrowRight size={15} />
@@ -616,6 +678,8 @@ export default function App({ initialMovies = [], initialUrl = "" }) {
         open={showSettings}
         token={token}
         remember={remember}
+        personal={personalOn}
+        onPersonalChange={setPersonalOn}
         ready={!!health?.ready}
         message={settingsMessage}
         onClose={() => setShowSettings(false)}

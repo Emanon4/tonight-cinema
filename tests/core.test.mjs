@@ -17,6 +17,8 @@ import {
   normalizeFilters,
   normalizeQuery,
   explain,
+  normalizePersonal,
+  querySignature,
 } from "../server/core.mjs";
 const films = [
   {
@@ -308,4 +310,38 @@ test('reasons cite only verifiable signals', () => {
   assert.ok(reasons.includes('日语'));
   assert.ok(reasons.some(r => r.startsWith('简介提到')));
   assert.ok(reasons.length <= 4);
+});
+
+test('personal exclusions, taste profile and spare results', async () => {
+  const movies = Array.from({length: 60}, (_, i) => ({...films[0], id: `m${i}`, rating: 7, votes: 500}));
+  const seen = [];
+  const result = await recommend({query: '梦境电影', movies, key: 'test', exclude: ['m0', 'm1'],
+    profile: new Map(movies.map(m => [m.id, m.id === 'm59' ? 0.9 : 0.1])),
+    fetcher: async (url, options) => {
+      const payload = JSON.parse(options.body);
+      if (!payload.state.movies) return Response.json({answers: intentAnswers});
+      if (!isRerank(payload)) seen.push(...payload.state.movies.map(m => m.id));
+      return Response.json({answers: Object.fromEntries(payload.state.movies.map(m => [m.id, {type: 'score', score: 2.2, confidence: 0.8}]))});
+    }});
+  assert.ok(!seen.includes('m0') && !seen.includes('m1'));
+  assert.equal(seen[0], 'm59');
+  assert.equal(result.personalized, true);
+  assert.equal(result.results.length, 12);
+  assert.ok(result.more.length > 0);
+  assert.ok(result.more.every(x => !result.results.some(r => r.id === x.id) && Array.isArray(x.reasons)));
+});
+
+test('personal payloads are bounded and normalized', () => {
+  assert.ok(validInput({query: '温暖', personal: {exclude: ['a'], like: ['b']}}));
+  assert.equal(validInput({query: '温暖', personal: {like: Array(61).fill('x')}}), false);
+  assert.equal(validInput({query: '温暖', personal: {like: [1]}}), false);
+  assert.deepEqual(normalizePersonal({like: ['b', 'a', 'b']}), {exclude: [], like: ['a', 'b'], dislike: []});
+  assert.equal(normalizePersonal({like: []}), null);
+});
+
+test('query signatures separate constraint changes but not punctuation', () => {
+  assert.equal(querySignature('想看一部日本电影，关于家庭和日常'), querySignature('想看一部日本电影，关于家庭和日常。'));
+  assert.notEqual(querySignature('想看一部日本电影，关于家庭和日常'), querySignature('想看一部韩国电影，关于家庭和日常'));
+  assert.notEqual(querySignature('孤独但不悲伤'), querySignature('孤独又悲伤'));
+  assert.notEqual(querySignature('像《盗梦空间》一样'), querySignature('像《星际穿越》一样'));
 });

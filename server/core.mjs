@@ -36,7 +36,7 @@ export const decadeOptions = [
   ["2010", "2010 年代"],
   ["2020", "2020 年代"],
 ];
-export const RECALL_VERSION = "v6-hybrid";
+export const RECALL_VERSION = "v7-personal";
 // Without semantic vectors the heuristic recall needs a wide net; with them a
 // hybrid shortlist of 500 recalls nearly as well with half the Jev calls (data/eval/hybrid-recall.json).
 export const CANDIDATE_LIMIT = 1000;
@@ -46,6 +46,7 @@ export const RANKING_CONCURRENCY = 5;
 export const RERANK_SIZE = 20;
 export const SCORE_THRESHOLD = 1.8;
 export const RESULT_LIMIT = 12;
+export const MORE_LIMIT = 36;
 // Share of ranking batches that may fail before the whole request is rejected.
 export const PARTIAL_FAILURE_TOLERANCE = 0.1;
 const themes = {
@@ -372,6 +373,15 @@ export function analyzeQuery(movies, query, filters = {}, intent = {}) {
     recent: /近年|最近/.test(query),
   };
 }
+// Structural fingerprint of a request. Near-duplicate reuse requires an exact
+// match here, so wording changes that flip a constraint never share results.
+export function querySignature(query, filters = {}) {
+  const a = analyzeQuery([], query, filters, {});
+  return JSON.stringify([
+    a.f, a.requestedType, a.lang, a.neg.genres, [...a.neg.words].sort(), a.neg.rejectClassic,
+    [...a.wanted].sort(), a.quoted, a.likeQuery, a.wantsClassic, a.recent, [...a.themesQ.zh].sort(),
+  ]);
+}
 export function retrieve(movies, query, filters = {}, intent = {}, limit = 32, semantic = null) {
   const a = analyzeQuery(movies, query, filters, intent);
   const { f, likeQuery, refs, requestedType, quoted, lang, neg, wanted, themesQ, wantsClassic, recent } = a;
@@ -379,9 +389,9 @@ export function retrieve(movies, query, filters = {}, intent = {}, limit = 32, s
   const typedPool = requestedType
     ? pool0.filter(m => (m.mediaType || "movie") === requestedType)
     : pool0;
-  const pool = likeQuery
-    ? typedPool.filter((m) => !refs.some((r) => r.id === m.id))
-    : typedPool;
+  const excluded = intent.exclude instanceof Set ? intent.exclude : new Set(intent.exclude || []);
+  const pool = typedPool.filter((m) =>
+    !excluded.has(m.id) && !(likeQuery && refs.some((r) => r.id === m.id)));
   const structured =
     lang.langs.length ||
     lang.not.length ||
@@ -447,7 +457,8 @@ export function retrieve(movies, query, filters = {}, intent = {}, limit = 32, s
       (wantsClassic && m.recognition?.length ? 1.2 : 0);
     return { m, score, soft, rejected };
   });
-  if (semantic?.size) addSemantic(ranked, semantic, structured);
+  if (semantic?.size) addSemantic(ranked, semantic, SEMANTIC_WEIGHT * (structured ? 0.75 : 1));
+  if (intent.profile?.size) addSemantic(ranked, intent.profile, PROFILE_WEIGHT);
   ranked.sort(
     (a, b) =>
       b.score - a.score ||
@@ -462,12 +473,12 @@ export const SEMANTIC_WEIGHT = 2.5;
 // Embedding similarity enters as a standardized bonus on top of the keyword
 // and structure score, so explicit constraints still dominate while titles
 // whose descriptions only paraphrase the request can rise into the shortlist.
-function addSemantic(ranked, semantic, structured) {
+export const PROFILE_WEIGHT = 0.8;
+function addSemantic(ranked, semantic, weight) {
   const sims = ranked.map((r) => semantic.get(r.m.id)).filter(Number.isFinite);
   if (sims.length < 2) return;
   const mean = sims.reduce((x, y) => x + y, 0) / sims.length;
   const sd = Math.sqrt(sims.reduce((x, y) => x + (y - mean) ** 2, 0) / sims.length) || 1;
-  const weight = SEMANTIC_WEIGHT * (structured ? 0.75 : 1);
   for (const r of ranked) {
     const sim = semantic.get(r.m.id);
     if (!Number.isFinite(sim) || r.rejected) continue;
@@ -683,6 +694,8 @@ export async function recommend({
   key,
   fetcher = fetch,
   semantic,
+  exclude = [],
+  profile = null,
   candidateLimit,
   batchSize = RANKING_BATCH_SIZE,
   concurrency = RANKING_CONCURRENCY,
@@ -709,7 +722,7 @@ export async function recommend({
       !Number.isInteger(batchSize) || batchSize < 1 || batchSize > RANKING_BATCH_SIZE ||
       !Number.isInteger(concurrency) || concurrency < 1 || concurrency > RANKING_CONCURRENCY)
     throw Error('Invalid recommendation limits');
-  const fullIntent = { ...intent, references: refs };
+  const fullIntent = { ...intent, references: refs, exclude: new Set(exclude), profile };
   const candidates = retrieve(movies, query, filters, fullIntent, limit, semanticScores);
   const base = {
     engine: "jev",
@@ -721,6 +734,7 @@ export async function recommend({
     return {
       ...base,
       results: [],
+      more: [],
       candidateCount: 0,
       rankingBatchCount: 0,
       modelRequestCount: 1,
@@ -757,6 +771,7 @@ export async function recommend({
     .filter((x) => x.score >= SCORE_THRESHOLD)
     .sort((a, b) => b.score - a.score || b.confidence - a.confidence ||
       qualityBonus(byId.get(b.id)) - qualityBonus(byId.get(a.id)));
+  const firstPass = ranked;
   let rerankResponse = null;
   const shortlist = ranked.slice(0, RERANK_SIZE);
   if (shortlist.length >= 2) {
@@ -784,10 +799,15 @@ export async function recommend({
       rerankResponse = null;
     }
   }
-  const results = ranked.slice(0, RESULT_LIMIT).map((x) => ({
-    ...x,
-    reasons: explain(byId.get(x.id), query, filters, fullIntent),
-  }));
+  const withReasons = (x) => ({ ...x, reasons: explain(byId.get(x.id), query, filters, fullIntent) });
+  const results = ranked.slice(0, RESULT_LIMIT).map(withReasons);
+  // Further titles that passed the first-pass threshold: "换一批" pages
+  // through these in the browser without another Jev call.
+  const shown = new Set(results.map((x) => x.id));
+  const more = firstPass
+    .filter((x) => !shown.has(x.id))
+    .slice(0, MORE_LIMIT)
+    .map(withReasons);
   const usage = [intentData, ...ok.map((x) => x.r), rerankResponse].filter(Boolean).reduce(
     (s, x) => ({
       input_tokens: s.input_tokens + (x.usage?.input_tokens || 0),
@@ -798,6 +818,8 @@ export async function recommend({
   return {
     ...base,
     results,
+    more,
+    personalized: !!(profile?.size || exclude.length),
     candidateCount: candidates.length,
     rankingBatchCount: batches.length,
     modelRequestCount: 1 + batches.length + (shortlist.length >= 2 ? 1 : 0),
@@ -807,6 +829,9 @@ export async function recommend({
     usage,
   };
 }
+const idList = (x, max) =>
+  x === undefined || (Array.isArray(x) && x.length <= max && x.every((id) => typeof id === "string" && id.length <= 40));
+export const PERSONAL_LIMITS = { exclude: 300, like: 60, dislike: 60 };
 export function validInput(b) {
   return (
     b &&
@@ -816,6 +841,18 @@ export function validInput(b) {
     (b.filters === undefined ||
       (b.filters !== null &&
         typeof b.filters === "object" &&
-        !Array.isArray(b.filters)))
+        !Array.isArray(b.filters))) &&
+    (b.personal === undefined ||
+      (b.personal !== null && typeof b.personal === "object" &&
+        idList(b.personal.exclude, PERSONAL_LIMITS.exclude) &&
+        idList(b.personal.like, PERSONAL_LIMITS.like) &&
+        idList(b.personal.dislike, PERSONAL_LIMITS.dislike)))
   );
+}
+// Sorted and de-duplicated so equivalent lists share a cache entry.
+export function normalizePersonal(personal) {
+  if (!personal) return null;
+  const clean = (x) => [...new Set(x || [])].sort();
+  const out = { exclude: clean(personal.exclude), like: clean(personal.like), dislike: clean(personal.dislike) };
+  return out.exclude.length || out.like.length || out.dislike.length ? out : null;
 }

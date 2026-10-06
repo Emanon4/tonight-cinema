@@ -91,6 +91,11 @@ export default function MovieDialog({ movie, query, saved, feedback, onClose, on
                 <a href={m.source} target="_blank" rel="noreferrer">
                   查看资料来源 <ExternalLink size={14} />
                 </a>
+                {m.provider === "TMDB" && (
+                  <a href={m.source + "/watch"} target="_blank" rel="noreferrer">
+                    在哪看 <ExternalLink size={14} />
+                  </a>
+                )}
               </div>
               <small className="source-note">资料来自 {m.provider} · 本站不提供正片播放</small>
             </div>
