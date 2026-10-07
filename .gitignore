@@ -10,3 +10,4 @@ public/data/wiki-source.json
 worker-configuration.d.ts
 
 public/data/catalog/
+scripts/.core-*.tmp.mjs
