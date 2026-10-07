@@ -17,7 +17,9 @@ export const HOURLY_LIMIT_PER_VISITOR = 10;
 // country, reference title or negation stayed below 0.90.
 export const NEAR_DUPLICATE_SIMILARITY = 0.93;
 const MEMORY_SIZE = 300;
-const STAT_FIELDS = ["searches", "cacheHits", "nearHits", "failures", "partial", "personalized", "latencyMs", "jevCalls", "inputTokens", "outputTokens"];
+const STAT_FIELDS = ["searches", "cacheHits", "nearHits", "failures", "partial", "personalized", "latencyMs", "jevCalls", "inputTokens", "outputTokens", "resultOpens", "resultOpensTop3", "resultSaves", "resultSkips"];
+// Visitor reactions to recommended titles: counts only, no titles or request text.
+const EVENT_FIELDS = { open: "resultOpens", save: "resultSaves", skip: "resultSkips" };
 
 // One global object: shared quota, per-visitor hourly limit, near-duplicate
 // memory (vectors and cache keys only, never request text) and daily counters.
@@ -155,7 +157,7 @@ export default {
         catalogCount: Number(env.CATALOG_COUNT),
         catalogVersion: env.CATALOG_VERSION,
       });
-    if (path !== "/api/recommend" && path !== "/api/stats")
+    if (path !== "/api/recommend" && path !== "/api/stats" && path !== "/api/event")
       return send(404, { error: "Not found" });
     const token = (req.headers.get("Authorization") || "").replace(/^Bearer /, "");
     if (!env.APP_ACCESS_TOKEN || !(await sameSecret(token, env.APP_ACCESS_TOKEN)))
@@ -163,6 +165,16 @@ export default {
     const budget = env.BUDGET.get(env.BUDGET.idFromName("global"));
     const callBudget = async (body) =>
       (await budget.fetch("https://budget/", { method: "POST", body: JSON.stringify(body) })).json();
+    if (path === "/api/event") {
+      if (req.method !== "POST") return send(404, { error: "Not found" });
+      let e;
+      try { e = JSON.parse((await req.text()).slice(0, 200)); } catch { return send(400, { error: "请求格式错误。" }); }
+      const field = EVENT_FIELDS[e?.type];
+      if (!field || !Number.isInteger(e.rank) || e.rank < 0 || e.rank > 100) return send(400, { error: "事件格式错误。" });
+      const stats = { [field]: 1, ...(e.type === "open" && e.rank < 3 ? { resultOpensTop3: 1 } : {}) };
+      ctx.waitUntil(callBudget({ action: "record", stats }).catch(() => {}));
+      return send(202, { ok: true });
+    }
     if (path === "/api/stats") {
       if (req.method !== "GET") return send(404, { error: "Not found" });
       return send(200, await callBudget({ action: "stats" }));

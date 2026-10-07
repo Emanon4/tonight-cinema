@@ -21,7 +21,7 @@ import AboutDialog from "./components/AboutDialog.jsx";
 import { readJson, writeJson, readToken, saveToken, tokenRemembered } from "./lib/storage.js";
 import { emptyFilters, readUrlState, urlFor, hasFilters, sameFilters } from "./lib/urlState.js";
 import { narrowResults, genreOptions, missingIds } from "./lib/results.js";
-import { requestRecommendation, progressText } from "./lib/api.js";
+import { requestRecommendation, progressText, sendEvent } from "./lib/api.js";
 import { stripSvg } from "./brand.js";
 
 // Static, generated from our own geometry — safe to inline.
@@ -180,7 +180,20 @@ export default function App({ initialMovies = [], initialUrl = "" }) {
     if (mode === "push") history.pushState(null, "", url);
     else history.replaceState(null, "", url);
   }
+  // Position of a title among the current recommendations, or -1.
+  function resultRank(id) {
+    return results ? results.findIndex((r) => r.id === id) : -1;
+  }
+  function report(type, id) {
+    const rank = resultRank(id);
+    if (rank >= 0 && apiBase !== null && health?.ready) sendEvent({ apiBase, token, type, rank });
+  }
+  function openTitle(m) {
+    report("open", m.id);
+    setSelected(m);
+  }
   function toggle(id) {
+    if (!saved.includes(id)) report("save", id);
     setFeedback((f) => ({
       watched: f.watched.filter((x) => x !== id),
       skip: f.skip.filter((x) => x !== id),
@@ -188,6 +201,7 @@ export default function App({ initialMovies = [], initialUrl = "" }) {
     setSaved((s) => (s.includes(id) ? s.filter((x) => x !== id) : [...s, id]));
   }
   function mark(kind, id) {
+    if (kind === "skip" && !feedback.skip.includes(id)) report("skip", id);
     setSaved((s) => s.filter((x) => x !== id));
     setFeedback((f) => {
       const other = kind === "watched" ? "skip" : "watched";
@@ -580,7 +594,7 @@ export default function App({ initialMovies = [], initialUrl = "" }) {
                   movie={m}
                   index={i}
                   saved={saved.includes(m.id)}
-                  onOpen={setSelected}
+                  onOpen={openTitle}
                   onToggleSave={toggle}
                 />
               ))}

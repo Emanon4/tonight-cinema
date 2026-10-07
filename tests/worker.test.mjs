@@ -211,3 +211,15 @@ test("personalized requests send exclusions and skip the shared memory", async (
   assert.ok(!body.results.some((r) => r.id === "m0" || r.id === "m1"));
   assert.equal((data.get("memory") || []).length, 0);
 });
+
+test("reaction events are counted without titles or text", async () => {
+  const { env, data } = makeEnv();
+  const post = (body) => worker.fetch(new Request("https://api.test/api/event", { method: "POST", headers: { Origin: "https://site.test", Authorization: "Bearer secret-code" }, body: JSON.stringify(body) }), env, { waitUntil: (p) => pending.push(p) });
+  const pending = [];
+  assert.equal((await post({ type: "open", rank: 1 })).status, 202);
+  assert.equal((await post({ type: "skip", rank: 7 })).status, 202);
+  assert.equal((await post({ type: "open", title: "x" })).status, 400);
+  await Promise.all(pending);
+  const stats = [...data.entries()].find(([k]) => k.startsWith("stats:"))[1];
+  assert.deepEqual([stats.resultOpens, stats.resultOpensTop3, stats.resultSkips], [1, 1, 1]);
+});

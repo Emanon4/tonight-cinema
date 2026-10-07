@@ -59,3 +59,15 @@ export function progressText(progress) {
   if (progress.stage === "rerank") return "正在把入围内容放在一起比较…";
   return "正在挑选…";
 }
+
+// Anonymous reaction counts for recommended titles; never blocks the UI.
+export function sendEvent({ apiBase, token, type, rank }) {
+  try {
+    fetch(apiBase + "/api/event", {
+      method: "POST",
+      keepalive: true,
+      headers: { "Content-Type": "application/json", ...(token ? { Authorization: "Bearer " + token } : {}) },
+      body: JSON.stringify({ type, rank }),
+    }).catch(() => {});
+  } catch {}
+}
