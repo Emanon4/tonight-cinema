@@ -106,10 +106,13 @@ test("all catalog records have unique IDs and source links", () => {
 test("quality catalog excludes low-signal records", () => {
   const movies = JSON.parse(fs.readFileSync("public/data/movies.json"));
   assert.ok(movies.length > 0);
+  // Regional imports trade vote count for a higher rating (data/curation/gap-import-report.json).
+  const regional = (m) => /^regional-/.test(m.addedBy || "") && Number(m.rating) >= 7.7 && Number(m.votes) >= 20;
   assert.ok(movies.every((m) =>
     Number(m.doubanRating) > 7.5 ||
     m.recognition?.length ||
-    (Number(m.rating) >= 7 && Number(m.votes) >= 100),
+    (Number(m.rating) >= 7 && Number(m.votes) >= 100) ||
+    regional(m),
   ));
 });
 

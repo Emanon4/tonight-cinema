@@ -440,6 +440,9 @@ footer {
 .movie-meta {
   display: flex;
   flex-wrap: wrap;
+  /* "豆瓣" falls back to a CJK font with different metrics; align on the text baseline, not the box. */
+  align-items: baseline;
+  font-variant-numeric: tabular-nums;
   gap: 2px 8px;
   margin-top: 3px;
   font-size: 12px;
@@ -867,7 +870,8 @@ footer button {
 .detail-stats {
   display: flex;
   flex-wrap: wrap;
-  align-items: center;
+  align-items: baseline;
+  font-variant-numeric: tabular-nums;
   gap: 8px 12px;
   margin: 0;
   font-size: 14px;

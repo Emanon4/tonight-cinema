@@ -1,0 +1,5430 @@
+{
+  "generatedAt": "2026-10-07T02:53:53.346Z",
+  "routes": [
+    {
+      "name": "series-bar",
+      "rating": 7.5,
+      "votes": 100
+    },
+    {
+      "name": "regional-tv-ja",
+      "rating": 8,
+      "votes": 20
+    },
+    {
+      "name": "regional-tv-ko",
+      "rating": 8,
+      "votes": 20
+    },
+    {
+      "name": "regional-tv-zh",
+      "rating": 8,
+      "votes": 20
+    },
+    {
+      "name": "regional-tv-cn",
+      "rating": 8,
+      "votes": 20
+    },
+    {
+      "name": "regional-tv-th",
+      "rating": 8,
+      "votes": 20
+    },
+    {
+      "name": "regional-movie-ja",
+      "rating": 7.7,
+      "votes": 30
+    },
+    {
+      "name": "regional-movie-ko",
+      "rating": 7.7,
+      "votes": 30
+    },
+    {
+      "name": "regional-movie-zh",
+      "rating": 7.7,
+      "votes": 30
+    },
+    {
+      "name": "regional-movie-cn",
+      "rating": 7.7,
+      "votes": 30
+    }
+  ],
+  "previousCount": 9453,
+  "total": 9887,
+  "byRoute": {
+    "series-bar": 31,
+    "regional-tv-ja": 163,
+    "regional-tv-ko": 113,
+    "regional-tv-zh": 116,
+    "regional-tv-cn": 2,
+    "regional-tv-th": 92,
+    "regional-movie-ja": 57,
+    "regional-movie-ko": 20,
+    "regional-movie-zh": 14,
+    "regional-movie-cn": 4
+  },
+  "rejected": 159,
+  "failures": [],
+  "added": [
+    {
+      "id": "tmdb-tv-117023",
+      "zh": "红日狂花",
+      "rating": 7.5,
+      "votes": 562,
+      "route": "series-bar"
+    },
+    {
+      "id": "tmdb-tv-111119",
+      "zh": "Súbete a mi moto",
+      "rating": 7.5,
+      "votes": 368,
+      "route": "series-bar"
+    },
+    {
+      "id": "tmdb-tv-213241",
+      "zh": "路德侦探社",
+      "rating": 7.51,
+      "votes": 341,
+      "route": "series-bar"
+    },
+    {
+      "id": "tmdb-tv-73946",
+      "zh": "犬屋敷",
+      "rating": 8,
+      "votes": 327,
+      "route": "series-bar"
+    },
+    {
+      "id": "tmdb-tv-114466",
+      "zh": "大白！",
+      "rating": 7.51,
+      "votes": 288,
+      "route": "series-bar"
+    },
+    {
+      "id": "tmdb-tv-103409",
+      "zh": "终末的后宫",
+      "rating": 7.5,
+      "votes": 264,
+      "route": "series-bar"
+    },
+    {
+      "id": "tmdb-tv-60804",
+      "zh": "夜班医生",
+      "rating": 7.5,
+      "votes": 252,
+      "route": "series-bar"
+    },
+    {
+      "id": "tmdb-tv-86942",
+      "zh": "卧底",
+      "rating": 7.5,
+      "votes": 184,
+      "route": "series-bar"
+    },
+    {
+      "id": "tmdb-tv-273207",
+      "zh": "侠女内莉",
+      "rating": 8.143,
+      "votes": 178,
+      "route": "series-bar"
+    },
+    {
+      "id": "tmdb-tv-213762",
+      "zh": "Sean eternos: Campeones de América",
+      "rating": 8.45,
+      "votes": 169,
+      "route": "series-bar"
+    },
+    {
+      "id": "tmdb-tv-84896",
+      "zh": "酷妹辣皇后",
+      "rating": 7.5,
+      "votes": 167,
+      "route": "series-bar"
+    },
+    {
+      "id": "tmdb-tv-8962",
+      "zh": "三千里寻母记",
+      "rating": 7.7,
+      "votes": 149,
+      "route": "series-bar"
+    },
+    {
+      "id": "tmdb-tv-107135",
+      "zh": "Oye Bonita",
+      "rating": 7.7,
+      "votes": 143,
+      "route": "series-bar"
+    },
+    {
+      "id": "tmdb-tv-63119",
+      "zh": "哦我的鬼神大人",
+      "rating": 8.1,
+      "votes": 144,
+      "route": "series-bar"
+    },
+    {
+      "id": "tmdb-tv-60874",
+      "zh": "太空丹迪",
+      "rating": 7.5,
+      "votes": 139,
+      "route": "series-bar"
+    },
+    {
+      "id": "tmdb-tv-1691",
+      "zh": "日落大道60号",
+      "rating": 7.5,
+      "votes": 138,
+      "route": "series-bar"
+    },
+    {
+      "id": "tmdb-tv-231003",
+      "zh": "拉撒路",
+      "rating": 7.5,
+      "votes": 138,
+      "route": "series-bar"
+    },
+    {
+      "id": "tmdb-tv-14540",
+      "zh": "超级蜱人",
+      "rating": 7.5,
+      "votes": 117,
+      "route": "series-bar"
+    },
+    {
+      "id": "tmdb-tv-291496",
+      "zh": "我的荒糖恋爱",
+      "rating": 8.848,
+      "votes": 115,
+      "route": "series-bar"
+    },
+    {
+      "id": "tmdb-tv-203614",
+      "zh": "爱情小狗牵",
+      "rating": 7.5,
+      "votes": 109,
+      "route": "series-bar"
+    },
+    {
+      "id": "tmdb-tv-45013",
+      "zh": "星际漫步",
+      "rating": 7.524,
+      "votes": 106,
+      "route": "series-bar"
+    },
+    {
+      "id": "tmdb-tv-204266",
+      "zh": "枪神 斯坦比特",
+      "rating": 7.5,
+      "votes": 102,
+      "route": "series-bar"
+    },
+    {
+      "id": "tmdb-tv-219066",
+      "zh": "废柴巡逻队",
+      "rating": 8.048,
+      "votes": 104,
+      "route": "series-bar"
+    },
+    {
+      "id": "tmdb-tv-203489",
+      "zh": "瘪四与大头蛋",
+      "rating": 7.8,
+      "votes": 101,
+      "route": "series-bar"
+    },
+    {
+      "id": "tmdb-tv-273419",
+      "zh": "Hanno ucciso l'Uomo Ragno - La leggendaria storia degli 883",
+      "rating": 7.9,
+      "votes": 100,
+      "route": "series-bar"
+    },
+    {
+      "id": "tmdb-tv-261980",
+      "zh": "未知的首尔",
+      "rating": 8.4,
+      "votes": 100,
+      "route": "series-bar"
+    },
+    {
+      "id": "tmdb-tv-279323",
+      "zh": "鬼谜东宫",
+      "rating": 8.1,
+      "votes": 102,
+      "route": "series-bar"
+    },
+    {
+      "id": "tmdb-tv-212963",
+      "zh": "杀手奶爸",
+      "rating": 7.9,
+      "votes": 101,
+      "route": "series-bar"
+    },
+    {
+      "id": "tmdb-tv-44210",
+      "zh": "12 стульев",
+      "rating": 7.51,
+      "votes": 100,
+      "route": "series-bar"
+    },
+    {
+      "id": "tmdb-tv-10797",
+      "zh": "功夫猫党",
+      "rating": 8.1,
+      "votes": 100,
+      "route": "series-bar"
+    },
+    {
+      "id": "tmdb-tv-13549",
+      "zh": "科学小飞侠",
+      "rating": 8.4,
+      "votes": 98,
+      "route": "regional-tv-ja"
+    },
+    {
+      "id": "tmdb-tv-67199",
+      "zh": "圣斗士星矢：冥王哈迪斯篇",
+      "rating": 8,
+      "votes": 99,
+      "route": "regional-tv-ja"
+    },
+    {
+      "id": "tmdb-tv-278043",
+      "zh": "正相反的你与我",
+      "rating": 8.6,
+      "votes": 98,
+      "route": "regional-tv-ja"
+    },
+    {
+      "id": "tmdb-tv-204635",
+      "zh": "地。—关于地球的运动—",
+      "rating": 8.1,
+      "votes": 97,
+      "route": "regional-tv-ja"
+    },
+    {
+      "id": "tmdb-tv-46234",
+      "zh": "胜者即是正义",
+      "rating": 8.5,
+      "votes": 96,
+      "route": "regional-tv-ja"
+    },
+    {
+      "id": "tmdb-tv-30386",
+      "zh": "钢铁神兵",
+      "rating": 8.3,
+      "votes": 100,
+      "route": "series-bar"
+    },
+    {
+      "id": "tmdb-tv-55925",
+      "zh": "半泽直树",
+      "rating": 8.3,
+      "votes": 92,
+      "route": "regional-tv-ja"
+    },
+    {
+      "id": "tmdb-tv-77694",
+      "zh": "赛马娘 Pretty Derby",
+      "rating": 8.3,
+      "votes": 95,
+      "route": "regional-tv-ja"
+    },
+    {
+      "id": "tmdb-tv-16660",
+      "zh": "物怪",
+      "rating": 8,
+      "votes": 92,
+      "route": "regional-tv-ja"
+    },
+    {
+      "id": "tmdb-tv-92835",
+      "zh": "星合之空",
+      "rating": 8.4,
+      "votes": 91,
+      "route": "regional-tv-ja"
+    },
+    {
+      "id": "tmdb-tv-39657",
+      "zh": "回转企鹅罐",
+      "rating": 8,
+      "votes": 91,
+      "route": "regional-tv-ja"
+    },
+    {
+      "id": "tmdb-tv-27660",
+      "zh": "银河英雄传说",
+      "rating": 8.6,
+      "votes": 91,
+      "route": "regional-tv-ja"
+    },
+    {
+      "id": "tmdb-tv-274622",
+      "zh": "加油吧！中村君！！",
+      "rating": 9.3,
+      "votes": 90,
+      "route": "regional-tv-ja"
+    },
+    {
+      "id": "tmdb-tv-278635",
+      "zh": "差点在迷宫深处被信任的伙伴杀掉，但靠着天赐技能“无限扭蛋”获得等级9999的伙伴，我要向前队友和世界展开复仇&“给他们好看！”",
+      "rating": 8.2,
+      "votes": 99,
+      "route": "regional-tv-ja"
+    },
+    {
+      "id": "tmdb-tv-9152",
+      "zh": "钢铁杰克",
+      "rating": 8.4,
+      "votes": 98,
+      "route": "regional-tv-ja"
+    },
+    {
+      "id": "tmdb-tv-111204",
+      "zh": "30歳まで童貞だと魔法使いになれるらしい",
+      "rating": 8.2,
+      "votes": 89,
+      "route": "regional-tv-ja"
+    },
+    {
+      "id": "tmdb-tv-68574",
+      "zh": "小长门有希的消失",
+      "rating": 8,
+      "votes": 84,
+      "route": "regional-tv-ja"
+    },
+    {
+      "id": "tmdb-tv-312949",
+      "zh": "尼古喵喵",
+      "rating": 8.295,
+      "votes": 83,
+      "route": "regional-tv-ja"
+    },
+    {
+      "id": "tmdb-tv-260463",
+      "zh": "黄泉的使者",
+      "rating": 8.384,
+      "votes": 82,
+      "route": "regional-tv-ja"
+    },
+    {
+      "id": "tmdb-tv-133733",
+      "zh": "黑岩射手：黎明降临",
+      "rating": 8.1,
+      "votes": 82,
+      "route": "regional-tv-ja"
+    },
+    {
+      "id": "tmdb-tv-215197",
+      "zh": "重启人生",
+      "rating": 8.8,
+      "votes": 77,
+      "route": "regional-tv-ja"
+    },
+    {
+      "id": "tmdb-tv-68224",
+      "zh": "乌冬面之国的金色毛球",
+      "rating": 8.5,
+      "votes": 76,
+      "route": "regional-tv-ja"
+    },
+    {
+      "id": "tmdb-tv-1042",
+      "zh": "少女革命",
+      "rating": 8.1,
+      "votes": 73,
+      "route": "regional-tv-ja"
+    },
+    {
+      "id": "tmdb-tv-241535",
+      "zh": "败犬女主太多了！",
+      "rating": 8.1,
+      "votes": 74,
+      "route": "regional-tv-ja"
+    },
+    {
+      "id": "tmdb-tv-255358",
+      "zh": "攻壳机动队 THE GHOST IN THE SHELL",
+      "rating": 8.116,
+      "votes": 73,
+      "route": "regional-tv-ja"
+    },
+    {
+      "id": "tmdb-tv-216074",
+      "zh": "2.5次元的诱惑",
+      "rating": 8,
+      "votes": 71,
+      "route": "regional-tv-ja"
+    },
+    {
+      "id": "tmdb-tv-69602",
+      "zh": "青年黑杰克",
+      "rating": 8,
+      "votes": 70,
+      "route": "regional-tv-ja"
+    },
+    {
+      "id": "tmdb-tv-135929",
+      "zh": "消失的初恋",
+      "rating": 8,
+      "votes": 70,
+      "route": "regional-tv-ja"
+    },
+    {
+      "id": "tmdb-tv-67575",
+      "zh": "姆明一族",
+      "rating": 8.603,
+      "votes": 97,
+      "route": "regional-tv-ja"
+    },
+    {
+      "id": "tmdb-tv-47008",
+      "zh": "深夜食堂",
+      "rating": 8.2,
+      "votes": 69,
+      "route": "regional-tv-ja"
+    },
+    {
+      "id": "tmdb-tv-312474",
+      "zh": "日本三国",
+      "rating": 8.684,
+      "votes": 68,
+      "route": "regional-tv-ja"
+    },
+    {
+      "id": "tmdb-tv-239478",
+      "zh": "SAND LAND: THE SERIES",
+      "rating": 8.1,
+      "votes": 68,
+      "route": "regional-tv-ja"
+    },
+    {
+      "id": "tmdb-tv-213326",
+      "zh": "身为悲剧始作俑者的最强邪恶BOSS女王为民竭心尽力",
+      "rating": 8,
+      "votes": 68,
+      "route": "regional-tv-ja"
+    },
+    {
+      "id": "tmdb-tv-136342",
+      "zh": "扭曲仙境",
+      "rating": 8.1,
+      "votes": 68,
+      "route": "regional-tv-ja"
+    },
+    {
+      "id": "tmdb-tv-23787",
+      "zh": "地狱老师",
+      "rating": 8.3,
+      "votes": 67,
+      "route": "regional-tv-ja"
+    },
+    {
+      "id": "tmdb-tv-296286",
+      "zh": "躲在超市后门抽烟的两人",
+      "rating": 8.6,
+      "votes": 67,
+      "route": "regional-tv-ja"
+    },
+    {
+      "id": "tmdb-tv-36249",
+      "zh": "真魔神 冲击！Z篇",
+      "rating": 8.2,
+      "votes": 64,
+      "route": "regional-tv-ja"
+    },
+    {
+      "id": "tmdb-tv-135822",
+      "zh": "假面骑士BLACK SUN",
+      "rating": 8.1,
+      "votes": 65,
+      "route": "regional-tv-ja"
+    },
+    {
+      "id": "tmdb-tv-283428",
+      "zh": "冰之城墙",
+      "rating": 8.6,
+      "votes": 63,
+      "route": "regional-tv-ja"
+    },
+    {
+      "id": "tmdb-tv-240641",
+      "zh": "辰星降临之国的妮娜",
+      "rating": 8.5,
+      "votes": 63,
+      "route": "regional-tv-ja"
+    },
+    {
+      "id": "tmdb-tv-229676",
+      "zh": "狼与香辛料 行商邂逅贤狼",
+      "rating": 8,
+      "votes": 63,
+      "route": "regional-tv-ja"
+    },
+    {
+      "id": "tmdb-tv-44777",
+      "zh": "太空西游记",
+      "rating": 8.5,
+      "votes": 63,
+      "route": "regional-tv-ja"
+    },
+    {
+      "id": "tmdb-tv-112616",
+      "zh": "暗夜第六感 2041",
+      "rating": 8.2,
+      "votes": 62,
+      "route": "regional-tv-ja"
+    },
+    {
+      "id": "tmdb-tv-44440",
+      "zh": "ドッとＫＯＮＩちゃん",
+      "rating": 8.4,
+      "votes": 61,
+      "route": "regional-tv-ja"
+    },
+    {
+      "id": "tmdb-tv-237529",
+      "zh": "金牌得主",
+      "rating": 8.2,
+      "votes": 61,
+      "route": "regional-tv-ja"
+    },
+    {
+      "id": "tmdb-tv-285993",
+      "zh": "暗黑灯火",
+      "rating": 8.2,
+      "votes": 60,
+      "route": "regional-tv-ja"
+    },
+    {
+      "id": "tmdb-tv-93483",
+      "zh": "外星BB撞地球",
+      "rating": 8.4,
+      "votes": 59,
+      "route": "regional-tv-ja"
+    },
+    {
+      "id": "tmdb-tv-244624",
+      "zh": "重生大小姐正在攻略龙帝殿下",
+      "rating": 8.2,
+      "votes": 59,
+      "route": "regional-tv-ja"
+    },
+    {
+      "id": "tmdb-tv-107001",
+      "zh": "平稳世代的韦驮天们",
+      "rating": 8.1,
+      "votes": 63,
+      "route": "regional-tv-ja"
+    },
+    {
+      "id": "tmdb-tv-34839",
+      "zh": "新竹取物语 1000年女王",
+      "rating": 8.5,
+      "votes": 59,
+      "route": "regional-tv-ja"
+    },
+    {
+      "id": "tmdb-tv-46153",
+      "zh": "迷糊餐厅",
+      "rating": 8.1,
+      "votes": 58,
+      "route": "regional-tv-ja"
+    },
+    {
+      "id": "tmdb-tv-89455",
+      "zh": "钟爱正义的侠士 月光假面",
+      "rating": 8.1,
+      "votes": 56,
+      "route": "regional-tv-ja"
+    },
+    {
+      "id": "tmdb-tv-3425",
+      "zh": "初代奥特曼",
+      "rating": 8.4,
+      "votes": 62,
+      "route": "regional-tv-ja"
+    },
+    {
+      "id": "tmdb-tv-73093",
+      "zh": "其实我是",
+      "rating": 8,
+      "votes": 56,
+      "route": "regional-tv-ja"
+    },
+    {
+      "id": "tmdb-tv-63409",
+      "zh": "极道鲜师",
+      "rating": 8,
+      "votes": 56,
+      "route": "regional-tv-ja"
+    },
+    {
+      "id": "tmdb-tv-306762",
+      "zh": "棱镜恋曲",
+      "rating": 8.9,
+      "votes": 55,
+      "route": "regional-tv-ja"
+    },
+    {
+      "id": "tmdb-tv-224753",
+      "zh": "百变的七仓同学",
+      "rating": 8.1,
+      "votes": 55,
+      "route": "regional-tv-ja"
+    },
+    {
+      "id": "tmdb-tv-290019",
+      "zh": "和班上第二可爱的女孩子成为了朋友",
+      "rating": 8.2,
+      "votes": 61,
+      "route": "regional-tv-ja"
+    },
+    {
+      "id": "tmdb-tv-37851",
+      "zh": "数码宝贝：合体战争",
+      "rating": 8.2,
+      "votes": 54,
+      "route": "regional-tv-ja"
+    },
+    {
+      "id": "tmdb-tv-85529",
+      "zh": "3年A班：从现在起，大家都是人质",
+      "rating": 8,
+      "votes": 52,
+      "route": "regional-tv-ja"
+    },
+    {
+      "id": "tmdb-tv-293489",
+      "zh": "鬼的新娘",
+      "rating": 9.3,
+      "votes": 50,
+      "route": "regional-tv-ja"
+    },
+    {
+      "id": "tmdb-tv-277513",
+      "zh": "我们不可能成为恋人！绝对不行。(※似乎可行！？)",
+      "rating": 8.3,
+      "votes": 50,
+      "route": "regional-tv-ja"
+    },
+    {
+      "id": "tmdb-tv-35579",
+      "zh": "小公主莎拉",
+      "rating": 8.1,
+      "votes": 50,
+      "route": "regional-tv-ja"
+    },
+    {
+      "id": "tmdb-tv-287591",
+      "zh": "皎洁迎宵之月",
+      "rating": 8.2,
+      "votes": 48,
+      "route": "regional-tv-ja"
+    },
+    {
+      "id": "tmdb-tv-271609",
+      "zh": "DARK MOON -黑之月：月之祭坛-",
+      "rating": 8.4,
+      "votes": 48,
+      "route": "regional-tv-ja"
+    },
+    {
+      "id": "tmdb-tv-229858",
+      "zh": "命运／奇异赝品",
+      "rating": 8.2,
+      "votes": 48,
+      "route": "regional-tv-ja"
+    },
+    {
+      "id": "tmdb-tv-65958",
+      "zh": "天外来信·银河大战",
+      "rating": 8.7,
+      "votes": 46,
+      "route": "regional-tv-ja"
+    },
+    {
+      "id": "tmdb-tv-276393",
+      "zh": "现在的是哪一个多闻！ ？",
+      "rating": 8,
+      "votes": 45,
+      "route": "regional-tv-ja"
+    },
+    {
+      "id": "tmdb-tv-25117",
+      "zh": "明日之丈",
+      "rating": 8.1,
+      "votes": 48,
+      "route": "regional-tv-ja"
+    },
+    {
+      "id": "tmdb-tv-66083",
+      "zh": "城下町的蒲公英",
+      "rating": 8.2,
+      "votes": 45,
+      "route": "regional-tv-ja"
+    },
+    {
+      "id": "tmdb-tv-43979",
+      "zh": "大空魔龙凯王",
+      "rating": 8.4,
+      "votes": 45,
+      "route": "regional-tv-ja"
+    },
+    {
+      "id": "tmdb-tv-6100",
+      "zh": "悠长假期",
+      "rating": 8.6,
+      "votes": 44,
+      "route": "regional-tv-ja"
+    },
+    {
+      "id": "tmdb-tv-290160",
+      "zh": "请和我的老公结婚",
+      "rating": 8.186,
+      "votes": 43,
+      "route": "regional-tv-ja"
+    },
+    {
+      "id": "tmdb-tv-222366",
+      "zh": "我们的餐桌",
+      "rating": 8.2,
+      "votes": 43,
+      "route": "regional-tv-ja"
+    },
+    {
+      "id": "tmdb-tv-233452",
+      "zh": "无法传达给你",
+      "rating": 8.5,
+      "votes": 42,
+      "route": "regional-tv-ja"
+    },
+    {
+      "id": "tmdb-tv-69857",
+      "zh": "四重奏",
+      "rating": 8,
+      "votes": 43,
+      "route": "regional-tv-ja"
+    },
+    {
+      "id": "tmdb-tv-22366",
+      "zh": "超智游戏",
+      "rating": 8.3,
+      "votes": 42,
+      "route": "regional-tv-ja"
+    },
+    {
+      "id": "tmdb-tv-6964",
+      "zh": "神探伽利略",
+      "rating": 8.2,
+      "votes": 42,
+      "route": "regional-tv-ja"
+    },
+    {
+      "id": "tmdb-tv-281512",
+      "zh": "美乐蒂&酷洛米",
+      "rating": 8.5,
+      "votes": 41,
+      "route": "regional-tv-ja"
+    },
+    {
+      "id": "tmdb-tv-241138",
+      "zh": "高尔夫物语",
+      "rating": 8.5,
+      "votes": 41,
+      "route": "regional-tv-ja"
+    },
+    {
+      "id": "tmdb-tv-248947",
+      "zh": "妖精的尾巴 百年任务",
+      "rating": 8,
+      "votes": 41,
+      "route": "regional-tv-ja"
+    },
+    {
+      "id": "tmdb-tv-224207",
+      "zh": "迷途之子!!!!!",
+      "rating": 8,
+      "votes": 40,
+      "route": "regional-tv-ja"
+    },
+    {
+      "id": "tmdb-tv-154526",
+      "zh": "极速车魂",
+      "rating": 8.2,
+      "votes": 40,
+      "route": "regional-tv-ja"
+    },
+    {
+      "id": "tmdb-tv-62057",
+      "zh": "麻辣教师",
+      "rating": 8.4,
+      "votes": 40,
+      "route": "regional-tv-ja"
+    },
+    {
+      "id": "tmdb-tv-6231",
+      "zh": "阿信",
+      "rating": 8.2,
+      "votes": 40,
+      "route": "regional-tv-ja"
+    },
+    {
+      "id": "tmdb-tv-90451",
+      "zh": "野狼前锋",
+      "rating": 8.4,
+      "votes": 39,
+      "route": "regional-tv-ja"
+    },
+    {
+      "id": "tmdb-tv-246862",
+      "zh": "新吊带袜天使",
+      "rating": 8.6,
+      "votes": 38,
+      "route": "regional-tv-ja"
+    },
+    {
+      "id": "tmdb-tv-272512",
+      "zh": "未成年~未成熟的我们正笨拙前行中~",
+      "rating": 8.6,
+      "votes": 37,
+      "route": "regional-tv-ja"
+    },
+    {
+      "id": "tmdb-tv-38242",
+      "zh": "白色巨塔",
+      "rating": 9.108,
+      "votes": 37,
+      "route": "regional-tv-ja"
+    },
+    {
+      "id": "tmdb-tv-53787",
+      "zh": "水星领航员",
+      "rating": 8.6,
+      "votes": 38,
+      "route": "regional-tv-ja"
+    },
+    {
+      "id": "tmdb-tv-16069",
+      "zh": "东京爱情故事",
+      "rating": 8.4,
+      "votes": 39,
+      "route": "regional-tv-ja"
+    },
+    {
+      "id": "tmdb-tv-34132",
+      "zh": "萩萩公主",
+      "rating": 8.2,
+      "votes": 37,
+      "route": "regional-tv-ja"
+    },
+    {
+      "id": "tmdb-tv-282662",
+      "zh": "跨越种族与你相恋",
+      "rating": 8.5,
+      "votes": 35,
+      "route": "regional-tv-ja"
+    },
+    {
+      "id": "tmdb-tv-255853",
+      "zh": "听到向阳之声",
+      "rating": 8.7,
+      "votes": 35,
+      "route": "regional-tv-ja"
+    },
+    {
+      "id": "tmdb-tv-253797",
+      "zh": "幸福伽菜子的快乐杀手生活",
+      "rating": 8,
+      "votes": 34,
+      "route": "regional-tv-ja"
+    },
+    {
+      "id": "tmdb-tv-233408",
+      "zh": "放学后少年花子君",
+      "rating": 8.2,
+      "votes": 35,
+      "route": "regional-tv-ja"
+    },
+    {
+      "id": "tmdb-tv-106055",
+      "zh": "LoveLive! 超级明星!!",
+      "rating": 8.1,
+      "votes": 34,
+      "route": "regional-tv-ja"
+    },
+    {
+      "id": "tmdb-tv-66081",
+      "zh": "绿野仙踪",
+      "rating": 8.5,
+      "votes": 34,
+      "route": "regional-tv-ja"
+    },
+    {
+      "id": "tmdb-tv-249054",
+      "zh": "浪漫匿名者",
+      "rating": 8.2,
+      "votes": 33,
+      "route": "regional-tv-ja"
+    },
+    {
+      "id": "tmdb-tv-276903",
+      "zh": "热点",
+      "rating": 8.3,
+      "votes": 33,
+      "route": "regional-tv-ja"
+    },
+    {
+      "id": "tmdb-tv-42862",
+      "zh": "人鱼的旋律",
+      "rating": 8,
+      "votes": 33,
+      "route": "regional-tv-ja"
+    },
+    {
+      "id": "tmdb-tv-65584",
+      "zh": "内衣白领风云",
+      "rating": 8.1,
+      "votes": 38,
+      "route": "regional-tv-ja"
+    },
+    {
+      "id": "tmdb-tv-43295",
+      "zh": "幻想嘉年华",
+      "rating": 8.364,
+      "votes": 32,
+      "route": "regional-tv-ja"
+    },
+    {
+      "id": "tmdb-tv-270603",
+      "zh": "遭到流放的转生重骑士凭借游戏知识大开无双",
+      "rating": 8.5,
+      "votes": 31,
+      "route": "regional-tv-ja"
+    },
+    {
+      "id": "tmdb-tv-247670",
+      "zh": "玻璃之心",
+      "rating": 8.3,
+      "votes": 31,
+      "route": "regional-tv-ja"
+    },
+    {
+      "id": "tmdb-tv-88806",
+      "zh": "街角魔族",
+      "rating": 8,
+      "votes": 31,
+      "route": "regional-tv-ja"
+    },
+    {
+      "id": "tmdb-tv-31077",
+      "zh": "我的老大，我的英雄",
+      "rating": 8,
+      "votes": 31,
+      "route": "regional-tv-ja"
+    },
+    {
+      "id": "tmdb-tv-272118",
+      "zh": "小城日常",
+      "rating": 8.4,
+      "votes": 30,
+      "route": "regional-tv-ja"
+    },
+    {
+      "id": "tmdb-tv-95718",
+      "zh": "东京大饭店",
+      "rating": 8.4,
+      "votes": 30,
+      "route": "regional-tv-ja"
+    },
+    {
+      "id": "tmdb-tv-274814",
+      "zh": "恶食千金与狂血公爵",
+      "rating": 8.4,
+      "votes": 30,
+      "route": "regional-tv-ja"
+    },
+    {
+      "id": "tmdb-tv-14037",
+      "zh": "求婚大作战",
+      "rating": 8.6,
+      "votes": 30,
+      "route": "regional-tv-ja"
+    },
+    {
+      "id": "tmdb-tv-295357",
+      "zh": "北斗之拳 -Fist of the North Star-",
+      "rating": 8.2,
+      "votes": 30,
+      "route": "regional-tv-ja"
+    },
+    {
+      "id": "tmdb-tv-117166",
+      "zh": "PUI PUI 天竺鼠车车",
+      "rating": 8,
+      "votes": 29,
+      "route": "regional-tv-ja"
+    },
+    {
+      "id": "tmdb-tv-89367",
+      "zh": "银牙：流星之银",
+      "rating": 8.1,
+      "votes": 28,
+      "route": "regional-tv-ja"
+    },
+    {
+      "id": "tmdb-tv-66660",
+      "zh": "火花",
+      "rating": 8.2,
+      "votes": 29,
+      "route": "regional-tv-ja"
+    },
+    {
+      "id": "tmdb-tv-259881",
+      "zh": "毒恋～毒过了头就会变成恋爱～",
+      "rating": 8.4,
+      "votes": 27,
+      "route": "regional-tv-ja"
+    },
+    {
+      "id": "tmdb-tv-262929",
+      "zh": "末日后酒店",
+      "rating": 8.2,
+      "votes": 27,
+      "route": "regional-tv-ja"
+    },
+    {
+      "id": "tmdb-tv-45923",
+      "zh": "警视厅公安部公安第五课 未详事件特别对策系事件簿",
+      "rating": 8.5,
+      "votes": 27,
+      "route": "regional-tv-ja"
+    },
+    {
+      "id": "tmdb-tv-253476",
+      "zh": "异国日记",
+      "rating": 8.6,
+      "votes": 27,
+      "route": "regional-tv-ja"
+    },
+    {
+      "id": "tmdb-tv-258063",
+      "zh": "灵魂之伴",
+      "rating": 8.5,
+      "votes": 26,
+      "route": "regional-tv-ja"
+    },
+    {
+      "id": "tmdb-tv-76127",
+      "zh": "妖精森林的小不点",
+      "rating": 8.1,
+      "votes": 26,
+      "route": "regional-tv-ja"
+    },
+    {
+      "id": "tmdb-tv-1279",
+      "zh": "艾斯奥特曼",
+      "rating": 8,
+      "votes": 26,
+      "route": "regional-tv-ja"
+    },
+    {
+      "id": "tmdb-tv-46337",
+      "zh": "四叶游戏",
+      "rating": 8.7,
+      "votes": 26,
+      "route": "regional-tv-ja"
+    },
+    {
+      "id": "tmdb-tv-302162",
+      "zh": "新选组镇魂歌江户青春篇",
+      "rating": 9.1,
+      "votes": 25,
+      "route": "regional-tv-ja"
+    },
+    {
+      "id": "tmdb-tv-212765",
+      "zh": "想做饭的女人和想吃饭的女人",
+      "rating": 8.8,
+      "votes": 25,
+      "route": "regional-tv-ja"
+    },
+    {
+      "id": "tmdb-tv-295999",
+      "zh": "摩绪",
+      "rating": 8.9,
+      "votes": 25,
+      "route": "regional-tv-ja"
+    },
+    {
+      "id": "tmdb-tv-126990",
+      "zh": "女子警察的逆袭",
+      "rating": 8.1,
+      "votes": 25,
+      "route": "regional-tv-ja"
+    },
+    {
+      "id": "tmdb-tv-21269",
+      "zh": "动画亲子剧场",
+      "rating": 8.2,
+      "votes": 25,
+      "route": "regional-tv-ja"
+    },
+    {
+      "id": "tmdb-tv-6298",
+      "zh": "电击战队变化人",
+      "rating": 8.3,
+      "votes": 25,
+      "route": "regional-tv-ja"
+    },
+    {
+      "id": "tmdb-tv-9573",
+      "zh": "古畑任三郎",
+      "rating": 8.8,
+      "votes": 25,
+      "route": "regional-tv-ja"
+    },
+    {
+      "id": "tmdb-tv-309974",
+      "zh": "与奔跑在透明之夜的你，谈一场看不见的恋爱。",
+      "rating": 8.7,
+      "votes": 25,
+      "route": "regional-tv-ja"
+    },
+    {
+      "id": "tmdb-tv-303460",
+      "zh": "最强的职业不是勇者也不是贤者好像是鉴定士（伪）的样子？",
+      "rating": 8,
+      "votes": 24,
+      "route": "regional-tv-ja"
+    },
+    {
+      "id": "tmdb-tv-69113",
+      "zh": "人造人009",
+      "rating": 8.2,
+      "votes": 24,
+      "route": "regional-tv-ja"
+    },
+    {
+      "id": "tmdb-tv-66106",
+      "zh": "三者三叶",
+      "rating": 8,
+      "votes": 24,
+      "route": "regional-tv-ja"
+    },
+    {
+      "id": "tmdb-tv-279412",
+      "zh": "相遇骤雨中",
+      "rating": 8,
+      "votes": 23,
+      "route": "regional-tv-ja"
+    },
+    {
+      "id": "tmdb-tv-34090",
+      "zh": "新铁金刚",
+      "rating": 8,
+      "votes": 24,
+      "route": "regional-tv-ja"
+    },
+    {
+      "id": "tmdb-tv-45209",
+      "zh": "宇宙兄弟",
+      "rating": 8.1,
+      "votes": 24,
+      "route": "regional-tv-ja"
+    },
+    {
+      "id": "tmdb-tv-55582",
+      "zh": "孤独的美食家",
+      "rating": 8.9,
+      "votes": 24,
+      "route": "regional-tv-ja"
+    },
+    {
+      "id": "tmdb-tv-23587",
+      "zh": "金田一少年事件簿",
+      "rating": 8.1,
+      "votes": 24,
+      "route": "regional-tv-ja"
+    },
+    {
+      "id": "tmdb-tv-274810",
+      "zh": "想吃掉我的非人少女",
+      "rating": 8.2,
+      "votes": 23,
+      "route": "regional-tv-ja"
+    },
+    {
+      "id": "tmdb-tv-22104",
+      "zh": "棒球英豪",
+      "rating": 9,
+      "votes": 25,
+      "route": "regional-tv-ja"
+    },
+    {
+      "id": "tmdb-tv-121852",
+      "zh": "大豆田永久子与三名前夫",
+      "rating": 8,
+      "votes": 23,
+      "route": "regional-tv-ja"
+    },
+    {
+      "id": "tmdb-tv-35832",
+      "zh": "罗密欧的蓝天",
+      "rating": 8.8,
+      "votes": 23,
+      "route": "regional-tv-ja"
+    },
+    {
+      "id": "tmdb-tv-46668",
+      "zh": "逆转监督",
+      "rating": 8.3,
+      "votes": 23,
+      "route": "regional-tv-ja"
+    },
+    {
+      "id": "tmdb-tv-94631",
+      "zh": "放学后海堤日记",
+      "rating": 8.2,
+      "votes": 23,
+      "route": "regional-tv-ja"
+    },
+    {
+      "id": "tmdb-tv-29602",
+      "zh": "棒球大联盟",
+      "rating": 8.2,
+      "votes": 23,
+      "route": "regional-tv-ja"
+    },
+    {
+      "id": "tmdb-tv-4766",
+      "zh": "奥特Q",
+      "rating": 8,
+      "votes": 23,
+      "route": "regional-tv-ja"
+    },
+    {
+      "id": "tmdb-tv-297710",
+      "zh": "修学旅行时被分进了合不来的组",
+      "rating": 8.524,
+      "votes": 21,
+      "route": "regional-tv-ja"
+    },
+    {
+      "id": "tmdb-tv-101005",
+      "zh": "泽塔奥特曼",
+      "rating": 8.5,
+      "votes": 22,
+      "route": "regional-tv-ja"
+    },
+    {
+      "id": "tmdb-tv-75058",
+      "zh": "终结一吻",
+      "rating": 8.4,
+      "votes": 22,
+      "route": "regional-tv-ja"
+    },
+    {
+      "id": "tmdb-tv-34633",
+      "zh": "母亲",
+      "rating": 8.5,
+      "votes": 22,
+      "route": "regional-tv-ja"
+    },
+    {
+      "id": "tmdb-tv-5744",
+      "zh": "特搜战队刑事连者",
+      "rating": 8.4,
+      "votes": 22,
+      "route": "regional-tv-ja"
+    },
+    {
+      "id": "tmdb-tv-278604",
+      "zh": "古诺希亚",
+      "rating": 8,
+      "votes": 21,
+      "route": "regional-tv-ja"
+    },
+    {
+      "id": "tmdb-tv-153918",
+      "zh": "暴太郎战队咚兄弟",
+      "rating": 8.8,
+      "votes": 21,
+      "route": "regional-tv-ja"
+    },
+    {
+      "id": "tmdb-tv-288971",
+      "zh": "穹庐下的魔女",
+      "rating": 8.4,
+      "votes": 20,
+      "route": "regional-tv-ja"
+    },
+    {
+      "id": "tmdb-tv-249854",
+      "zh": "mono女孩",
+      "rating": 8.2,
+      "votes": 20,
+      "route": "regional-tv-ja"
+    },
+    {
+      "id": "tmdb-tv-87306",
+      "zh": "相对世界",
+      "rating": 9.1,
+      "votes": 20,
+      "route": "regional-tv-ja"
+    },
+    {
+      "id": "tmdb-tv-243141",
+      "zh": "乌鸦不择主",
+      "rating": 8.2,
+      "votes": 20,
+      "route": "regional-tv-ja"
+    },
+    {
+      "id": "tmdb-tv-80784",
+      "zh": "东京女子图鉴",
+      "rating": 8.1,
+      "votes": 20,
+      "route": "regional-tv-ja"
+    },
+    {
+      "id": "tmdb-tv-45532",
+      "zh": "王牌投手 振臂高挥",
+      "rating": 8.2,
+      "votes": 20,
+      "route": "regional-tv-ja"
+    },
+    {
+      "id": "tmdb-tv-284029",
+      "zh": "猫与龙",
+      "rating": 8.6,
+      "votes": 21,
+      "route": "regional-tv-ja"
+    },
+    {
+      "id": "tmdb-tv-2044",
+      "zh": "魔弹战记龙剑道",
+      "rating": 8.4,
+      "votes": 20,
+      "route": "regional-tv-ja"
+    },
+    {
+      "id": "tmdb-tv-1281",
+      "zh": "奈克瑟斯奥特曼",
+      "rating": 8.2,
+      "votes": 20,
+      "route": "regional-tv-ja"
+    },
+    {
+      "id": "tmdb-tv-237565",
+      "zh": "重组家庭",
+      "rating": 8,
+      "votes": 94,
+      "route": "regional-tv-ko"
+    },
+    {
+      "id": "tmdb-tv-298610",
+      "zh": "毛骨悚然的恋爱",
+      "rating": 8.7,
+      "votes": 95,
+      "route": "regional-tv-ko"
+    },
+    {
+      "id": "tmdb-tv-100659",
+      "zh": "假面骑士亚马逊",
+      "rating": 8.4,
+      "votes": 21,
+      "route": "regional-tv-ja"
+    },
+    {
+      "id": "tmdb-tv-40028",
+      "zh": "女人的香气",
+      "rating": 8,
+      "votes": 94,
+      "route": "regional-tv-ko"
+    },
+    {
+      "id": "tmdb-tv-239779",
+      "zh": "女神降临",
+      "rating": 8.3,
+      "votes": 93,
+      "route": "regional-tv-ko"
+    },
+    {
+      "id": "tmdb-tv-210704",
+      "zh": "恶中之恶",
+      "rating": 8.4,
+      "votes": 90,
+      "route": "regional-tv-ko"
+    },
+    {
+      "id": "tmdb-tv-54477",
+      "zh": "听见你的声音",
+      "rating": 8.1,
+      "votes": 93,
+      "route": "regional-tv-ko"
+    },
+    {
+      "id": "tmdb-tv-38861",
+      "zh": "49日",
+      "rating": 8.1,
+      "votes": 90,
+      "route": "regional-tv-ko"
+    },
+    {
+      "id": "tmdb-tv-254389",
+      "zh": "比天堂还美丽",
+      "rating": 8.5,
+      "votes": 89,
+      "route": "regional-tv-ko"
+    },
+    {
+      "id": "tmdb-tv-201019",
+      "zh": "九尾狐传1938",
+      "rating": 8.1,
+      "votes": 89,
+      "route": "regional-tv-ko"
+    },
+    {
+      "id": "tmdb-tv-227190",
+      "zh": "美好世界",
+      "rating": 8.4,
+      "votes": 88,
+      "route": "regional-tv-ko"
+    },
+    {
+      "id": "tmdb-tv-287011",
+      "zh": "秒杀爱情",
+      "rating": 8.366,
+      "votes": 86,
+      "route": "regional-tv-ko"
+    },
+    {
+      "id": "tmdb-tv-281011",
+      "zh": "宇宙嫁给我",
+      "rating": 8.2,
+      "votes": 86,
+      "route": "regional-tv-ko"
+    },
+    {
+      "id": "tmdb-tv-135840",
+      "zh": "我们的蓝调",
+      "rating": 8.4,
+      "votes": 87,
+      "route": "regional-tv-ko"
+    },
+    {
+      "id": "tmdb-tv-230524",
+      "zh": "完美婚姻的定式",
+      "rating": 8,
+      "votes": 84,
+      "route": "regional-tv-ko"
+    },
+    {
+      "id": "tmdb-tv-110533",
+      "zh": "智异山",
+      "rating": 8.1,
+      "votes": 83,
+      "route": "regional-tv-ko"
+    },
+    {
+      "id": "tmdb-tv-84327",
+      "zh": "天空之城",
+      "rating": 8,
+      "votes": 83,
+      "route": "regional-tv-ko"
+    },
+    {
+      "id": "tmdb-tv-89604",
+      "zh": "春夜",
+      "rating": 8,
+      "votes": 82,
+      "route": "regional-tv-ko"
+    },
+    {
+      "id": "tmdb-tv-297424",
+      "zh": "给你宇宙",
+      "rating": 8.2,
+      "votes": 83,
+      "route": "regional-tv-ko"
+    },
+    {
+      "id": "tmdb-tv-99491",
+      "zh": "双甲路边摊",
+      "rating": 8,
+      "votes": 79,
+      "route": "regional-tv-ko"
+    },
+    {
+      "id": "tmdb-tv-289763",
+      "zh": "明天也要上班！",
+      "rating": 8.9,
+      "votes": 79,
+      "route": "regional-tv-ko"
+    },
+    {
+      "id": "tmdb-tv-61678",
+      "zh": "未生",
+      "rating": 8.6,
+      "votes": 78,
+      "route": "regional-tv-ko"
+    },
+    {
+      "id": "tmdb-tv-281006",
+      "zh": "你的味道",
+      "rating": 8.3,
+      "votes": 77,
+      "route": "regional-tv-ko"
+    },
+    {
+      "id": "tmdb-tv-281004",
+      "zh": "梦想成为律师的律师们",
+      "rating": 8.06,
+      "votes": 75,
+      "route": "regional-tv-ko"
+    },
+    {
+      "id": "tmdb-tv-280948",
+      "zh": "春日狂热",
+      "rating": 8.1,
+      "votes": 74,
+      "route": "regional-tv-ko"
+    },
+    {
+      "id": "tmdb-tv-233219",
+      "zh": "ONE：高中英雄们",
+      "rating": 8.1,
+      "votes": 74,
+      "route": "regional-tv-ko"
+    },
+    {
+      "id": "tmdb-tv-119772",
+      "zh": "恶魔法官",
+      "rating": 8.4,
+      "votes": 74,
+      "route": "regional-tv-ko"
+    },
+    {
+      "id": "tmdb-tv-128995",
+      "zh": "柔美的细胞小将",
+      "rating": 8,
+      "votes": 74,
+      "route": "regional-tv-ko"
+    },
+    {
+      "id": "tmdb-tv-62763",
+      "zh": "没关系，是爱情啊",
+      "rating": 8.1,
+      "votes": 74,
+      "route": "regional-tv-ko"
+    },
+    {
+      "id": "tmdb-tv-46553",
+      "zh": "请回答1997",
+      "rating": 8,
+      "votes": 74,
+      "route": "regional-tv-ko"
+    },
+    {
+      "id": "tmdb-tv-214997",
+      "zh": "车贞淑医生",
+      "rating": 8.2,
+      "votes": 71,
+      "route": "regional-tv-ko"
+    },
+    {
+      "id": "tmdb-tv-131028",
+      "zh": "三十九",
+      "rating": 8.3,
+      "votes": 67,
+      "route": "regional-tv-ko"
+    },
+    {
+      "id": "tmdb-tv-235355",
+      "zh": "机智住院医生生活",
+      "rating": 8.1,
+      "votes": 68,
+      "route": "regional-tv-ko"
+    },
+    {
+      "id": "tmdb-tv-289424",
+      "zh": "努力克服自卑的我们",
+      "rating": 8.5,
+      "votes": 67,
+      "route": "regional-tv-ko"
+    },
+    {
+      "id": "tmdb-tv-86830",
+      "zh": "热血司祭",
+      "rating": 8.2,
+      "votes": 66,
+      "route": "regional-tv-ko"
+    },
+    {
+      "id": "tmdb-tv-206693",
+      "zh": "恋人",
+      "rating": 8.4,
+      "votes": 59,
+      "route": "regional-tv-ko"
+    },
+    {
+      "id": "tmdb-tv-119466",
+      "zh": "五月的青春",
+      "rating": 8.1,
+      "votes": 59,
+      "route": "regional-tv-ko"
+    },
+    {
+      "id": "tmdb-tv-72690",
+      "zh": "救救我",
+      "rating": 8.1,
+      "votes": 74,
+      "route": "regional-tv-ko"
+    },
+    {
+      "id": "tmdb-tv-271309",
+      "zh": "宝物岛",
+      "rating": 8.4,
+      "votes": 58,
+      "route": "regional-tv-ko"
+    },
+    {
+      "id": "tmdb-tv-136644",
+      "zh": "为何是吴秀在",
+      "rating": 8,
+      "votes": 57,
+      "route": "regional-tv-ko"
+    },
+    {
+      "id": "tmdb-tv-158865",
+      "zh": "局中人",
+      "rating": 8.1,
+      "votes": 55,
+      "route": "regional-tv-ko"
+    },
+    {
+      "id": "tmdb-tv-215471",
+      "zh": "这是爱情吗",
+      "rating": 8.2,
+      "votes": 55,
+      "route": "regional-tv-ko"
+    },
+    {
+      "id": "tmdb-tv-255086",
+      "zh": "贞淑的推销",
+      "rating": 8.1,
+      "votes": 52,
+      "route": "regional-tv-ko"
+    },
+    {
+      "id": "tmdb-tv-95484",
+      "zh": "棒球大联盟",
+      "rating": 8.296,
+      "votes": 54,
+      "route": "regional-tv-ko"
+    },
+    {
+      "id": "tmdb-tv-314784",
+      "zh": "浪漫的绝对值",
+      "rating": 8.8,
+      "votes": 49,
+      "route": "regional-tv-ko"
+    },
+    {
+      "id": "tmdb-tv-93097",
+      "zh": "山茶花开时",
+      "rating": 8.2,
+      "votes": 70,
+      "route": "regional-tv-ko"
+    },
+    {
+      "id": "tmdb-tv-236956",
+      "zh": "大都市的爱情法",
+      "rating": 8.8,
+      "votes": 48,
+      "route": "regional-tv-ko"
+    },
+    {
+      "id": "tmdb-tv-211065",
+      "zh": "是偶然吗？",
+      "rating": 8.1,
+      "votes": 47,
+      "route": "regional-tv-ko"
+    },
+    {
+      "id": "tmdb-tv-280946",
+      "zh": "台风商社",
+      "rating": 8.4,
+      "votes": 45,
+      "route": "regional-tv-ko"
+    },
+    {
+      "id": "tmdb-tv-305644",
+      "zh": "四手联弹，两首奏鸣曲",
+      "rating": 9.234,
+      "votes": 47,
+      "route": "regional-tv-ko"
+    },
+    {
+      "id": "tmdb-tv-66560",
+      "zh": "嫉妒的化身",
+      "rating": 8.053,
+      "votes": 47,
+      "route": "regional-tv-ko"
+    },
+    {
+      "id": "tmdb-tv-211261",
+      "zh": "消防厅旁警察厅",
+      "rating": 8,
+      "votes": 45,
+      "route": "regional-tv-ko"
+    },
+    {
+      "id": "tmdb-tv-70528",
+      "zh": "芝加哥打字机",
+      "rating": 8,
+      "votes": 47,
+      "route": "regional-tv-ko"
+    },
+    {
+      "id": "tmdb-tv-290193",
+      "zh": "鼠惑",
+      "rating": 8,
+      "votes": 44,
+      "route": "regional-tv-ko"
+    },
+    {
+      "id": "tmdb-tv-214994",
+      "zh": "清潭国际高中",
+      "rating": 8.2,
+      "votes": 44,
+      "route": "regional-tv-ko"
+    },
+    {
+      "id": "tmdb-tv-135654",
+      "zh": "再次我的人生",
+      "rating": 8,
+      "votes": 44,
+      "route": "regional-tv-ko"
+    },
+    {
+      "id": "tmdb-tv-77283",
+      "zh": "Live:辖区现场",
+      "rating": 8.3,
+      "votes": 44,
+      "route": "regional-tv-ko"
+    },
+    {
+      "id": "tmdb-tv-300727",
+      "zh": "公寓黑风暴",
+      "rating": 8.6,
+      "votes": 42,
+      "route": "regional-tv-ko"
+    },
+    {
+      "id": "tmdb-tv-65412",
+      "zh": "回来吧大叔",
+      "rating": 8.3,
+      "votes": 45,
+      "route": "regional-tv-ko"
+    },
+    {
+      "id": "tmdb-tv-99477",
+      "zh": "那个男人的记忆法",
+      "rating": 8,
+      "votes": 41,
+      "route": "regional-tv-ko"
+    },
+    {
+      "id": "tmdb-tv-284744",
+      "zh": "公益律师",
+      "rating": 8.3,
+      "votes": 40,
+      "route": "regional-tv-ko"
+    },
+    {
+      "id": "tmdb-tv-246473",
+      "zh": "韩国制造",
+      "rating": 8.2,
+      "votes": 40,
+      "route": "regional-tv-ko"
+    },
+    {
+      "id": "tmdb-tv-79407",
+      "zh": "火星生活",
+      "rating": 8.3,
+      "votes": 40,
+      "route": "regional-tv-ko"
+    },
+    {
+      "id": "tmdb-tv-240942",
+      "zh": "如此亲密的背叛者",
+      "rating": 8.2,
+      "votes": 39,
+      "route": "regional-tv-ko"
+    },
+    {
+      "id": "tmdb-tv-108285",
+      "zh": "僵尸侦探",
+      "rating": 8.4,
+      "votes": 45,
+      "route": "regional-tv-ko"
+    },
+    {
+      "id": "tmdb-tv-240591",
+      "zh": "恋爱至上主义区域",
+      "rating": 8.7,
+      "votes": 39,
+      "route": "regional-tv-ko"
+    },
+    {
+      "id": "tmdb-tv-233833",
+      "zh": "在你灿烂的季节",
+      "rating": 8.1,
+      "votes": 39,
+      "route": "regional-tv-ko"
+    },
+    {
+      "id": "tmdb-tv-68890",
+      "zh": "被告人",
+      "rating": 8.103,
+      "votes": 39,
+      "route": "regional-tv-ko"
+    },
+    {
+      "id": "tmdb-tv-57278",
+      "zh": "秘密",
+      "rating": 8,
+      "votes": 39,
+      "route": "regional-tv-ko"
+    },
+    {
+      "id": "tmdb-tv-297826",
+      "zh": "盗墓王",
+      "rating": 8.2,
+      "votes": 38,
+      "route": "regional-tv-ko"
+    },
+    {
+      "id": "tmdb-tv-220073",
+      "zh": "运气好的日子",
+      "rating": 8.2,
+      "votes": 38,
+      "route": "regional-tv-ko"
+    },
+    {
+      "id": "tmdb-tv-293608",
+      "zh": "卧底洪小姐",
+      "rating": 8.4,
+      "votes": 38,
+      "route": "regional-tv-ko"
+    },
+    {
+      "id": "tmdb-tv-212203",
+      "zh": "诱拐之日",
+      "rating": 8.4,
+      "votes": 37,
+      "route": "regional-tv-ko"
+    },
+    {
+      "id": "tmdb-tv-278331",
+      "zh": "我夺走了男主的初夜",
+      "rating": 8,
+      "votes": 36,
+      "route": "regional-tv-ko"
+    },
+    {
+      "id": "tmdb-tv-259486",
+      "zh": "鬼宫",
+      "rating": 8.1,
+      "votes": 36,
+      "route": "regional-tv-ko"
+    },
+    {
+      "id": "tmdb-tv-297640",
+      "zh": "隐秘的监察",
+      "rating": 8.1,
+      "votes": 35,
+      "route": "regional-tv-ko"
+    },
+    {
+      "id": "tmdb-tv-133670",
+      "zh": "酒鬼都市女人们",
+      "rating": 8.1,
+      "votes": 36,
+      "route": "regional-tv-ko"
+    },
+    {
+      "id": "tmdb-tv-238841",
+      "zh": "漫画奇侠",
+      "rating": 8.2,
+      "votes": 35,
+      "route": "regional-tv-ko"
+    },
+    {
+      "id": "tmdb-tv-223440",
+      "zh": "第八感",
+      "rating": 8.257,
+      "votes": 35,
+      "route": "regional-tv-ko"
+    },
+    {
+      "id": "tmdb-tv-76092",
+      "zh": "母亲",
+      "rating": 8.514,
+      "votes": 35,
+      "route": "regional-tv-ko"
+    },
+    {
+      "id": "tmdb-tv-296009",
+      "zh": "我有孩子了",
+      "rating": 8.8,
+      "votes": 32,
+      "route": "regional-tv-ko"
+    },
+    {
+      "id": "tmdb-tv-89642",
+      "zh": "辅佐官：改变世界的人们",
+      "rating": 8.1,
+      "votes": 34,
+      "route": "regional-tv-ko"
+    },
+    {
+      "id": "tmdb-tv-250463",
+      "zh": "TRY：我们成为奇迹",
+      "rating": 8.6,
+      "votes": 32,
+      "route": "regional-tv-ko"
+    },
+    {
+      "id": "tmdb-tv-224414",
+      "zh": "你和其余的一切",
+      "rating": 8.2,
+      "votes": 32,
+      "route": "regional-tv-ko"
+    },
+    {
+      "id": "tmdb-tv-154523",
+      "zh": "猪猡之王",
+      "rating": 8.4,
+      "votes": 31,
+      "route": "regional-tv-ko"
+    },
+    {
+      "id": "tmdb-tv-125437",
+      "zh": "球拍少年团",
+      "rating": 8,
+      "votes": 31,
+      "route": "regional-tv-ko"
+    },
+    {
+      "id": "tmdb-tv-226649",
+      "zh": "玉氏夫人传",
+      "rating": 8.6,
+      "votes": 30,
+      "route": "regional-tv-ko"
+    },
+    {
+      "id": "tmdb-tv-204589",
+      "zh": "偶然遇见的你",
+      "rating": 8.1,
+      "votes": 30,
+      "route": "regional-tv-ko"
+    },
+    {
+      "id": "tmdb-tv-274570",
+      "zh": "月亮在江边流淌",
+      "rating": 8.9,
+      "votes": 27,
+      "route": "regional-tv-ko"
+    },
+    {
+      "id": "tmdb-tv-299365",
+      "zh": "新进职员姜会长",
+      "rating": 8.179,
+      "votes": 28,
+      "route": "regional-tv-ko"
+    },
+    {
+      "id": "tmdb-tv-31424",
+      "zh": "推奴",
+      "rating": 8.1,
+      "votes": 28,
+      "route": "regional-tv-ko"
+    },
+    {
+      "id": "tmdb-tv-223896",
+      "zh": "灵指",
+      "rating": 8.5,
+      "votes": 27,
+      "route": "regional-tv-ko"
+    },
+    {
+      "id": "tmdb-tv-238566",
+      "zh": "天气预报式恋爱",
+      "rating": 8.019,
+      "votes": 27,
+      "route": "regional-tv-ko"
+    },
+    {
+      "id": "tmdb-tv-295509",
+      "zh": "菜鸟炊事兵",
+      "rating": 8.6,
+      "votes": 26,
+      "route": "regional-tv-ko"
+    },
+    {
+      "id": "tmdb-tv-300954",
+      "zh": "婚姻之后",
+      "rating": 8.8,
+      "votes": 25,
+      "route": "regional-tv-ko"
+    },
+    {
+      "id": "tmdb-tv-282810",
+      "zh": "法官李汉英",
+      "rating": 8.1,
+      "votes": 24,
+      "route": "regional-tv-ko"
+    },
+    {
+      "id": "tmdb-tv-232812",
+      "zh": "少年时代",
+      "rating": 8.2,
+      "votes": 25,
+      "route": "regional-tv-ko"
+    },
+    {
+      "id": "tmdb-tv-233221",
+      "zh": "劳务师卢武镇",
+      "rating": 8.1,
+      "votes": 24,
+      "route": "regional-tv-ko"
+    },
+    {
+      "id": "tmdb-tv-239006",
+      "zh": "揭密最前线",
+      "rating": 8,
+      "votes": 26,
+      "route": "regional-tv-ko"
+    },
+    {
+      "id": "tmdb-tv-33268",
+      "zh": "面包王金卓求",
+      "rating": 8.4,
+      "votes": 26,
+      "route": "regional-tv-ko"
+    },
+    {
+      "id": "tmdb-tv-310024",
+      "zh": "死亡之花",
+      "rating": 8.1,
+      "votes": 23,
+      "route": "regional-tv-ko"
+    },
+    {
+      "id": "tmdb-tv-287009",
+      "zh": "医到孤岛爱上你",
+      "rating": 8.2,
+      "votes": 23,
+      "route": "regional-tv-ko"
+    },
+    {
+      "id": "tmdb-tv-239005",
+      "zh": "首尔破笑组",
+      "rating": 8.5,
+      "votes": 23,
+      "route": "regional-tv-ko"
+    },
+    {
+      "id": "tmdb-tv-97765",
+      "zh": "学校2021",
+      "rating": 8.1,
+      "votes": 26,
+      "route": "regional-tv-ko"
+    },
+    {
+      "id": "tmdb-tv-229955",
+      "zh": "恶人传记",
+      "rating": 8,
+      "votes": 23,
+      "route": "regional-tv-ko"
+    },
+    {
+      "id": "tmdb-tv-92707",
+      "zh": "很便宜，千里马超市",
+      "rating": 8.2,
+      "votes": 23,
+      "route": "regional-tv-ko"
+    },
+    {
+      "id": "tmdb-tv-271889",
+      "zh": "百次的回忆",
+      "rating": 8,
+      "votes": 22,
+      "route": "regional-tv-ko"
+    },
+    {
+      "id": "tmdb-tv-220836",
+      "zh": "夜晚开的花",
+      "rating": 8.1,
+      "votes": 25,
+      "route": "regional-tv-ko"
+    },
+    {
+      "id": "tmdb-tv-258256",
+      "zh": "我们的电影",
+      "rating": 8.6,
+      "votes": 21,
+      "route": "regional-tv-ko"
+    },
+    {
+      "id": "tmdb-tv-240831",
+      "zh": "解除跆拳道的诅咒",
+      "rating": 8.5,
+      "votes": 25,
+      "route": "regional-tv-ko"
+    },
+    {
+      "id": "tmdb-tv-231030",
+      "zh": "追风",
+      "rating": 8.5,
+      "votes": 20,
+      "route": "regional-tv-ko"
+    },
+    {
+      "id": "tmdb-tv-129318",
+      "zh": "人间失格",
+      "rating": 8.6,
+      "votes": 20,
+      "route": "regional-tv-ko"
+    },
+    {
+      "id": "tmdb-tv-223890",
+      "zh": "夜限照相馆",
+      "rating": 8.1,
+      "votes": 20,
+      "route": "regional-tv-ko"
+    },
+    {
+      "id": "tmdb-tv-279182",
+      "zh": "超能立方",
+      "rating": 8.093,
+      "votes": 97,
+      "route": "regional-tv-zh"
+    },
+    {
+      "id": "tmdb-tv-250060",
+      "zh": "难哄",
+      "rating": 8.4,
+      "votes": 85,
+      "route": "regional-tv-zh"
+    },
+    {
+      "id": "tmdb-tv-106449",
+      "zh": "凡人修仙传",
+      "rating": 8.4,
+      "votes": 88,
+      "route": "regional-tv-zh"
+    },
+    {
+      "id": "tmdb-tv-279388",
+      "zh": "逐玉",
+      "rating": 8.1,
+      "votes": 84,
+      "route": "regional-tv-zh"
+    },
+    {
+      "id": "tmdb-tv-104960",
+      "zh": "隐秘的角落",
+      "rating": 8.381,
+      "votes": 84,
+      "route": "regional-tv-zh"
+    },
+    {
+      "id": "tmdb-tv-301412",
+      "zh": "给你梦想",
+      "rating": 9.3,
+      "votes": 23,
+      "route": "regional-tv-ko"
+    },
+    {
+      "id": "tmdb-tv-112398",
+      "zh": "天官赐福",
+      "rating": 8.1,
+      "votes": 80,
+      "route": "regional-tv-zh"
+    },
+    {
+      "id": "tmdb-tv-292035",
+      "zh": "逆爱",
+      "rating": 8.3,
+      "votes": 79,
+      "route": "regional-tv-zh"
+    },
+    {
+      "id": "tmdb-tv-64197",
+      "zh": "琅琊榜",
+      "rating": 8.825,
+      "votes": 77,
+      "route": "regional-tv-zh"
+    },
+    {
+      "id": "tmdb-tv-50878",
+      "zh": "甄嬛传",
+      "rating": 8.487,
+      "votes": 76,
+      "route": "regional-tv-zh"
+    },
+    {
+      "id": "tmdb-tv-233194",
+      "zh": "以爱为营",
+      "rating": 8.1,
+      "votes": 72,
+      "route": "regional-tv-zh"
+    },
+    {
+      "id": "tmdb-tv-64709",
+      "zh": "武林外传",
+      "rating": 8.913,
+      "votes": 69,
+      "route": "regional-tv-zh"
+    },
+    {
+      "id": "tmdb-tv-216445",
+      "zh": "我的人间烟火",
+      "rating": 8,
+      "votes": 71,
+      "route": "regional-tv-zh"
+    },
+    {
+      "id": "tmdb-tv-128926",
+      "zh": "贺先生的恋恋不忘",
+      "rating": 8,
+      "votes": 70,
+      "route": "regional-tv-zh"
+    },
+    {
+      "id": "tmdb-tv-127493",
+      "zh": "你是我的荣耀",
+      "rating": 8.2,
+      "votes": 72,
+      "route": "regional-tv-zh"
+    },
+    {
+      "id": "tmdb-tv-13923",
+      "zh": "西游记",
+      "rating": 8.4,
+      "votes": 66,
+      "route": "regional-tv-zh"
+    },
+    {
+      "id": "tmdb-tv-106841",
+      "zh": "繁花",
+      "rating": 8.6,
+      "votes": 66,
+      "route": "regional-tv-zh"
+    },
+    {
+      "id": "tmdb-tv-254821",
+      "zh": "五福临门",
+      "rating": 8.1,
+      "votes": 64,
+      "route": "regional-tv-zh"
+    },
+    {
+      "id": "tmdb-tv-79481",
+      "zh": "斗破苍穹",
+      "rating": 8,
+      "votes": 62,
+      "route": "regional-tv-zh"
+    },
+    {
+      "id": "tmdb-tv-130330",
+      "zh": "华灯初上",
+      "rating": 8.2,
+      "votes": 58,
+      "route": "regional-tv-zh"
+    },
+    {
+      "id": "tmdb-tv-137206",
+      "zh": "长月烬明",
+      "rating": 8.3,
+      "votes": 65,
+      "route": "regional-tv-zh"
+    },
+    {
+      "id": "tmdb-tv-95717",
+      "zh": "想见你",
+      "rating": 9,
+      "votes": 58,
+      "route": "regional-tv-zh"
+    },
+    {
+      "id": "tmdb-tv-102788",
+      "zh": "雾山五行",
+      "rating": 8.1,
+      "votes": 58,
+      "route": "regional-tv-zh"
+    },
+    {
+      "id": "tmdb-tv-73982",
+      "zh": "白夜追凶",
+      "rating": 8.3,
+      "votes": 57,
+      "route": "regional-tv-zh"
+    },
+    {
+      "id": "tmdb-tv-105053",
+      "zh": "沉默的真相",
+      "rating": 8.476,
+      "votes": 63,
+      "route": "regional-tv-zh"
+    },
+    {
+      "id": "tmdb-tv-211089",
+      "zh": "唐朝诡事录",
+      "rating": 8.2,
+      "votes": 54,
+      "route": "regional-tv-zh"
+    },
+    {
+      "id": "tmdb-tv-280078",
+      "zh": "鲲吞天下之掌门归来",
+      "rating": 8.192,
+      "votes": 52,
+      "route": "regional-tv-zh"
+    },
+    {
+      "id": "tmdb-tv-279041",
+      "zh": "双轨",
+      "rating": 8.4,
+      "votes": 51,
+      "route": "regional-tv-zh"
+    },
+    {
+      "id": "tmdb-tv-71100",
+      "zh": "人民的名义",
+      "rating": 8.4,
+      "votes": 49,
+      "route": "regional-tv-zh"
+    },
+    {
+      "id": "tmdb-tv-80732",
+      "zh": "魔道祖师",
+      "rating": 8.3,
+      "votes": 62,
+      "route": "regional-tv-zh"
+    },
+    {
+      "id": "tmdb-tv-220269",
+      "zh": "折腰",
+      "rating": 8.8,
+      "votes": 48,
+      "route": "regional-tv-zh"
+    },
+    {
+      "id": "tmdb-tv-262928",
+      "zh": "入青云",
+      "rating": 9,
+      "votes": 50,
+      "route": "regional-tv-zh"
+    },
+    {
+      "id": "tmdb-tv-80884",
+      "zh": "香蜜沉沉烬如霜",
+      "rating": 8,
+      "votes": 48,
+      "route": "regional-tv-zh"
+    },
+    {
+      "id": "tmdb-tv-8757",
+      "zh": "仙剑奇侠传",
+      "rating": 8,
+      "votes": 48,
+      "route": "regional-tv-zh"
+    },
+    {
+      "id": "tmdb-tv-87969",
+      "zh": "我们与恶的距离",
+      "rating": 8.6,
+      "votes": 60,
+      "route": "regional-tv-zh"
+    },
+    {
+      "id": "tmdb-tv-101172",
+      "zh": "吞噬星空",
+      "rating": 8.5,
+      "votes": 47,
+      "route": "regional-tv-zh"
+    },
+    {
+      "id": "tmdb-tv-236033",
+      "zh": "墨雨云间",
+      "rating": 8.2,
+      "votes": 45,
+      "route": "regional-tv-zh"
+    },
+    {
+      "id": "tmdb-tv-223911",
+      "zh": "仙逆",
+      "rating": 8.3,
+      "votes": 45,
+      "route": "regional-tv-zh"
+    },
+    {
+      "id": "tmdb-tv-134331",
+      "zh": "点燃我，温暖你",
+      "rating": 8.1,
+      "votes": 43,
+      "route": "regional-tv-zh"
+    },
+    {
+      "id": "tmdb-tv-225941",
+      "zh": "异人之下",
+      "rating": 8.543,
+      "votes": 46,
+      "route": "regional-tv-zh"
+    },
+    {
+      "id": "tmdb-tv-122182",
+      "zh": "长歌行",
+      "rating": 8.5,
+      "votes": 43,
+      "route": "regional-tv-zh"
+    },
+    {
+      "id": "tmdb-tv-262453",
+      "zh": "魔法公主的小烦恼",
+      "rating": 8.4,
+      "votes": 42,
+      "route": "regional-tv-zh"
+    },
+    {
+      "id": "tmdb-tv-240686",
+      "zh": "锦月如歌",
+      "rating": 8.2,
+      "votes": 40,
+      "route": "regional-tv-zh"
+    },
+    {
+      "id": "tmdb-tv-221869",
+      "zh": "人选之人：造浪者",
+      "rating": 8.3,
+      "votes": 40,
+      "route": "regional-tv-zh"
+    },
+    {
+      "id": "tmdb-tv-216424",
+      "zh": "去有风的地方",
+      "rating": 8.2,
+      "votes": 40,
+      "route": "regional-tv-zh"
+    },
+    {
+      "id": "tmdb-tv-90768",
+      "zh": "长安十二时辰",
+      "rating": 8.4,
+      "votes": 40,
+      "route": "regional-tv-zh"
+    },
+    {
+      "id": "tmdb-tv-72645",
+      "zh": "三国演义",
+      "rating": 9.1,
+      "votes": 40,
+      "route": "regional-tv-zh"
+    },
+    {
+      "id": "tmdb-tv-225178",
+      "zh": "你给我的喜欢",
+      "rating": 8.3,
+      "votes": 39,
+      "route": "regional-tv-zh"
+    },
+    {
+      "id": "tmdb-tv-202753",
+      "zh": "不良执念清除师",
+      "rating": 8.6,
+      "votes": 39,
+      "route": "regional-tv-zh"
+    },
+    {
+      "id": "tmdb-tv-110966",
+      "zh": "完美先生和差不多小姐",
+      "rating": 8,
+      "votes": 38,
+      "route": "regional-tv-zh"
+    },
+    {
+      "id": "tmdb-tv-81133",
+      "zh": "延禧攻略",
+      "rating": 8.3,
+      "votes": 40,
+      "route": "regional-tv-zh"
+    },
+    {
+      "id": "tmdb-tv-68034",
+      "zh": "大明王朝1566",
+      "rating": 9.579,
+      "votes": 38,
+      "route": "regional-tv-zh"
+    },
+    {
+      "id": "tmdb-tv-81667",
+      "zh": "天盛长歌",
+      "rating": 8,
+      "votes": 36,
+      "route": "regional-tv-zh"
+    },
+    {
+      "id": "tmdb-tv-247453",
+      "zh": "别对我动心",
+      "rating": 8,
+      "votes": 37,
+      "route": "regional-tv-zh"
+    },
+    {
+      "id": "tmdb-tv-279136",
+      "zh": "轧戏",
+      "rating": 8.5,
+      "votes": 35,
+      "route": "regional-tv-zh"
+    },
+    {
+      "id": "tmdb-tv-71496",
+      "zh": "亮剑",
+      "rating": 8.7,
+      "votes": 35,
+      "route": "regional-tv-zh"
+    },
+    {
+      "id": "tmdb-tv-280100",
+      "zh": "垂涎",
+      "rating": 8.4,
+      "votes": 34,
+      "route": "regional-tv-zh"
+    },
+    {
+      "id": "tmdb-tv-18604",
+      "zh": "三国",
+      "rating": 8,
+      "votes": 32,
+      "route": "regional-tv-zh"
+    },
+    {
+      "id": "tmdb-tv-243084",
+      "zh": "永夜星河",
+      "rating": 8.2,
+      "votes": 35,
+      "route": "regional-tv-zh"
+    },
+    {
+      "id": "tmdb-tv-241613",
+      "zh": "某某",
+      "rating": 8.7,
+      "votes": 32,
+      "route": "regional-tv-zh"
+    },
+    {
+      "id": "tmdb-tv-252774",
+      "zh": "白色橄榄树",
+      "rating": 8.8,
+      "votes": 31,
+      "route": "regional-tv-zh"
+    },
+    {
+      "id": "tmdb-tv-238680",
+      "zh": "白月梵星",
+      "rating": 8,
+      "votes": 31,
+      "route": "regional-tv-zh"
+    },
+    {
+      "id": "tmdb-tv-278577",
+      "zh": "骄阳似我",
+      "rating": 8.4,
+      "votes": 30,
+      "route": "regional-tv-zh"
+    },
+    {
+      "id": "tmdb-tv-229203",
+      "zh": "哥哥你别跑",
+      "rating": 8.6,
+      "votes": 30,
+      "route": "regional-tv-zh"
+    },
+    {
+      "id": "tmdb-tv-221112",
+      "zh": "在暴雪时分",
+      "rating": 8.2,
+      "votes": 30,
+      "route": "regional-tv-zh"
+    },
+    {
+      "id": "tmdb-tv-253193",
+      "zh": "书卷一梦",
+      "rating": 8.3,
+      "votes": 29,
+      "route": "regional-tv-zh"
+    },
+    {
+      "id": "tmdb-tv-106251",
+      "zh": "乐高悟空小侠",
+      "rating": 8.6,
+      "votes": 35,
+      "route": "regional-tv-zh"
+    },
+    {
+      "id": "tmdb-tv-198182",
+      "zh": "神印王座",
+      "rating": 8.6,
+      "votes": 32,
+      "route": "regional-tv-zh"
+    },
+    {
+      "id": "tmdb-tv-112217",
+      "zh": "棋魂",
+      "rating": 8.1,
+      "votes": 29,
+      "route": "regional-tv-zh"
+    },
+    {
+      "id": "tmdb-tv-72311",
+      "zh": "大军师司马懿",
+      "rating": 8.3,
+      "votes": 29,
+      "route": "regional-tv-zh"
+    },
+    {
+      "id": "tmdb-tv-272484",
+      "zh": "一笑随歌",
+      "rating": 8.9,
+      "votes": 28,
+      "route": "regional-tv-zh"
+    },
+    {
+      "id": "tmdb-tv-259537",
+      "zh": "剑来",
+      "rating": 8.4,
+      "votes": 28,
+      "route": "regional-tv-zh"
+    },
+    {
+      "id": "tmdb-tv-245292",
+      "zh": "致命游戏",
+      "rating": 8.9,
+      "votes": 28,
+      "route": "regional-tv-zh"
+    },
+    {
+      "id": "tmdb-tv-221416",
+      "zh": "奇迹",
+      "rating": 8.1,
+      "votes": 34,
+      "route": "regional-tv-zh"
+    },
+    {
+      "id": "tmdb-tv-210191",
+      "zh": "一念关山",
+      "rating": 8.345,
+      "votes": 29,
+      "route": "regional-tv-zh"
+    },
+    {
+      "id": "tmdb-tv-243069",
+      "zh": "关于未知的我们",
+      "rating": 8.4,
+      "votes": 29,
+      "route": "regional-tv-zh"
+    },
+    {
+      "id": "tmdb-tv-92925",
+      "zh": "俗女养成记",
+      "rating": 8.7,
+      "votes": 28,
+      "route": "regional-tv-zh"
+    },
+    {
+      "id": "tmdb-tv-124003",
+      "zh": "完美世界",
+      "rating": 8.1,
+      "votes": 28,
+      "route": "regional-tv-zh"
+    },
+    {
+      "id": "tmdb-tv-60781",
+      "zh": "舌尖上的中国",
+      "rating": 8.4,
+      "votes": 28,
+      "route": "regional-tv-zh"
+    },
+    {
+      "id": "tmdb-tv-241576",
+      "zh": "如果我不曾见过太阳",
+      "rating": 8.333,
+      "votes": 27,
+      "route": "regional-tv-zh"
+    },
+    {
+      "id": "tmdb-tv-207668",
+      "zh": "与凤行",
+      "rating": 8.5,
+      "votes": 27,
+      "route": "regional-tv-zh"
+    },
+    {
+      "id": "tmdb-tv-249972",
+      "zh": "九重紫",
+      "rating": 8.4,
+      "votes": 26,
+      "route": "regional-tv-zh"
+    },
+    {
+      "id": "tmdb-tv-299952",
+      "zh": "早春晴朗",
+      "rating": 8.4,
+      "votes": 25,
+      "route": "regional-tv-zh"
+    },
+    {
+      "id": "tmdb-tv-135726",
+      "zh": "妈，别闹了！",
+      "rating": 8.296,
+      "votes": 27,
+      "route": "regional-tv-zh"
+    },
+    {
+      "id": "tmdb-tv-37681",
+      "zh": "步步惊心",
+      "rating": 8.096,
+      "votes": 26,
+      "route": "regional-tv-zh"
+    },
+    {
+      "id": "tmdb-tv-280632",
+      "zh": "成何体统",
+      "rating": 8.4,
+      "votes": 25,
+      "route": "regional-tv-zh"
+    },
+    {
+      "id": "tmdb-tv-78013",
+      "zh": "毛骗",
+      "rating": 9.1,
+      "votes": 25,
+      "route": "regional-tv-zh"
+    },
+    {
+      "id": "tmdb-tv-73386",
+      "zh": "无证之罪",
+      "rating": 8.4,
+      "votes": 25,
+      "route": "regional-tv-zh"
+    },
+    {
+      "id": "tmdb-tv-259698",
+      "zh": "私藏浪漫",
+      "rating": 8,
+      "votes": 24,
+      "route": "regional-tv-zh"
+    },
+    {
+      "id": "tmdb-tv-83463",
+      "zh": "画江湖之不良人",
+      "rating": 8.5,
+      "votes": 24,
+      "route": "regional-tv-zh"
+    },
+    {
+      "id": "tmdb-tv-239389",
+      "zh": "大梦归离",
+      "rating": 8.8,
+      "votes": 24,
+      "route": "regional-tv-zh"
+    },
+    {
+      "id": "tmdb-tv-32231",
+      "zh": "大秦帝国",
+      "rating": 8.4,
+      "votes": 24,
+      "route": "regional-tv-zh"
+    },
+    {
+      "id": "tmdb-tv-32196",
+      "zh": "康熙王朝",
+      "rating": 8.4,
+      "votes": 24,
+      "route": "regional-tv-zh"
+    },
+    {
+      "id": "tmdb-tv-253357",
+      "zh": "看见爱",
+      "rating": 8.7,
+      "votes": 23,
+      "route": "regional-tv-zh"
+    },
+    {
+      "id": "tmdb-tv-311025",
+      "zh": "炽热吸引",
+      "rating": 8.1,
+      "votes": 23,
+      "route": "regional-tv-zh"
+    },
+    {
+      "id": "tmdb-tv-206484",
+      "zh": "诛仙",
+      "rating": 8,
+      "votes": 23,
+      "route": "regional-tv-zh"
+    },
+    {
+      "id": "tmdb-tv-1319",
+      "zh": "葫芦兄弟",
+      "rating": 8.7,
+      "votes": 23,
+      "route": "regional-tv-zh"
+    },
+    {
+      "id": "tmdb-tv-7191",
+      "zh": "红楼梦",
+      "rating": 9.5,
+      "votes": 24,
+      "route": "regional-tv-zh"
+    },
+    {
+      "id": "tmdb-tv-127814",
+      "zh": "爱的二八定律",
+      "rating": 8.2,
+      "votes": 23,
+      "route": "regional-tv-zh"
+    },
+    {
+      "id": "tmdb-tv-331477",
+      "zh": "一念永恒",
+      "rating": 8.4,
+      "votes": 22,
+      "route": "regional-tv-zh"
+    },
+    {
+      "id": "tmdb-tv-303084",
+      "zh": "入戏",
+      "rating": 9,
+      "votes": 22,
+      "route": "regional-tv-zh"
+    },
+    {
+      "id": "tmdb-tv-261128",
+      "zh": "樱桃琥珀",
+      "rating": 8.4,
+      "votes": 22,
+      "route": "regional-tv-zh"
+    },
+    {
+      "id": "tmdb-tv-245264",
+      "zh": "影后",
+      "rating": 8,
+      "votes": 22,
+      "route": "regional-tv-zh"
+    },
+    {
+      "id": "tmdb-tv-100363",
+      "zh": "我的三体",
+      "rating": 9.3,
+      "votes": 22,
+      "route": "regional-tv-zh"
+    },
+    {
+      "id": "tmdb-tv-229229",
+      "zh": "古相思曲",
+      "rating": 8.4,
+      "votes": 22,
+      "route": "regional-tv-zh"
+    },
+    {
+      "id": "tmdb-tv-76814",
+      "zh": "扶摇",
+      "rating": 8.2,
+      "votes": 22,
+      "route": "regional-tv-zh"
+    },
+    {
+      "id": "tmdb-tv-88319",
+      "zh": "罗小黑战记",
+      "rating": 9.2,
+      "votes": 23,
+      "route": "regional-tv-zh"
+    },
+    {
+      "id": "tmdb-tv-243081",
+      "zh": "滤镜",
+      "rating": 8,
+      "votes": 21,
+      "route": "regional-tv-zh"
+    },
+    {
+      "id": "tmdb-tv-229192",
+      "zh": "沧元图",
+      "rating": 9.1,
+      "votes": 21,
+      "route": "regional-tv-zh"
+    },
+    {
+      "id": "tmdb-tv-256920",
+      "zh": "许我耀眼",
+      "rating": 8.2,
+      "votes": 20,
+      "route": "regional-tv-zh"
+    },
+    {
+      "id": "tmdb-tv-278275",
+      "zh": "月鳞绮纪",
+      "rating": 8.3,
+      "votes": 20,
+      "route": "regional-tv-zh"
+    },
+    {
+      "id": "tmdb-tv-250833",
+      "zh": "路过我年少时光的蓝色",
+      "rating": 8.2,
+      "votes": 20,
+      "route": "regional-tv-zh"
+    },
+    {
+      "id": "tmdb-tv-252318",
+      "zh": "长乐曲",
+      "rating": 8.3,
+      "votes": 20,
+      "route": "regional-tv-zh"
+    },
+    {
+      "id": "tmdb-tv-86291",
+      "zh": "招摇",
+      "rating": 8.4,
+      "votes": 20,
+      "route": "regional-tv-zh"
+    },
+    {
+      "id": "tmdb-tv-84856",
+      "zh": "大江大河",
+      "rating": 8.5,
+      "votes": 20,
+      "route": "regional-tv-zh"
+    },
+    {
+      "id": "tmdb-tv-298026",
+      "zh": "放开那个女巫",
+      "rating": 8.15,
+      "votes": 20,
+      "route": "regional-tv-zh"
+    },
+    {
+      "id": "tmdb-tv-65176",
+      "zh": "伪装者",
+      "rating": 8.3,
+      "votes": 20,
+      "route": "regional-tv-zh"
+    },
+    {
+      "id": "tmdb-tv-72819",
+      "zh": "天龙八部",
+      "rating": 8.269,
+      "votes": 26,
+      "route": "regional-tv-cn"
+    },
+    {
+      "id": "tmdb-tv-104",
+      "zh": "射雕英雄传",
+      "rating": 8.2,
+      "votes": 23,
+      "route": "regional-tv-cn"
+    },
+    {
+      "id": "tmdb-tv-122009",
+      "zh": "两小无拆",
+      "rating": 8.4,
+      "votes": 86,
+      "route": "regional-tv-th"
+    },
+    {
+      "id": "tmdb-tv-207371",
+      "zh": "爱在空气中",
+      "rating": 8.5,
+      "votes": 76,
+      "route": "regional-tv-th"
+    },
+    {
+      "id": "tmdb-tv-114703",
+      "zh": "千星传说",
+      "rating": 8.7,
+      "votes": 67,
+      "route": "regional-tv-th"
+    },
+    {
+      "id": "tmdb-tv-106818",
+      "zh": "你是我的氧气",
+      "rating": 8.1,
+      "votes": 62,
+      "route": "regional-tv-th"
+    },
+    {
+      "id": "tmdb-tv-95279",
+      "zh": "待到重逢时",
+      "rating": 8.2,
+      "votes": 67,
+      "route": "regional-tv-th"
+    },
+    {
+      "id": "tmdb-tv-257788",
+      "zh": "爱情诡计",
+      "rating": 8.2,
+      "votes": 60,
+      "route": "regional-tv-th"
+    },
+    {
+      "id": "tmdb-tv-106840",
+      "zh": "以你的心诠释我的爱",
+      "rating": 8.6,
+      "votes": 61,
+      "route": "regional-tv-th"
+    },
+    {
+      "id": "tmdb-tv-240692",
+      "zh": "偷心大盗",
+      "rating": 9.4,
+      "votes": 59,
+      "route": "regional-tv-th"
+    },
+    {
+      "id": "tmdb-tv-253710",
+      "zh": "我们的秘密",
+      "rating": 8,
+      "votes": 55,
+      "route": "regional-tv-th"
+    },
+    {
+      "id": "tmdb-tv-113330",
+      "zh": "亡者之谜",
+      "rating": 8.2,
+      "votes": 51,
+      "route": "regional-tv-th"
+    },
+    {
+      "id": "tmdb-tv-122015",
+      "zh": "他不是我",
+      "rating": 8.4,
+      "votes": 71,
+      "route": "regional-tv-th"
+    },
+    {
+      "id": "tmdb-tv-235199",
+      "zh": "极速恋人",
+      "rating": 8,
+      "votes": 50,
+      "route": "regional-tv-th"
+    },
+    {
+      "id": "tmdb-tv-250850",
+      "zh": "无主之屋",
+      "rating": 8.6,
+      "votes": 48,
+      "route": "regional-tv-th"
+    },
+    {
+      "id": "tmdb-tv-207024",
+      "zh": "爱之全蚀",
+      "rating": 8.7,
+      "votes": 50,
+      "route": "regional-tv-th"
+    },
+    {
+      "id": "tmdb-tv-217807",
+      "zh": "只是朋友",
+      "rating": 8.3,
+      "votes": 48,
+      "route": "regional-tv-th"
+    },
+    {
+      "id": "tmdb-tv-214942",
+      "zh": "世界倾斜23.5度",
+      "rating": 8.3,
+      "votes": 48,
+      "route": "regional-tv-th"
+    },
+    {
+      "id": "tmdb-tv-252617",
+      "zh": "爱情猎杀",
+      "rating": 8.8,
+      "votes": 49,
+      "route": "regional-tv-th"
+    },
+    {
+      "id": "tmdb-tv-253296",
+      "zh": "世纪之爱",
+      "rating": 9.2,
+      "votes": 57,
+      "route": "regional-tv-th"
+    },
+    {
+      "id": "tmdb-tv-211051",
+      "zh": "我的恶魔",
+      "rating": 8,
+      "votes": 47,
+      "route": "regional-tv-th"
+    },
+    {
+      "id": "tmdb-tv-258538",
+      "zh": "铁锈味的雨滴",
+      "rating": 8.6,
+      "votes": 45,
+      "route": "regional-tv-th"
+    },
+    {
+      "id": "tmdb-tv-214873",
+      "zh": "我的会长男友",
+      "rating": 8.2,
+      "votes": 44,
+      "route": "regional-tv-th"
+    },
+    {
+      "id": "tmdb-tv-275216",
+      "zh": "固执的爱",
+      "rating": 9.1,
+      "votes": 40,
+      "route": "regional-tv-th"
+    },
+    {
+      "id": "tmdb-tv-284828",
+      "zh": "怦然与你",
+      "rating": 9.1,
+      "votes": 39,
+      "route": "regional-tv-th"
+    },
+    {
+      "id": "tmdb-tv-230915",
+      "zh": "灵魂重生",
+      "rating": 9.171,
+      "votes": 41,
+      "route": "regional-tv-th"
+    },
+    {
+      "id": "tmdb-tv-217800",
+      "zh": "不曾遗忘的暮色",
+      "rating": 9.4,
+      "votes": 39,
+      "route": "regional-tv-th"
+    },
+    {
+      "id": "tmdb-tv-128567",
+      "zh": "倾心相印",
+      "rating": 8,
+      "votes": 38,
+      "route": "regional-tv-th"
+    },
+    {
+      "id": "tmdb-tv-252645",
+      "zh": "旧爱重燃",
+      "rating": 9.2,
+      "votes": 38,
+      "route": "regional-tv-th"
+    },
+    {
+      "id": "tmdb-tv-237333",
+      "zh": "我们彼此相爱",
+      "rating": 8.6,
+      "votes": 37,
+      "route": "regional-tv-th"
+    },
+    {
+      "id": "tmdb-tv-283776",
+      "zh": "疯狂独角兽",
+      "rating": 8.8,
+      "votes": 36,
+      "route": "regional-tv-th"
+    },
+    {
+      "id": "tmdb-tv-231699",
+      "zh": "料理情缘",
+      "rating": 9.1,
+      "votes": 35,
+      "route": "regional-tv-th"
+    },
+    {
+      "id": "tmdb-tv-278847",
+      "zh": "泰版我让最想被拥抱的男人给威胁了",
+      "rating": 8.6,
+      "votes": 36,
+      "route": "regional-tv-th"
+    },
+    {
+      "id": "tmdb-tv-218623",
+      "zh": "死生时刻",
+      "rating": 8.1,
+      "votes": 35,
+      "route": "regional-tv-th"
+    },
+    {
+      "id": "tmdb-tv-237337",
+      "zh": "佳期如许",
+      "rating": 8.8,
+      "votes": 36,
+      "route": "regional-tv-th"
+    },
+    {
+      "id": "tmdb-tv-282471",
+      "zh": "狱乱情迷",
+      "rating": 8.4,
+      "votes": 36,
+      "route": "regional-tv-th"
+    },
+    {
+      "id": "tmdb-tv-252649",
+      "zh": "心跳节拍",
+      "rating": 8.9,
+      "votes": 42,
+      "route": "regional-tv-th"
+    },
+    {
+      "id": "tmdb-tv-254483",
+      "zh": "你的天空",
+      "rating": 8.2,
+      "votes": 34,
+      "route": "regional-tv-th"
+    },
+    {
+      "id": "tmdb-tv-215356",
+      "zh": "绝不放手",
+      "rating": 8.1,
+      "votes": 34,
+      "route": "regional-tv-th"
+    },
+    {
+      "id": "tmdb-tv-252650",
+      "zh": "男神俱乐部",
+      "rating": 8.7,
+      "votes": 32,
+      "route": "regional-tv-th"
+    },
+    {
+      "id": "tmdb-tv-217735",
+      "zh": "床友",
+      "rating": 8.2,
+      "votes": 33,
+      "route": "regional-tv-th"
+    },
+    {
+      "id": "tmdb-tv-237343",
+      "zh": "唯一宝贝",
+      "rating": 8.8,
+      "votes": 32,
+      "route": "regional-tv-th"
+    },
+    {
+      "id": "tmdb-tv-223824",
+      "zh": "家庭学校",
+      "rating": 8.7,
+      "votes": 32,
+      "route": "regional-tv-th"
+    },
+    {
+      "id": "tmdb-tv-306630",
+      "zh": "疯狂爱上你",
+      "rating": 9.9,
+      "votes": 30,
+      "route": "regional-tv-th"
+    },
+    {
+      "id": "tmdb-tv-83792",
+      "zh": "血浓于水",
+      "rating": 9.5,
+      "votes": 34,
+      "route": "regional-tv-th"
+    },
+    {
+      "id": "tmdb-tv-282269",
+      "zh": "过山车",
+      "rating": 8.6,
+      "votes": 29,
+      "route": "regional-tv-th"
+    },
+    {
+      "id": "tmdb-tv-278165",
+      "zh": "清醒点，泰尔先生",
+      "rating": 9.2,
+      "votes": 29,
+      "route": "regional-tv-th"
+    },
+    {
+      "id": "tmdb-tv-237339",
+      "zh": "用橡皮擦书写爱",
+      "rating": 8.9,
+      "votes": 29,
+      "route": "regional-tv-th"
+    },
+    {
+      "id": "tmdb-tv-226670",
+      "zh": "樱桃魔法",
+      "rating": 8.8,
+      "votes": 28,
+      "route": "regional-tv-th"
+    },
+    {
+      "id": "tmdb-tv-85751",
+      "zh": "超凡少年",
+      "rating": 8.4,
+      "votes": 28,
+      "route": "regional-tv-th"
+    },
+    {
+      "id": "tmdb-tv-237411",
+      "zh": "预感讯号",
+      "rating": 8.6,
+      "votes": 27,
+      "route": "regional-tv-th"
+    },
+    {
+      "id": "tmdb-tv-240150",
+      "zh": "四方极爱",
+      "rating": 8,
+      "votes": 27,
+      "route": "regional-tv-th"
+    },
+    {
+      "id": "tmdb-tv-70207",
+      "zh": "恶魔的浪漫",
+      "rating": 9,
+      "votes": 27,
+      "route": "regional-tv-th"
+    },
+    {
+      "id": "tmdb-tv-239053",
+      "zh": "职业替身",
+      "rating": 8.2,
+      "votes": 32,
+      "route": "regional-tv-th"
+    },
+    {
+      "id": "tmdb-tv-278158",
+      "zh": "通往天堂的门票",
+      "rating": 9,
+      "votes": 26,
+      "route": "regional-tv-th"
+    },
+    {
+      "id": "tmdb-tv-252739",
+      "zh": "死亡使者",
+      "rating": 8.3,
+      "votes": 26,
+      "route": "regional-tv-th"
+    },
+    {
+      "id": "tmdb-tv-237330",
+      "zh": "冥王星爱恋",
+      "rating": 8.5,
+      "votes": 26,
+      "route": "regional-tv-th"
+    },
+    {
+      "id": "tmdb-tv-220398",
+      "zh": "命运探索者",
+      "rating": 9,
+      "votes": 26,
+      "route": "regional-tv-th"
+    },
+    {
+      "id": "tmdb-tv-206118",
+      "zh": "唯爱百分之十二",
+      "rating": 8.1,
+      "votes": 26,
+      "route": "regional-tv-th"
+    },
+    {
+      "id": "tmdb-tv-303724",
+      "zh": "心动密码",
+      "rating": 9,
+      "votes": 25,
+      "route": "regional-tv-th"
+    },
+    {
+      "id": "tmdb-tv-237327",
+      "zh": "噬血欲情",
+      "rating": 8.9,
+      "votes": 26,
+      "route": "regional-tv-th"
+    },
+    {
+      "id": "tmdb-tv-217810",
+      "zh": "穿越天际靠近你",
+      "rating": 8.3,
+      "votes": 28,
+      "route": "regional-tv-th"
+    },
+    {
+      "id": "tmdb-tv-221034",
+      "zh": "รักแท้แซ่บหลาย",
+      "rating": 10,
+      "votes": 25,
+      "route": "regional-tv-th"
+    },
+    {
+      "id": "tmdb-tv-316294",
+      "zh": "偿还",
+      "rating": 8.875,
+      "votes": 24,
+      "route": "regional-tv-th"
+    },
+    {
+      "id": "tmdb-tv-66948",
+      "zh": "灰色彩虹",
+      "rating": 8.5,
+      "votes": 25,
+      "route": "regional-tv-th"
+    },
+    {
+      "id": "tmdb-tv-276051",
+      "zh": "指尖浪漫",
+      "rating": 8.2,
+      "votes": 23,
+      "route": "regional-tv-th"
+    },
+    {
+      "id": "tmdb-tv-242682",
+      "zh": "勇敢说爱你",
+      "rating": 8.2,
+      "votes": 24,
+      "route": "regional-tv-th"
+    },
+    {
+      "id": "tmdb-tv-312573",
+      "zh": "校园暗恋警报",
+      "rating": 8.1,
+      "votes": 23,
+      "route": "regional-tv-th"
+    },
+    {
+      "id": "tmdb-tv-236457",
+      "zh": "异世界来的男生",
+      "rating": 8.2,
+      "votes": 25,
+      "route": "regional-tv-th"
+    },
+    {
+      "id": "tmdb-tv-219866",
+      "zh": "劫心恋人",
+      "rating": 10,
+      "votes": 23,
+      "route": "regional-tv-th"
+    },
+    {
+      "id": "tmdb-tv-278138",
+      "zh": "鲸鱼杂货铺",
+      "rating": 8.4,
+      "votes": 22,
+      "route": "regional-tv-th"
+    },
+    {
+      "id": "tmdb-tv-252621",
+      "zh": "我们的爱情",
+      "rating": 8.7,
+      "votes": 22,
+      "route": "regional-tv-th"
+    },
+    {
+      "id": "tmdb-tv-218930",
+      "zh": "强悍媳妇",
+      "rating": 9.7,
+      "votes": 23,
+      "route": "regional-tv-th"
+    },
+    {
+      "id": "tmdb-tv-206731",
+      "zh": "骗骗大小姐",
+      "rating": 10,
+      "votes": 23,
+      "route": "regional-tv-th"
+    },
+    {
+      "id": "tmdb-tv-218675",
+      "zh": "内心最深处",
+      "rating": 9.5,
+      "votes": 23,
+      "route": "regional-tv-th"
+    },
+    {
+      "id": "tmdb-tv-125620",
+      "zh": "Senior Secret Love: Puppy Honey",
+      "rating": 9,
+      "votes": 22,
+      "route": "regional-tv-th"
+    },
+    {
+      "id": "tmdb-tv-237329",
+      "zh": "大叔的爱",
+      "rating": 9.3,
+      "votes": 24,
+      "route": "regional-tv-th"
+    },
+    {
+      "id": "tmdb-tv-218446",
+      "zh": "นางนาคสะใภ้พระโขนง",
+      "rating": 9.8,
+      "votes": 21,
+      "route": "regional-tv-th"
+    },
+    {
+      "id": "tmdb-tv-217861",
+      "zh": "危险罗曼史",
+      "rating": 8.3,
+      "votes": 21,
+      "route": "regional-tv-th"
+    },
+    {
+      "id": "tmdb-tv-69646",
+      "zh": "秘密的恋爱",
+      "rating": 8.9,
+      "votes": 21,
+      "route": "regional-tv-th"
+    },
+    {
+      "id": "tmdb-tv-69600",
+      "zh": "这个平凡的男子",
+      "rating": 9.8,
+      "votes": 21,
+      "route": "regional-tv-th"
+    },
+    {
+      "id": "tmdb-tv-106868",
+      "zh": "天才枪手",
+      "rating": 8.3,
+      "votes": 21,
+      "route": "regional-tv-th"
+    },
+    {
+      "id": "tmdb-tv-69562",
+      "zh": "爱不单行",
+      "rating": 10,
+      "votes": 21,
+      "route": "regional-tv-th"
+    },
+    {
+      "id": "tmdb-tv-287376",
+      "zh": "设计爱情",
+      "rating": 8.7,
+      "votes": 20,
+      "route": "regional-tv-th"
+    },
+    {
+      "id": "tmdb-tv-283019",
+      "zh": "爱情毒药",
+      "rating": 8,
+      "votes": 20,
+      "route": "regional-tv-th"
+    },
+    {
+      "id": "tmdb-tv-218479",
+      "zh": "为了妈妈不能输",
+      "rating": 10,
+      "votes": 20,
+      "route": "regional-tv-th"
+    },
+    {
+      "id": "tmdb-tv-233603",
+      "zh": "绯闻女孩",
+      "rating": 10,
+      "votes": 20,
+      "route": "regional-tv-th"
+    },
+    {
+      "id": "tmdb-tv-279345",
+      "zh": "巨星重生",
+      "rating": 9,
+      "votes": 20,
+      "route": "regional-tv-th"
+    },
+    {
+      "id": "tmdb-tv-197911",
+      "zh": "恶魔姐姐",
+      "rating": 10,
+      "votes": 20,
+      "route": "regional-tv-th"
+    },
+    {
+      "id": "tmdb-tv-50757",
+      "zh": "ตะวันทอแสง",
+      "rating": 9.95,
+      "votes": 20,
+      "route": "regional-tv-th"
+    },
+    {
+      "id": "tmdb-tv-212292",
+      "zh": "爱的香气",
+      "rating": 9.3,
+      "votes": 20,
+      "route": "regional-tv-th"
+    },
+    {
+      "id": "tmdb-tv-53128",
+      "zh": "荷尔蒙",
+      "rating": 8,
+      "votes": 20,
+      "route": "regional-tv-th"
+    },
+    {
+      "id": "tmdb-32486",
+      "zh": "花样男子最终章",
+      "rating": 8,
+      "votes": 99,
+      "route": "regional-movie-ja"
+    },
+    {
+      "id": "tmdb-43339",
+      "zh": "二十四只眼睛",
+      "rating": 7.7,
+      "votes": 94,
+      "route": "regional-movie-ja"
+    },
+    {
+      "id": "tmdb-tv-237326",
+      "zh": "秘密绑架",
+      "rating": 9.2,
+      "votes": 20,
+      "route": "regional-tv-th"
+    },
+    {
+      "id": "tmdb-tv-218442",
+      "zh": "亲爱的女士",
+      "rating": 9.9,
+      "votes": 20,
+      "route": "regional-tv-th"
+    },
+    {
+      "id": "tmdb-104548",
+      "zh": "修罗",
+      "rating": 7.703,
+      "votes": 91,
+      "route": "regional-movie-ja"
+    },
+    {
+      "id": "tmdb-461763",
+      "zh": "排球少年！！观念之战",
+      "rating": 8,
+      "votes": 79,
+      "route": "regional-movie-ja"
+    },
+    {
+      "id": "tmdb-321487",
+      "zh": "头文字D新剧场版：斗走",
+      "rating": 7.9,
+      "votes": 83,
+      "route": "regional-movie-ja"
+    },
+    {
+      "id": "tmdb-1359607",
+      "zh": "小林家的龙女仆：怕寂寞的龙",
+      "rating": 8.8,
+      "votes": 79,
+      "route": "regional-movie-ja"
+    },
+    {
+      "id": "tmdb-732203",
+      "zh": "银魂 THE FINAL",
+      "rating": 8.2,
+      "votes": 80,
+      "route": "regional-movie-ja"
+    },
+    {
+      "id": "tmdb-111398",
+      "zh": "情迷意乱",
+      "rating": 8.1,
+      "votes": 78,
+      "route": "regional-movie-ja"
+    },
+    {
+      "id": "tmdb-530284",
+      "zh": "虽说是未成年，但可不是小孩哟",
+      "rating": 7.8,
+      "votes": 75,
+      "route": "regional-movie-ja"
+    },
+    {
+      "id": "tmdb-271709",
+      "zh": "头文字D新剧场版：觉醒",
+      "rating": 7.8,
+      "votes": 79,
+      "route": "regional-movie-ja"
+    },
+    {
+      "id": "tmdb-75571",
+      "zh": "数码宝贝：我们的战争游戏",
+      "rating": 8,
+      "votes": 75,
+      "route": "regional-movie-ja"
+    },
+    {
+      "id": "tmdb-322686",
+      "zh": "魔卡少女樱特典：包在小可身上",
+      "rating": 8.4,
+      "votes": 71,
+      "route": "regional-movie-ja"
+    },
+    {
+      "id": "tmdb-766423",
+      "zh": "蛹梦",
+      "rating": 8,
+      "votes": 73,
+      "route": "regional-movie-ja"
+    },
+    {
+      "id": "tmdb-511082",
+      "zh": "黑执事：幽鬼城杀人事件篇",
+      "rating": 7.9,
+      "votes": 69,
+      "route": "regional-movie-ja"
+    },
+    {
+      "id": "tmdb-1056803",
+      "zh": "青春猪头少年不会梦到娇怜外出妹",
+      "rating": 7.7,
+      "votes": 70,
+      "route": "regional-movie-ja"
+    },
+    {
+      "id": "tmdb-1363974",
+      "zh": "关于我转生变成史莱姆这档事 沧海之泪篇",
+      "rating": 8.1,
+      "votes": 67,
+      "route": "regional-movie-ja"
+    },
+    {
+      "id": "tmdb-1322752",
+      "zh": "世界计划：无法歌唱的初音未来",
+      "rating": 8.2,
+      "votes": 61,
+      "route": "regional-movie-ja"
+    },
+    {
+      "id": "tmdb-617400",
+      "zh": "午夜0时的吻",
+      "rating": 7.9,
+      "votes": 74,
+      "route": "regional-movie-ja"
+    },
+    {
+      "id": "tmdb-312966",
+      "zh": "虫师 续章 铃之滴",
+      "rating": 8.3,
+      "votes": 59,
+      "route": "regional-movie-ja"
+    },
+    {
+      "id": "tmdb-1476614",
+      "zh": "突如其来",
+      "rating": 8,
+      "votes": 57,
+      "route": "regional-movie-ja"
+    },
+    {
+      "id": "tmdb-968870",
+      "zh": "美少女战士Cosmos 剧场版 后篇",
+      "rating": 8,
+      "votes": 58,
+      "route": "regional-movie-ja"
+    },
+    {
+      "id": "tmdb-154738",
+      "zh": "银河英雄传说 剧场版1 我的征途是星辰大海",
+      "rating": 7.9,
+      "votes": 56,
+      "route": "regional-movie-ja"
+    },
+    {
+      "id": "tmdb-84237",
+      "zh": "人情纸风船",
+      "rating": 7.8,
+      "votes": 55,
+      "route": "regional-movie-ja"
+    },
+    {
+      "id": "tmdb-13430",
+      "zh": "永远的三丁目的夕阳",
+      "rating": 7.7,
+      "votes": 52,
+      "route": "regional-movie-ja"
+    },
+    {
+      "id": "tmdb-43618",
+      "zh": "东京奥林匹克",
+      "rating": 7.7,
+      "votes": 51,
+      "route": "regional-movie-ja"
+    },
+    {
+      "id": "tmdb-298973",
+      "zh": "他的摩托，她的岛",
+      "rating": 7.7,
+      "votes": 50,
+      "route": "regional-movie-ja"
+    },
+    {
+      "id": "tmdb-126432",
+      "zh": "乱云",
+      "rating": 7.8,
+      "votes": 49,
+      "route": "regional-movie-ja"
+    },
+    {
+      "id": "tmdb-587873",
+      "zh": "外之国的少女",
+      "rating": 7.8,
+      "votes": 48,
+      "route": "regional-movie-ja"
+    },
+    {
+      "id": "tmdb-1033051",
+      "zh": "爱的痛苦",
+      "rating": 8.4,
+      "votes": 49,
+      "route": "regional-movie-ja"
+    },
+    {
+      "id": "tmdb-802699",
+      "zh": "外之国的少女",
+      "rating": 7.8,
+      "votes": 50,
+      "route": "regional-movie-ja"
+    },
+    {
+      "id": "tmdb-347183",
+      "zh": "排球少年！！结束与开始",
+      "rating": 8.4,
+      "votes": 47,
+      "route": "regional-movie-ja"
+    },
+    {
+      "id": "tmdb-515596",
+      "zh": "亲爱的",
+      "rating": 7.7,
+      "votes": 46,
+      "route": "regional-movie-ja"
+    },
+    {
+      "id": "tmdb-1598785",
+      "zh": "银河特急 Milky☆Subway 各站停车前往剧场",
+      "rating": 8.578,
+      "votes": 45,
+      "route": "regional-movie-ja"
+    },
+    {
+      "id": "tmdb-583315",
+      "zh": "全职猎人 试播版",
+      "rating": 8.489,
+      "votes": 45,
+      "route": "regional-movie-ja"
+    },
+    {
+      "id": "tmdb-513813",
+      "zh": "幽☆遊☆白書 映像白書 暗黒武術会の章 上巻 & 下巻",
+      "rating": 8.7,
+      "votes": 45,
+      "route": "regional-movie-ja"
+    },
+    {
+      "id": "tmdb-261560",
+      "zh": "春天情书",
+      "rating": 7.9,
+      "votes": 45,
+      "route": "regional-movie-ja"
+    },
+    {
+      "id": "tmdb-412869",
+      "zh": "妖怪手表：阎魔大王和五个故事喵",
+      "rating": 7.9,
+      "votes": 43,
+      "route": "regional-movie-ja"
+    },
+    {
+      "id": "tmdb-1360829",
+      "zh": "维珍朋克：发条女孩",
+      "rating": 8.1,
+      "votes": 43,
+      "route": "regional-movie-ja"
+    },
+    {
+      "id": "tmdb-1279752",
+      "zh": "辣妹刺客3",
+      "rating": 8.2,
+      "votes": 43,
+      "route": "regional-movie-ja"
+    },
+    {
+      "id": "tmdb-1292585",
+      "zh": "苍鹭与宫崎骏",
+      "rating": 7.8,
+      "votes": 41,
+      "route": "regional-movie-ja"
+    },
+    {
+      "id": "tmdb-926916",
+      "zh": "樱桃魔法 THE MOVIE～如果30岁还是处男，似乎就会成为魔法师〜",
+      "rating": 7.7,
+      "votes": 40,
+      "route": "regional-movie-ja"
+    },
+    {
+      "id": "tmdb-154727",
+      "zh": "银河英雄传说 剧场版3 新战争的序曲",
+      "rating": 8.2,
+      "votes": 41,
+      "route": "regional-movie-ja"
+    },
+    {
+      "id": "tmdb-397366",
+      "zh": "机动战士高达 THE ORIGIN III：破晓起义",
+      "rating": 7.9,
+      "votes": 40,
+      "route": "regional-movie-ja"
+    },
+    {
+      "id": "tmdb-66943",
+      "zh": "久石让在武道馆：与宫崎骏动画一同走过的25年",
+      "rating": 9.3,
+      "votes": 39,
+      "route": "regional-movie-ja"
+    },
+    {
+      "id": "tmdb-280507",
+      "zh": "2112年哆啦A梦的诞生",
+      "rating": 8.1,
+      "votes": 37,
+      "route": "regional-movie-ja"
+    },
+    {
+      "id": "tmdb-722802",
+      "zh": "谎言×谎言",
+      "rating": 7.8,
+      "votes": 39,
+      "route": "regional-movie-ja"
+    },
+    {
+      "id": "tmdb-461762",
+      "zh": "排球少年！！才能与感觉",
+      "rating": 7.889,
+      "votes": 36,
+      "route": "regional-movie-ja"
+    },
+    {
+      "id": "tmdb-74617",
+      "zh": "魔神Z对暗黑大将军",
+      "rating": 8.2,
+      "votes": 42,
+      "route": "regional-movie-ja"
+    },
+    {
+      "id": "tmdb-356255",
+      "zh": "胜者即是正义 2013 特别篇",
+      "rating": 8,
+      "votes": 36,
+      "route": "regional-movie-ja"
+    },
+    {
+      "id": "tmdb-41261",
+      "zh": "一公升的眼泪",
+      "rating": 7.8,
+      "votes": 36,
+      "route": "regional-movie-ja"
+    },
+    {
+      "id": "tmdb-617397",
+      "zh": "剧场",
+      "rating": 7.727,
+      "votes": 33,
+      "route": "regional-movie-ja"
+    },
+    {
+      "id": "tmdb-1223178",
+      "zh": "赛马娘 Pretty Derby 新时代之门",
+      "rating": 8.514,
+      "votes": 35,
+      "route": "regional-movie-ja"
+    },
+    {
+      "id": "tmdb-683415",
+      "zh": "ＺＩＧＧＹ それゆけ！ Ｒ＆Ｒ ＢＡＮＤ",
+      "rating": 7.9,
+      "votes": 32,
+      "route": "regional-movie-ja"
+    },
+    {
+      "id": "tmdb-347186",
+      "zh": "排球少年！！胜者与败者",
+      "rating": 8,
+      "votes": 34,
+      "route": "regional-movie-ja"
+    },
+    {
+      "id": "tmdb-402455",
+      "zh": "海难1890",
+      "rating": 7.8,
+      "votes": 32,
+      "route": "regional-movie-ja"
+    },
+    {
+      "id": "tmdb-910850",
+      "zh": "机动战士高达：闪光的哈萨维 喀耳刻的魔女",
+      "rating": 8.1,
+      "votes": 31,
+      "route": "regional-movie-ja"
+    },
+    {
+      "id": "tmdb-1450115",
+      "zh": "沉默的舰队 北极海大海战",
+      "rating": 8.5,
+      "votes": 30,
+      "route": "regional-movie-ja"
+    },
+    {
+      "id": "tmdb-554779",
+      "zh": "摇摆狂潮",
+      "rating": 8,
+      "votes": 91,
+      "route": "regional-movie-ko"
+    },
+    {
+      "id": "tmdb-1154154",
+      "zh": "大都市的爱情法",
+      "rating": 8,
+      "votes": 83,
+      "route": "regional-movie-ko"
+    },
+    {
+      "id": "tmdb-570508",
+      "zh": "证人",
+      "rating": 7.8,
+      "votes": 87,
+      "route": "regional-movie-ko"
+    },
+    {
+      "id": "tmdb-470524",
+      "zh": "我能说",
+      "rating": 7.875,
+      "votes": 72,
+      "route": "regional-movie-ko"
+    },
+    {
+      "id": "tmdb-589174",
+      "zh": "担保",
+      "rating": 8.3,
+      "votes": 74,
+      "route": "regional-movie-ko"
+    },
+    {
+      "id": "tmdb-1600421",
+      "zh": "Stray Kids：主宰一切的体验",
+      "rating": 9.1,
+      "votes": 69,
+      "route": "regional-movie-ko"
+    },
+    {
+      "id": "tmdb-376494",
+      "zh": "纯情",
+      "rating": 7.957,
+      "votes": 70,
+      "route": "regional-movie-ko"
+    },
+    {
+      "id": "tmdb-385261",
+      "zh": "解语花",
+      "rating": 7.8,
+      "votes": 65,
+      "route": "regional-movie-ko"
+    },
+    {
+      "id": "tmdb-571787",
+      "zh": "我的一级兄弟",
+      "rating": 8.2,
+      "votes": 63,
+      "route": "regional-movie-ko"
+    },
+    {
+      "id": "tmdb-628802",
+      "zh": "奇怪国家的数学家",
+      "rating": 8,
+      "votes": 58,
+      "route": "regional-movie-ko"
+    },
+    {
+      "id": "tmdb-387886",
+      "zh": "季春奶奶",
+      "rating": 7.895,
+      "votes": 57,
+      "route": "regional-movie-ko"
+    },
+    {
+      "id": "tmdb-438623",
+      "zh": "那就是我的世界",
+      "rating": 8.02,
+      "votes": 49,
+      "route": "regional-movie-ko"
+    },
+    {
+      "id": "tmdb-435506",
+      "zh": "萌犬流浪记",
+      "rating": 7.8,
+      "votes": 44,
+      "route": "regional-movie-ko"
+    },
+    {
+      "id": "tmdb-741689",
+      "zh": "모두 그곳에 있다",
+      "rating": 8.1,
+      "votes": 40,
+      "route": "regional-movie-ko"
+    },
+    {
+      "id": "tmdb-630211",
+      "zh": "三振集团英语托业班",
+      "rating": 7.7,
+      "votes": 40,
+      "route": "regional-movie-ko"
+    },
+    {
+      "id": "tmdb-1317512",
+      "zh": "世界的主人",
+      "rating": 7.7,
+      "votes": 39,
+      "route": "regional-movie-ko"
+    },
+    {
+      "id": "tmdb-124315",
+      "zh": "西便制",
+      "rating": 7.8,
+      "votes": 39,
+      "route": "regional-movie-ko"
+    },
+    {
+      "id": "tmdb-376847",
+      "zh": "不要忘记我",
+      "rating": 8.1,
+      "votes": 35,
+      "route": "regional-movie-ko"
+    },
+    {
+      "id": "tmdb-1145796",
+      "zh": "TOMORROW X TOGETHER：我们的逝去之夏",
+      "rating": 9.6,
+      "votes": 32,
+      "route": "regional-movie-ko"
+    },
+    {
+      "id": "tmdb-817485",
+      "zh": "对我来说非常珍贵的你",
+      "rating": 8,
+      "votes": 33,
+      "route": "regional-movie-ko"
+    },
+    {
+      "id": "tmdb-112698",
+      "zh": "神女",
+      "rating": 7.8,
+      "votes": 93,
+      "route": "regional-movie-zh"
+    },
+    {
+      "id": "tmdb-1155234",
+      "zh": "时间之子",
+      "rating": 9.1,
+      "votes": 75,
+      "route": "regional-movie-zh"
+    },
+    {
+      "id": "tmdb-1500536",
+      "zh": "南京照相馆",
+      "rating": 7.859,
+      "votes": 99,
+      "route": "regional-movie-zh"
+    },
+    {
+      "id": "tmdb-1304434",
+      "zh": "浪浪山小妖怪",
+      "rating": 7.9,
+      "votes": 89,
+      "route": "regional-movie-zh"
+    },
+    {
+      "id": "tmdb-1359005",
+      "zh": "星河入梦",
+      "rating": 8,
+      "votes": 66,
+      "route": "regional-movie-zh"
+    },
+    {
+      "id": "tmdb-1305715",
+      "zh": "过家家",
+      "rating": 8,
+      "votes": 46,
+      "route": "regional-movie-zh"
+    },
+    {
+      "id": "tmdb-26557",
+      "zh": "2008年第29届北京奥运会开幕式",
+      "rating": 7.919,
+      "votes": 37,
+      "route": "regional-movie-zh"
+    },
+    {
+      "id": "tmdb-1391021",
+      "zh": "欢迎来龙餐馆",
+      "rating": 9,
+      "votes": 46,
+      "route": "regional-movie-zh"
+    },
+    {
+      "id": "tmdb-878607",
+      "zh": "一部未完成的电影",
+      "rating": 7.743,
+      "votes": 37,
+      "route": "regional-movie-zh"
+    },
+    {
+      "id": "tmdb-1207123",
+      "zh": "白蛇3：浮生",
+      "rating": 7.9,
+      "votes": 42,
+      "route": "regional-movie-zh"
+    },
+    {
+      "id": "tmdb-1671548",
+      "zh": "给阿嬷的情书",
+      "rating": 8.8,
+      "votes": 85,
+      "route": "regional-movie-zh"
+    },
+    {
+      "id": "tmdb-1154478",
+      "zh": "雄狮少年2",
+      "rating": 7.8,
+      "votes": 34,
+      "route": "regional-movie-zh"
+    },
+    {
+      "id": "tmdb-154114",
+      "zh": "李小龙的生与死",
+      "rating": 8.2,
+      "votes": 33,
+      "route": "regional-movie-zh"
+    },
+    {
+      "id": "tmdb-850884",
+      "zh": "时代革命",
+      "rating": 8.3,
+      "votes": 34,
+      "route": "regional-movie-cn"
+    },
+    {
+      "id": "tmdb-558218",
+      "zh": "沦落人",
+      "rating": 7.8,
+      "votes": 43,
+      "route": "regional-movie-cn"
+    },
+    {
+      "id": "tmdb-20188",
+      "zh": "如来神掌",
+      "rating": 7.8,
+      "votes": 36,
+      "route": "regional-movie-cn"
+    },
+    {
+      "id": "tmdb-1226141",
+      "zh": "破·地狱",
+      "rating": 7.9,
+      "votes": 84,
+      "route": "regional-movie-cn"
+    },
+    {
+      "id": "tmdb-1305653",
+      "zh": "东极岛",
+      "rating": 8.346,
+      "votes": 68,
+      "route": "regional-movie-zh"
+    }
+  ],
+  "tightened": {
+    "rule": "drop Thai low-vote series; low-vote anime need 60+ votes; low-vote Chinese romance series need 40+",
+    "removed": [
+      {
+        "id": "tmdb-tv-93483",
+        "zh": "外星BB撞地球",
+        "votes": 59,
+        "why": "low-vote anime"
+      },
+      {
+        "id": "tmdb-tv-244624",
+        "zh": "重生大小姐正在攻略龙帝殿下",
+        "votes": 59,
+        "why": "low-vote anime"
+      },
+      {
+        "id": "tmdb-tv-34839",
+        "zh": "新竹取物语 1000年女王",
+        "votes": 59,
+        "why": "low-vote anime"
+      },
+      {
+        "id": "tmdb-tv-46153",
+        "zh": "迷糊餐厅",
+        "votes": 58,
+        "why": "low-vote anime"
+      },
+      {
+        "id": "tmdb-tv-73093",
+        "zh": "其实我是",
+        "votes": 56,
+        "why": "low-vote anime"
+      },
+      {
+        "id": "tmdb-tv-306762",
+        "zh": "棱镜恋曲",
+        "votes": 55,
+        "why": "low-vote anime"
+      },
+      {
+        "id": "tmdb-tv-224753",
+        "zh": "百变的七仓同学",
+        "votes": 55,
+        "why": "low-vote anime"
+      },
+      {
+        "id": "tmdb-tv-37851",
+        "zh": "数码宝贝：合体战争",
+        "votes": 54,
+        "why": "low-vote anime"
+      },
+      {
+        "id": "tmdb-tv-293489",
+        "zh": "鬼的新娘",
+        "votes": 50,
+        "why": "low-vote anime"
+      },
+      {
+        "id": "tmdb-tv-277513",
+        "zh": "我们不可能成为恋人！绝对不行。(※似乎可行！？)",
+        "votes": 50,
+        "why": "low-vote anime"
+      },
+      {
+        "id": "tmdb-tv-35579",
+        "zh": "小公主莎拉",
+        "votes": 50,
+        "why": "low-vote anime"
+      },
+      {
+        "id": "tmdb-tv-287591",
+        "zh": "皎洁迎宵之月",
+        "votes": 48,
+        "why": "low-vote anime"
+      },
+      {
+        "id": "tmdb-tv-271609",
+        "zh": "DARK MOON -黑之月：月之祭坛-",
+        "votes": 48,
+        "why": "low-vote anime"
+      },
+      {
+        "id": "tmdb-tv-229858",
+        "zh": "命运／奇异赝品",
+        "votes": 48,
+        "why": "low-vote anime"
+      },
+      {
+        "id": "tmdb-tv-276393",
+        "zh": "现在的是哪一个多闻！ ？",
+        "votes": 45,
+        "why": "low-vote anime"
+      },
+      {
+        "id": "tmdb-tv-25117",
+        "zh": "明日之丈",
+        "votes": 48,
+        "why": "low-vote anime"
+      },
+      {
+        "id": "tmdb-tv-66083",
+        "zh": "城下町的蒲公英",
+        "votes": 45,
+        "why": "low-vote anime"
+      },
+      {
+        "id": "tmdb-tv-43979",
+        "zh": "大空魔龙凯王",
+        "votes": 45,
+        "why": "low-vote anime"
+      },
+      {
+        "id": "tmdb-tv-22366",
+        "zh": "超智游戏",
+        "votes": 42,
+        "why": "low-vote anime"
+      },
+      {
+        "id": "tmdb-tv-281512",
+        "zh": "美乐蒂&酷洛米",
+        "votes": 41,
+        "why": "low-vote anime"
+      },
+      {
+        "id": "tmdb-tv-241138",
+        "zh": "高尔夫物语",
+        "votes": 41,
+        "why": "low-vote anime"
+      },
+      {
+        "id": "tmdb-tv-248947",
+        "zh": "妖精的尾巴 百年任务",
+        "votes": 41,
+        "why": "low-vote anime"
+      },
+      {
+        "id": "tmdb-tv-224207",
+        "zh": "迷途之子!!!!!",
+        "votes": 40,
+        "why": "low-vote anime"
+      },
+      {
+        "id": "tmdb-tv-154526",
+        "zh": "极速车魂",
+        "votes": 40,
+        "why": "low-vote anime"
+      },
+      {
+        "id": "tmdb-tv-90451",
+        "zh": "野狼前锋",
+        "votes": 39,
+        "why": "low-vote anime"
+      },
+      {
+        "id": "tmdb-tv-246862",
+        "zh": "新吊带袜天使",
+        "votes": 38,
+        "why": "low-vote anime"
+      },
+      {
+        "id": "tmdb-tv-53787",
+        "zh": "水星领航员",
+        "votes": 38,
+        "why": "low-vote anime"
+      },
+      {
+        "id": "tmdb-tv-34132",
+        "zh": "萩萩公主",
+        "votes": 37,
+        "why": "low-vote anime"
+      },
+      {
+        "id": "tmdb-tv-282662",
+        "zh": "跨越种族与你相恋",
+        "votes": 35,
+        "why": "low-vote anime"
+      },
+      {
+        "id": "tmdb-tv-233408",
+        "zh": "放学后少年花子君",
+        "votes": 35,
+        "why": "low-vote anime"
+      },
+      {
+        "id": "tmdb-tv-106055",
+        "zh": "LoveLive! 超级明星!!",
+        "votes": 34,
+        "why": "low-vote anime"
+      },
+      {
+        "id": "tmdb-tv-66081",
+        "zh": "绿野仙踪",
+        "votes": 34,
+        "why": "low-vote anime"
+      },
+      {
+        "id": "tmdb-tv-42862",
+        "zh": "人鱼的旋律",
+        "votes": 33,
+        "why": "low-vote anime"
+      },
+      {
+        "id": "tmdb-tv-43295",
+        "zh": "幻想嘉年华",
+        "votes": 32,
+        "why": "low-vote anime"
+      },
+      {
+        "id": "tmdb-tv-270603",
+        "zh": "遭到流放的转生重骑士凭借游戏知识大开无双",
+        "votes": 31,
+        "why": "low-vote anime"
+      },
+      {
+        "id": "tmdb-tv-88806",
+        "zh": "街角魔族",
+        "votes": 31,
+        "why": "low-vote anime"
+      },
+      {
+        "id": "tmdb-tv-272118",
+        "zh": "小城日常",
+        "votes": 30,
+        "why": "low-vote anime"
+      },
+      {
+        "id": "tmdb-tv-274814",
+        "zh": "恶食千金与狂血公爵",
+        "votes": 30,
+        "why": "low-vote anime"
+      },
+      {
+        "id": "tmdb-tv-295357",
+        "zh": "北斗之拳 -Fist of the North Star-",
+        "votes": 30,
+        "why": "low-vote anime"
+      },
+      {
+        "id": "tmdb-tv-117166",
+        "zh": "PUI PUI 天竺鼠车车",
+        "votes": 29,
+        "why": "low-vote anime"
+      },
+      {
+        "id": "tmdb-tv-89367",
+        "zh": "银牙：流星之银",
+        "votes": 28,
+        "why": "low-vote anime"
+      },
+      {
+        "id": "tmdb-tv-262929",
+        "zh": "末日后酒店",
+        "votes": 27,
+        "why": "low-vote anime"
+      },
+      {
+        "id": "tmdb-tv-253476",
+        "zh": "异国日记",
+        "votes": 27,
+        "why": "low-vote anime"
+      },
+      {
+        "id": "tmdb-tv-76127",
+        "zh": "妖精森林的小不点",
+        "votes": 26,
+        "why": "low-vote anime"
+      },
+      {
+        "id": "tmdb-tv-46337",
+        "zh": "四叶游戏",
+        "votes": 26,
+        "why": "low-vote anime"
+      },
+      {
+        "id": "tmdb-tv-295999",
+        "zh": "摩绪",
+        "votes": 25,
+        "why": "low-vote anime"
+      },
+      {
+        "id": "tmdb-tv-21269",
+        "zh": "动画亲子剧场",
+        "votes": 25,
+        "why": "low-vote anime"
+      },
+      {
+        "id": "tmdb-tv-309974",
+        "zh": "与奔跑在透明之夜的你，谈一场看不见的恋爱。",
+        "votes": 25,
+        "why": "low-vote anime"
+      },
+      {
+        "id": "tmdb-tv-303460",
+        "zh": "最强的职业不是勇者也不是贤者好像是鉴定士（伪）的样子？",
+        "votes": 24,
+        "why": "low-vote anime"
+      },
+      {
+        "id": "tmdb-tv-69113",
+        "zh": "人造人009",
+        "votes": 24,
+        "why": "low-vote anime"
+      },
+      {
+        "id": "tmdb-tv-66106",
+        "zh": "三者三叶",
+        "votes": 24,
+        "why": "low-vote anime"
+      },
+      {
+        "id": "tmdb-tv-34090",
+        "zh": "新铁金刚",
+        "votes": 24,
+        "why": "low-vote anime"
+      },
+      {
+        "id": "tmdb-tv-45209",
+        "zh": "宇宙兄弟",
+        "votes": 24,
+        "why": "low-vote anime"
+      },
+      {
+        "id": "tmdb-tv-23587",
+        "zh": "金田一少年事件簿",
+        "votes": 24,
+        "why": "low-vote anime"
+      },
+      {
+        "id": "tmdb-tv-274810",
+        "zh": "想吃掉我的非人少女",
+        "votes": 23,
+        "why": "low-vote anime"
+      },
+      {
+        "id": "tmdb-tv-22104",
+        "zh": "棒球英豪",
+        "votes": 25,
+        "why": "low-vote anime"
+      },
+      {
+        "id": "tmdb-tv-35832",
+        "zh": "罗密欧的蓝天",
+        "votes": 23,
+        "why": "low-vote anime"
+      },
+      {
+        "id": "tmdb-tv-46668",
+        "zh": "逆转监督",
+        "votes": 23,
+        "why": "low-vote anime"
+      },
+      {
+        "id": "tmdb-tv-94631",
+        "zh": "放学后海堤日记",
+        "votes": 23,
+        "why": "low-vote anime"
+      },
+      {
+        "id": "tmdb-tv-29602",
+        "zh": "棒球大联盟",
+        "votes": 23,
+        "why": "low-vote anime"
+      },
+      {
+        "id": "tmdb-tv-278604",
+        "zh": "古诺希亚",
+        "votes": 21,
+        "why": "low-vote anime"
+      },
+      {
+        "id": "tmdb-tv-288971",
+        "zh": "穹庐下的魔女",
+        "votes": 20,
+        "why": "low-vote anime"
+      },
+      {
+        "id": "tmdb-tv-249854",
+        "zh": "mono女孩",
+        "votes": 20,
+        "why": "low-vote anime"
+      },
+      {
+        "id": "tmdb-tv-87306",
+        "zh": "相对世界",
+        "votes": 20,
+        "why": "low-vote anime"
+      },
+      {
+        "id": "tmdb-tv-243141",
+        "zh": "乌鸦不择主",
+        "votes": 20,
+        "why": "low-vote anime"
+      },
+      {
+        "id": "tmdb-tv-45532",
+        "zh": "王牌投手 振臂高挥",
+        "votes": 20,
+        "why": "low-vote anime"
+      },
+      {
+        "id": "tmdb-tv-284029",
+        "zh": "猫与龙",
+        "votes": 21,
+        "why": "low-vote anime"
+      },
+      {
+        "id": "tmdb-tv-297826",
+        "zh": "盗墓王",
+        "votes": 38,
+        "why": "low-vote anime"
+      },
+      {
+        "id": "tmdb-tv-238841",
+        "zh": "漫画奇侠",
+        "votes": 35,
+        "why": "low-vote anime"
+      },
+      {
+        "id": "tmdb-tv-102788",
+        "zh": "雾山五行",
+        "votes": 58,
+        "why": "low-vote anime"
+      },
+      {
+        "id": "tmdb-tv-280078",
+        "zh": "鲲吞天下之掌门归来",
+        "votes": 52,
+        "why": "low-vote anime"
+      },
+      {
+        "id": "tmdb-tv-101172",
+        "zh": "吞噬星空",
+        "votes": 47,
+        "why": "low-vote anime"
+      },
+      {
+        "id": "tmdb-tv-223911",
+        "zh": "仙逆",
+        "votes": 45,
+        "why": "low-vote anime"
+      },
+      {
+        "id": "tmdb-tv-262453",
+        "zh": "魔法公主的小烦恼",
+        "votes": 42,
+        "why": "low-vote anime"
+      },
+      {
+        "id": "tmdb-tv-106251",
+        "zh": "乐高悟空小侠",
+        "votes": 35,
+        "why": "low-vote anime"
+      },
+      {
+        "id": "tmdb-tv-198182",
+        "zh": "神印王座",
+        "votes": 32,
+        "why": "low-vote anime"
+      },
+      {
+        "id": "tmdb-tv-259537",
+        "zh": "剑来",
+        "votes": 28,
+        "why": "low-vote anime"
+      },
+      {
+        "id": "tmdb-tv-124003",
+        "zh": "完美世界",
+        "votes": 28,
+        "why": "low-vote anime"
+      },
+      {
+        "id": "tmdb-tv-83463",
+        "zh": "画江湖之不良人",
+        "votes": 24,
+        "why": "low-vote anime"
+      },
+      {
+        "id": "tmdb-tv-206484",
+        "zh": "诛仙",
+        "votes": 23,
+        "why": "low-vote anime"
+      },
+      {
+        "id": "tmdb-tv-1319",
+        "zh": "葫芦兄弟",
+        "votes": 23,
+        "why": "low-vote anime"
+      },
+      {
+        "id": "tmdb-tv-331477",
+        "zh": "一念永恒",
+        "votes": 22,
+        "why": "low-vote anime"
+      },
+      {
+        "id": "tmdb-tv-100363",
+        "zh": "我的三体",
+        "votes": 22,
+        "why": "low-vote anime"
+      },
+      {
+        "id": "tmdb-tv-88319",
+        "zh": "罗小黑战记",
+        "votes": 23,
+        "why": "low-vote anime"
+      },
+      {
+        "id": "tmdb-tv-229192",
+        "zh": "沧元图",
+        "votes": 21,
+        "why": "low-vote anime"
+      },
+      {
+        "id": "tmdb-tv-298026",
+        "zh": "放开那个女巫",
+        "votes": 20,
+        "why": "low-vote anime"
+      },
+      {
+        "id": "tmdb-tv-122009",
+        "zh": "两小无拆",
+        "votes": 86,
+        "why": "thai fan-voted"
+      },
+      {
+        "id": "tmdb-tv-207371",
+        "zh": "爱在空气中",
+        "votes": 76,
+        "why": "thai fan-voted"
+      },
+      {
+        "id": "tmdb-tv-114703",
+        "zh": "千星传说",
+        "votes": 67,
+        "why": "thai fan-voted"
+      },
+      {
+        "id": "tmdb-tv-106818",
+        "zh": "你是我的氧气",
+        "votes": 62,
+        "why": "thai fan-voted"
+      },
+      {
+        "id": "tmdb-tv-95279",
+        "zh": "待到重逢时",
+        "votes": 67,
+        "why": "thai fan-voted"
+      },
+      {
+        "id": "tmdb-tv-257788",
+        "zh": "爱情诡计",
+        "votes": 60,
+        "why": "thai fan-voted"
+      },
+      {
+        "id": "tmdb-tv-106840",
+        "zh": "以你的心诠释我的爱",
+        "votes": 61,
+        "why": "thai fan-voted"
+      },
+      {
+        "id": "tmdb-tv-240692",
+        "zh": "偷心大盗",
+        "votes": 59,
+        "why": "thai fan-voted"
+      },
+      {
+        "id": "tmdb-tv-253710",
+        "zh": "我们的秘密",
+        "votes": 55,
+        "why": "thai fan-voted"
+      },
+      {
+        "id": "tmdb-tv-113330",
+        "zh": "亡者之谜",
+        "votes": 51,
+        "why": "thai fan-voted"
+      },
+      {
+        "id": "tmdb-tv-122015",
+        "zh": "他不是我",
+        "votes": 71,
+        "why": "thai fan-voted"
+      },
+      {
+        "id": "tmdb-tv-235199",
+        "zh": "极速恋人",
+        "votes": 50,
+        "why": "thai fan-voted"
+      },
+      {
+        "id": "tmdb-tv-250850",
+        "zh": "无主之屋",
+        "votes": 48,
+        "why": "thai fan-voted"
+      },
+      {
+        "id": "tmdb-tv-207024",
+        "zh": "爱之全蚀",
+        "votes": 50,
+        "why": "thai fan-voted"
+      },
+      {
+        "id": "tmdb-tv-217807",
+        "zh": "只是朋友",
+        "votes": 48,
+        "why": "thai fan-voted"
+      },
+      {
+        "id": "tmdb-tv-214942",
+        "zh": "世界倾斜23.5度",
+        "votes": 48,
+        "why": "thai fan-voted"
+      },
+      {
+        "id": "tmdb-tv-252617",
+        "zh": "爱情猎杀",
+        "votes": 49,
+        "why": "thai fan-voted"
+      },
+      {
+        "id": "tmdb-tv-253296",
+        "zh": "世纪之爱",
+        "votes": 57,
+        "why": "thai fan-voted"
+      },
+      {
+        "id": "tmdb-tv-211051",
+        "zh": "我的恶魔",
+        "votes": 47,
+        "why": "thai fan-voted"
+      },
+      {
+        "id": "tmdb-tv-258538",
+        "zh": "铁锈味的雨滴",
+        "votes": 45,
+        "why": "thai fan-voted"
+      },
+      {
+        "id": "tmdb-tv-214873",
+        "zh": "我的会长男友",
+        "votes": 44,
+        "why": "thai fan-voted"
+      },
+      {
+        "id": "tmdb-tv-275216",
+        "zh": "固执的爱",
+        "votes": 40,
+        "why": "thai fan-voted"
+      },
+      {
+        "id": "tmdb-tv-284828",
+        "zh": "怦然与你",
+        "votes": 39,
+        "why": "thai fan-voted"
+      },
+      {
+        "id": "tmdb-tv-230915",
+        "zh": "灵魂重生",
+        "votes": 41,
+        "why": "thai fan-voted"
+      },
+      {
+        "id": "tmdb-tv-217800",
+        "zh": "不曾遗忘的暮色",
+        "votes": 39,
+        "why": "thai fan-voted"
+      },
+      {
+        "id": "tmdb-tv-128567",
+        "zh": "倾心相印",
+        "votes": 38,
+        "why": "thai fan-voted"
+      },
+      {
+        "id": "tmdb-tv-252645",
+        "zh": "旧爱重燃",
+        "votes": 38,
+        "why": "thai fan-voted"
+      },
+      {
+        "id": "tmdb-tv-237333",
+        "zh": "我们彼此相爱",
+        "votes": 37,
+        "why": "thai fan-voted"
+      },
+      {
+        "id": "tmdb-tv-283776",
+        "zh": "疯狂独角兽",
+        "votes": 36,
+        "why": "thai fan-voted"
+      },
+      {
+        "id": "tmdb-tv-231699",
+        "zh": "料理情缘",
+        "votes": 35,
+        "why": "thai fan-voted"
+      },
+      {
+        "id": "tmdb-tv-278847",
+        "zh": "泰版我让最想被拥抱的男人给威胁了",
+        "votes": 36,
+        "why": "thai fan-voted"
+      },
+      {
+        "id": "tmdb-tv-218623",
+        "zh": "死生时刻",
+        "votes": 35,
+        "why": "thai fan-voted"
+      },
+      {
+        "id": "tmdb-tv-237337",
+        "zh": "佳期如许",
+        "votes": 36,
+        "why": "thai fan-voted"
+      },
+      {
+        "id": "tmdb-tv-282471",
+        "zh": "狱乱情迷",
+        "votes": 36,
+        "why": "thai fan-voted"
+      },
+      {
+        "id": "tmdb-tv-252649",
+        "zh": "心跳节拍",
+        "votes": 42,
+        "why": "thai fan-voted"
+      },
+      {
+        "id": "tmdb-tv-254483",
+        "zh": "你的天空",
+        "votes": 34,
+        "why": "thai fan-voted"
+      },
+      {
+        "id": "tmdb-tv-215356",
+        "zh": "绝不放手",
+        "votes": 34,
+        "why": "thai fan-voted"
+      },
+      {
+        "id": "tmdb-tv-252650",
+        "zh": "男神俱乐部",
+        "votes": 32,
+        "why": "thai fan-voted"
+      },
+      {
+        "id": "tmdb-tv-217735",
+        "zh": "床友",
+        "votes": 33,
+        "why": "thai fan-voted"
+      },
+      {
+        "id": "tmdb-tv-237343",
+        "zh": "唯一宝贝",
+        "votes": 32,
+        "why": "thai fan-voted"
+      },
+      {
+        "id": "tmdb-tv-223824",
+        "zh": "家庭学校",
+        "votes": 32,
+        "why": "thai fan-voted"
+      },
+      {
+        "id": "tmdb-tv-306630",
+        "zh": "疯狂爱上你",
+        "votes": 30,
+        "why": "thai fan-voted"
+      },
+      {
+        "id": "tmdb-tv-83792",
+        "zh": "血浓于水",
+        "votes": 34,
+        "why": "thai fan-voted"
+      },
+      {
+        "id": "tmdb-tv-282269",
+        "zh": "过山车",
+        "votes": 29,
+        "why": "thai fan-voted"
+      },
+      {
+        "id": "tmdb-tv-278165",
+        "zh": "清醒点，泰尔先生",
+        "votes": 29,
+        "why": "thai fan-voted"
+      },
+      {
+        "id": "tmdb-tv-237339",
+        "zh": "用橡皮擦书写爱",
+        "votes": 29,
+        "why": "thai fan-voted"
+      },
+      {
+        "id": "tmdb-tv-226670",
+        "zh": "樱桃魔法",
+        "votes": 28,
+        "why": "thai fan-voted"
+      },
+      {
+        "id": "tmdb-tv-85751",
+        "zh": "超凡少年",
+        "votes": 28,
+        "why": "thai fan-voted"
+      },
+      {
+        "id": "tmdb-tv-237411",
+        "zh": "预感讯号",
+        "votes": 27,
+        "why": "thai fan-voted"
+      },
+      {
+        "id": "tmdb-tv-240150",
+        "zh": "四方极爱",
+        "votes": 27,
+        "why": "thai fan-voted"
+      },
+      {
+        "id": "tmdb-tv-70207",
+        "zh": "恶魔的浪漫",
+        "votes": 27,
+        "why": "thai fan-voted"
+      },
+      {
+        "id": "tmdb-tv-239053",
+        "zh": "职业替身",
+        "votes": 32,
+        "why": "thai fan-voted"
+      },
+      {
+        "id": "tmdb-tv-278158",
+        "zh": "通往天堂的门票",
+        "votes": 26,
+        "why": "thai fan-voted"
+      },
+      {
+        "id": "tmdb-tv-252739",
+        "zh": "死亡使者",
+        "votes": 26,
+        "why": "thai fan-voted"
+      },
+      {
+        "id": "tmdb-tv-237330",
+        "zh": "冥王星爱恋",
+        "votes": 26,
+        "why": "thai fan-voted"
+      },
+      {
+        "id": "tmdb-tv-220398",
+        "zh": "命运探索者",
+        "votes": 26,
+        "why": "thai fan-voted"
+      },
+      {
+        "id": "tmdb-tv-206118",
+        "zh": "唯爱百分之十二",
+        "votes": 26,
+        "why": "thai fan-voted"
+      },
+      {
+        "id": "tmdb-tv-303724",
+        "zh": "心动密码",
+        "votes": 25,
+        "why": "thai fan-voted"
+      },
+      {
+        "id": "tmdb-tv-237327",
+        "zh": "噬血欲情",
+        "votes": 26,
+        "why": "thai fan-voted"
+      },
+      {
+        "id": "tmdb-tv-217810",
+        "zh": "穿越天际靠近你",
+        "votes": 28,
+        "why": "thai fan-voted"
+      },
+      {
+        "id": "tmdb-tv-221034",
+        "zh": "รักแท้แซ่บหลาย",
+        "votes": 25,
+        "why": "thai fan-voted"
+      },
+      {
+        "id": "tmdb-tv-316294",
+        "zh": "偿还",
+        "votes": 24,
+        "why": "thai fan-voted"
+      },
+      {
+        "id": "tmdb-tv-66948",
+        "zh": "灰色彩虹",
+        "votes": 25,
+        "why": "thai fan-voted"
+      },
+      {
+        "id": "tmdb-tv-276051",
+        "zh": "指尖浪漫",
+        "votes": 23,
+        "why": "thai fan-voted"
+      },
+      {
+        "id": "tmdb-tv-242682",
+        "zh": "勇敢说爱你",
+        "votes": 24,
+        "why": "thai fan-voted"
+      },
+      {
+        "id": "tmdb-tv-312573",
+        "zh": "校园暗恋警报",
+        "votes": 23,
+        "why": "thai fan-voted"
+      },
+      {
+        "id": "tmdb-tv-236457",
+        "zh": "异世界来的男生",
+        "votes": 25,
+        "why": "thai fan-voted"
+      },
+      {
+        "id": "tmdb-tv-219866",
+        "zh": "劫心恋人",
+        "votes": 23,
+        "why": "thai fan-voted"
+      },
+      {
+        "id": "tmdb-tv-278138",
+        "zh": "鲸鱼杂货铺",
+        "votes": 22,
+        "why": "thai fan-voted"
+      },
+      {
+        "id": "tmdb-tv-252621",
+        "zh": "我们的爱情",
+        "votes": 22,
+        "why": "thai fan-voted"
+      },
+      {
+        "id": "tmdb-tv-218930",
+        "zh": "强悍媳妇",
+        "votes": 23,
+        "why": "thai fan-voted"
+      },
+      {
+        "id": "tmdb-tv-206731",
+        "zh": "骗骗大小姐",
+        "votes": 23,
+        "why": "thai fan-voted"
+      },
+      {
+        "id": "tmdb-tv-218675",
+        "zh": "内心最深处",
+        "votes": 23,
+        "why": "thai fan-voted"
+      },
+      {
+        "id": "tmdb-tv-125620",
+        "zh": "Senior Secret Love: Puppy Honey",
+        "votes": 22,
+        "why": "thai fan-voted"
+      },
+      {
+        "id": "tmdb-tv-237329",
+        "zh": "大叔的爱",
+        "votes": 24,
+        "why": "thai fan-voted"
+      },
+      {
+        "id": "tmdb-tv-218446",
+        "zh": "นางนาคสะใภ้พระโขนง",
+        "votes": 21,
+        "why": "thai fan-voted"
+      },
+      {
+        "id": "tmdb-tv-217861",
+        "zh": "危险罗曼史",
+        "votes": 21,
+        "why": "thai fan-voted"
+      },
+      {
+        "id": "tmdb-tv-69646",
+        "zh": "秘密的恋爱",
+        "votes": 21,
+        "why": "thai fan-voted"
+      },
+      {
+        "id": "tmdb-tv-69600",
+        "zh": "这个平凡的男子",
+        "votes": 21,
+        "why": "thai fan-voted"
+      },
+      {
+        "id": "tmdb-tv-106868",
+        "zh": "天才枪手",
+        "votes": 21,
+        "why": "thai fan-voted"
+      },
+      {
+        "id": "tmdb-tv-69562",
+        "zh": "爱不单行",
+        "votes": 21,
+        "why": "thai fan-voted"
+      },
+      {
+        "id": "tmdb-tv-287376",
+        "zh": "设计爱情",
+        "votes": 20,
+        "why": "thai fan-voted"
+      },
+      {
+        "id": "tmdb-tv-283019",
+        "zh": "爱情毒药",
+        "votes": 20,
+        "why": "thai fan-voted"
+      },
+      {
+        "id": "tmdb-tv-218479",
+        "zh": "为了妈妈不能输",
+        "votes": 20,
+        "why": "thai fan-voted"
+      },
+      {
+        "id": "tmdb-tv-233603",
+        "zh": "绯闻女孩",
+        "votes": 20,
+        "why": "thai fan-voted"
+      },
+      {
+        "id": "tmdb-tv-279345",
+        "zh": "巨星重生",
+        "votes": 20,
+        "why": "thai fan-voted"
+      },
+      {
+        "id": "tmdb-tv-197911",
+        "zh": "恶魔姐姐",
+        "votes": 20,
+        "why": "thai fan-voted"
+      },
+      {
+        "id": "tmdb-tv-50757",
+        "zh": "ตะวันทอแสง",
+        "votes": 20,
+        "why": "thai fan-voted"
+      },
+      {
+        "id": "tmdb-tv-212292",
+        "zh": "爱的香气",
+        "votes": 20,
+        "why": "thai fan-voted"
+      },
+      {
+        "id": "tmdb-tv-53128",
+        "zh": "荷尔蒙",
+        "votes": 20,
+        "why": "thai fan-voted"
+      },
+      {
+        "id": "tmdb-tv-237326",
+        "zh": "秘密绑架",
+        "votes": 20,
+        "why": "thai fan-voted"
+      },
+      {
+        "id": "tmdb-tv-218442",
+        "zh": "亲爱的女士",
+        "votes": 20,
+        "why": "thai fan-voted"
+      }
+    ]
+  }
+}
