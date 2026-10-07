@@ -423,7 +423,8 @@ export function retrieve(movies, query, filters = {}, intent = {}, limit = 32, s
         .slice(0, 16)
     : [];
   const ranked = pool.map((m) => {
-    const body = `${m.overviewEn || ""} ${m.overview || ""}`.toLowerCase();
+    // TMDB keywords ("loneliness", "found family") are strong thematic evidence.
+    const body = `${m.overviewEn || ""} ${m.overview || ""} ${m.tagline || ""} ${(m.keywords || []).join(" ")}`.toLowerCase();
     const zhBody = m.overview || "";
     let thematic = 0;
     for (const t of themesQ.en) if (t.length >= 4 && body.includes(t)) thematic += 1.3;

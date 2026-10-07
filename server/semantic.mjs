@@ -7,8 +7,10 @@ export const EMBEDDING_DIMS = 1024;
 export function embeddingText(m) {
   const genres = (m.genres || []).map((g) => genreLabels[g] || g).join("、");
   const kind = m.mediaType === "series" ? "剧集" : "电影";
-  return `${m.zh || m.title} / ${m.title}（${m.year || ""}，${kind}）。${genres}。${m.overview || ""}\n${m.overviewEn || ""}`
-    .slice(0, 1400);
+  const extra = [m.tagline, m.director && `导演 ${m.director}`, m.keywords?.length && `Keywords: ${m.keywords.slice(0, 15).join(", ")}`]
+    .filter(Boolean).join("。");
+  return `${m.zh || m.title} / ${m.title}（${m.year || ""}，${kind}）。${genres}。${extra}\n${m.overview || ""}\n${m.overviewEn || ""}`
+    .slice(0, 1600);
 }
 
 export function unit(vec) {

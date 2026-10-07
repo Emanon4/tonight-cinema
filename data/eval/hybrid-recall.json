@@ -1,28 +1,28 @@
 {
-  "generatedAt": "2026-10-06T18:22:18.523Z",
+  "generatedAt": "2026-10-07T02:14:18.385Z",
   "model": "@cf/baai/bge-m3",
   "summary": {
     "gold": {
       "cases": 18,
       "relevant": 101,
-      "keyword100": 61,
-      "keyword500": 84,
-      "keyword1000": 91,
-      "hybrid100": 65,
-      "hybrid200": 76,
-      "hybrid500": 87,
+      "keyword100": 65,
+      "keyword500": 83,
+      "keyword1000": 92,
+      "hybrid100": 70,
+      "hybrid200": 80,
+      "hybrid500": 88,
       "hybrid1000": 92
     },
     "silver": {
       "cases": 20,
       "relevant": 277,
-      "keyword100": 72,
-      "keyword500": 112,
-      "keyword1000": 147,
-      "hybrid100": 255,
-      "hybrid200": 265,
-      "hybrid500": 269,
-      "hybrid1000": 273
+      "keyword100": 70,
+      "keyword500": 115,
+      "keyword1000": 145,
+      "hybrid100": 234,
+      "hybrid200": 256,
+      "hybrid500": 270,
+      "hybrid1000": 272
     }
   },
   "rows": [
@@ -31,12 +31,12 @@
       "id": "lonely-not-sad",
       "query": "孤独但不悲伤",
       "relevant": 8,
-      "keyword100": 3,
-      "keyword500": 4,
+      "keyword100": 4,
+      "keyword500": 5,
       "keyword1000": 6,
-      "hybrid100": 2,
-      "hybrid200": 2,
-      "hybrid500": 4,
+      "hybrid100": 4,
+      "hybrid200": 4,
+      "hybrid500": 5,
       "hybrid1000": 5
     },
     {
@@ -45,11 +45,11 @@
       "query": "像《盗梦空间》一样，让我脑子转起来",
       "relevant": 9,
       "keyword100": 3,
-      "keyword500": 5,
-      "keyword1000": 6,
-      "hybrid100": 3,
+      "keyword500": 6,
+      "keyword1000": 7,
+      "hybrid100": 5,
       "hybrid200": 5,
-      "hybrid500": 6,
+      "hybrid500": 8,
       "hybrid1000": 8
     },
     {
@@ -57,12 +57,12 @@
       "id": "green-ray-title",
       "query": "想看《绿光》，关于孤独、假期里寻找陪伴的影史佳作",
       "relevant": 6,
-      "keyword100": 1,
+      "keyword100": 3,
       "keyword500": 5,
       "keyword1000": 6,
-      "hybrid100": 3,
+      "hybrid100": 5,
       "hybrid200": 5,
-      "hybrid500": 6,
+      "hybrid500": 5,
       "hybrid1000": 6
     },
     {
@@ -135,7 +135,7 @@
       "id": "rohmer-holiday",
       "query": "想看侯麦或法国新浪潮那种假期与情感的电影",
       "relevant": 5,
-      "keyword100": 5,
+      "keyword100": 4,
       "keyword500": 5,
       "keyword1000": 5,
       "hybrid100": 4,
@@ -162,9 +162,9 @@
       "query": "关于孤独、城市和人与人相遇的故事",
       "relevant": 6,
       "keyword100": 3,
-      "keyword500": 5,
+      "keyword500": 4,
       "keyword1000": 5,
-      "hybrid100": 5,
+      "hybrid100": 4,
       "hybrid200": 5,
       "hybrid500": 5,
       "hybrid1000": 5
@@ -177,7 +177,7 @@
       "keyword100": 4,
       "keyword500": 5,
       "keyword1000": 5,
-      "hybrid100": 4,
+      "hybrid100": 3,
       "hybrid200": 5,
       "hybrid500": 5,
       "hybrid1000": 5
@@ -188,11 +188,11 @@
       "query": "不要经典，给我近年好看的犯罪片",
       "relevant": 5,
       "keyword100": 2,
-      "keyword500": 3,
+      "keyword500": 4,
       "keyword1000": 5,
-      "hybrid100": 2,
+      "hybrid100": 1,
       "hybrid200": 3,
-      "hybrid500": 5,
+      "hybrid500": 4,
       "hybrid1000": 5
     },
     {
@@ -200,13 +200,13 @@
       "id": "time-travel-2000",
       "query": "2000年以后的时空穿越电影",
       "relevant": 4,
-      "keyword100": 3,
+      "keyword100": 4,
       "keyword500": 4,
       "keyword1000": 4,
-      "hybrid100": 3,
-      "hybrid200": 3,
-      "hybrid500": 3,
-      "hybrid1000": 3
+      "hybrid100": 4,
+      "hybrid200": 4,
+      "hybrid500": 4,
+      "hybrid1000": 4
     },
     {
       "set": "gold",
@@ -232,18 +232,18 @@
       "hybrid100": 3,
       "hybrid200": 3,
       "hybrid500": 5,
-      "hybrid1000": 6
+      "hybrid1000": 5
     },
     {
       "set": "gold",
       "id": "warm-not-horror",
       "query": "想看温暖的电影，不要恐怖或惊悚",
       "relevant": 6,
-      "keyword100": 1,
-      "keyword500": 5,
+      "keyword100": 2,
+      "keyword500": 2,
       "keyword1000": 5,
-      "hybrid100": 1,
-      "hybrid200": 2,
+      "hybrid100": 2,
+      "hybrid200": 3,
       "hybrid500": 3,
       "hybrid1000": 4
     },
@@ -257,7 +257,7 @@
       "keyword1000": 5,
       "hybrid100": 3,
       "hybrid200": 4,
-      "hybrid500": 5,
+      "hybrid500": 4,
       "hybrid1000": 5
     },
     {
@@ -268,8 +268,8 @@
       "keyword100": 8,
       "keyword500": 9,
       "keyword1000": 11,
-      "hybrid100": 11,
-      "hybrid200": 15,
+      "hybrid100": 13,
+      "hybrid200": 14,
       "hybrid500": 16,
       "hybrid1000": 16
     },
@@ -281,7 +281,7 @@
       "keyword100": 3,
       "keyword500": 11,
       "keyword1000": 15,
-      "hybrid100": 24,
+      "hybrid100": 18,
       "hybrid200": 24,
       "hybrid500": 26,
       "hybrid1000": 26
@@ -294,8 +294,8 @@
       "keyword100": 0,
       "keyword500": 3,
       "keyword1000": 8,
-      "hybrid100": 23,
-      "hybrid200": 25,
+      "hybrid100": 22,
+      "hybrid200": 24,
       "hybrid500": 25,
       "hybrid1000": 25
     },
@@ -307,9 +307,9 @@
       "keyword100": 3,
       "keyword500": 4,
       "keyword1000": 6,
-      "hybrid100": 9,
-      "hybrid200": 9,
-      "hybrid500": 9,
+      "hybrid100": 8,
+      "hybrid200": 8,
+      "hybrid500": 8,
       "hybrid1000": 9
     },
     {
@@ -372,7 +372,7 @@
       "keyword100": 3,
       "keyword500": 4,
       "keyword1000": 4,
-      "hybrid100": 4,
+      "hybrid100": 3,
       "hybrid200": 4,
       "hybrid500": 4,
       "hybrid1000": 4
@@ -395,10 +395,10 @@
       "id": "silver-11",
       "query": "太空探索题材的科幻片",
       "relevant": 19,
-      "keyword100": 14,
-      "keyword500": 16,
+      "keyword100": 13,
+      "keyword500": 18,
       "keyword1000": 18,
-      "hybrid100": 19,
+      "hybrid100": 18,
       "hybrid200": 19,
       "hybrid500": 19,
       "hybrid1000": 19
@@ -421,11 +421,11 @@
       "id": "silver-13",
       "query": "黑色幽默的犯罪片",
       "relevant": 10,
-      "keyword100": 4,
+      "keyword100": 3,
       "keyword500": 7,
       "keyword1000": 8,
-      "hybrid100": 8,
-      "hybrid200": 9,
+      "hybrid100": 6,
+      "hybrid200": 8,
       "hybrid500": 10,
       "hybrid1000": 10
     },
@@ -439,7 +439,7 @@
       "keyword1000": 3,
       "hybrid100": 4,
       "hybrid200": 4,
-      "hybrid500": 4,
+      "hybrid500": 5,
       "hybrid1000": 5
     },
     {
@@ -448,11 +448,11 @@
       "query": "关于失去与疗愈，看完想哭但很温暖",
       "relevant": 21,
       "keyword100": 5,
-      "keyword500": 8,
-      "keyword1000": 11,
-      "hybrid100": 18,
-      "hybrid200": 20,
-      "hybrid500": 20,
+      "keyword500": 9,
+      "keyword1000": 9,
+      "hybrid100": 13,
+      "hybrid200": 16,
+      "hybrid500": 21,
       "hybrid1000": 21
     },
     {
@@ -463,8 +463,8 @@
       "keyword100": 0,
       "keyword500": 0,
       "keyword1000": 1,
-      "hybrid100": 16,
-      "hybrid200": 16,
+      "hybrid100": 13,
+      "hybrid200": 15,
       "hybrid500": 16,
       "hybrid1000": 16
     },
@@ -479,7 +479,7 @@
       "hybrid100": 12,
       "hybrid200": 12,
       "hybrid500": 12,
-      "hybrid1000": 14
+      "hybrid1000": 13
     },
     {
       "set": "silver",
@@ -489,7 +489,7 @@
       "keyword100": 0,
       "keyword500": 1,
       "keyword1000": 3,
-      "hybrid100": 11,
+      "hybrid100": 10,
       "hybrid200": 11,
       "hybrid500": 11,
       "hybrid1000": 11
@@ -502,7 +502,7 @@
       "keyword100": 1,
       "keyword500": 3,
       "keyword1000": 4,
-      "hybrid100": 12,
+      "hybrid100": 11,
       "hybrid200": 12,
       "hybrid500": 12,
       "hybrid1000": 12
@@ -515,7 +515,7 @@
       "keyword100": 0,
       "keyword500": 5,
       "keyword1000": 9,
-      "hybrid100": 16,
+      "hybrid100": 15,
       "hybrid200": 17,
       "hybrid500": 17,
       "hybrid1000": 17
