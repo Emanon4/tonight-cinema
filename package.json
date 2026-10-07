@@ -21,7 +21,8 @@
     "import:recent": "node scripts/import-recent.mjs",
     "backfill:details": "node scripts/backfill-details.mjs",
     "catalog:curate": "node scripts/curate-catalog.mjs",
-    "eval": "node scripts/eval-retrieve.mjs"
+    "eval": "node scripts/eval-retrieve.mjs",
+    "import:watch": "node scripts/import-watch.mjs"
   },
   "dependencies": {
     "lucide-react": "^1.52.0",

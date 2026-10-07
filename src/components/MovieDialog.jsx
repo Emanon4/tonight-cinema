@@ -1,5 +1,6 @@
-import React, { useEffect, useRef } from "react";
-import { ArrowLeft, Plus, Check, Eye, Ban, ExternalLink, Sparkles } from "lucide-react";
+import React, { useEffect, useRef, useState } from "react";
+import WatchPanel from "./WatchPanel.jsx";
+import { ArrowLeft, Plus, Check, Eye, Ban, ExternalLink, Sparkles, Play, X } from "lucide-react";
 import { mediaLabel, genreName, seriesCount } from "./format.js";
 import { aspectLabels, languageNames } from "../../server/core.mjs";
 
@@ -7,6 +8,8 @@ const large = (url) => (url || "").replace("/w342/", "/w780/");
 
 export default function MovieDialog({ movie, query, saved, feedback, onClose, onToggleSave, onWatched, onSkip }) {
   const ref = useRef(null);
+  const [playing, setPlaying] = useState(false);
+  useEffect(() => setPlaying(false), [movie?.id]);
   useEffect(() => {
     if (movie) {
       ref.current?.showModal?.();
@@ -48,14 +51,33 @@ export default function MovieDialog({ movie, query, saved, feedback, onClose, on
               <button className={"round" + (skipped ? " is-on" : "")} aria-label={skipped ? "取消不合适" : "不合适"} title={skipped ? "已标为不合适" : "不合适"} aria-pressed={skipped} onClick={() => onSkip(m.id)}>
                 <Ban size={18} />
               </button>
-              {m.provider === "TMDB" && (
-                <a className="pill" href={m.source + "/watch"} target="_blank" rel="noreferrer">
-                  在哪看 <ExternalLink size={14} />
-                </a>
+              {m.trailer && (
+                <button className="pill" onClick={() => setPlaying((p) => !p)} aria-expanded={playing}>
+                  {playing ? <X size={15} /> : <Play size={15} />} {playing ? "收起预告片" : "预告片"}
+                </button>
               )}
             </div>
           </div>
           <div className="detail-body">
+            {playing && m.trailer && (
+              <figure className="trailer">
+                <div className="trailer-frame">
+                  <iframe
+                    src={`https://www.youtube-nocookie.com/embed/${m.trailer.key}?autoplay=1&rel=0&modestbranding=1`}
+                    title={m.trailer.name || "预告片"}
+                    allow="autoplay; encrypted-media; picture-in-picture; fullscreen"
+                    allowFullScreen
+                  />
+                </div>
+                <figcaption>
+                  {m.trailer.name} ·{" "}
+                  <a href={`https://www.youtube.com/watch?v=${m.trailer.key}`} target="_blank" rel="noreferrer">
+                    在 YouTube 打开
+                  </a>
+                  （预告片由 YouTube 播放，部分网络环境可能无法加载）
+                </figcaption>
+              </figure>
+            )}
             <p className="detail-stats">
               <span>{m.year}</span>
               {m.runtime ? <span>{m.mediaType === "series" ? `单集约 ${m.runtime} 分钟` : `${m.runtime} 分钟`}</span> : null}
@@ -123,6 +145,7 @@ export default function MovieDialog({ movie, query, saved, feedback, onClose, on
                 </span>
               </div>
             </div>
+            {m.provider === "TMDB" && <WatchPanel movie={m} />}
             {m.cast?.length > 0 && (
               <>
                 <h3 className="sub">出演</h3>

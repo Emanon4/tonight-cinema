@@ -32,6 +32,7 @@ jobs:
       - run: npm ci
       - run: npm run import:recent
       - run: npm run backfill:details
+      - run: npm run import:watch -- --fresh
       - name: Refresh semantic vectors
         if: env.CLOUDFLARE_API_TOKEN != '' && env.CLOUDFLARE_ACCOUNT_ID != ''
         run: npm run embeddings

@@ -14,12 +14,12 @@ for (const dir of [browserDir, workerDir]) {
   fs.mkdirSync(dir, {recursive:true});
 }
 const index = [];
-for (let start=0; start<movies.length; start+=500) {
-  const part=movies.slice(start,start+500);
-  const filename=`details-${version}-${start/500}.json`;
-  fs.writeFileSync(path.join(browserDir,filename),JSON.stringify(part.map(({id,overview,cast})=>({id,overview,cast}))));
+for (let start=0; start<movies.length; start+=250) {
+  const part=movies.slice(start,start+250);
+  const filename=`details-${version}-${start/250}.json`;
+  fs.writeFileSync(path.join(browserDir,filename),JSON.stringify(part.map(({id,overview,cast,trailer,watch})=>({id,overview,cast,trailer,watch}))));
   for (const m of part) {
-    const {overview,overviewEn,cast,originalTitle,popularity,votes,tagline,keywords,director,...card}=m;
+    const {overview,overviewEn,cast,originalTitle,popularity,votes,tagline,keywords,director,trailer,watch,...card}=m;
     index.push({...card,detailChunk:filename});
   }
 }
