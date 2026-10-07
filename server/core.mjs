@@ -36,7 +36,7 @@ export const decadeOptions = [
   ["2010", "2010 年代"],
   ["2020", "2020 年代"],
 ];
-export const RECALL_VERSION = "v8-tuned";
+export const RECALL_VERSION = "v9-country";
 // Without semantic vectors the heuristic recall needs a wide net; with them a
 // hybrid shortlist of 500 recalls nearly as well with half the Jev calls (data/eval/hybrid-recall.json).
 export const CANDIDATE_LIMIT = 1000;
@@ -113,6 +113,7 @@ export const languageNames = {
   nl: "荷兰语", th: "泰语", he: "希伯来语", el: "希腊语", ta: "泰米尔语", te: "泰卢固语",
   ml: "马拉雅拉姆语", id: "印尼语", tl: "他加禄语", ka: "格鲁吉亚语", bn: "孟加拉语",
 };
+const countryNames = { US: "美国", GB: "英国", JP: "日本", KR: "韩国", HK: "中国香港", TW: "中国台湾", CN: "中国大陆", FR: "法国", IT: "意大利", DE: "德国", IN: "印度", TH: "泰国", ES: "西班牙", SE: "瑞典", DK: "丹麦", NO: "挪威", FI: "芬兰", PL: "波兰" };
 export const aspectLabels = {
   mood: "氛围与情绪契合",
   theme: "题材与故事契合",
@@ -203,6 +204,34 @@ function languageIntent(query) {
   if (/非英语|非英文/.test(query)) not.push("en");
   return { langs: [...new Set(langs)], not };
 }
+// Where a title was made, as opposed to its language: "美剧" is a US series,
+// not any English one. ISO 3166-1 codes match the catalog's `countries`.
+const COUNTRY_WORDS = [
+  [/美剧|美国/, ["US"]],
+  [/英剧|英国|英式/, ["GB"]],
+  [/日剧|日本/, ["JP"]],
+  [/韩剧|韩国/, ["KR"]],
+  [/港片|港剧|香港/, ["HK"]],
+  [/台剧|台湾/, ["TW"]],
+  [/国产|大陆|内地|国剧/, ["CN"]],
+  [/法国|法剧/, ["FR"]],
+  [/意大利/, ["IT"]],
+  [/德国|德剧/, ["DE"]],
+  [/印度/, ["IN"]],
+  [/泰剧|泰国/, ["TH"]],
+  [/欧洲/, ["FR", "IT", "DE", "ES", "GB", "SE", "DK", "NO", "FI", "PL", "BE", "NL", "AT", "CH", "PT", "IE", "CZ", "HU", "RO", "GR"]],
+];
+export function countryIntent(query = "") {
+  const out = [];
+  for (const [re, codes] of COUNTRY_WORDS) if (re.test(query) && !negatedAt(query, query.match(re)[0])) out.push(...codes);
+  return [...new Set(out)];
+}
+// "冷门" asks for under-seen titles; "热门" for widely seen ones.
+export function popularityIntent(query = "") {
+  if (/冷门|小众|被低估|鲜为人知|没什么人看过|不出名/.test(query)) return "obscure";
+  if (/热门|大热|高人气|人人都看过|爆款/.test(query)) return "popular";
+  return "";
+}
 function queryNegatives(query, avoid = {}) {
   const genres = [...(avoid.genres || [])];
   const words = [];
@@ -263,6 +292,11 @@ function themeTerms(query, intent = {}) {
     zh: [...new Set(zh)],
     phrases: [...new Set(phrases)],
   };
+}
+export function ratingBonus(m) {
+  const tmdb = Math.max(0, (m.rating || 0) - 6.5) * 0.8;
+  const douban = Number(m.doubanRating) > 7.5 ? (Number(m.doubanRating) - 7.5) * 1.2 : 0;
+  return Math.min(3, tmdb + douban);
 }
 export function qualityBonus(m) {
   if ((m.votes || 0) < 40) return 0;
@@ -374,6 +408,8 @@ export function analyzeQuery(movies, query, filters = {}, intent = {}) {
     requestedType: f.mediaType || mediaTypeIntent(query),
     quoted: quotedTitles(query),
     lang: languageIntent(query),
+    countries: countryIntent(query),
+    popularity: popularityIntent(query),
     neg,
     wanted: queryGenres(query, intent).filter((g) => !neg.genres.includes(g)),
     themesQ: themeTerms(query, intent),
@@ -387,13 +423,13 @@ export function analyzeQuery(movies, query, filters = {}, intent = {}) {
 export function querySignature(query, filters = {}) {
   const a = analyzeQuery([], query, filters, {});
   return JSON.stringify([
-    a.f, a.requestedType, a.lang, a.neg.genres, [...a.neg.words].sort(), a.neg.rejectClassic,
+    a.f, a.requestedType, a.lang, a.countries, a.popularity, a.neg.genres, [...a.neg.words].sort(), a.neg.rejectClassic,
     [...a.wanted].sort(), a.quoted, a.likeQuery, a.wantsClassic, a.recent, [...a.themesQ.zh].sort(),
   ]);
 }
 export function retrieve(movies, query, filters = {}, intent = {}, limit = 32, semantic = null) {
   const a = analyzeQuery(movies, query, filters, intent);
-  const { f, likeQuery, refs, requestedType, quoted, lang, neg, wanted, themesQ, wantsClassic, recent } = a;
+  const { f, likeQuery, refs, requestedType, quoted, lang, countries, popularity, neg, wanted, themesQ, wantsClassic, recent } = a;
   const pool0 = filtered(movies, f);
   const typedPool = requestedType
     ? pool0.filter(m => (m.mediaType || "movie") === requestedType)
@@ -404,6 +440,7 @@ export function retrieve(movies, query, filters = {}, intent = {}, limit = 32, s
   const structured =
     lang.langs.length ||
     lang.not.length ||
+    countries.length ||
     wanted.length ||
     f.minYear ||
     f.maxYear ||
@@ -441,6 +478,11 @@ export function retrieve(movies, query, filters = {}, intent = {}, limit = 32, s
       else score -= 3.2;
     }
     if (lang.not.includes(m.language)) score -= 8;
+    if (countries.length && m.countries?.length) {
+      if (countries.includes(m.countries[0])) score += 5;
+      else if (m.countries.some((c) => countries.includes(c))) score += 2;
+      else score -= 4;
+    }
     for (const g of wanted) if (m.genres.includes(g)) score += 3.6;
     score += thematic;
     if (likeQuery && refs.length) {
@@ -458,7 +500,9 @@ export function retrieve(movies, query, filters = {}, intent = {}, limit = 32, s
     for (const w of neg.words) if (body.includes(w)) score -= 1.8;
     if (recent && m.year >= 2010) score += 1.5;
     else if (recent && m.year >= 2000) score += 0.5;
-    const q = qualityBonus(m);
+    // For "冷门" the audience-size part of quality would favor exactly the
+    // well-known titles the visitor wants to avoid.
+    const q = popularity === "obscure" ? ratingBonus(m) - ((m.votes || 0) > 8000 ? 1.5 : 0) : qualityBonus(m);
     if (score > 0) score += q * (structured ? 2.1 : 0.9);
     const soft =
       q +
@@ -506,6 +550,7 @@ export function explain(m, query, filters = {}, intent = {}) {
   const a = analyzeQuery([], query, filters, { ...intent, references: intent.references || [] });
   const out = [];
   if (a.lang.langs.includes(m.language)) out.push(languageNames[m.language] || m.language);
+  else if (a.countries.length && a.countries.includes(m.countries?.[0])) out.push(`${countryNames[m.countries[0]] || m.countries[0]}出品`);
   const genres = a.wanted.filter((g) => m.genres.includes(g)).map((g) => genreLabels[g]);
   if (genres.length) out.push(genres.slice(0, 2).join(" / "));
   const zhBody = m.overview || "";
@@ -576,6 +621,8 @@ function rankingState(query, movies, references) {
       genres: m.genres,
       year: m.year,
       language: m.language,
+      countries: m.countries?.length ? m.countries : undefined,
+      votes: m.votes,
       runtime: m.runtime,
       seasons: m.seasons,
       episodes: m.episodes,
@@ -851,6 +898,7 @@ export async function recommend({
     .sort((a, b) => b.score - a.score || b.confidence - a.confidence ||
       qualityBonus(byId.get(b.id)) - qualityBonus(byId.get(a.id)));
   const firstPass = ranked;
+  const prior = popularityIntent(query) === "obscure" ? ratingBonus : qualityBonus;
   let rerankResponse = null;
   const shortlist = ranked.slice(0, RERANK_SIZE);
   if (shortlist.length >= 2) {
@@ -866,7 +914,7 @@ export async function recommend({
         .map((x) => {
           const p = Number(probs[x.id]) || 0;
           const aspect = rerankResponse.answers[`${x.id}::aspect`]?.choice;
-          return { ...x, listwise: p, score: x.score + LISTWISE_WEIGHT * (p / top) + QUALITY_WEIGHT * qualityBonus(byId.get(x.id)), ...(aspect in aspectLabels ? { aspect } : {}) };
+          return { ...x, listwise: p, score: x.score + LISTWISE_WEIGHT * (p / top) + QUALITY_WEIGHT * prior(byId.get(x.id)), ...(aspect in aspectLabels ? { aspect } : {}) };
         })
         .sort((a, b) => b.score - a.score || b.confidence - a.confidence ||
           qualityBonus(byId.get(b.id)) - qualityBonus(byId.get(a.id)));

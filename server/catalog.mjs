@@ -1,7 +1,7 @@
 import { createSemanticIndex } from "./semantic.mjs";
 // Load data separately from the Worker bundle and reuse it within this isolate.
-export function toWorkerMovie({id,mediaType,title,originalTitle,zh,year,runtime,genres,overview,overviewEn,recognition,language,rating,votes,doubanRating,doubanVotes,doubanSource,seasons,episodes,status,cast,tagline,keywords,director}) {
-  return {id,mediaType:mediaType || "movie",title,originalTitle,zh,year,runtime,genres,overview,overviewEn,recognition,language,rating,votes,doubanRating,doubanVotes,doubanSource,seasons,episodes,status,cast,tagline,keywords,director};
+export function toWorkerMovie({id,mediaType,title,originalTitle,zh,year,runtime,genres,overview,overviewEn,recognition,language,rating,votes,doubanRating,doubanVotes,doubanSource,seasons,episodes,status,cast,tagline,keywords,director,countries}) {
+  return {id,mediaType:mediaType || "movie",title,originalTitle,zh,year,runtime,genres,overview,overviewEn,recognition,language,rating,votes,doubanRating,doubanVotes,doubanSource,seasons,episodes,status,cast,tagline,keywords,director,countries};
 }
 
 async function readManifest(env) {

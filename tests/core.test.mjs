@@ -20,6 +20,8 @@ import {
   explain,
   normalizePersonal,
   querySignature,
+  countryIntent,
+  popularityIntent,
 } from "../server/core.mjs";
 const films = [
   {
@@ -373,4 +375,23 @@ test('near-certain vetoes remove what the visitor asked to avoid', async () => {
   assert.ok(questions.includes('gentle::avoid::sad') && !questions.includes('gentle::theme'));
   assert.deepEqual(result.results.map(r => r.id), ['gentle']);
   assert.equal(result.vetoed, 1);
+});
+
+test('origin words and "冷门" steer recall beyond language', () => {
+  const base = {...films[0], genres: ['Mystery'], overview: 'A tense mystery series.', mediaType: 'series', language: 'en', rating: 8.4};
+  const sample = [
+    {...base, id: 'uk', countries: ['GB'], votes: 900},
+    {...base, id: 'us', countries: ['US'], votes: 900},
+    {...base, id: 'cn', language: 'zh', countries: ['CN'], votes: 900},
+  ];
+  assert.equal(retrieve(sample, '节奏很快的悬疑美剧', {}, {}, 1)[0].id, 'us');
+  assert.equal(retrieve(sample, '好看的英剧悬疑', {}, {}, 1)[0].id, 'uk');
+  assert.deepEqual(countryIntent('不要美剧，想看英剧'), ['GB']);
+  const art = [
+    {...films[0], id: 'famous', genres: ['Drama'], overview: 'An art film.', rating: 8.3, votes: 20000},
+    {...films[0], id: 'hidden', genres: ['Drama'], overview: 'An art film.', rating: 8.0, votes: 400},
+  ];
+  assert.equal(popularityIntent('冷门但高分的艺术片'), 'obscure');
+  assert.equal(retrieve(art, '冷门但高分的剧情片', {}, {}, 1)[0].id, 'hidden');
+  assert.equal(retrieve(art, '高分的剧情片', {}, {}, 1)[0].id, 'famous');
 });
