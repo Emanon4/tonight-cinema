@@ -50,10 +50,10 @@ const genres = {
   37: "Western",
 };
 
-export async function details(id) {
+export async function details(id, {fresh=false}={}) {
  const file=path.join(cacheDir,`${id}.json`);
- if(fs.existsSync(file))return JSON.parse(fs.readFileSync(file));
- const d=await api(`movie/${id}`,{language:"zh-CN",append_to_response:"credits,translations"});
+ if(!fresh&&fs.existsSync(file))return JSON.parse(fs.readFileSync(file));
+ const d=await api(`movie/${id}`,{language:"zh-CN",append_to_response:"credits,translations,keywords"});
  fs.writeFileSync(file,JSON.stringify(d));return d;
 }
 export function normalize(d) {
@@ -73,7 +73,7 @@ const tvGenres = {
 export async function seriesDetails(id, {fresh=false}={}) {
  const file=path.join(cacheDir,`tv-${id}.json`);
  if(!fresh&&fs.existsSync(file))return JSON.parse(fs.readFileSync(file));
- const d=await api(`tv/${id}`,{language:"zh-CN",append_to_response:"credits,translations"});
+ const d=await api(`tv/${id}`,{language:"zh-CN",append_to_response:"credits,translations,keywords"});
  fs.writeFileSync(file,JSON.stringify(d));return d;
 }
 // Chinese overview: Simplified first, then any other Chinese translation.
@@ -90,4 +90,15 @@ export function normalizeSeries(d) {
  const overview=(chineseOverview(d)||en?.overview||"").trim();
  if(!overview||!d.poster_path||d.adult)return null;
  return {id:`tmdb-tv-${d.id}`,mediaType:"series",title:en?.name||d.original_name,originalTitle:d.original_name,zh:d.name,year:Number(d.first_air_date?.slice(0,4)),genres:[...new Set((d.genres||[]).flatMap(g=>tvGenres[g.id]||[g.name]))],cast:(d.credits?.cast||[]).slice(0,6).map(c=>c.name),overview,overviewEn:en?.overview||"",poster:`https://image.tmdb.org/t/p/w342${d.poster_path}`,source:`https://www.themoviedb.org/tv/${d.id}`,runtime:seriesRuntime(d),rating:d.vote_average||null,votes:d.vote_count,provider:"TMDB",language:d.original_language,popularity:d.popularity,seasons:d.number_of_seasons||null,episodes:d.number_of_episodes||null,status:d.status||""};
+}
+
+// Extra evidence for Jev: keywords, a tagline and who made it.
+export function enrichment(d, mediaType) {
+ const kw=(d.keywords?.keywords||d.keywords?.results||[]).map(k=>k.name).slice(0,20);
+ const en=d.translations?.translations?.find(t=>t.iso_639_1==="en")?.data;
+ const tagline=(d.tagline||en?.tagline||"").trim();
+ const director=mediaType==="series"
+  ? (d.created_by||[]).map(c=>c.name).slice(0,2).join(" / ")
+  : (d.credits?.crew||[]).filter(c=>c.job==="Director").map(c=>c.name).slice(0,2).join(" / ");
+ return {keywords:kw,tagline:tagline||undefined,director:director||undefined};
 }

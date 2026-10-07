@@ -36,7 +36,7 @@ export const decadeOptions = [
   ["2010", "2010 年代"],
   ["2020", "2020 年代"],
 ];
-export const RECALL_VERSION = "v7-personal";
+export const RECALL_VERSION = "v7-keywords";
 // Without semantic vectors the heuristic recall needs a wide net; with them a
 // hybrid shortlist of 500 recalls nearly as well with half the Jev calls (data/eval/hybrid-recall.json).
 export const CANDIDATE_LIMIT = 1000;
@@ -417,7 +417,8 @@ export function retrieve(movies, query, filters = {}, intent = {}, limit = 32, s
         .slice(0, 16)
     : [];
   const ranked = pool.map((m) => {
-    const body = `${m.overviewEn || ""} ${m.overview || ""}`.toLowerCase();
+    // TMDB keywords ("loneliness", "found family") are strong thematic evidence.
+    const body = `${m.overviewEn || ""} ${m.overview || ""} ${m.tagline || ""} ${(m.keywords || []).join(" ")}`.toLowerCase();
     const zhBody = m.overview || "";
     let thematic = 0;
     for (const t of themesQ.en) if (t.length >= 4 && body.includes(t)) thematic += 1.3;

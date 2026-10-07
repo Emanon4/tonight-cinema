@@ -19,7 +19,7 @@ for (let start=0; start<movies.length; start+=500) {
   const filename=`details-${version}-${start/500}.json`;
   fs.writeFileSync(path.join(browserDir,filename),JSON.stringify(part.map(({id,overview,cast})=>({id,overview,cast}))));
   for (const m of part) {
-    const {overview,overviewEn,cast,originalTitle,popularity,votes,...card}=m;
+    const {overview,overviewEn,cast,originalTitle,popularity,votes,tagline,keywords,director,...card}=m;
     index.push({...card,detailChunk:filename});
   }
 }

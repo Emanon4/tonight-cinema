@@ -1,6 +1,6 @@
 import fs from "node:fs";
 import path from "node:path";
-import { api, details, normalize, seriesDetails, normalizeSeries } from "./tmdb-client.mjs";
+import { api, details, normalize, seriesDetails, normalizeSeries, enrichment } from "./tmdb-client.mjs";
 
 // Incremental refresh for scheduled runs: titles first released in the last
 // RECENT_MONTHS that already meet the catalog's quality gate. Existing IDs are
@@ -38,7 +38,9 @@ for (const kind of ["movie", "series"]) {
     while (cursor < ids.length) {
       const id = ids[cursor++];
       try {
-        const m = kind === "movie" ? normalize(await details(id)) : normalizeSeries(await seriesDetails(id));
+        const d = kind === "movie" ? await details(id) : await seriesDetails(id);
+        const m = kind === "movie" ? normalize(d) : normalizeSeries(d);
+        if (m) Object.assign(m, enrichment(d, kind));
         if (!m || !m.year || m.rating < gate[kind].rating || m.votes < gate[kind].votes ||
             m.genres.some((g) => lowSignal.has(g))) { rejected.push({ id, kind }); continue; }
         added.push({ mediaType: "movie", ...m, addedBy: "scheduled-recent" });
