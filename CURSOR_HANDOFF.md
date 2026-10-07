@@ -19,7 +19,7 @@
 ## 准确率基准
 
 - `data/eval/rating-pool.json`：50 条需求 × 20 部评分池；`data/eval/claude-ratings.json`：Claude 按作品本身判断的评分；`node scripts/score-ratings.mjs` 出结果。线上前 12 部 71.0% 很合适、26.2% 还行、2.8% 不合适（之后的产地、冷门、补缺改动只抽查了受影响需求）。
-- 评分台（Artifact）：https://claude.ai/artifact/QzX6XVu4bVrPjcsCoXYMhN ，用户可只给看过的片打分，用于校准 Claude 的评分。
+- 评分台页面已在收尾时删除；需要真人校准时，用 `rating-pool.json` 重新生成一个"只评看过的片"的打分页。
 - 改推荐逻辑前后用 `scripts/eval-ranking.mjs --live`（金标准 A/B）或重跑评分池对比；不要只凭感觉上线。
 
 ## 代码导航
